@@ -30,6 +30,10 @@
 			width: 70%;
 		} 
 
+		.input-textarea textarea {
+			widt
+		}
+
 		.input-select select {
 			width: 100%;
 			border-radius: 5px;
