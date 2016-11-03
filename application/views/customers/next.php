@@ -330,7 +330,7 @@
 			<div class="row p-t-3 p-b-3 font-12 md-left sm-center">
 				<h3 class="col-md-2 m-t-0 m-b-0" style="padding-top: 0px!important;">Need Help ?</h3>
 				<p class="col-md-2 m-t-0 m-b-0" style="padding-top: 7px!important; text-align: center; padding-bottom: 5px;">
-					<a href="#" style="padding-right: 20px; color:#8c8c8c;">contact us</a>
+					<a href="#" style="padding-right: 15px; color:#8c8c8c;">contact us</a>
 					<a href="#" style="color:#8c8c8c;">terms and conditions</a>
 				</p>
 				
