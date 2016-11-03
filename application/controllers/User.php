@@ -20,6 +20,10 @@ class User extends CI_Controller {
 	}
 
 	public function order ($category = 0) {
+		echo $category;
+		echo "<br>";
+		echo count ($this->data['categories']);
+		
 		if ($category == 0 || $category > count ($this->data['categories'])) {
 			show_404();
 		} else {

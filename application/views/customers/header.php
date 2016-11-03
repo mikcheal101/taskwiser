@@ -66,7 +66,7 @@
 
 		.input .right {
 			border:1px solid #dedede;
-			padding: 14px 5px 10px 5px;
+			padding: 12px 5px 10px 5px;
 			height: 40px;
 			width: 15%;
 			margin-left: -5px;
@@ -80,7 +80,7 @@
 
 		.input .left {
 			border:1px solid #dedede;
-			padding: 14px 5px 10px 5px;
+			padding: 12px 5px 10px 5px;
 			height: 40px;
 			text-align: center;
 			width: 15%;
