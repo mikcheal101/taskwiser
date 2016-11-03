@@ -105,7 +105,7 @@
 			font-weight: bold!important;
 		}
 		.navbar-brand {
-			background-image: url('<?=base_url ('assets/imgs/logo.png');?>');
+			background-image: url('<?=site_url ('assets/imgs/logo.png');?>');
 			height: 50px;
 			background-position: center 60%;
 			background-size: 85%;
@@ -116,7 +116,7 @@
 		}
 
 		section#top { 
-			background-image: url('<?=base_url ('assets/imgs/top.jpg');?>');
+			background-image: url('<?=site_url ('assets/imgs/top.jpg');?>');
 			background-position: center;
 			background-repeat: no-repeat;
 			background-color: #78ccce;	
@@ -270,13 +270,13 @@
 					<span class="icon-bar bg-white"></span>
 					<span class="icon-bar bg-white"></span>
 				</button>
-				<div class="navbar-brand" style=""></div>
+				<a href="<?=base_url ('');?>" class="navbar-brand" style=""></a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse no-overflow no-scroll" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="admin/login" class="navbar-link text-lowercase font-13 bold">sign in</a></li>
+					<li><a href="<?=base_url ('admin/login');?>" class="navbar-link text-lowercase font-13 bold">sign in</a></li>
 					<li><a href="#" class="navbar-link text-lowercase font-13 bold">about us</a></li>
 					<li><a href="#" class="navbar-link text-lowercase font-13 bold">how it works</a></li>
 					<li><a href="#" class="navbar-link text-lowercase font-13 bold">BOOK NOW</a></li>
@@ -357,7 +357,7 @@
 		</div>
 	</section>
 
-	<script type="text/javascript" src="<?=base_url ('assets/js/jquery.js') ;?>"></script>
-	<script type="text/javascript" src="<?=base_url ('assets/js/tether.min.js') ;?>"></script>
-	<script type="text/javascript" src="<?=base_url ('assets/js/bootstrap.min.js') ;?>"></script>
+	<script type="text/javascript" src="<?=site_url ('assets/js/jquery.js') ;?>"></script>
+	<script type="text/javascript" src="<?=site_url ('assets/js/tether.min.js') ;?>"></script>
+	<script type="text/javascript" src="<?=site_url ('assets/js/bootstrap.min.js') ;?>"></script>
 </body>
