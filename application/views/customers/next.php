@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html >
 <head>
+
 	<?=meta ('viewport', 'width=device-width, initial-scale=1');?>
 	<?=meta ('author', 'Hirekaan Micheal Hemen');?>
 	<?=meta ('description', '');?>
 	<?=meta ('keywords', '');?>
 	<?=meta ('Content-Type', 'text/html; charset=UTF-8');?>
-	
+	<title>taskwiser.com</title>
 	<?=link_tag ('assets/css/bootstrap.min.css');?>
 	<style type="text/css">
 		@media screen and (min-width: 480px) {
