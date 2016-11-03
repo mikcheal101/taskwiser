@@ -24,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = ($_SERVER['SERVER_NAME'] === "localhost") ?'http://localhost/aris/' : 'https://taskwiser.herokuapp.com/';
+$config['site_url']	= ($_SERVER['SERVER_NAME'] === "localhost") ?'http://localhost/aris/' : 'http://www.taskwiser.com/';
 
 /*
 |--------------------------------------------------------------------------
