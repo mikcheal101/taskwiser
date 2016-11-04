@@ -8,7 +8,10 @@
 	<?=meta ('keywords', '');?>
 	<?=meta ('Content-Type', 'text/html; charset=UTF-8');?>
 	<title><?=$title;?></title>
+	
 	<?=link_tag ('assets/css/bootstrap.min.css');?>
+	<?=link_tag ('assets/css/font-awesome.css');?>
+
 	<style type="text/css">
 		@media screen and (min-width: 480px) {
 			.md-left {
@@ -96,7 +99,7 @@
 		}
 
 		ul.nav li a.navbar-link {
-			color:green;
+			color:#25aae1!important;
 		}
 		.font-12 {
 			font-size: 12px!important;
@@ -107,8 +110,8 @@
 		.navbar-brand {
 			background-image: url('<?=site_url ('assets/imgs/logo.png');?>');
 			height: 50px;
-			background-position: center 60%;
-			background-size: 85%;
+			background-position: center 57%;
+			background-size: 100%;
 			background-repeat: no-repeat;
 			padding: 0px;
 			margin:0px;
@@ -151,7 +154,8 @@
 		}
 
 		.gradient {
-			background-color:#b13a15;
+			/*background-color:#b13a15;*/
+			background-color: #1c4920;
 			background-image:
 				radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
 				radial-gradient(white, rgba(255,255,255,.05) 1px, transparent 30px),
@@ -255,11 +259,22 @@
 		html {
 			height: 100vh!important;
 		}
+		.transbg {
+			background-color: rgba(255, 255, 255, 0.3)!important;
+		}
+		.t-icons {
+			opacity:0.7;
+			cursor: pointer;
+		}
+		.t-icons:hover {
+			opacity: 1;
+		}
+
 	</style>
 </head>
 <body>
-	<nav class="navbar" style="">
-		<div class="container-fluid">
+	<nav id="navbar" class="navbar navbar-fixed-top" style="border-top: 0px!important; border-bottom: 0px!important;">
+		<div class="container-fluid" style="padding-right: 15px;">
 			<!-- Brand and toggle get grouped for better mobile display -->
 
 			<div class="navbar-header">
@@ -276,10 +291,10 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse no-overflow no-scroll" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<?=base_url ('admin/login');?>" class="navbar-link text-lowercase font-13 bold">sign in</a></li>
 					<li><a href="#" class="navbar-link text-lowercase font-13 bold">about us</a></li>
 					<li><a href="#" class="navbar-link text-lowercase font-13 bold">how it works</a></li>
-					<li><a href="#" class="navbar-link text-lowercase font-13 bold">BOOK NOW</a></li>
+					<li><a href="<?=base_url ('admin/login');?>" class="navbar-link text-lowercase font-13 bold">sign in</a></li>
+					<li><a href="#" class="navbar-link text-lowercase font-13 bold" style="background-color: green!important; color: #fff!important;">BOOK NOW</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
