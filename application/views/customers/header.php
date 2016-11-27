@@ -19,7 +19,39 @@
 			}
 		}
 
-		.input input, .input select {
+		.nav-50, .nav-50 li {
+			height:50px!important;
+		}
+
+		.nav-50 li {
+			border-left: 1px solid #dedede;
+			border-right: 1px solid #dedede;
+			padding-right: 2em;
+			margin-left: 2em;
+		}
+
+		.nav-50 li label {
+			display: flex;
+			margin-left: 2em;
+			color: #999;
+			font-size: 0.9em;
+			padding-top: 5px;
+			margin-bottom: 0px;
+		}
+
+		.nav-50 li select {
+			border:none;
+			width: 30em;
+			outline: none;
+			margin-left: 2em;
+			padding: 0em;
+			font-size: 12px;
+			color: #666;
+			height: 28px!important;
+			background-color: rgba(255, 255, 255, 0);
+		}
+
+		.input input, .input select, .input-textarea textarea {
 			outline: none;
 			padding: 10px;
 			border: 1px solid #dedede;
@@ -27,15 +59,23 @@
 			color: #666;
 		}
 
-		.input-number input {
-			border-left: 0px;
-			border-right: 0px;
-			margin-left: -5px;
+		.input-number div {
+			display: inline-table;
 			width: 70%;
+			text-align: center;
+			border-top: 1px solid #dedede;
+			border-bottom: 1px solid #dedede;
+			padding: 11px 0px 10px 0px;
+			font-size: 12px;
+			color: #999;
+			margin-left: -5px;
 		} 
 
 		.input-textarea textarea {
-			widt
+			width:100%!important;
+			border-radius: 5px;
+			-moz-border-radius: 5px;
+			-o-border-radius:5px;
 		}
 
 		.input-select select {
@@ -129,7 +169,7 @@
 
 		@media screen and (min-width: 480px) {
 			section#top {
-				height: 580px;
+				height: 680px;
 				background-size: 70%;
 			}
 		}
@@ -260,7 +300,10 @@
 			height: 100vh!important;
 		}
 		.transbg {
-			background-color: rgba(255, 255, 255, 0.3)!important;
+			background-color: rgba(255, 255, 255, 0.9)!important;
+		}
+		.xtransbg {
+			background-color: rgba(255, 255, 255, 0.9)!important;
 		}
 		.t-icons {
 			opacity:0.7;
@@ -271,9 +314,27 @@
 		}
 
 	</style>
+
+	<style type="text/css">
+		.about {
+			margin: 50px -1.5em 0em -1.5em;
+			padding: 2.0em;
+			border-top: 0.1em solid #efe;
+			list-style: none!important;
+			background-color: rgba(255, 255, 255, 0.9);
+			font-size: 1.2em!important;
+			color: #666;
+			text-align: center;
+			border-bottom: 0.1em solid #efe;
+		}
+		.white {
+			background-color: rgba(255, 255, 255, 0)!important;
+		}
+	</style>
 </head>
-<body>
-	<nav id="navbar" class="navbar navbar-fixed-top" style="border-top: 0px!important; border-bottom: 0px!important;">
+<body ng-app="app">
+
+	<nav id="navbar" class="navbar navbar-fixed-top white" style="border-top: 0px!important; border-bottom: 0px!important; background-color: rgba(255, 255, 255, 0.6);">
 		<div class="container-fluid" style="padding-right: 15px;">
 			<!-- Brand and toggle get grouped for better mobile display -->
 
@@ -290,11 +351,31 @@
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse no-overflow no-scroll" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-left nav-50">
+					<li>
+						<label>
+							Select Location: 
+						</label>
+						<select class="" >
+							<optgroup label="Lagos State"></optgroup>
+							<option>Eti Osa</option>
+							<option>Surulere</option>
+						</select>
+					</li>
+				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" class="navbar-link text-lowercase font-13 bold">about us</a></li>
+					<li><a href="#" class="navbar-link text-lowercase font-13 bold about-tag">about us</a></li>
 					<li><a href="#" class="navbar-link text-lowercase font-13 bold">how it works</a></li>
 					<li><a href="<?=base_url ('admin/login');?>" class="navbar-link text-lowercase font-13 bold">sign in</a></li>
-					<li><a href="#" class="navbar-link text-lowercase font-13 bold" style="background-color: green!important; color: #fff!important;">BOOK NOW</a></li>
+					<li><a href="#" class="navbar-link text-uppercase font-13 bold" style="background-color: green!important; color: #fff!important;">BOOK NOW</a></li>
+				</ul>
+
+				<ul class="about" >
+				    <li>
+				    	taskwiser is an on-demand service provider that helps in recruiting and connecting dedicated professionals to individuals and businesses, allowing them to complete everyday tasks efficiently and with ease. 
+				    	<br>
+				    	Our aim is to provide comprehensive help and support to customers and enable them live easier lives, while providing jobs for a ready workforce
+				    </li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->

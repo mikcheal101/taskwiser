@@ -2,14 +2,24 @@
 
 class User extends CI_Controller {
 	
-	private $data = [
-		'categories' => ['moving', 'diesel', 'cleaner', 'handyman', 'laundry', 'cooking', 'delivery', 'mechanic', 'driver', 'events']
-	];
+	private $_diesel;
+	private $_moving;
+	private $_handyman;
+	private $_cleaner;
+	private $_laundry;
+	private $_cooking;
+	private $_delivery;
+	private $_mechanic;
+	private $_driver;
+	private $_events;
+	private $_custom;
 
+	public $data;
 	
 	public function __construct () {
 		parent::__construct ();
-		$this->data['title'] = 'taskwiser';
+		$this->data['categories'] = $this->user_model->getCategories ();
+		$this->data['title'] 	= 'taskwiser';
 	}
 	
 	public function index () {
@@ -25,7 +35,10 @@ class User extends CI_Controller {
 			show_404();
 		} else {
 			$cat = $category-1;
-			$this->data['title'] = $this->data['categories'][$cat];
+			$this->data['location'] = $cat;
+			$this->data['title'] 	= $this->data['categories'][$cat]['_name'];
+			$this->data['category']	= $this->data['categories'][$cat];
+
 			$this->load->view ('customers/header', $this->data);
 			$this->load->view ('customers/next', $this->data);
 			$this->load->view ('customers/footer', $this->data);

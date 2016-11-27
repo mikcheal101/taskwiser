@@ -37,280 +37,64 @@
 	</section>
 
 	<!-- Modals -->
-	<div id="moving" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-sm">
-	    	<!-- Modal content-->
-	    	<div class="modal-content">
-	      		<div class="modal-header">
-	        		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	        		<h4 class="modal-title">Moving</h4>
-	      		</div>
-	      		<div class="modal-body">
-	        		<ul class="list-group">
-					  	<li class="list-group-item">
-					  		<a href="#">house move</a> 
-					  	</li>
-					  	<li class="list-group-item">
-					  		<a href="#">office move</a> 
-					  	</li>
-					</ul>
-	      		</div>
-	      		<div class="modal-footer">
-	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      		</div>
-	    	</div>
+	<?php foreach ($categories as $category) { ?>
+		<div id="<?=$category['_id'];?>" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-sm">
+		    	<!-- Modal content-->
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		        		<h4 class="modal-title"><?=$category['_name'];?></h4>
+		      		</div>
+		      		<div class="modal-body">
+		        		<ul class="list-group">
+	        				<?php if (count($category['_children']) < 1) { ?>
+					  		<li class="list-group-item">
+					  			<?=anchor("order/{$category['_id']}", $category['_name']);?>
+					  		</li>
+					  		<?php } else { ?>	
+					  			<?php foreach ($category['_children'] as $children) { ?>
+					  			<li class="list-group-item">
+						  			<?=anchor("order/{$children['_id']}", $children['_name']);?>
+						  		</li>
+						  		<?php } ?>
+					  		<?php } ?>
+						</ul>
+
+		      		</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      		</div>
+		    	</div>
+			</div>
 		</div>
-	</div>
-
-	<div id="diesel" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-sm">
-	    	<!-- Modal content-->
-	    	<div class="modal-content">
-	      		<div class="modal-header">
-	        		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	        		<h4 class="modal-title">Diesel</h4>
-	      		</div>
-	      		<div class="modal-body">
-	        		<ul class="list-group">
-					  	<li class="list-group-item">
-					  		<a href="#">DIESEL DELIVERY</a> 
-					  	</li>
-					</ul>
-	      		</div>
-	      		<div class="modal-footer">
-	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      		</div>
-	    	</div>
-		</div>
-	</div>
-
-	<div id="cleaner" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-sm">
-	    	<!-- Modal content-->
-	    	<div class="modal-content">
-	      		<div class="modal-header">
-	        		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	        		<h4 class="modal-title">Cleaner</h4>
-	      		</div>
-	      		<div class="modal-body">
-	        		<ul class="list-group">
-					  	<li class="list-group-item">
-					  		<a href="#">House Clean</a>
-					  	</li>
-					  	<li class="list-group-item">
-					  		<a href="#">Office Clean</a> 
-					  	</li>
-					</ul>
-	      		</div>
-	      		<div class="modal-footer">
-	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      		</div>
-	    	</div>
-		</div>
-	</div>
-
-	<div id="handyman" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-sm">
-	    	<!-- Modal content-->
-	    	<div class="modal-content">
-	      		<div class="modal-header">
-	        		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	        		<h4 class="modal-title">Handyman</h4>
-	      		</div>
-	      		<div class="modal-body">
-	        		<ul class="list-group">
-					  	<li class="list-group-item">
-					  		<a href="#">Electrician</a> 
-					  	</li>
-					  	<li class="list-group-item">
-					  		<a href="#">Plumber</a> 
-					  	</li>
-					  	<li class="list-group-item">
-					  		<a href="#">Carpenter</a> 
-					  	</li>
-					  	<li class="list-group-item">
-					  		<a href="#">Tailor</a> 
-					  	</li>
-					  	<li class="list-group-item">
-					  		<a href="#">Air Conditon Repairs</a> 
-					  	</li>
-					  	<li class="list-group-item">
-					  		<a href="#">Generator Repairs</a> 
-					  	</li>
-					  	<li class="list-group-item">
-					  		<a href="#">Oven Repairer</a> 
-					  	</li>
-					  	<li class="list-group-item">
-					  		<a href="#">Painter</a> 
-					  	</li>
-					</ul>
-	      		</div>
-	      		<div class="modal-footer">
-	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      		</div>
-	    	</div>
-		</div>
-	</div>
-
-	<div id="laundry" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-sm">
-	    	<!-- Modal content-->
-	    	<div class="modal-content">
-	      		<div class="modal-header">
-	        		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	        		<h4 class="modal-title">Laundry</h4>
-	      		</div>
-	      		<div class="modal-body">
-	        		<ul class="list-group">
-					  	<li class="list-group-item">
-					  		<a href="#">Washerman</a> 
-					  	</li>
-					  	<li class="list-group-item">
-					  		<a href="#">Dry Cleaning</a>
-					  	</li>
-					</ul>
-	      		</div>
-	      		<div class="modal-footer">
-	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      		</div>
-	    	</div>
-		</div>
-	</div>
-
-	<div id="cooking" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-sm">
-	    	<!-- Modal content-->
-	    	<div class="modal-content">
-	      		<div class="modal-header">
-	        		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	        		<h4 class="modal-title">Cooking</h4>
-	      		</div>
-	      		<div class="modal-body">
-	        		<ul class="list-group">
-					  	<li class="list-group-item">
-					  		<a href="#">Cook</a> 
-					  	</li>
-					</ul>
-	      		</div>
-	      		<div class="modal-footer">
-	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      		</div>
-	    	</div>
-		</div>
-	</div>
-
-	<div id="delivery" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-sm">
-	    	<!-- Modal content-->
-	    	<div class="modal-content">
-	      		<div class="modal-header">
-	        		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	        		<h4 class="modal-title">Delivery</h4>
-	      		</div>
-	      		<div class="modal-body">
-	        		<ul class="list-group">
-					  	<li class="list-group-item">
-					  		<a href="#">Package Delivery</a> 
-					  	</li>
-					  	<li class="list-group-item">
-					  		<a href="#">Food Delivery</a> 
-					  	</li>
-					</ul>
-	      		</div>
-	      		<div class="modal-footer">
-	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      		</div>
-	    	</div>
-		</div>
-	</div>
-
-	<div id="mechanic" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-sm">
-	    	<!-- Modal content-->
-	    	<div class="modal-content">
-	      		<div class="modal-header">
-	        		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	        		<h4 class="modal-title">Mechanic</h4>
-	      		</div>
-	      		<div class="modal-body">
-	        		<ul class="list-group">
-					  	<li class="list-group-item">
-					  		<a href="#">sample item</a> 
-					  	</li>
-					</ul>
-	      		</div>
-	      		<div class="modal-footer">
-	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      		</div>
-	    	</div>
-		</div>
-	</div>
-
-	<div id="driver" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-sm">
-	    	<!-- Modal content-->
-	    	<div class="modal-content">
-	      		<div class="modal-header">
-	        		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	        		<h4 class="modal-title">Driver</h4>
-	      		</div>
-	      		<div class="modal-body">
-	        		<ul class="list-group">
-					  	<li class="list-group-item">
-					  		<a href="#">Driver for the Day</a> 
-					  	</li>
-					</ul>
-	      		</div>
-	      		<div class="modal-footer">
-	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      		</div>
-	    	</div>
-		</div>
-	</div>
-
-	<div id="events" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-sm">
-	    	<!-- Modal content-->
-	    	<div class="modal-content">
-	      		<div class="modal-header">
-	        		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	        		<h4 class="modal-title">Events</h4>
-	      		</div>
-	      		<div class="modal-body">
-	        		<ul class="list-group">
-					  	<li class="list-group-item">
-					  		<a href="#">Cake</a> 
-					  	</li>
-					  	<li class="list-group-item">
-					  		<a href="#">Live Band</a> 
-					  	</li>
-					  	<li class="list-group-item">
-					  		<a href="#">Drinks(cocktail)</a> 
-					  	</li>
-					  	<li class="list-group-item">
-					  		<a href="#">Photographer</a> 
-					  	</li>
-					</ul>
-	      		</div>
-	      		<div class="modal-footer">
-	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      		</div>
-	    	</div>
-		</div>
-	</div>
-
-
+	<?php } ?>
+	
 	<script type="text/javascript" src="<?=site_url ('assets/js/jquery.js') ;?>"></script>
 	<script type="text/javascript" src="<?=site_url ('assets/js/tether.min.js') ;?>"></script>
 	<script type="text/javascript" src="<?=site_url ('assets/js/bootstrap.min.js') ;?>"></script>
+
+	<script type="text/javascript" src="<?=site_url ('assets/js/angular.min.js') ;?>"></script>
+	<script type="text/javascript" src="<?=site_url ('assets/js/dirPagination.js') ;?>"></script>
+	<script type="text/javascript" src="<?=site_url ('assets/js/ng-file-upload-all.min.js') ;?>"></script>
+	<script type="text/javascript" src="<?=site_url ('assets/js/ng-file-upload-shim.min.js') ;?>"></script>
+
+	<script type="text/javascript" src="<?=site_url ('assets/js/main.angular.js') ;?>"></script>
+	<script type="text/javascript" src="<?=site_url ('assets/js/services.angular.js') ;?>"></script>
+	<script type="text/javascript" src="<?=site_url ('assets/js/controllers.angular.js') ;?>"></script>
+	<script type="text/javascript" src="<?=site_url ('assets/js/directives.angular.js') ;?>"></script>
+
+
 	<script type="text/javascript">
 		$(window).scroll((evt) => {
 			var x = getNavLocation ();
 			var y = getTustLocation ();
 			if (x >= y) {
-				$('#navbar').addClass ('transbg');
+				$('nav.navbar').removeClass ('white');
+				$('nav.navbar').addClass ('xtransbg');
 			} else {
-				$('#navbar').removeClass ('transbg');
+				$('nav.navbar').removeClass ('xtransbg');
+				$('nav.navbar').addClass ('white');
 			}
 		});
 
@@ -320,9 +104,23 @@
 		};
 
 		function getTustLocation () {
-			var trust = $('#trust').position ();
-			return trust.top + 50;
+			var trust = $('#trust').position ();			
+			return trust === null ? 50 : trust.top + 50;
 		}
+
+		var about = $('.about-tag');
+		$('.about').hide ();
+		about.hover (
+			() => {
+				$('.about').fadeIn (500);
+			}, () => {
+				$('.about').fadeOut (1000);
+			}
+		);
+
+		$.each($('.input-number'), (key, input) => {
+			console.info (input);
+		}); 
 	</script>
 
 </body>
