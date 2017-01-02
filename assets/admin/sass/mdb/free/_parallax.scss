@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*********************
   Parallax
 **********************/
@@ -9,4 +10,17 @@
     position: relative;
     padding-top: 3em;
     padding-bottom: 3em;
+=======
+/*********************
+  Parallax
+**********************/
+
+.parallax {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    padding-top: 3em;
+    padding-bottom: 3em;
+>>>>>>> origin/master
 }
