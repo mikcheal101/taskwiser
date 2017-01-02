@@ -1,0 +1,58 @@
+cleaner :
+	number of rooms
+	address
+	same day next day or pick a day from the drop down calender
+	box to type a message. 
+
+	price = ? how does the system calculate the price? I need a formular for this to be achieved.
+
+diesel	: 
+	amount of litres(minimum 150 litres myb?) that can change sha. 
+	same day, next day calender. 
+	box to type message. 
+	address
+
+moving	: 
+	amount of boxes to be moved same day etc( i hope you get the gist now), 
+	if they need help packing. that should be asked. or just moving boxes.[need help parking / just moving boxes ?]
+	address 
+	address to
+	time
+	date
+
+handyman :
+?? nothing here
+
+laundry : 
+	washer man dry cleaners. (shirts, suit, trousers, number they are drycleaning.) 
+	next day only and calender. 
+	will send the prices. 
+	or is it possible for me to type the prices myself? i would actually prefer that. for all the icons. 
+	incase i want to change prices for certain things etc hmm
+
+driver : 
+	for a day, a week, a month. (no of hours you need driver for) minimum 4 hours or 5 hours.
+
+events wasnt there. please put it back. 
+	photographer, 
+	live band, 
+	disc jockey
+
+beauty - 
+	barber, 
+	make up artist, 
+	masseuse (check the other emails i sent earlier. might be more there)
+
+auto repair - 
+	i sent you an email earlier. with a breakdown of this earlier. that there can be a dropdown menu. listing parts of the vehicle for example. ( check yourmechanic.com)
+
+delivery - 
+	same day / select date. 
+	time. 
+	address to pick up from.
+	address to deliver to.
+
+custom tasks - 
+	it should just be a box. saying (what can we help you with). 
+	address. 
+	or it can be state your task and lets see if we can be of help. hmm

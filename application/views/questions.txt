@@ -1,0 +1,11 @@
+- number of rooms {5, }
+- address	{5, 1, 10, 11, 8, 3, }
+- date {5, 1, 2, 6, 10, 11, 8, 3, }
+- time {5, 2, 6, 10, 11, 8, 3, }
+- message / extras {5, 1, 2, 6, 10, 11, 8, 3, }
+- liters amt {1, }
+- amount of boxes {2, }
+- need help parking / just moving boxes ? {2, }
+- how long required {10, 11, }
+- items with quantities [shirts, troussers, suits, gowns, others] {6, }
+- address_to {2, 8, }
