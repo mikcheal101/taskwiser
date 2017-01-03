@@ -4,7 +4,7 @@
 			<div class="col-md-9">
 				<?php 
 					$x = $category['questions']; 
-					var_dump($x);
+					
 					function array_in($_needle, $_array) {
 						foreach($_array as $key=>$value){
 							if ((int)$_needle === (int)$value->_question){

@@ -35,7 +35,6 @@ class User extends CI_Controller {
 		
 		if ($category == 0 || $category > count ($this->data['all_categories'])) {
 			show_404();
-			#var_dump((int)$this->data['categories'][count ($this->data['all_categories']) - 1]['_id']);
 		} else {
 
 			$this->form_validation->set_rules('email', 'Email Address', 'required|valid_email');
