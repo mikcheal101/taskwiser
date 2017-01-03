@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 {
 	"description": "A website to select tasks",
 	"name": "taskwiser",
 	"type": "project",
-	"homepage": "https://codeigniter.com",
+	"homepage": "https://taskwiser.com",
 	"license": "MIT",
 	"support": {
 		"forum": "http://forum.codeigniter.com/",
@@ -16,23 +15,15 @@
 		"twbs/bootstrap"	: "4.0.0-alpha.4",
 		"components/jquery"	: "^3.1.1"
 	}
-=======
 {
 	"description": "A website to select tasks",
 	"name": "taskwiser",
-	"type": "project",
-	"homepage": "https://codeigniter.com",
+	"type": "web App",
+	"homepage": "https://taskwiser.com",
 	"license": "MIT",
-	"support": {
-		"forum": "http://forum.codeigniter.com/",
-		"wiki": "https://github.com/bcit-ci/CodeIgniter/wiki",
-		"irc": "irc://irc.freenode.net/codeigniter",
-		"source": "https://github.com/bcit-ci/CodeIgniter"
-	},
 	"require": {
 		"php"				: "^7.0",
 		"twbs/bootstrap"	: "4.0.0-alpha.4",
 		"components/jquery"	: "^3.1.1"
 	}
->>>>>>> origin/master
 }
