@@ -70,15 +70,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
+
+
 $active_group = ($_SERVER['SERVER_NAME'] === "localhost") ?'default':'heroku';
 $query_builder = TRUE;
 
 $db['heroku'] = array(
 	'dsn'	=> '',
-	'hostname' => 'eu-cdbr-west-01.cleardb.com',
-	'username' => 'b73779107c2fbd',
-	'password' => '8a24b009',
-	'database' => 'heroku_8d458914bdb057e',
+	'hostname' => 'us-cdbr-iron-east-04.cleardb.net',
+	'username' => 'b57bb494f9aaed',
+	'password' => '7d97bb1e',
+	'database' => 'heroku_582ad08bce8b305',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
