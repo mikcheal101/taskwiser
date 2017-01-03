@@ -25,11 +25,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 if ($_SERVER['SERVER_NAME'] === "localhost") 
 	$config['site_url'] = 'http://localhost:8080/taskwiser';
+else if ($_SERVER['SERVER_NAME'] === "taskwiser.herokuapp.com") 
+	$config['site_url'] = 'http://taskwiser.herokuapp.com';
 else  
 	$config['site_url'] = 'https://taskwiser.herokuapp.com/';
 
 if ($_SERVER['SERVER_NAME'] === "localhost") 
 	$config['base_url']	= 'http://localhost:8080/taskwiser';
+else if ($_SERVER['SERVER_NAME'] === "taskwiser.herokuapp.com") 
+	$config['base_url']	= 'https://taskwiser.herokuapp.com';
 else 
 	$config['base_url'] =  'http://www.taskwiser.com/';
 
