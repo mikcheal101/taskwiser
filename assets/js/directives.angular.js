@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 angular.module('app.directives', [])
 .directive('inputNumber', function(){
 	var dir 		= {};
@@ -65,6 +64,3 @@ angular.module('app.directives', [])
 		`
 	};
 });
-=======
-angular.module('app.directives', []);
->>>>>>> origin/master
