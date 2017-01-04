@@ -31,6 +31,19 @@ class User extends CI_Controller {
 		$this->load->view ('customers/footer', $this->data);
 	}
 
+	public function emailTest() {
+		$this->email->from('taskwiser', 'no-reply@taskwiser.com');
+		$this->email->to('hirekaanmicheal@gmail.com');
+		$this->email->subject('Testing webmail');
+		$this->email->message('This is a welcome message');
+		if($this->email->send()) {
+			echo ("Email sent!");
+		} else {
+			echo $this->email->print_debugger();
+		}
+
+	}
+
 	public function order ($category = 0) {
 		
 		if ($category == 0 || $category > count ($this->data['all_categories'])) {

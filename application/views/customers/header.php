@@ -379,7 +379,7 @@
 					<li><a href="#" class="navbar-link text-lowercase font-13 bold about-tag">about us</a></li>
 					<li><a href="#" class="navbar-link text-lowercase font-13 bold">how it works</a></li>
 					<li><a href="<?=base_url ('login');?>" class="navbar-link text-lowercase font-13 bold">sign in</a></li>
-					<li><a href="#" class="navbar-link text-uppercase font-13 bold" style="background-color: green!important; color: #fff!important;">BOOK NOW</a></li>
+					<li><a href="#what_it_offers" class="navbar-link text-uppercase font-13 bold" style="background-color: green!important; color: #fff!important;">BOOK NOW</a></li>
 				</ul>
 
 				<ul class="about" >

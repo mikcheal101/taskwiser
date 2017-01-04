@@ -111,17 +111,10 @@
 
 		var about = $('.about-tag');
 		$('.about').hide ();
-		about.hover (
-			() => {
-				$('.about').fadeIn (500);
-			}, () => {
-				$('.about').fadeOut (1000);
-			}
-		);
-
-		$.each($('.input-number'), (key, input) => {
-			console.info (input);
-		}); 
+		about.click ((event) => {
+			event.preventDefault();
+			$('.about').fadeIn (500).delay(1000).fadeOut ();
+		});
 
 	</script>
 
