@@ -32,7 +32,7 @@ class User extends CI_Controller {
 	}
 
 	public function emailTest() {
-		$this->email->from('taskwiser', 'no-reply@taskwiser.com');
+		$this->email->from('no-reply@taskwiser.com', 'Taskwiser no-reply');
 		$this->email->to('hirekaanmicheal@gmail.com');
 		$this->email->subject('Testing webmail');
 		$this->email->message('This is a welcome message');
