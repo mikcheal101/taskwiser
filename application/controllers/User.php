@@ -1,4 +1,5 @@
 <?php
+require_once(dirname(__FILE__)."/EmailTemplates.php");
 
 class User extends CI_Controller {
 	
@@ -13,6 +14,7 @@ class User extends CI_Controller {
 	private $_driver;
 	private $_events;
 	private $_custom;
+	private $email_templates;
 
 	public $data;
 	
@@ -22,6 +24,7 @@ class User extends CI_Controller {
 		$this->data['all_categories']	= $this->user_model->getAllCategories ();
 		$this->data['title'] 			= 'taskwiser';
 		$this->data['states'] 			= $this->admin_model->getStates();
+		$this->email_templates			= new EmailTemplates($this);
 	}
 	
 	public function index () {
@@ -42,6 +45,47 @@ class User extends CI_Controller {
 			echo $this->email->print_debugger();
 		}
 
+	}
+
+	public function emailPage() {
+		#$this->email_templates->registration_email("http://url", "sample@email.com", "password", "username");
+		$this->email_templates->password_reset_email("sample@email.com", "password", "http://");
+		
+		#$quote = $this->user_model->sample_quote();
+		#$this->email_templates->quote_email("sample@email.com", $quote, "http://", "http://");
+	}
+
+	public function padHex($hex) {
+		$count 	= $this->_padHex($hex);
+		$str 	= "";
+		$final 	= "";
+
+		for($i=0; $i<$count; $i++, $str.="0");
+		$str.="{$hex}";
+
+		for($j=0; $j<strlen($str); $j++) {
+			if($j % 4 === 0 && $j !== 0) $final.= " {$str[$j]}";
+			else $final.= "{$str[$j]}";
+		}
+		return $final;
+	}
+
+	private function _padHex ($hex = 0, $position = 2) {
+		$base 	= pow(2, $position);
+		
+		$div_m 	= (int) floor(strlen($hex) / $base);
+		$div 	= $div_m === 0;
+
+		$rem_m 	= (int) floor(strlen($hex) % $base);
+		$rem 	= $rem_m === 0;
+
+		$next 	= $div && $rem && (int)$rem > 0;
+		$count 	= 0;
+
+		if($next) $count = $this->padHex($hex, ($position + 1));  
+		else $count = $rem_m;
+
+		return $count;
 	}
 
 	public function order ($category = 0) {

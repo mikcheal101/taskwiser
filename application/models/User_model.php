@@ -90,7 +90,47 @@ class User_model extends CI_Model {
 			'delivery_address'	=> $this->input->post('delivery_address'),
 		];
 		
-		return $this->db->insert('orders', $order) ? true: false;
+		if($this->db->insert('orders', $order)){
+			$id = $this->padHex($this->insert_id());
+			$this->db
+				->set(['_transaction_code' => $id])
+				->where(['_id' => $id])
+				->update('orders');
+			return true;
+		} else return false;
+	}
+
+	public function padHex($hex) {
+		$count 	= $this->_padHex($hex);
+		$str 	= "";
+		$final 	= "";
+
+		for($i=0; $i<$count; $i++, $str.="0");
+		$str.="{$hex}";
+
+		for($j=0; $j<strlen($str); $j++) {
+			if($j % 4 === 0 && $j !== 0) $final.= " {$str[$j]}";
+			else $final.= "{$str[$j]}";
+		}
+		return $final;
+	}
+
+	private function _padHex ($hex = 0, $position = 2) {
+		$base 	= pow(2, $position);
+		
+		$div_m 	= (int) floor(strlen($hex) / $base);
+		$div 	= $div_m === 0;
+
+		$rem_m 	= (int) floor(strlen($hex) % $base);
+		$rem 	= $rem_m === 0;
+
+		$next 	= $div && $rem && (int)$rem > 0;
+		$count 	= 0;
+
+		if($next) $count = $this->padHex($hex, ($position + 1));  
+		else $count = $rem_m;
+
+		return $count;
 	}
 
 	private function generate_user() {
@@ -192,6 +232,33 @@ class User_model extends CI_Model {
 		$this->db->order_by('_ts', 'DESC');
 		$payments = $this->db->get_where('payments', ['_customer' => $this->session->user->_id])->result();
 		return $payments;
+	}
+
+	public function sample_staff() {
+		$this->db->limit(1);
+		$data = $this->db->get_where('users', ['id !=' => 1])->row();
+		return $data;
+	}
+
+	public function sample_quote() {
+		$this->db->limit(1);
+		$data = $this->db->get_where('orders', ['_id'=> 29])->row();
+
+		if(!is_null($data)) {
+			$data->sub_category 	= $this->db->get_where('categories', ['_id' => $data->_category])->row();
+
+			if(!is_null($data->sub_category->_parent)){
+				$data->parent = $this->db->get_where('categories', ['_id' => $data->sub_category->_parent])->row();
+			} else {
+				$data->parent = null;
+			}
+
+			if(!is_null($data->_assigned_staff)) {
+				$data->staff 	= $this->db->get_where('users', ['id' => $data->_assigned_staff])->row();	
+			} else $data->staff 	= null;
+			
+		}
+		return $data;
 	}
 }
 ?>
