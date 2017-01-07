@@ -53,6 +53,8 @@ class EmailTemplates {
 		echo ("<br><hr><br>");
 		var_dump($pay_url);
 		echo ("<br><hr><br>");
+		var_dump($view);
+		echo ("<br><hr><br>");
 		exit();
 		return $view;
 	}
