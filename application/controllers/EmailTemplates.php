@@ -35,6 +35,7 @@ class EmailTemplates {
 
 	public function quote_email($email=null, $quote=null, $login_url=null, $pay_url=null) {
 		$view = "";
+
 		if(!is_null($email) && !is_null($quote) && !is_null($login_url) && !is_null($pay_url)) {
 			$this->data['email']		= $email;
 			$this->data['quote']		= $quote;
@@ -43,6 +44,16 @@ class EmailTemplates {
 			$this->data['title'] 		= 'taskwiser order quote email';
 			$view = $this->loadPages(['emails/quote_email']);
 		}
+		echo ("<br><hr><br>");
+		var_dump($email);
+		echo ("<br><hr><br>");
+		var_dump($quote);
+		echo ("<br><hr><br>");
+		var_dump($login_url);
+		echo ("<br><hr><br>");
+		var_dump($pay_url);
+		echo ("<br><hr><br>");
+		exit();
 		return $view;
 	}
 
