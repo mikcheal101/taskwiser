@@ -119,7 +119,7 @@ class User extends CI_Controller {
 
 		if($result->boolean) {
 			# create order 
-			$order = $this->user_model->place_order(['category' => $category, 'customer' => $result->customer->_id]
+			$order = $this->user_model->place_order(['category' => $category, 'customer' => $result->customer->_id]);
 			if($order) {
 				# display confirmation page
 				if($this->sendOrderMail($result->customer, $order)) {
