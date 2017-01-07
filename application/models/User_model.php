@@ -91,7 +91,7 @@ class User_model extends CI_Model {
 		];
 		
 		if($this->db->insert('orders', $order)){
-			$id = $this->padHex($this->insert_id());
+			$id = $this->padHex($this->db->insert_id());
 			$this->db
 				->set(['_transaction_code' => $id])
 				->where(['_id' => $id])
