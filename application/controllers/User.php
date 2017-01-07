@@ -116,11 +116,13 @@ class User extends CI_Controller {
 		# check if the email already exists then create order
 		$result = $this->user_model->check_customer();
 		$_email = $this->input->post('email');
+
 		if($result->boolean) {
 			# create order 
-			if($this->user_model->place_order(['category' => $category, 'customer' => $result->customer])) {
+			$order = false;
+			if(($order = $this->user_model->place_order(['category' => $category, 'customer' => $result->customer])) != false) {
 				# display confirmation page
-				if($this->user_model->sendRegistrationMail($result->customer)) {
+				if($this->sendOrderMail($result->customer, $order)) {
 					# display the email sent 
 					$this->data['message'] = [
 						'header'	=> 'Email Sent!',
@@ -133,6 +135,34 @@ class User extends CI_Controller {
 				} else echo "registration email failed!";
 			} else echo "place order failed!";
 		} else echo "check customer failed!";
+	}
+
+	public function silentAuth($id = null, $username = null, $verification_code = null) {
+		if (!is_null($id) && !is_null($username) && !is_null($verification_code)) {
+			$user = null;
+			if(!is_null($user = $this->user_model->silentAuth($username, $verification_code))) {
+				$this->session->set_userdata (['user' => $user]);
+				redirect('backend/','refresh');
+			} else {
+				$this->session->set_flashdata ('authenticate_error', 'Username / Password Mismatch!');
+				redirect('login','refresh');
+			}
+		}
+	}
+
+	private function sendOrderMail($customer, $order) {
+		$_quote 		= $this->user_model->prepQuote($order->_id);
+		$_login_url 	= base_url("silentAuth/{$customer->_id}/{$customer->_username}/{$customer->verification_code}");
+		$_payment_url 	= base_url();
+		$_message		= $this->email_templates->quote_email($_to, $quote, $_login_url, $_payment_url);
+
+		# send an email to the user showing the username and password
+		# with order details
+		$this->email->from('no-reply@taskwiser.com', 'Taskwiser no-reply');
+		$this->email->to($customer->_email);
+		$this->email->subject("Taskwiser.com Order {$order->_transaction_code}");
+		$this->email->message($_message);
+		return $this->email->send();
 	}
 
 	public function verifyCustomer($verification_code=0){

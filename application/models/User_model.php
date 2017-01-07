@@ -96,7 +96,7 @@ class User_model extends CI_Model {
 				->set(['_transaction_code' => $id])
 				->where(['_id' => $id])
 				->update('orders');
-			return true;
+			return $this->db->get_where('orders', ['_id' => $id])->row();
 		} else return false;
 	}
 
@@ -145,12 +145,7 @@ class User_model extends CI_Model {
 		return  $this->db->insert_id() ?? 0;
 	}
 
-	public function sendRegistrationMail($customer) {
-		# send an email to the user showing the username and password
-		# with order details
-
-		return TRUE;
-	}
+	
 
 	public function verifyCustomer($code) {
 		$obj 		= new stdClass();
@@ -238,6 +233,33 @@ class User_model extends CI_Model {
 		$this->db->limit(1);
 		$data = $this->db->get_where('users', ['id !=' => 1])->row();
 		return $data;
+	}
+
+	public function prepQuote($order_id) {
+		$this->db->limit(1);
+		$data = $this->db->get_where('orders', ['_id'=> $order_id])->row();
+
+		if(!is_null($data)) {
+			$data->sub_category 	= $this->db->get_where('categories', ['_id' => $data->_category])->row();
+
+			if(!is_null($data->sub_category->_parent)){
+				$data->parent = $this->db->get_where('categories', ['_id' => $data->sub_category->_parent])->row();
+			} else {
+				$data->parent = null;
+			}
+
+			if(!is_null($data->_assigned_staff)) {
+				$data->staff 	= $this->db->get_where('users', ['id' => $data->_assigned_staff])->row();	
+			} else $data->staff 	= null;
+			
+		}
+		return $data;
+	}
+
+	public function silentAuth($id = null, $username = null, $verification_code = null) {
+		$user = $this->db->get_where('customers', 
+			['_id' => $id, 'username' => $username, '_verification_code' => $verification_code])->row();
+		return $user;
 	}
 
 	public function sample_quote() {
