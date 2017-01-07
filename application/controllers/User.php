@@ -132,8 +132,10 @@ class User extends CI_Controller {
 					$this->load->view ('customers/header', $this->data);
 					$this->load->view ('customers/alert', $this->data);
 					$this->load->view ('customers/footer', $this->data);
-				} else 
+				} else {
 					echo "registration email failed!";
+					var_dump($this->email->print_debugger());
+				}
 			} else 
 				echo "place order failed!";
 		} else 
