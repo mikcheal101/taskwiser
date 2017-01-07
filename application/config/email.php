@@ -10,8 +10,8 @@ $config['mailpath'] 		= '/usr/sbin/sendmail';
 $config['wordwrap']			= TRUE;
 $config['newline']			= "\r\n";
 $config['crlf']				= "\r\n";
-$config['crypto']			= "tls";
+#$config['crypto']			= "tls";
 
 $config['smtp_host']		= "smtp.office365.com";
 $config['smtp_user']		= "no-reply@taskwiser.com";
-$config['smtp_pass']		= "!QAZ2wsx";
+#$config['smtp_pass']		= "!QAZ2wsx";
