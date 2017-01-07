@@ -88,13 +88,20 @@ class User_model extends CI_Model {
 			'delivery_address'	=> $this->input->post('delivery_address'),
 		];
 		
+		var_dump($order);
+
 		if($this->db->insert('orders', $order)){
+			var_dump($this->db->last_query());
+
 			$id = $this->padHex($this->db->insert_id());
 			$this->db
 				->set(['_transaction_code' => $id])
 				->where(['_id' => $id])
 				->update('orders');
-			return $this->db->get_where('orders', ['_id' => $id])->row();
+			var_dump($this->db->last_query());
+			$data =  $this->db->get_where('orders', ['_id' => $id])->row();
+			var_dump($this->db->last_query());
+			return $data;
 		} else return false;
 	}
 
