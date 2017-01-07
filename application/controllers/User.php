@@ -119,8 +119,8 @@ class User extends CI_Controller {
 
 		if($result->boolean) {
 			# create order 
-			$order = false;
-			if(($order = $this->user_model->place_order(['category' => $category, 'customer' => $result->customer->_id])) != false) {
+			$order = $this->user_model->place_order(['category' => $category, 'customer' => $result->customer->_id]
+			if($order) {
 				# display confirmation page
 				if($this->sendOrderMail($result->customer, $order)) {
 					# display the email sent 
@@ -136,8 +136,10 @@ class User extends CI_Controller {
 					echo "registration email failed!";
 					var_dump($this->email->print_debugger());
 				}
-			} else 
+			} else {
 				echo "place order failed!";
+				var_dump($order);
+			}
 		} else 
 			echo "check customer failed!";
 	}
