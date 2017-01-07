@@ -8,11 +8,12 @@ angular.module('app.directives', [])
 	};
 	dir.link		= function(scope, ele, attr) {
 		scope.text 			= attr.text;
-		scope.number 		= 0;
+		scope.number 		= attr.size || 0;
 		scope.name 			= attr.name || "number[]";
+		scope.min 			= attr.size || 0;
 
 		scope.inputminus 	= function() {
-			if(scope.number > 0) scope.number--;
+			if(scope.number > scope.min) scope.number--;
 		};
 		scope.inputplus	= function() {
 			scope.number++;

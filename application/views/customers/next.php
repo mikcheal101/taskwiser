@@ -1,4 +1,4 @@
-<section id="" class="" style="margin-top:50px;padding-top: 10px;" ng-controller="cntrl">
+<section id="" class="" style="margin-top:50px; padding-top: 10px; background-color: #3db3e4!important; " ng-controller="cntrl">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9">
@@ -28,12 +28,16 @@
 							</div>
 
 							
-							<h6 class="p-t-1 p-b-1 text-center" ng-show="<?=count($x) > 0;?>">Tell us about the job</h6>
+							<h6 class="p-t-1 p-b-1 text-center" ng-show="<?=count($x) > 0;?>">
+								<!--
+									Tell us about the job
+								-->
+							</h6>
 							
 							<!-- # of rooms -->
 							<input-number text="Rooms" name="rooms" ng-show="<?=array_in('1', $x);?>"></input-number>
 
-							<input-number text="Liters" name="liters" ng-show="<?=array_in('6', $x);?>"></input-number>
+							<input-number text="Liters" size="500" name="liters" ng-show="<?=array_in('6', $x);?>"></input-number>
 
 							<input-number text="Boxes" name="boxes" ng-show="<?=array_in('7', $x);?>"></input-number>
 
