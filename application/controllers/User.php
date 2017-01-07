@@ -152,7 +152,7 @@ class User extends CI_Controller {
 
 	private function sendOrderMail($customer, $order) {
 		$_quote 		= $this->user_model->prepQuote($order->_id);
-		$_login_url 	= base_url("silentAuth/{$customer->_id}/{$customer->_username}/{$customer->verification_code}");
+		$_login_url 	= base_url("silentAuth/{$customer->_id}/{$customer->_username}/{$customer->_verification_code}");
 		$_payment_url 	= base_url();
 		$_message		= $this->email_templates->quote_email($_to, $quote, $_login_url, $_payment_url);
 
