@@ -120,7 +120,7 @@ class User extends CI_Controller {
 		if($result->boolean) {
 			# create order 
 			$order = false;
-			if(($order = $this->user_model->place_order(['category' => $category, 'customer' => $result->customer])) != false) {
+			if(($order = $this->user_model->place_order(['category' => $category, 'customer' => $result->customer->_id])) != false) {
 				# display confirmation page
 				if($this->sendOrderMail($result->customer, $order)) {
 					# display the email sent 
@@ -132,9 +132,12 @@ class User extends CI_Controller {
 					$this->load->view ('customers/header', $this->data);
 					$this->load->view ('customers/alert', $this->data);
 					$this->load->view ('customers/footer', $this->data);
-				} else echo "registration email failed!";
-			} else echo "place order failed!";
-		} else echo "check customer failed!";
+				} else 
+					echo "registration email failed!";
+			} else 
+				echo "place order failed!";
+		} else 
+			echo "check customer failed!";
 	}
 
 	public function silentAuth($id = null, $username = null, $verification_code = null) {
@@ -154,7 +157,7 @@ class User extends CI_Controller {
 		$_quote 		= $this->user_model->prepQuote($order->_id);
 		$_login_url 	= base_url("silentAuth/{$customer->_id}/{$customer->_username}/{$customer->_verification_code}");
 		$_payment_url 	= base_url();
-		$_message		= $this->email_templates->quote_email($_to, $quote, $_login_url, $_payment_url);
+		$_message		= $this->email_templates->quote_email($customer->_email, $_quote, $_login_url, $_payment_url);
 
 		# send an email to the user showing the username and password
 		# with order details

@@ -65,10 +65,8 @@ class User_model extends CI_Model {
 
 		if (!$obj->boolean) {
 			$obj->customer 	= $this->generate_user();
-			$obj->boolean 	= ($obj->customer > 0);
-		} else {
-			$obj->customer 	= $obj->customer->_id;
-		}
+			$obj->boolean 	= ($obj->customer->_id > 0);
+		} 
 		return $obj;
 	}
 
@@ -141,8 +139,12 @@ class User_model extends CI_Model {
 			'_pwd'	=> substr($code, 5, 11),
 			'_verification_code' => substr($code, 12, 25)
 		];
-		$this->db->insert('customers', $user);
-		return  $this->db->insert_id() ?? 0;
+		
+		if($this->db->insert('customers', $user)) {
+			$id = $this->db->insert_id();	
+			return $this->db->get_where('customers', ['_id' => $id])->row();
+		}
+		return null;
 	}
 
 	
