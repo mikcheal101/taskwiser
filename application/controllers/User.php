@@ -165,7 +165,7 @@ class User extends CI_Controller {
 
 		# send an email to the user showing the username and password
 		# with order details
-		#$this->email->from('no-reply@taskwiser.com', 'Taskwiser no-reply');
+		$this->email->from('no-reply@taskwiser.com');
 		$this->email->to($customer->_email);
 		$this->email->subject("Taskwiser.com Order {$order->_transaction_code}");
 		$this->email->message($_message);

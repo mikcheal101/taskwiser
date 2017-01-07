@@ -11,6 +11,7 @@ $config['wordwrap']			= TRUE;
 $config['newline']			= "\r\n";
 $config['crlf']				= "\r\n";
 $config['crypto']			= "tls";
+$config['dsn']				= TRUE;
 
 $config['smtp_host']		= "smtp.office365.com";
 $config['smtp_user']		= "no-reply@taskwiser.com";
