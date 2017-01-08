@@ -243,8 +243,12 @@ class User extends CI_Controller {
 
 	private function generate_customer() {
 		$customer = $this->user_model->generate_customer();
-		if(!is_null($customer))
-			$this->sendRegistrationEmail($customer);
+		if(!is_null($customer)) {
+			if($this->sendRegistrationEmail($customer)) {
+				echo ("registration email sent!");
+				exit();
+			}
+		}
 		return $customer;
 	}
 
