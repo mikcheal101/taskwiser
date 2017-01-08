@@ -166,10 +166,10 @@ class User extends CI_Controller {
 		}
 	}
 
-	public function silentAuth($id = null, $username = null, $verification_code = null) {
+	public function silentAuth($id = null, $verification_code = null) {
 		if (!is_null($id) && !is_null($username) && !is_null($verification_code)) {
 			$user = null;
-			if(!is_null($user = $this->user_model->silentAuth($username, $verification_code))) {
+			if(!is_null($user = $this->user_model->silentAuth($id, $verification_code))) {
 				$this->session->set_userdata (['user' => $user]);
 				redirect('backend/','refresh');
 			} else {
@@ -243,19 +243,16 @@ class User extends CI_Controller {
 
 	private function generate_customer() {
 		$customer = $this->user_model->generate_customer();
-		if(!is_null($customer)) {
-			if($this->sendRegistrationEmail($customer)) {
-				echo ("registration email sent!");
-				exit();
-			}
-		}
+		
+		if(!is_null($customer))
+			$this->sendRegistrationEmail($customer));
 		return $customer;
 	}
 
 	private function sendRegistrationEmail($customer = null) {
 		if(!is_null($customer)) {
 			# send the customer an email 
-			$_login_url 	= base_url("silentAuth/{$customer->_id}/{$customer->_username}/{$customer->_verification_code}");
+			$_login_url 	= "silent_auth/{$customer->_id}/{$customer->_verification_code}";
 			$_message 		= $this->email_templates->registration_email($_login_url, $customer);
 
 			$this->email->from('no-reply@taskwiser.com');

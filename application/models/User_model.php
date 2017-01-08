@@ -257,9 +257,9 @@ class User_model extends CI_Model {
 		return $data;
 	}
 
-	public function silentAuth($id = null, $username = null, $verification_code = null) {
+	public function silentAuth($id = null, $verification_code = null) {
 		$user = $this->db->get_where('customers', 
-			['_id' => $id, 'username' => $username, '_verification_code' => $verification_code])->row();
+			['_id' => $id, '_verification_code' => $verification_code])->row();
 		return $user;
 	}
 
