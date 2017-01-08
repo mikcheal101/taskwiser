@@ -245,7 +245,7 @@ class User extends CI_Controller {
 		$customer = $this->user_model->generate_customer();
 		
 		if(!is_null($customer))
-			$this->sendRegistrationEmail($customer));
+			$this->sendRegistrationEmail($customer);
 		return $customer;
 	}
 
