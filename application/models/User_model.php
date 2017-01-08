@@ -63,11 +63,25 @@ class User_model extends CI_Model {
 		$obj->customer 	= $this->db->get_where('customers', ['_email' => $email])->row();
 		$obj->boolean 	= $obj->customer !== NULL;
 
-		if (!$obj->boolean) {
-			$obj->customer 	= $this->generate_user();
-			$obj->boolean 	= ($obj->customer->_id > 0);
-		} 
+		# if customer does not exist generate user
 		return $obj;
+	}
+
+	public function generate_customer() {
+		$code = md5($this->input->post('email')."/".time());
+		$user = [
+			'_username' => $this->input->post('email'),
+			'_email' => $this->input->post('email'), 
+			'_pwd'	=> substr($code, 5, 11),
+			'_verification_code' => substr($code, 12, 25)
+		];
+		
+		if($this->db->insert('customers', $user)) {
+			$id = $this->db->insert_id();	
+			# send email to the customer
+			return $this->db->get_where('customers', ['_id' => $id])->row();
+		}
+		return null;
 	}
 
 	public function place_order($params) {
@@ -91,7 +105,7 @@ class User_model extends CI_Model {
 		if($this->db->insert('orders', $order)){
 
 			$id = $this->db->insert_id();
-			$_transaction_code = $this->padHex($id);
+			$_transaction_code = "TW-".$this->padHex($id);
 
 			$this->db
 				->set(['_transaction_code' => $_transaction_code])
@@ -111,8 +125,8 @@ class User_model extends CI_Model {
 		$str.="{$hex}";
 
 		for($j=0; $j<strlen($str); $j++) {
-			if($j % 4 === 0 && $j !== 0) $final.= " {$str[$j]}";
-			else $final.= "{$str[$j]}";
+			if($j % 4 === 0 && $j !== 0) $final.= "-";
+			$final.= "{$str[$j]}";
 		}
 		return $final;
 	}
@@ -134,24 +148,6 @@ class User_model extends CI_Model {
 
 		return $count;
 	}
-
-	private function generate_user() {
-		$code = md5($this->input->post('email')."/".time());
-		$user = [
-			'_username' => $this->input->post('email'),
-			'_email' => $this->input->post('email'), 
-			'_pwd'	=> substr($code, 5, 11),
-			'_verification_code' => substr($code, 12, 25)
-		];
-		
-		if($this->db->insert('customers', $user)) {
-			$id = $this->db->insert_id();	
-			return $this->db->get_where('customers', ['_id' => $id])->row();
-		}
-		return null;
-	}
-
-	
 
 	public function verifyCustomer($code) {
 		$obj 		= new stdClass();
@@ -242,7 +238,6 @@ class User_model extends CI_Model {
 	}
 
 	public function prepQuote($order_id) {
-		$this->db->limit(1);
 		$data = $this->db->get_where('orders', ['_id'=> $order_id])->row();
 
 		if(!is_null($data)) {

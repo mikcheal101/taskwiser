@@ -73,7 +73,6 @@ class Admin_model extends CI_Model {
 
 	public function loadOrder($id=0) {
 		$order 				= $this->db->get_where('orders', ['_id' => $id])->row();
-		var_dump($this->db->last_query());
 		if($order !== NULL) {
 			$order->category 	= $this->getCategory($order->_category);
 			$order->status 		= $this->db->get_where('request_status', ['_id'=>$order->_status])->row();
@@ -82,6 +81,10 @@ class Admin_model extends CI_Model {
 		}
 
 		return $order;
+	}
+
+	public function dropRequest($id) {
+		return $this->db->delete('orders', ['_id' => $id]);
 	}
 
 	private function getCategory($id) {
@@ -136,7 +139,7 @@ class Admin_model extends CI_Model {
 
 	public function approve_request($id) {
 		# check if the data exists
-		$this->db->update('orders', [
+		return $this->db->update('orders', [
 			'_assigned_staff'=>$this->input->post('staff'), 
 			'price'=>$this->input->post('amount'), 
 			'_status' => 6], ['_id' => $id]);

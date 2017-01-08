@@ -44,7 +44,6 @@ class User extends CI_Controller {
 		} else {
 			echo $this->email->print_debugger();
 		}
-
 	}
 
 	public function emailPage() {
@@ -88,7 +87,7 @@ class User extends CI_Controller {
 		return $count;
 	}
 
-	public function order ($category = 0) {
+	public function order($category = 0) {
 		
 		if ($category == 0 || $category > count ($this->data['all_categories'])) {
 			show_404();
@@ -114,34 +113,57 @@ class User extends CI_Controller {
 
 	public function place_order($category) {
 		# check if the email already exists then create order
-		$result = $this->user_model->check_customer();
-		$_email = $this->input->post('email');
+		$result 	= $this->user_model->check_customer();
+		$_email 	= $this->input->post('email');
+
+		if(!$result->boolean) {
+			$result->customer 	= $this->generate_customer();
+			$result->boolean 	= !is_null($result->customer);
+		}
 
 		if($result->boolean) {
 			# create order 
 			$order = $this->user_model->place_order(['category' => $category, 'customer' => $result->customer->_id]);
 			if($order) {
 				# display confirmation page
-				if($this->sendOrderMail($result->customer, $order)) {
-					# display the email sent 
-					$this->data['message'] = [
-						'header'	=> 'Email Sent!',
-						'message'	=> "<h5 class='text-center'>Email successfully sent to <a href='mailto:{$_email}'>{$_email}</a></h5>",
-					];
+				#if($this->sendOrderMail($result->customer, $order)) {
+				# display the email sent 
+				$msg_ = "<h5 class='text-center'>";
+					$msg_.= "<table class=\"table\" width=\"100%\">";
+						$msg_.= "<tr>";
+							$msg_.= "<td width=\"40%\" class=\"text-right\">";
+								$msg_.= "Order with reference code:";
+							$msg_.= "</td>";
+							$msg_.= "<td class=\"text-left\" style=\"padding-left: 20px!important;\">";
+								$msg_.= "{$order->_transaction_code} has been created!";
+							$msg_.= "</td>";
+						$msg_.= "</tr>";
+						$msg_.= "<tr>";
+							$msg_.= "<td width=\"40%\" class=\"text-right\">";
+								$msg_.= "For user with email address";
+							$msg_.= "</td>";
+							$msg_.= "<td class=\"text-left\" style=\"padding-left: 20px!important;\">";
+								$msg_.= "<a href='mailto:{$_email}'>{$_email}</a>";
+							$msg_.= "</td>";
+						$msg_.= "</tr>";
+					$msg_.= "</table>";
+				$msg_.= "</h5>";
+						
+				$this->data['message'] = [
+					'header'	=> "Order Created!",
+					'message'	=> $msg_,
+				];
 
-					$this->load->view ('customers/header', $this->data);
-					$this->load->view ('customers/alert', $this->data);
-					$this->load->view ('customers/footer', $this->data);
-				} else {
-					echo "registration email failed!";
-					var_dump($this->email->print_debugger());
-				}
+				$this->load->view ('customers/header', $this->data);
+				$this->load->view ('customers/alert', $this->data);
+				$this->load->view ('customers/footer', $this->data);
+				
 			} else {
 				echo "place order failed!";
-				var_dump($order);
 			}
-		} else 
-			echo "check customer failed!";
+		} else {
+			show_404();
+		}
 	}
 
 	public function silentAuth($id = null, $username = null, $verification_code = null) {
@@ -155,21 +177,6 @@ class User extends CI_Controller {
 				redirect('login','refresh');
 			}
 		}
-	}
-
-	private function sendOrderMail($customer, $order) {
-		$_quote 		= $this->user_model->prepQuote($order->_id);
-		$_login_url 	= base_url("silentAuth/{$customer->_id}/{$customer->_username}/{$customer->_verification_code}");
-		$_payment_url 	= base_url();
-		$_message		= $this->email_templates->quote_email($customer->_email, $_quote, $_login_url, $_payment_url);
-
-		# send an email to the user showing the username and password
-		# with order details
-		$this->email->from('no-reply@taskwiser.com');
-		$this->email->to($customer->_email);
-		$this->email->subject("Taskwiser.com Order TW-{$order->_transaction_code}");
-		$this->email->message($_message);
-		return $this->email->send();
 	}
 
 	public function verifyCustomer($verification_code=0){
@@ -228,6 +235,33 @@ class User extends CI_Controller {
 			$this->load->view ('admin/plain_header', $this->data);
 			$this->load->view ("admin/authenticate", $this->data);
 			$this->load->view ('admin/footer', $this->data);
+		}
+	}
+
+
+	#---------------------------   private functions --------------------------
+
+	private function generate_customer() {
+		$customer = $this->user_model->generate_customer();
+		if(!is_null($boolean))
+			$this->sendRegistrationEmail($customer);
+		return $customer;
+	}
+
+	private function sendRegistrationEmail($customer = null) {
+		if(!is_null($customer)) {
+			# send the customer an email 
+			$_login_url 	= base_url("silentAuth/{$customer->_id}/{$customer->_username}/{$customer->_verification_code}");
+			$_message 		= $this->email_templates->registration_email($_login_url, $customer);
+
+			$this->email->from('no-reply@taskwiser.com');
+			$this->email->to($customer->_email);
+			$this->email->subject("Welcome {$customer->_email} to Taskwiser.com");
+			$this->email->message($_message);
+			return $this->email->send();
+		} else {
+			# no idea for now when u debug please fix this part.
+			return false;
 		}
 	}
 }

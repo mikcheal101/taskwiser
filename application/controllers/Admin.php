@@ -3,18 +3,21 @@
 class Admin extends CI_Controller {
 
     public $data = [
-        'title' => 'taskwiser admin panel v.1.0.0',
-        'location' => 1,
-        'workers' => [],
-        'tasks' => [],
-        'requests' => [],
+        'title'             => 'taskwiser admin panel v.1.0.0',
+        'location'          => 1,
+        'workers'           => [],
+        'tasks'             => [],
+        'requests'          => [],
     ];
+    public $email_templates;
 
     public function __construct() {
         parent::__construct();
         $this->data['states']   = $this->admin_model->getStates();
         $this->data['tasks']    = $this->admin_model->getTasks();
         $this->data['workers']  = $this->admin_model->workers();
+
+        $this->email_templates  = new EmailTemplates($this);
     }
 
     private function loggedIn() {
@@ -261,6 +264,7 @@ class Admin extends CI_Controller {
         $this->loggedIn();
         $this->data['location'] = 3;
         $request = $this->admin_model->loadOrder($id);
+        var_dump($request->customer); exit();
         if ($request !== NULL) {
             $this->data['request'] = $request;
 
@@ -268,7 +272,10 @@ class Admin extends CI_Controller {
             $this->form_validation->set_rules('staff', 'Staff', 'required|trim|numeric');
 
             if($this->form_validation->run()) {
-                $this->admin_model->approve_request($id);
+                if($this->admin_model->approve_request($id)){
+                    # send email with order details
+                    $this->sendOrderMail($request->customer, $request);
+                }
                 redirect('admin/request/'.$id);
             } else {
                 $this->page('request');
@@ -279,16 +286,12 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function assignStaff() {
-        $this->loggedIn();
-        $this->form_validation->set_rules('', '', '');
-
-        if ($this->form_validation->run()) {
-            
-        } else {
-            
-        }
+    public function dropRequest($id = null) {
+        if(!is_null($id))
+            $this->admin_model->dropRequest($id);
+        redirect('admin/requests', 'refresh');
     }
+
 
     private function config_upload($name="") {
         $config['upload_path'] = './uploads/';
@@ -405,11 +408,42 @@ class Admin extends CI_Controller {
         }
     }
 
+
+    #---------------------------   private functions --------------------------
+
+    private function sendOrderMail($customer, $order) {
+        $_quote         = $this->user_model->prepQuote($order->_id);
+        $_login_url     = base_url("silentAuth/{$customer->_id}/{$customer->_username}/{$customer->_verification_code}");
+        $_payment_url   = base_url();
+        $_message       = $this->email_templates->quote_email($customer->_email, $_quote, $_login_url, $_payment_url);
+
+        # send an email to the user showing the username and password
+        # with order details
+        $this->email->from('no-reply@taskwiser.com');
+        $this->email->to($customer->_email);
+        $this->email->subject("Taskwiser.com Order TW-{$order->_transaction_code}");
+        $this->email->message($_message);
+        return $this->email->send();
+    }
+
     private function page($page = '') {
         $this->load->view('admin/header', $this->data);
         $this->load->view('admin/nav', $this->data);
         $this->load->view("admin/{$page}", $this->data);
         $this->load->view('admin/footer', $this->data);
+    }
+
+
+    # no idea yet
+    public function assignStaff() {
+        $this->loggedIn();
+        $this->form_validation->set_rules('', '', '');
+
+        if ($this->form_validation->run()) {
+            
+        } else {
+            
+        }
     }
 
 }

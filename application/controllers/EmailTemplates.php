@@ -16,14 +16,14 @@ class EmailTemplates {
 		return $this->loadPages(['emails/welcome_email']);
 	}
 
-	public function registration_email($login_url=null, $email=null, $password=null, $username=null) {
+	public function registration_email($login_url=null, $customer = null) {
 		$view = "";
 
-		if(!is_null($login_url) && !is_null($email) && !is_null($password) && !is_null($username)) {
+		if(!is_null($login_url) && !is_null($customer)) {
 			
-			$this->data['email']			= $email;
-			$this->data['password']			= $password;
-			$this->data['username']			= $username;
+			$this->data['email']			= $customer->_email;
+			$this->data['password']			= $customer->_pwd;
+			$this->data['username']			= $customer->_username;
 			$this->data['login_url']		= $login_url;
 
 			$this->data['title'] 			= 'taskwiser welcome email';
@@ -94,6 +94,7 @@ class EmailTemplates {
 			}	
 			$view.= $this->cntl->load->view('emails/footer', $this->data, true);
 		}
+		return $view;
 	}
 }
 ?>

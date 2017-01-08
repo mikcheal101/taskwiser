@@ -3,7 +3,7 @@
     <td class="innerpadding borderbottom">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-                <td class="h2" style="text-align: center; font-size: 12px!important; font-weight: bold!important; line-height: 0px!important; padding: 0px!important;">
+                <td class="h2" style="text-align: center; font-size: 12px!important; font-weight: bold!important; line-height: 20px!important; padding: 0px!important;">
                     Dear <?=$email;?>,
                 </td>
             </tr>
