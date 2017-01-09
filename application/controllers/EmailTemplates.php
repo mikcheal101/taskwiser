@@ -44,18 +44,7 @@ class EmailTemplates {
 			$this->data['title'] 		= 'taskwiser order quote email';
 			$view = $this->loadPages(['emails/quote_email']);
 		}
-		echo ("<br><hr><br>");
-		var_dump($email);
-		echo ("<br><hr><br>");
-		var_dump($quote);
-		echo ("<br><hr><br>");
-		var_dump($login_url);
-		echo ("<br><hr><br>");
-		var_dump($pay_url);
-		echo ("<br><hr><br>");
-		var_dump($view);
-		echo ("<br><hr><br>");
-		exit();
+		
 		return $view;
 	}
 
