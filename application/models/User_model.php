@@ -51,8 +51,16 @@ class User_model extends CI_Model {
 		foreach ($categories as $key => $category) {
 			$this->db->select('_question');
 			$parent = $category['_parent'] == NULL ? $category['_id'] : $category['_parent'];
+			
 			$result = $this->db->get_where('category_question', ['_category' => $parent])->result();
 			$categories[$key]['questions'] = $result;
+
+			if($category['_parent'] == NULL) {
+				$categories[$key]['parent'] = null;
+			} else {
+				$categories[$key]['parent'] = $this->db->get_where('categories', ['_id' => $parent])->row_array();
+			}
+
 		}
 		return $categories;
 	}
@@ -149,9 +157,9 @@ class User_model extends CI_Model {
 		return $count;
 	}
 
-	public function verifyCustomer($code) {
+	public function verifyCustomer($id = null, $code = null) {
 		$obj 		= new stdClass();
-		$obj->row 	= $this->db->get_where('customers', ['_verification_code' => $code])->row();
+		$obj->row 	= $this->db->get_where('customers', ['_id' => $id, '_verification_code' => $code])->row();
 		$obj->bool 	= $obj->row !== NULL;
 		return $obj;
 	}
@@ -162,8 +170,16 @@ class User_model extends CI_Model {
 		} else {
 			# verify and send true
 			$this->sendUserDetails($customer->_pwd);
-			$this->db->update('customers', ['_status' => 1, '_pwd' => md5($customer->_pwd)], 
-				['_verification_code' => $customer->_verification_code]);
+			$this->db->update('customers', 
+				[
+					'_status' => 1, 
+					'_pwd' => md5($customer->_pwd), 
+					'_verification_code' => null
+				], 
+				[
+					'_verification_code' => $customer->_verification_code
+				]
+			);
 			return true;
 		}
 	}

@@ -14,7 +14,7 @@ class User extends CI_Controller {
 	private $_driver;
 	private $_events;
 	private $_custom;
-	private $email_templates;
+	private $email_templates = null;
 
 	public $data;
 	
@@ -167,7 +167,7 @@ class User extends CI_Controller {
 	}
 
 	public function silentAuth($id = null, $verification_code = null) {
-		if (!is_null($id) && !is_null($username) && !is_null($verification_code)) {
+		if (!is_null($id) && !is_null($verification_code)) {
 			$user = null;
 			if(!is_null($user = $this->user_model->silentAuth($id, $verification_code))) {
 				$this->session->set_userdata (['user' => $user]);
@@ -179,10 +179,12 @@ class User extends CI_Controller {
 		}
 	}
 
-	public function verifyCustomer($verification_code=0){
-		if ($verification_code !== 0) {
-			$verified 	= $this->user_model->verifyCustomer($verification_code);
-			$login 		= base_url('login');
+	public function verifyCustomer($id = null, $verification_code = null) {
+
+		if (!is_null($id) && !is_null($verification_code)) {
+			$verified 	= $this->user_model->verifyCustomer($id, $verification_code);
+			$login 		= base_url("silent_auth/{$id}/{$verification_code}");
+
 			if($verified->bool) {
 				if($this->user_model->customer_verified($verified->row)){
 					# display customer verified
@@ -190,6 +192,7 @@ class User extends CI_Controller {
 						'header' 	=> 'Verification Confirmed!',
 						'message'	=> "<h5 class='text-center'>Email Address (<a href='{$verified->row->_email}'>{$verified->row->_email}</a>) Confirmed!</h5><div class='text-center'><a href='{$login}' class='btn btn-success'>login here</a></div>"
 					];
+					# send verification email
 				} else {
 					$this->data['message'] = [
 						'header' 	=> 'Verification Code Expired!',
@@ -252,7 +255,7 @@ class User extends CI_Controller {
 	private function sendRegistrationEmail($customer = null) {
 		if(!is_null($customer)) {
 			# send the customer an email 
-			$_login_url 	= "silent_auth/{$customer->_id}/{$customer->_verification_code}";
+			$_login_url 	= "verify_customer/{$customer->_id}/{$customer->_verification_code}";
 			$_message 		= $this->email_templates->registration_email($_login_url, $customer);
 
 			$this->email->from('no-reply@taskwiser.com');

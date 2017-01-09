@@ -1,7 +1,7 @@
 <section id="" class="" style="margin-top:50px; padding-top: 10px; background-color: #3db3e4!important; " ng-controller="cntrl">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-9">
+			<div class="col-md-9 pull-left" style="color:#ffffff!important;">
 				<?php 
 					$x = $category['questions']; 
 					
@@ -14,6 +14,19 @@
 						return false;
 					}					
 				?>
+
+				<?php 
+					
+					if(is_null($category['parent'])) {
+						$img = base_url($category['_img']);
+						echo ("<h1><img src='{$img}' class='img img-responsive' style='width:60px; padding-bottom: 20px!important;'/> {$category['_name']}</h1>");
+					} else {
+						$img = base_url($category['parent']['_img']);
+						echo ("<h1><img src='{$img}' class='img img-responsive' style='width:60px; padding-bottom: 20px!important;'/>{$category['parent']['_name']} <small style='color:#FFFFFF!important;'>({$category['_name']})</small></h1>"); 
+					}
+				?>
+				<h2>welcome to taskwiser. </h2>
+				<h4>we are here to make your life easier...</h4>
 			</div>
 
 			<div class="col-md-3">

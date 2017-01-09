@@ -52,7 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['order/(:num)']					= 'user/order/$1';
 $route['verification/(:any)']			= 'user/verifyCustomer/$1';
 $route['login']							= 'user/login';
-$route['silent_auth/(:num)/(:num)']		= 'user/silentAuth/$1/$2';
+$route['silent_auth/(:num)/(:any)']		= 'user/silentAuth/$1/$2';
+$route['verify_customer/(:num)/(:any)']	= 'user/verifyCustomer/$1/$2';
 
 $route['backend/']						= 'backend/index';
 $route['backend/drop_request/(:num)']	= 'backend/dropOrder/$1';

@@ -1,4 +1,5 @@
 <?php
+require_once(dirname(__FILE__)."/EmailTemplates.php");
 
 class Admin extends CI_Controller {
 
@@ -9,7 +10,7 @@ class Admin extends CI_Controller {
         'tasks'             => [],
         'requests'          => [],
     ];
-    public $email_templates;
+    private $email_templates = null;
 
     public function __construct() {
         parent::__construct();
@@ -264,7 +265,7 @@ class Admin extends CI_Controller {
         $this->loggedIn();
         $this->data['location'] = 3;
         $request = $this->admin_model->loadOrder($id);
-        var_dump($request->customer); exit();
+        
         if ($request !== NULL) {
             $this->data['request'] = $request;
 
