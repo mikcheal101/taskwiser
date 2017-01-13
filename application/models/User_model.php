@@ -189,7 +189,7 @@ class User_model extends CI_Model {
 		$this->db->select ('*');
 		$this->db->where ([
 			'_username'	=> $this->input->post ('username'),
-			#'_pwd'		=> md5 ($this->input->post ('password')),
+			'_pwd'		=> md5 ($this->input->post ('password')),
 			'_status'	=> 1
 		]);
 		$this->db->limit (1);
@@ -247,12 +247,6 @@ class User_model extends CI_Model {
 		return $payments;
 	}
 
-	public function sample_staff() {
-		$this->db->limit(1);
-		$data = $this->db->get_where('users', ['id !=' => 1])->row();
-		return $data;
-	}
-
 	public function prepQuote($order_id) {
 		$data = $this->db->get_where('orders', ['_id'=> $order_id])->row();
 
@@ -279,25 +273,5 @@ class User_model extends CI_Model {
 		return $user;
 	}
 
-	public function sample_quote() {
-		$this->db->limit(1);
-		$data = $this->db->get_where('orders', ['_id'=> 29])->row();
-
-		if(!is_null($data)) {
-			$data->sub_category 	= $this->db->get_where('categories', ['_id' => $data->_category])->row();
-
-			if(!is_null($data->sub_category->_parent)){
-				$data->parent = $this->db->get_where('categories', ['_id' => $data->sub_category->_parent])->row();
-			} else {
-				$data->parent = null;
-			}
-
-			if(!is_null($data->_assigned_staff)) {
-				$data->staff 	= $this->db->get_where('users', ['id' => $data->_assigned_staff])->row();	
-			} else $data->staff 	= null;
-			
-		}
-		return $data;
-	}
 }
 ?>

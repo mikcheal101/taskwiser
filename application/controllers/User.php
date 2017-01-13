@@ -46,14 +46,6 @@ class User extends CI_Controller {
 		}
 	}
 
-	public function emailPage() {
-		#$this->email_templates->registration_email("http://url", "sample@email.com", "password", "username");
-		$this->email_templates->password_reset_email("sample@email.com", "password", "http://");
-		
-		#$quote = $this->user_model->sample_quote();
-		#$this->email_templates->quote_email("sample@email.com", $quote, "http://", "http://");
-	}
-
 	public function padHex($hex) {
 		$count 	= $this->_padHex($hex);
 		$str 	= "";
@@ -239,6 +231,14 @@ class User extends CI_Controller {
 			$this->load->view ("admin/authenticate", $this->data);
 			$this->load->view ('admin/footer', $this->data);
 		}
+	}
+
+	public function register() {
+		$this->data['location'] = 0;
+		$this->form_validation->set_rules('email', '', 'required|trim|valid_email');
+		$this->form_validation->set_rules('pwd', '', 'required|trim');
+		$this->form_validation->set_rules('tel', 'Mobile Number', 'required|trim');
+
 	}
 
 

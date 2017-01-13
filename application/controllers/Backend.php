@@ -96,6 +96,53 @@ class Backend extends CI_Controller {
 			show_404();
 		}
 	}
+
+	public function signUp() {
+		$this->load->view ('admin/header', $this->data);
+		$this->load->view ('admin/plain_header', $this->data);
+		$this->load->view ("admin/authenticate", $this->data);
+		$this->load->view ('admin/footer', $this->data);
+	}
+
+	public function enterCreditCard($transaction_code = "") {
+
+		# fetch the order with the reference code
+		$this->data['title']	= "Payment [Credit Card]";
+		$this->data['amount']	= 200;
+
+		$this->form_validation->set_rules('ccnumb', 'Credit Card Number', 'required|trim|min_length[10]');
+		$this->form_validation->set_rules('cvv', 'CVV','required|numeric|trim|max_length[4]|min_length[3]');
+		$this->form_validation->set_rules('pin', 'PIN', 'required|numeric|trim|max_length[6]|min_length[4]');
+		$this->form_validation->set_rules('expiry', 'Expiry Date','required|trim|max_length[5]|min_length[5]');
+
+		if($this->form_validation->run()) {
+			unset($_POST);
+			# make payment
+			$this->enterOTP();
+		} else {
+			$this->load->view ('admin/header', $this->data);
+			$this->load->view ('admin/plain_header', $this->data);
+			$this->load->view ("backend/credit_card", $this->data);
+			$this->load->view ('admin/footer', $this->data);
+		}
+	}
+
+	public function enterOTP() {
+		$this->data['title']	= "Payment [One Time Password]";
+
+		$this->form_validation->set_rules('otp', 'OTP','required|trim');
+
+		if($this->form_validation->run()) {
+			
+			var_dump($_POST);
+
+		} else {
+			$this->load->view ('admin/header', $this->data);
+			$this->load->view ('admin/plain_header', $this->data);
+			$this->load->view ("backend/enter_otp", $this->data);
+			$this->load->view ('admin/footer', $this->data);
+		}
+	}
 }
 
 ?>

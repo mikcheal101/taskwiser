@@ -24,14 +24,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 if ($_SERVER['SERVER_NAME'] === "localhost") 
-	$config['site_url'] = 'http://localhost:8080/taskwiser';
+	$config['site_url'] = 'http://localhost:9090/taskwiser';
 else if ($_SERVER['SERVER_NAME'] === "taskwiser.herokuapp.com") 
 	$config['site_url'] = 'http://taskwiser.herokuapp.com';
 else  
 	$config['site_url'] = 'https://taskwiser.herokuapp.com/';
 
 if ($_SERVER['SERVER_NAME'] === "localhost") 
-	$config['base_url']	= 'http://localhost:8080/taskwiser';
+	$config['base_url']	= 'http://localhost:9090/taskwiser';
 else if ($_SERVER['SERVER_NAME'] === "taskwiser.herokuapp.com") 
 	$config['base_url']	= 'https://taskwiser.herokuapp.com';
 else 
@@ -148,7 +148,7 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = FALSE;
+$config['composer_autoload'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------

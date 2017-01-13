@@ -1,0 +1,7 @@
+{
+	"require": {
+		"php": 			"~7.0.1",
+		"twilio/sdk":	"~5.0.0",
+		"flutterwave/flutterwave-php": "dev-master"
+	}
+}
