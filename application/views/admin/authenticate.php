@@ -16,7 +16,6 @@
                                     }
                                 ?>
 
-                                <?php var_dump(validation_errors());?>
                             </h5>
 
                             <div class="row">
