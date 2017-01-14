@@ -77,7 +77,7 @@
 								if (intval($k) < intval(count($categories))) {
 									$category = $categories[$k++];
 									?>
-									<div class="p-b-2 col-sm-3 text-center t-icons" data-toggle="modal" data-target="#<?=$category['_id'];?>" style="padding-bottom:70px!important;" data-id="<?=$category['_id'];?>">
+									<div class="p-b-2 col-sm-3 text-center t-icons" data-toggle="modal" data-target="#<?=$category['_id'];?>" style="padding-bottom:70px!important;" data-id="<?=$category['_id'];?>" data-backdrop="true">
 										<?=img ($category['_img'], false, array ('alt'=>$category['_name']));?>
 										<p class="text-center text-lowercase lighter p-t-1"><?=$category['_name'];?></p>
 									</div>
