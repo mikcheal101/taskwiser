@@ -92,6 +92,25 @@ class User_model extends CI_Model {
 		return null;
 	}
 
+
+	public function saveCustomer() {
+		$pwd 					= $this->input->post('pwd');
+		$customer 				= [
+				'_username' 	=> $this->input->post('email'),  
+				'_email'		=> $this->input->post('email'),
+				'_tel'			=> $this->input->post('tel'),
+				'_pwd'			=> $pwd, 
+				'fullname'		=> $this->input->post('fullname'),
+				'_verification_code' => substr(md5($pwd), 12, 25)
+			];
+
+		if($this->db->insert('customers', $customer)) {
+			$customer			= $this->db->get_where('customers', ['_id' => $this->db->insert_id()])->row();
+			$customer->_pwd		= $this->input->post('pwd');
+			return $customer;
+		} else return null;
+	}
+
 	public function place_order($params) {
 		$order = [
 			'_category' => $params['category'],
@@ -189,12 +208,12 @@ class User_model extends CI_Model {
 		$this->db->select ('*');
 		$this->db->where ([
 			'_username'	=> $this->input->post ('username'),
-			'_pwd'		=> md5 ($this->input->post ('password')),
+			'_pwd'		=> md5 ($this->input->post ('pwd')),
 			'_status'	=> 1
 		]);
 		$this->db->limit (1);
 		$auth = $this->db->get ('customers')->row ();
-		
+
 		return isset ($auth) ? $auth : null;
 	}
 

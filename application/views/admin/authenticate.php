@@ -6,7 +6,18 @@
                 <?=form_open('', ['autocomplete'=>'off']);?>
                     <div class="card hoverable">
                         <div class="card-content">
-                            <h5>Login Panel</h5>
+                            <h5>
+                                Login Panel
+                                <?php 
+                                    if(!is_null($this->session->flashdata('authenticate_error'))) {
+                                        $error_ = $this->session->flashdata('authenticate_error');
+                                        # display the error
+                                        echo ("<small class='text-danger'>{$error_}</small>");
+                                    }
+                                ?>
+
+                                <?php var_dump(validation_errors());?>
+                            </h5>
 
                             <div class="row">
                             	<div class="input-field col-xs-12">
@@ -18,10 +29,10 @@
                                     </label>
     					        </div>
     					        <div class="input-field col-xs-12">
-    					        	<input placeholder="enter password" value="<?=set_value ('password');?>" name="password" id="pwd" type="password" class="validate">
-    					        	<label for="password">
+    					        	<input placeholder="enter password" value="<?=set_value ('pwd');?>" name="pwd" id="pwd" type="password" class="validate">
+    					        	<label for="pwd">
                                         Password:
-                                        <?=form_error('password', "<span class='text-danger'><small>", "</small></span>");?>
+                                        <?=form_error('pwd', "<span class='text-danger'><small>", "</small></span>");?>
                                     </label>
     					        </div>
                             </div>

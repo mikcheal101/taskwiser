@@ -151,7 +151,7 @@ class User extends CI_Controller {
 				$this->load->view ('customers/footer', $this->data);
 				
 			} else {
-				echo "place order failed!";
+				show_404();
 			}
 		} else {
 			show_404();
@@ -166,7 +166,7 @@ class User extends CI_Controller {
 				redirect('backend/','refresh');
 			} else {
 				$this->session->set_flashdata ('authenticate_error', 'Username / Password Mismatch!');
-				redirect('login','refresh');
+				redirect('auth/login','refresh');
 			}
 		}
 	}
@@ -213,7 +213,7 @@ class User extends CI_Controller {
 		# authenticate the user
 		$this->data['location'] = 0;
 		$this->form_validation->set_rules('username', 'Username', 'required|trim');
-		$this->form_validation->set_rules('password', 'Password', 'required|trim');
+		$this->form_validation->set_rules('pwd', 'Password', 'required|trim');
 
 		if ($this->form_validation->run ()) {
 			$valid = $this->user_model->authenticate ();
@@ -235,9 +235,38 @@ class User extends CI_Controller {
 
 	public function register() {
 		$this->data['location'] = 0;
-		$this->form_validation->set_rules('email', '', 'required|trim|valid_email');
-		$this->form_validation->set_rules('pwd', '', 'required|trim');
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[customers._email]');
+		$this->form_validation->set_rules('pwd', 'Password', 'required|trim');
 		$this->form_validation->set_rules('tel', 'Mobile Number', 'required|trim');
+		$this->form_validation->set_rules('re_password', 'Password Confirmation', 'matches[pwd]|trim|min_length[8]');
+
+		if($this->form_validation->run()) {
+			#save customer and get back customer details
+			$customer 	= $this->user_model->saveCustomer();
+
+			# send an email with the verification link
+			$reg 		= $this->sendRegistrationEmail($customer);
+
+			$email 		= $this->input->post('email');
+
+			if($reg) {
+						
+				$this->data['message'] = [
+					'header'	=> "Welcome to taskwiser.com",
+					'message'	=> "<span class='text-center'>An email with a verification link has been sent to {$email}.</span>",
+				];
+
+				$this->load->view ('customers/header', $this->data);
+				$this->load->view ('customers/alert', $this->data);
+				$this->load->view ('customers/footer', $this->data);
+			}
+
+		} else {
+			$this->load->view ('admin/header', $this->data);
+			$this->load->view ('admin/plain_header', $this->data);
+			$this->load->view ("admin/sign_up", $this->data);
+			$this->load->view ('admin/footer', $this->data);	
+		}
 
 	}
 

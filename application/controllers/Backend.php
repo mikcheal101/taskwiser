@@ -80,12 +80,12 @@ class Backend extends CI_Controller {
 
 	private function loggedIn () {
 		if ($this->session->user === NULL) 
-			redirect('login','refresh');
+			redirect('auth/login','refresh');
 	}
 
 	public function signout () {
 		$this->session->sess_destroy();
-		redirect('login','refresh');
+		redirect('auth/login','refresh');
 	}
 
 	public function dropOrder($order) {

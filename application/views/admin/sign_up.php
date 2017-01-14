@@ -17,13 +17,6 @@
                             </h5>
 
                             <div class="row">
-                            	<div class="input-field col-xs-12 col-md-6">
-    					        	<input placeholder="enter username" name="username" value="<?=set_value ('username');?>" id="username" type="text" class="validate">
-    					        	<label for="username">
-                                        Username:
-                                        <?=form_error('username', "<span class='text-danger'><small>", "</small></span>");?>   
-                                    </label>
-    					        </div>
     					        <div class="input-field col-xs-12 col-md-6">
     					        	<input placeholder="enter email" value="<?=set_value ('email');?>" name="email" id="email" 
                                         type="email" class="validate">
@@ -32,20 +25,29 @@
                                         <?=form_error('email', "<span class='text-danger'><small>", "</small></span>");?>
                                     </label>
     					        </div>
+
+                                <div class="input-field col-xs-12 col-md-6">
+                                    <input placeholder="enter tel" name="tel" value="<?=set_value ('tel');?>" 
+                                        id="tel" type="tel" class="validate">
+                                    <label for="tel">
+                                        Tel:
+                                        <?=form_error('tel', "<span class='text-danger'><small>", "</small></span>");?>
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="row">
                                 <div class="input-field col-xs-12 col-md-6">
-                                    <input placeholder="enter password" name="password" value="<?=set_value ('password');?>" 
-                                        id="password" type="text" class="validate">
-                                    <label for="password">
+                                    <input placeholder="enter password" name="pwd" value="<?=set_value ('pwd');?>" 
+                                        id="pwd" type="password" class="validate" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="enter a password with a combination of uppercase alphabets, lowercase alphabets and numbers">
+                                    <label for="pwd">
                                         Password:
-                                        <?=form_error('password', "<span class='text-danger'><small>", "</small></span>");?>   
+                                        <?=form_error('pwd', "<span class='text-danger'><small>", "</small></span>");?>   
                                     </label>
                                 </div>
                                 <div class="input-field col-xs-12 col-md-6">
                                     <input placeholder="confirm password" name="re_password" value="<?=set_value ('re_password');?>" 
-                                        id="re_password" type="text" class="validate">
+                                        id="re_password" type="password" class="validate" >
                                     <label for="re_password">
                                         Confirm Password:
                                         <?=form_error('re_password', "<span class='text-danger'><small>", "</small></span>");?>
@@ -56,15 +58,7 @@
                             <hr>
 
                             <div class="row">
-                                <div class="input-field col-xs-12 col-md-6">
-                                    <input placeholder="enter tel" name="tel" value="<?=set_value ('tel');?>" 
-                                        id="tel" type="text" class="validate">
-                                    <label for="tel">
-                                        Tel:
-                                        <?=form_error('tel', "<span class='text-danger'><small>", "</small></span>");?>
-                                    </label>
-                                </div>
-                                <div class="input-field col-xs-12 col-md-6">
+                                <div class="input-field col-xs-12">
                                     <input placeholder="fullname" name="fullname" value="<?=set_value ('fullname');?>" 
                                         id="fullname" type="text" class="validate">
                                     <label for="fullname">
@@ -74,32 +68,6 @@
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-xs-12 col-md-6">
-                                    <select>
-                                        <option value="" disabled selected>Choose State</option>
-                                        <option value="1">Lagos State</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-xs-12 col-md-6">
-                                    <select>
-                                        <option value="" disabled selected>Choose City</option>
-                                        <option value="1">Ikorodu</option>
-                                        <option value="2">Yaba</option>
-                                    </select>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="input-field col-xs-12 col-md-12">
-                                    <textarea class="materialize-textarea" name="address" placeholder="enter address"></textarea>
-                                    <label for="address">
-                                        Address:
-                                        <?=form_error('address', "<span class='text-danger'><small>", "</small></span>");?></small>
-                                    </label>
-                                </div>
-                            </div>
                         </div>
                         <!--Buttons-->
                         <div class="card-btn text-center">
