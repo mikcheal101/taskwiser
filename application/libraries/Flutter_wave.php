@@ -40,9 +40,9 @@ class Flutter_wave {
 	 **/
 	public function __construct($params) {
 
-		$this->merchantKey 		= $params['merchantKey'] ?? "";
-		$this->apiKey			= $params['apiKey'] ?? "";
-		$this->env 				= $params['env'] ?? "";
+		$this->merchantKey 		= isset($params['merchantKey']) ? $params['merchantKey']: "";
+		$this->apiKey			= isset($params['apiKey']) ? $params['apiKey'] : "";
+		$this->env 				= isset($params['env']) ? $params['env'] : "";
 		$this->card 			= [
 			  	"card_no" 		=> "",
 			  	"cvv" 			=> "",
