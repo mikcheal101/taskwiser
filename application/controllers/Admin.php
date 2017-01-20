@@ -21,6 +21,22 @@ class Admin extends CI_Controller {
         $this->email_templates  = new EmailTemplates($this);
     }
 
+    public function getDb() {
+
+        # Constantino99
+        $prefs = [
+            'format'    => 'txt',
+            'filename'  => 'mybackup.sql',
+        ];
+
+        $this->load->dbutil();
+        $backup     = $this->dbutil->backup($prefs);
+        
+        $this->load->helper('download');
+        force_download('mybackup.sql', $backup);
+
+    }
+
     private function loggedIn() {
         if ($this->session->user === NULL)
             redirect('admin/login', 'refresh');
