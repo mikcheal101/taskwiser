@@ -461,7 +461,6 @@ class Admin extends CI_Controller {
         $_payment_url   = "payment/enter_details/{$order->_transaction_code}";
         $_message       = $this->email_templates->quote_email($customer->_email, $_quote, $_login_url, $_payment_url);
 
-        echo $_message; exit();
         # send an email to the user showing the username and password
         # with order details
         $this->email->from('Taskwiser.com<no-reply@taskwiser.com>');
