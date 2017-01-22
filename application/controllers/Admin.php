@@ -267,21 +267,38 @@ class Admin extends CI_Controller {
     }
 
     public function clearusers() {
+
+        $ci_sessions = [
+            'id'            => [
+                'type'              => 'VARCHAR',
+                'constraint'        => '128',
+                'auto_increment'    => TRUE
+            ], 
+            'ip_address'    => [
+                'type'              => 'VARCHAR',
+                'constraint'        => '45',
+            ], 
+            'timestamp'     => [
+                'type'              => 'INT',
+                'constraint'        => 10,
+                'unsigned'          => TRUE,
+                'default'           => '0',
+            ], 
+            'data'          => [
+                'type'              => 'blob',
+            ]
+        ];
+
+        $this->load->dbforge();
+        $this->dbforge->add_field($ci_sessions);
+        $this->dbforge->add_key('id', TRUE);
+        $this->dbforge->add_key('timestamp');
+        $table = $this->dbforge->create_table('ci_sessions', FALSE, ['ENGINE' => 'InnoDB']);
+        var_dump($table);
+        var_dump($this->db->last_query());
+        var_dump($this->dbforge);
+
         
-        $sql = "CREATE TABLE IF NOT EXISTS `ci_sessions` (";
-        $sql.= "id varchar(128) NOT NULL,";
-        $sql.= "ip_address varchar(45) NOT NULL,";
-        $sql.= "timestamp int(10) unsigned DEFAULT 0 NOT NULL,";
-        $sql.= "data blob NOT NULL,";
-        $sql.= "KEY ci_sessions_timestamp (timestamp))";
-        
-        $exp = $this->db->query($sql);
-
-        var_dump($exp);
-
-        $exp = $this->db->query("ALTER TABLE ci_sessions ADD PRIMARY KEY (id)");
-
-        var_dump($exp);
     }
 
     public function tasks() {
