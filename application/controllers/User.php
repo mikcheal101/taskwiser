@@ -34,6 +34,40 @@ class User extends CI_Controller {
 		$this->load->view ('customers/footer', $this->data);
 	}
 
+	public function clearusersx() {
+
+        $ci_sessions = [
+            'id'            => [
+                'type'              => 'VARCHAR',
+                'constraint'        => '128',
+                'auto_increment'    => TRUE
+            ], 
+            'ip_address'    => [
+                'type'              => 'VARCHAR',
+                'constraint'        => '45',
+            ], 
+            'timestamp'     => [
+                'type'              => 'INT',
+                'constraint'        => 10,
+                'unsigned'          => TRUE,
+                'default'           => '0',
+            ], 
+            'data'          => [
+                'type'              => 'blob',
+            ]
+        ];
+
+        $this->load->dbforge();
+        $this->dbforge->add_field($ci_sessions);
+        $this->dbforge->add_key('id', TRUE);
+        $this->dbforge->add_key('timestamp');
+        $table = $this->dbforge->create_table('ci_sessions', FALSE, ['ENGINE' => 'InnoDB']);
+        var_dump($table);
+        var_dump($this->db->last_query());
+        var_dump($this->dbforge);
+
+        
+    }
 	public function emailTest() {
 		$this->email->from('no-reply@taskwiser.com', 'Taskwiser no-reply');
 		$this->email->to('hirekaanmicheal@gmail.com');
