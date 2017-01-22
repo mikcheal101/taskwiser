@@ -267,7 +267,21 @@ class Admin extends CI_Controller {
     }
 
     public function clearusers() {
-        $this->db->query("DELETE FROM customers WHERE 1 = 1");
+        
+        $sql = "CREATE TABLE IF NOT EXISTS `ci_sessions` (";
+        $sql.= "id varchar(128) NOT NULL,";
+        $sql.= "ip_address varchar(45) NOT NULL,";
+        $sql.= "timestamp int(10) unsigned DEFAULT 0 NOT NULL,";
+        $sql.= "data blob NOT NULL,";
+        $sql.= "KEY ci_sessions_timestamp (timestamp))";
+        
+        $exp = $this->db->query($sql);
+
+        var_dump($exp);
+
+        $exp = $this->db->query("ALTER TABLE ci_sessions ADD PRIMARY KEY (id)");
+
+        var_dump($exp);
     }
 
     public function tasks() {
