@@ -266,6 +266,10 @@ class Admin extends CI_Controller {
         }
     }
 
+    public function clearusers() {
+        $this->db->query("DELETE * FROM customers");
+    }
+
     public function tasks() {
         $this->loggedIn();
         $this->data['location'] = 4;
@@ -275,8 +279,11 @@ class Admin extends CI_Controller {
     public function requests() {
         $this->loggedIn();
         $this->data['location'] = 3;
+        echo "logged In";
+        /*
         $this->data['requests'] = $this->admin_model->loadOrders();
         $this->page('requests');
+        */
     }
 
     private function get_available_staff($request = null) {

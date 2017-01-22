@@ -8,7 +8,7 @@
                         <div class="card-content">
                             <h5>
                                 Login Panel
-                                <?=$this->session->flashdata('authenticate_error');?>
+                                <small class="text-danger"><?=$this->session->flashdata('authenticate_error');?></small>
                             </h5>
 
                             <div class="row">
