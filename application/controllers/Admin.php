@@ -21,6 +21,7 @@ class Admin extends CI_Controller {
         $this->email_templates  = new EmailTemplates($this);
     }
 
+    /*
     public function getDb() {
 
         # Constantino99
@@ -36,6 +37,7 @@ class Admin extends CI_Controller {
         force_download('mybackup.sql', $backup);
 
     }
+    */
 
     private function loggedIn() {
         if ($this->session->user === NULL)
@@ -277,10 +279,35 @@ class Admin extends CI_Controller {
         $this->page('requests');
     }
 
+    private function get_available_staff($request = null) {
+        $staff = [];
+        if(!is_null($request)) {
+            # loop through all staff for those that can handle the request
+            foreach ($this->data['workers'] as $worker) {
+                # loop through staff designations if request designation found break
+                $staff_can_handle = false;
+                foreach($worker->designations as $designation) {
+                    if((int) $designation->_id === (int)$request->_category) {
+                        $staff_can_handle = $this->admin_model->staff_is_available($request, $worker);
+                        break;
+                    }
+                }
+                if($staff_can_handle)
+                    $staff[] = $worker;
+            }
+
+        }
+        return $staff;
+    }
+
+
+
     public function request($id = 0) {
         $this->loggedIn();
         $this->data['location'] = 3;
         $request = $this->admin_model->loadOrder($id);
+
+        $this->data['available_staff'] = $this->get_available_staff($request);
         
         if ($request !== NULL) {
             $this->data['request'] = $request;
@@ -431,12 +458,13 @@ class Admin extends CI_Controller {
     private function sendOrderMail($customer, $order) {
         $_quote         = $this->user_model->prepQuote($order->_id);
         $_login_url     = base_url("silentAuth/{$customer->_id}/{$customer->_username}/{$customer->_verification_code}");
-        $_payment_url   = base_url();
+        $_payment_url   = "payment/enter_details/{$order->_transaction_code}";
         $_message       = $this->email_templates->quote_email($customer->_email, $_quote, $_login_url, $_payment_url);
 
+        echo $_message; exit();
         # send an email to the user showing the username and password
         # with order details
-        $this->email->from('no-reply@taskwiser.com');
+        $this->email->from('Taskwiser.com<no-reply@taskwiser.com>');
         $this->email->to($customer->_email);
         $this->email->subject("Taskwiser.com Order TW-{$order->_transaction_code}");
         $this->email->message($_message);

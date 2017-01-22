@@ -34,6 +34,10 @@ class User extends CI_Controller {
 		$this->load->view ('customers/footer', $this->data);
 	}
 
+	public function samples() {
+		var_dump(site_url());
+	}
+
 	public function emailTest() {
 		$this->email->from('no-reply@taskwiser.com', 'Taskwiser no-reply');
 		$this->email->to('hirekaanmicheal@gmail.com');
@@ -79,21 +83,36 @@ class User extends CI_Controller {
 		return $count;
 	}
 
-	public function order($category = 0) {
+	private function getOrderFromArray($_id = 0) {
+		$categories 	= $this->data['all_categories'];
 		
-		if ($category == 0 || $category > count ($this->data['all_categories'])) {
+		if ($_id === 0) 
+			return null;
+
+		foreach ($categories as $key => $value)
+			if($value['_id'] === $_id) 
+				return $value;
+		
+		return null;
+	}
+
+	public function order($category = 0) {
+		$categories 	= $this->data['all_categories'];
+		$category_		= $this->getOrderFromArray($category);
+		
+		if ($category == 0 || is_null($category_)) 
 			show_404();
-		} else {
+		else {
 
 			$this->form_validation->set_rules('email', 'Email Address', 'required|valid_email');
 
-			if($this->form_validation->run()) {
+			if($this->form_validation->run()) 
 				$this->place_order($category);
-			} else {
-				$categories 			= $this->data['all_categories'];
+			else {
+				
 				$this->data['location'] = $category;
 
-				$this->data['category']	= $categories[array_search($category, array_column($categories, '_id'))];
+				$this->data['category']	= $category_;
 				$this->data['title'] 	= $this->data['category']['_name'];
 
 				$this->load->view ('customers/header', $this->data);
@@ -146,6 +165,8 @@ class User extends CI_Controller {
 					'message'	=> $msg_,
 				];
 
+				$this->sendOrderEmail($order);
+
 				$this->load->view ('customers/header', $this->data);
 				$this->load->view ('customers/alert', $this->data);
 				$this->load->view ('customers/footer', $this->data);
@@ -156,6 +177,10 @@ class User extends CI_Controller {
 		} else {
 			show_404();
 		}
+	}
+
+	private function sendOrderEmail($order = null) {
+		# send an email with the order
 	}
 
 	public function silentAuth($id = null, $verification_code = null) {
@@ -218,7 +243,7 @@ class User extends CI_Controller {
 		if ($this->form_validation->run ()) {
 			$valid = $this->user_model->authenticate ();
 
-			if ($valid === NULL) {
+			if (is_null($valid)) {
 				$this->session->set_flashdata ('authenticate_error', 'Username / Password Mismatch!');
 				redirect('login','refresh');
 			} else {

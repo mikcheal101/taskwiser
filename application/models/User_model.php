@@ -111,22 +111,49 @@ class User_model extends CI_Model {
 		} else return null;
 	}
 
+	private function sort_time($date = null, $time = null) {
+		$date = null;
+		$time = null;
+		$string_builder 	= "";
+		echo $date;
+		if (is_null($date)) 
+			$date 	= date('d.m.y');
+		if(is_null($time))
+			$time 	= date('G:i a');
+
+		
+		$date 	= DateTime::createFromFormat('j.m.y', $date);
+		$date 	= $date->format('Y-m-d');
+
+		$time 	= DateTime::createFromFormat('G:i a', $time);
+		$time 	= $time->format('H:i:s a');
+
+		$x		= "{$date} {$time}";
+		$x		= DateTime::createFromFormat('Y-m-d H:i:s a', $x); 
+		$string_builder = $x->format('Y-m-d H:i:s');
+		return $string_builder;	
+	}
+
 	public function place_order($params) {
+		
+		$time_date 	= $this->sort_time($this->input->post('date'), $this->input->post('time'));
+		
 		$order = [
-			'_category' => $params['category'],
-			'_customer'	=> $params['customer'],
-			'rooms'		=> $this->input->post('rooms'),
-			'boxes'		=> $this->input->post('boxes'),
-			'liters'	=> $this->input->post('liters'),
-			'shirts'	=> $this->input->post('shirts'),
-			'troussers'	=> $this->input->post('troussers'),
-			'suits'		=> $this->input->post('suits'),
-			'gowns'		=> $this->input->post('gowns'),
-			'others'	=> $this->input->post('others'),
-			'hours'		=> $this->input->post('hours'),
-			'address'	=> $this->input->post('address'),
-			'extra'		=> $this->input->post('extra'),
+			'_category' 		=> $params['category'],
+			'_customer'			=> $params['customer'],
+			'rooms'				=> (int)$this->input->post('rooms'),
+			'boxes'				=> (int)$this->input->post('boxes'),
+			'liters'			=> (int)$this->input->post('liters') ?? 0,
+			'shirts'			=> (int)$this->input->post('shirts'),
+			'troussers'			=> (int)$this->input->post('troussers'),
+			'suits'				=> (int)$this->input->post('suits'),
+			'gowns'				=> (int)$this->input->post('gowns'),
+			'others'			=> (int)$this->input->post('others'),
+			'hours'				=> $this->input->post('hours'),
+			'address'			=> $this->input->post('address'),
+			'extra'				=> $this->input->post('extra'),
 			'delivery_address'	=> $this->input->post('delivery_address'),
+			'_ts'				=> $time_date,
 		];
 
 		if($this->db->insert('orders', $order)){
@@ -290,6 +317,10 @@ class User_model extends CI_Model {
 		$user = $this->db->get_where('customers', 
 			['_id' => $id, '_verification_code' => $verification_code])->row();
 		return $user;
+	}
+
+	public function check_if_transaction_exists($transaction_code = null) {
+		return $this->db->get_where('orders',['_transaction_code' => $transaction_code])->row() ?? false;
 	}
 
 }

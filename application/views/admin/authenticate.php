@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<!--Image Card-->
-                <?=form_open('', ['autocomplete'=>'off']);?>
+                <?=form_open('/auth/login', ['autocomplete'=>'off']);?>
                     <div class="card hoverable">
                         <div class="card-content">
                             <h5>
@@ -41,7 +41,7 @@
                         	<button class="btn btn-default btn-md waves-effect waves-light" type="submit">login</button>
                             <br>
                             <br>
-                            <?=anchor('admin/forgot_password', 'forgot password', ['class' => 'text-center']);?>
+                            <?=anchor('/admin/forgot_password', 'forgot password', ['class' => 'text-center']);?>
                         </div>
                         
                         <!--/.Buttons-->

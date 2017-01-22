@@ -50,7 +50,9 @@
 							<!-- # of rooms -->
 							<input-number text="Rooms" name="rooms" ng-show="<?=array_in('1', $x);?>"></input-number>
 
-							<input-number text="Liters" size="500" name="liters" ng-show="<?=array_in('6', $x);?>"></input-number>
+							<?php if(array_in('6', $x)) { ?>
+								<input-number text="Liters" size="500" name="liters" ng-show="<?=array_in('6', $x);?>"></input-number>
+							<?php } ?>
 
 							<input-number text="Boxes" name="boxes" ng-show="<?=array_in('7', $x);?>"></input-number>
 
@@ -65,9 +67,17 @@
 							<!-- ./clothes -->
 
 							<!-- date and time -->
-							<input-date name="date" ng-show="<?=array_in('3', $x);?>"></input-date>
+							<div class="input-text input" style="margin-bottom: 10px;">
+								<input type="text" name="date" ng-show="<?=array_in('3', $x);?>" 
+									placeholder="date: DD.MM.YY" 
+									pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{2}">
+							</div>
 
-							<input-time name="time" ng-show="<?=array_in('4', $x);?>"></input-time>
+							<div class="input-text input" style="margin-bottom: 10px;">
+								<input type="text" name="time" ng-show="<?=array_in('4', $x);?>" 
+									placeholder="HH : MM Am or Pm"
+									pattern="(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){1}( (a|A)(M|m)| (p|P)(M|m))">
+							</div>
 							<!-- date and time -->
 
 							<!-- duration required -->

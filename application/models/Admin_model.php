@@ -74,6 +74,7 @@ class Admin_model extends CI_Model {
 	public function loadOrder($id=0) {
 		$order 				= $this->db->get_where('orders', ['_id' => $id])->row();
 		if($order !== NULL) {
+
 			$order->category 	= $this->getCategory($order->_category);
 			$order->status 		= $this->db->get_where('request_status', ['_id'=>$order->_status])->row();
 			$order->customer	= $this->db->get_where('customers', ['_id' => $order->_customer])->row();
@@ -142,7 +143,7 @@ class Admin_model extends CI_Model {
 		return $this->db->update('orders', [
 			'_assigned_staff'=>$this->input->post('staff'), 
 			'price'=>$this->input->post('amount'), 
-			'_status' => 6], ['_id' => $id]);
+			'_status' => STATUS_PENDING_PAYMENT], ['_id' => $id]);
 	}
 
 	public function workers ($limit = 0) {
@@ -154,6 +155,14 @@ class Admin_model extends CI_Model {
 		$this->db->limit ($offset, 10);
 		
 		$workers = $this->db->get ('users as u')->result ();
+		foreach($workers as $worker) {
+			$designations 	= $this->db->get_where('worker_tasks', ['_worker' => $worker->_id])->result();
+			$categories 	= [];
+			foreach($designations as $designation) {
+				$categories[] = $this->db->get_where('categories', ['_id' => $designation->_task])->row();
+			}
+			$worker->designations = $categories;
+		}
 		return $workers;
 	}
 
@@ -233,9 +242,9 @@ class Admin_model extends CI_Model {
 		$id = $this->db->insert_id();
 		$categories = $this->input->post('categories[]');
 
-		foreach($categories as $category) {
+		foreach($categories as $category) 
 			$this->db->insert('worker_tasks', ['_worker'=>$id, '_task'=>(int)$category]);
-		}
+		
 		$this->db->trans_complete();
 		return $this->db->trans_status();
 	}
@@ -300,5 +309,14 @@ class Admin_model extends CI_Model {
 		$user->pwd = '';
 		return $user;
 	}
+
+	public function staff_is_available($request = null, $staff = null) {
+        $is_available = false;
+        # get all the orders that are in the same day as this request and are assigned to this staff
+        $this->db->where("DATE(_ts) = DATE('".date('y-m-d', strtotime($request->_ts))."')");
+        $orders = $this->db->get('orders')->result();
+        $is_available = $orders ?? false;
+        return $is_available;
+    }
 }
 ?>

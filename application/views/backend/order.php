@@ -72,10 +72,12 @@
 										class="btn btn-sm btn-danger waves-effect waves-ripples">
 										delete
 									</a>
+									<?php if((int)$order->status->_id === STATUS_PENDING_PAYMENT) { ?>
 									<a href="<?=base_url('');?>" 
 										class="btn btn-sm btn-success waves-effect waves-ripples">
 										make payment
 									</a>
+									<?php } ?>
 								</td>
 							</tr>
 						</tfoot>

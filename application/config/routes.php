@@ -52,13 +52,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['order/(:num)']						= 'user/order/$1';
 $route['verification/(:any)']				= 'user/verifyCustomer/$1';
 $route['auth/login']						= 'user/login';
-$route['auth/register']					= 'user/register';
-$route['silent_auth/(:num)/(:any)']		= 'user/silentAuth/$1/$2';
-$route['verify_customer/(:num)/(:any)']	= 'user/verifyCustomer/$1/$2';
+$route['auth/register']						= 'user/register';
+$route['silent_auth/(:num)/(:any)']			= 'user/silentAuth/$1/$2';
+$route['verify_customer/(:num)/(:any)']		= 'user/verifyCustomer/$1/$2';
 
 $route['payment/enter_details/(:any)']		= 'backend/enterCreditCard/$1';
-$route['payment/enter_otp']				= 'backend/enterOTP';
-$route['customer/registration']			= 'backend/signUp';
+$route['payment/enter_otp']					= 'backend/enterOTP';
+$route['customer/registration']				= 'backend/signUp';
 
 $route['backend/']							= 'backend/index';
 $route['backend/drop_request/(:num)']		= 'backend/dropOrder/$1';
@@ -66,6 +66,6 @@ $route['backend/drop_request/(:num)']		= 'backend/dropOrder/$1';
 $route['admin/authenticate']				= 'admin/login';
 $route['admin/test']						= 'admin/getDb';
 
-$route['default_controller'] 				= 'user';
+$route['default_controller'] 				= 'user/';
 $route['404_override'] 						= 'errors/page_missing';
 $route['translate_uri_dashes'] 				= FALSE;

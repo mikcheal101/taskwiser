@@ -87,4 +87,10 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 # my constants
 defined("NAIRA") or define('NAIRA', '&#8358;');
+defined("STATUS_PROCESSING") or define("STATUS_PROCESSING", 1);
+defined("STATUS_IN_TRANSIT") or define("STATUS_IN_TRANSIT", 2);
+defined("STATUS_SUSPENDED") or define("STATUS_SUSPENDED", 3);
+defined("STATUS_CANCELLED") or define("STATUS_CANCELLED", 4);
+defined("STATUS_DONE") or define("STATUS_DONE", 5);
+defined("STATUS_PENDING_PAYMENT") or define("STATUS_PENDING_PAYMENT", 6);
 

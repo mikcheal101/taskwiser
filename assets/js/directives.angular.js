@@ -43,7 +43,7 @@ angular.module('app.directives', [])
 		},
 		template	: `
 			<div class="input-text input">
-				<input type="date" name="{{_name}}" ng-model="_date"/>
+				<input type="text" name="{{_name}}" placeholder="{{text}}" ng-model="_date"/>
 			</div>
 			<br/>
 		`
@@ -59,7 +59,7 @@ angular.module('app.directives', [])
 		},
 		template	: `
 			<div class="input-text input">
-				<input type="time" name="{{_name}}" ng-model="_time"/>
+				<input type="text" name="{{_name}}" placeholder="{{text}}" pattern="" ng-model="_time"/>
 			</div>
 			<br/>
 		`

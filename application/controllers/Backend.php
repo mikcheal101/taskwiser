@@ -19,7 +19,6 @@ class Backend extends CI_Controller {
 		# check if the user is logged in
 		$this->loggedIn();
 		$this->data['orders']	= $this->user_model->getMyOrders();
-		#print_r($this->data['orders']);
 
 		$this->load->view ('admin/header', $this->data);
 		$this->load->view ('backend/nav', $this->data);
@@ -28,11 +27,13 @@ class Backend extends CI_Controller {
 	}
 
 	public function order($id=0) {
+		$this->loggedIn();
 		$order = new stdClass();
 		if($id === 0) show_404();
 		else{
 			if(($order = $this->user_model->getOrder($id, $this->session->user->_id)) !== NULL) {
 				# display order
+
 				$this->data['order'] = $order;
 				$this->load->view ('admin/header', $this->data);
 				$this->load->view ('backend/nav', $this->data);
@@ -105,6 +106,11 @@ class Backend extends CI_Controller {
 	}
 
 	public function enterCreditCard($transaction_code = "") {
+
+		# check if the transaction exists else return 404
+		$exists = $this->user_model->check_if_transaction_exists($transaction_code);
+		if(!$exists) 
+			show_404();
 
 		# fetch the order with the reference code
 		$this->data['title']	= "Payment [Credit Card]";

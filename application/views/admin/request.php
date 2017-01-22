@@ -131,8 +131,9 @@
 						    				<td width="50%" class="text-right">Price NGN:</td>
 						    				<td>
 						    					<div class="input-field col-md-12">
-					    					        <input placeholder="enter price" type="number" 
-					    					        	name="amount" value="<?=set_value('amount', $request->price);?>" />
+					    					        <input placeholder="enter price" type="text" 
+					    					        	name="amount" value="<?=set_value('amount', $request->price);?>" 
+					    					        	pattern="^(?!0+$)\d+$"/>
 										        </div>
 						    				</td>
 						    			</tr>
@@ -141,14 +142,19 @@
 						    </div>
 				    		<hr>
 				    
-						    <div class="row m-b-1" ng-app="">
+						    <div class="row m-b-1" ng-app="" style="margin-top: 10px;">
 						    	<div class="input-field col-md-12">
 	    					        <input placeholder="search for worker" type="text" ng-model="search">
     					        	<label for="search">
                                         Assign Worker:
+                                        <?php if(form_error('staff')) { ?>
+                                        	<p class="text-red">
+                                        		<small>Please, select a staff to assign</small>
+                                        	</p>
+                                        <?php } ?>
                                     </label>
 						        </div>
-						        <div class="col-sm-12" ng-repeat='staff in <?=json_encode($workers);?> track by staff._id'>
+						        <div class="col-sm-12" ng-repeat='staff in <?=json_encode($available_staff);?> track by staff._id'>
 						        	<h5 class="col-sm-10">
 						        		<input type="radio" class="with-gap" id="staff_{{staff._id}}" name="staff" value="{{staff._id}}" {{staff._id == <?=$request->_assigned_staff;?> ? 'checked':''}} />
 						        		<label for="staff_{{staff._id}}">
