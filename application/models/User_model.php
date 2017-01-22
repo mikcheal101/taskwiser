@@ -320,7 +320,9 @@ class User_model extends CI_Model {
 	}
 
 	public function check_if_transaction_exists($transaction_code = null) {
-		return $this->db->get_where('orders',['_transaction_code' => $transaction_code])->row() ?? false;
+		$this->db->where('_transaction_code', $transaction_code);
+		$this->db->where('_status', STATUS_PENDING_PAYMENT);
+		return $this->db->get('orders')->row() ?? false;
 	}
 
 }

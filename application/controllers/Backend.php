@@ -113,8 +113,8 @@ class Backend extends CI_Controller {
 			show_404();
 
 		# fetch the order with the reference code
-		$this->data['title']	= "Payment [Credit Card]";
-		$this->data['amount']	= 200;
+		$this->data['title']	= "Payment [Credit Card] - {$exists->_transaction_code}";
+		$this->data['amount']	= (int)$exists->price;
 
 		$this->form_validation->set_rules('ccnumb', 'Credit Card Number', 'required|trim|min_length[10]');
 		$this->form_validation->set_rules('cvv', 'CVV','required|numeric|trim|max_length[4]|min_length[3]');
@@ -122,6 +122,19 @@ class Backend extends CI_Controller {
 		$this->form_validation->set_rules('expiry', 'Expiry Date','required|trim|max_length[5]|min_length[5]');
 
 		if($this->form_validation->run()) {
+			$date 	= explode('/', $this->input->post('expiry'));
+			$card = [
+			  	"card_no" 		=> $this->input->post('ccnumb'),
+			  	"cvv" 			=> $this->input->post('cvv'),
+				"expiry_month" 	=> (int)trim($date[0]),
+			  	"expiry_year" 	=> (int)trim($date[1]),
+			  	"card_type" 	=> "", //optional parameter. only needed if card was issued by diamond card
+			  	"pin"			=> $this->input->post('pin'),
+			];
+			var_dump($card);
+			$charge = $this->flutter_wave->chargeCard((int)$exists->price, $card, $bvn = "", $customer_id = "", $callback_url="");
+			var_dump($charge);
+			exit();
 			unset($_POST);
 			# make payment
 			$this->enterOTP();

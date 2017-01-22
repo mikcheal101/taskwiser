@@ -21,7 +21,7 @@ class Flutter_wave {
 	private $token 				= "";
 	private $env				= "";
 
-	private $authModel 			= AuthModel::PIN;
+	private $authModel 			= AuthModel::NOAUTH;
 	private $validateOption 	= Flutterwave::SMS;
 	private $currency			= Currencies::NAIRA;
 	private $country			= Countries::NIGERIA;
@@ -60,7 +60,13 @@ class Flutter_wave {
 	 * @return boolean
 	 */ 
 	protected function tokenize() {
-		$result = Card::tokenize($this->card, $this->authModel, $this->validateOption, $this->bvn);
+		$this->dump([
+				'card' => $this->card,
+				'authModel' => $this->authModel,
+				'validateOption' => $this->validateOption,
+				'bvn' => $this->bvn
+			], "tokenize variables");
+		$result = Card::tokenize($this->card, $this->authModel, $this->validateOption, $bvn = "");
 		$this->dump($result, "tokenize function");
 		return $result->isSuccessfulResponse();
 	}
@@ -85,8 +91,10 @@ class Flutter_wave {
 			
 			$charge = Card::charge($this->card, $amount, $this->customer_id, $this->currency, 
 				$this->country, $this->authModel, $this->narration, $this->callback_url);
+			echo "before charging<br>";
+			var_dump($charge);
+			echo "<hr>after charging<br>";
 
-			$this->dump($charge, "after charging card");
 			return $charge->isSuccessfulResponse();
 		}
 		return false;

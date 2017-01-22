@@ -34,10 +34,6 @@ class User extends CI_Controller {
 		$this->load->view ('customers/footer', $this->data);
 	}
 
-	public function samples() {
-		var_dump(site_url());
-	}
-
 	public function emailTest() {
 		$this->email->from('no-reply@taskwiser.com', 'Taskwiser no-reply');
 		$this->email->to('hirekaanmicheal@gmail.com');

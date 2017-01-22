@@ -470,6 +470,11 @@ class Admin extends CI_Controller {
         return $this->email->send();
     }
 
+    private function send_staff_sms($order = null) {
+        # send the staff the details of the assignment
+
+    }
+
     private function page($page = '') {
         $this->load->view('admin/header', $this->data);
         $this->load->view('admin/nav', $this->data);

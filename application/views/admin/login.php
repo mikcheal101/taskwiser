@@ -6,7 +6,10 @@
                 <?=form_open();?>
                     <div class="card hoverable">
                         <div class="card-content">
-                            <h5>Login Panel</h5>
+                            <h5>
+                                Login Panel
+                                <?=$authenticate_error;?>
+                            </h5>
 
                             <div class="row">
                             	<div class="input-field col-xs-12">
