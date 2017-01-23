@@ -39,7 +39,7 @@
 	<!-- Modals -->
 	<?php foreach ($categories as $category) { ?>
 		<div id="<?=$category['_id'];?>" class="modal fade" role="dialog" tabindex="-1" 
-		aria-labelledby="myModalLabel" aria-hidden data-backdrop="true">
+		aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-sm" role="document">
 		    	<!-- Modal content-->
 		    	<div class="modal-content">
@@ -114,6 +114,18 @@
 		about.click ((event) => {
 			event.preventDefault();
 			$('.about').fadeIn (500).delay(1000).fadeOut ();
+		});
+
+		 $("body").on("click", ".modal-dialog", function(e) {
+	        if ($(e.target).hasClass('modal-dialog')) {
+	            var hidePopup = $(e.target.parentElement).attr('id');
+	            $('#' + hidePopup).modal('hide');
+	        }
+	    });
+
+
+		$('body').click(function(e) {
+			$('.modal').modal('hide');
 		});
 
 	</script>

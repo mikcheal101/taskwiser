@@ -266,8 +266,6 @@ class Admin extends CI_Controller {
         }
     }
 
-    
-
     public function tasks() {
         $this->loggedIn();
         $this->data['location'] = 4;
@@ -279,8 +277,7 @@ class Admin extends CI_Controller {
         $this->data['location'] = 3;
         
         $this->data['requests'] = $this->admin_model->loadOrders();
-        $this->page('requests');
-        
+        $this->page('requests');  
     }
 
     private function get_available_staff($request = null) {
@@ -303,8 +300,6 @@ class Admin extends CI_Controller {
         }
         return $staff;
     }
-
-
 
     public function request($id = 0) {
         $this->loggedIn();
@@ -340,7 +335,6 @@ class Admin extends CI_Controller {
         redirect('admin/requests', 'refresh');
     }
 
-
     private function config_upload($name="") {
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -350,6 +344,8 @@ class Admin extends CI_Controller {
     }
 
     public function profile() {
+        $this->loggedIn();
+
         $this->data['location'] = 5;
         $this->data['profile'] = $this->admin_model->profile();
         $this->config_upload();
@@ -396,6 +392,8 @@ class Admin extends CI_Controller {
     }
 
     public function cities() {
+        $this->loggedIn();
+
         $this->data['checked'] = true;
         $this->form_validation->set_rules("name", "State / City Name", "required|trim");
         $this->form_validation->set_rules("_main_cat", "State", [
@@ -419,6 +417,7 @@ class Admin extends CI_Controller {
     }
 
     public function city(int $id = 0) {
+        $this->loggedIn();
         if ($id === 0)
             show_404();
         else {
@@ -448,6 +447,7 @@ class Admin extends CI_Controller {
     }
 
     public function drop_city(int $id = 0) {
+        $this->loggedIn();
         if ($id == 0)
             show_404();
         else {

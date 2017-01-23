@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6fddddb9ef0a5ab88083219a9f0e8c4e",
-    "content-hash": "29349fca83c4eada1c29d8c1e2a01c1b",
+    "hash": "e89bcf1ae18a663ea1700f2bbeadc545",
+    "content-hash": "18bdc2212b70e9aaeffb0314c13a2f50",
     "packages": [
         {
             "name": "flutterwave/flutterwave-php",
@@ -396,16 +396,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "5.0.3",
+            "version": "5.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "fe4fe265e4e53df2e1f99f748d2f16287d35bdef"
+                "reference": "354b5859cc7386642b8842a8b9e3dee01e957235"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/fe4fe265e4e53df2e1f99f748d2f16287d35bdef",
-                "reference": "fe4fe265e4e53df2e1f99f748d2f16287d35bdef",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/354b5859cc7386642b8842a8b9e3dee01e957235",
+                "reference": "354b5859cc7386642b8842a8b9e3dee01e957235",
                 "shasum": ""
             },
             "require": {
@@ -438,7 +438,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2016-08-18 21:26:24"
+            "time": "2016-10-12 17:28:31"
         }
     ],
     "packages-dev": [],
