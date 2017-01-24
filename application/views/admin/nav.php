@@ -8,13 +8,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand waves-effect waves-light" href="<?=base_url ('admin');?>">taskwiser</a>
+                <a class="navbar-brand waves-effect waves-light" href="<?=base_url ('/');?>">taskwiser</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                 <ul class="nav navbar-nav navbar-right">
                     <li class=" <?= ($location === 1) ? 'active' : '';?>">
-                        <a class="waves-effect waves-light" href="<?=base_url ('admin/');?>">
+                        <a class="waves-effect waves-light" href="<?=base_url ('/');?>">
                             Home 
                             <?php ($location === 1) ? '<span class="sr-only">(current)</span>' : '';?>
                         </a>

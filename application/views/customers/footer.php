@@ -30,7 +30,7 @@
 					</a>
 				</p>
 				<div class="col-md-2" style="padding-bottom: 5px; text-align: center;">
-					<button class="btn btn-success font-13 btn-lg" style="margin-top:-5px; background-color: #008000!important; border-color: #008000!important;">book a task with now</button>
+					<button class="btn btn-success font-13 btn-lg" style="margin-top:-5px; background-color: #008000!important; border-color: #008000!important;">book a task now</button>
 				</div>
 			</div>
 		</div>
@@ -126,6 +126,13 @@
 
 		$('body').click(function(e) {
 			$('.modal').modal('hide');
+		});
+
+		$('.cities_dropdown').change(function() {
+			var val = $(this).val();
+			$.getJSON('user/set_location_cookie/'+val, function(data) {
+				console.log(data);
+			});
 		});
 
 	</script>

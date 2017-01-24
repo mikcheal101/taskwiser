@@ -166,6 +166,13 @@ class User_model extends CI_Model {
 				->where(['_id' => $id])
 				->update('orders');
 			$data =  $this->db->get_where('orders', ['_id' => $id])->row();
+			if($data) {
+				$data->customer = $this->db->get_where('customers', ['_id' => $data->_customer])->row();
+				$data->task 	= $this->db->get_where('categories', ['_id' => $data->_category])->row();
+
+				$data->customer 	= $this->db->get_where('customers', ['_id' => $data->_customer])->row();
+				$data->task 		= $this->db->get_where('categories', ['_id' => $data->_category])->row();
+			}
 			return $data;
 		} else return false;
 	}
@@ -254,6 +261,10 @@ class User_model extends CI_Model {
 		foreach($orders as $order) {
 			$order->category 	= $this->getCategory($order->_category);
 			$order->status 		= $this->db->get_where('request_status', ['_id'=>$order->_status])->row(); 
+
+			$order->customer 	= $this->db->get_where('customers', ['_id' => $order->_customer])->row();
+			$order->task 		= $this->db->get_where('categories', ['_id' => $order->_category])->row();
+		
 		}
 		return $orders;
 	}
@@ -263,6 +274,9 @@ class User_model extends CI_Model {
 		if($order !== NULL) {
 			$order->category 	= $this->getCategory($order->_category);
 			$order->status 		= $this->db->get_where('request_status', ['_id'=>$order->_status])->row();
+
+			$order->customer 	= $this->db->get_where('customers', ['_id' => $order->_customer])->row();
+			$order->task 		= $this->db->get_where('categories', ['_id' => $order->_category])->row();
 		}
 		return $order;
 	}
@@ -297,6 +311,9 @@ class User_model extends CI_Model {
 		$data = $this->db->get_where('orders', ['_id'=> $order_id])->row();
 
 		if(!is_null($data)) {
+			$data->customer 	= $this->db->get_where('customers', ['_id' => $data->_customer])->row();
+			$data->task 		= $this->db->get_where('categories', ['_id' => $data->_category])->row();
+
 			$data->sub_category 	= $this->db->get_where('categories', ['_id' => $data->_category])->row();
 
 			if(!is_null($data->sub_category->_parent)){

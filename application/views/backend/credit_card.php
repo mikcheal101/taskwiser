@@ -28,7 +28,7 @@
                                 <div class="input-field col-xs-12 col-md-6">
                                     <input placeholder="MM / YY" name="expiry" value="<?=set_value ('expiry');?>" id="expiry" 
                                         type="text" class="validate" max-length="4" title="enter a valid date eg: 12/17" 
-                                        pattern="([0][0-9]|[1][0-2])\/[1-9][7-9]">
+                                        pattern="([0][0-9]|[1][0-2])\/[1-9][0-9]">
                                     <label for="expiry">
                                         MM/ YY
                                         <?=form_error('expiry', "<span class='text-danger'><small>", "</small></span>");?>

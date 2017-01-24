@@ -80,7 +80,7 @@ class Backend extends CI_Controller {
 	}
 
 	private function loggedIn () {
-		if ($this->session->user === NULL) 
+		if (is_null($this->session->user)) 
 			redirect('auth/login','refresh');
 	}
 
@@ -132,8 +132,8 @@ class Backend extends CI_Controller {
 			  	"pin"			=> $this->input->post('pin'),
 			];
 			var_dump($card);
-			$charge = $this->flutter_wave->chargeCard((int)$exists->price, $card, $bvn = "", $customer_id = "", $callback_url="");
-			var_dump($charge);
+			$this->flutter_wave->chargeCard((int)$exists->price, $card);
+			
 			exit();
 			unset($_POST);
 			# make payment

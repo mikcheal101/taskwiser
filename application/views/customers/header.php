@@ -347,7 +347,7 @@
 					<span class="icon-bar bg-white"></span>
 					<span class="icon-bar bg-white"></span>
 				</button>
-				<a href="<?=base_url ('');?>" class="navbar-brand" style=""></a>
+				<a href="<?=base_url ('/');?>" class="navbar-brand" style=""></a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -357,20 +357,10 @@
 						<label>
 							Select Location: 
 						</label>
-						<select class="" >
-							<option>select your location</option>
+						<select class="cities_dropdown" >
+							<option value="0">select your location</option>
 							<?php foreach($states as $state){ ?>
-								<optgroup label="<?=$state['_name'];?>"><?=count($state['cities']);?></optgroup>
-								<?php
-									if(count($state['cities']) > 0){
-										foreach($state['cities'] as $city) {
-											#echo "<option value='{$city['_id']}'>{$city['_name']}</option>";
-											printf("<option value='%i'>%s</option>", $city['_id'], $city['_name']);
-										}
-									} else {
-										printf("<option value='%i'>%s</option>", $state['_id'], $state['_name']);
-									}
-								?>
+								<option value="<?=$state['_id'];?>"><?=$state['_name'];?></option>
 							<?php } ?>
 						</select>
 					</li>
@@ -378,8 +368,12 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#" class="navbar-link text-lowercase font-13 bold about-tag">about us</a></li>
 					<li><a href="#" class="navbar-link text-lowercase font-13 bold">how it works</a></li>
-					<li><a href="<?=base_url ('auth/register');?>" class="navbar-link text-lowercase font-13 bold">sign up</a></li>
-					<li><a href="<?=base_url ('auth/login');?>" class="navbar-link text-lowercase font-13 bold">sign in</a></li>
+					<?php if (!isset($this->session->user)) { ?>
+						<li><a href="<?=base_url ('auth/register');?>" class="navbar-link text-lowercase font-13 bold">sign up</a></li>
+						<li><a href="<?=base_url ('auth/login');?>" class="navbar-link text-lowercase font-13 bold">sign in</a></li>
+					<?php } else { ?>
+						<li><a href="<?=base_url ('auth/signout');?>" class="navbar-link text-lowercase font-13 bold">sign out</a></li>
+					<?php } ?>
 					<li><a href="#what_it_offers" class="navbar-link text-uppercase font-13 bold" style="background-color: green!important; color: #fff!important;">BOOK NOW</a></li>
 				</ul>
 

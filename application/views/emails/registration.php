@@ -9,7 +9,7 @@
             </tr>
             <tr>
                 <td class="bodycopy" style="text-align: center;">
-                    <p style="padding: 0 5px!important; margin: 0px!important">Your email address has been confirmed.</p>
+                    <!-- <p style="padding: 0 5px!important; margin: 0px!important">Your email address has been confirmed.</p> -->
                     <table class="" cellpadding="0" cellspacing="0" border="0" width="100%" 
                         style="font-size:13px!important;">
                         <tr>

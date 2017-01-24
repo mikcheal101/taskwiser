@@ -48,7 +48,7 @@
 			<div>
 				<h4 class="bold m-b-2 ">Trusted Services</h4>
 				<p class="text-ash tahoma">
-					We undergo very rigourous vetting of our taskers. We offer fast, easy and secure form of payment. We will confirm your appointments an hour after it is made.
+					Our taskers undergo a rigourous vetting process. We offer fast, easy and secure forms of payment. We will confirm your appointments swiftly.
 				</p>
 			</div>
 		</div>

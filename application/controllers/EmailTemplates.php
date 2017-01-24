@@ -69,6 +69,17 @@ class EmailTemplates {
 		return $view;
 	}
 
+	public function order_email($customer = null, $order = null) {
+		$view			= "";
+		if(!is_null($customer) && !is_null($order)) {
+			$this->data['email']		= $customer->_email;
+			$this->data['order_number']	= $order->_transaction_code;
+			$this->data['title']		= "taskwiser - order email";
+			$view 						= $this->loadPages(['emails/order_init']);
+		} 
+		return $view;
+	}
+
 	public function updates_email() {}
 
 	public function status_change_email() {}

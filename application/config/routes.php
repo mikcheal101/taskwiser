@@ -49,10 +49,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['order/(:num)']						= 'user/order/$1';
-$route['verification/(:any)']				= 'user/verifyCustomer/$1';
 $route['auth/login']						= 'user/login';
 $route['auth/register']						= 'user/register';
+$route['auth/signout']						= 'backend/signout';
+
+$route['order/(:num)']						= 'user/order/$1';
+$route['verification/(:any)']				= 'user/verifyCustomer/$1';
 $route['silent_auth/(:num)/(:any)']			= 'user/silentAuth/$1/$2';
 $route['verify_customer/(:num)/(:any)']		= 'user/verifyCustomer/$1/$2';
 

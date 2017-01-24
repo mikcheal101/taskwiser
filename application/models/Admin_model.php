@@ -79,6 +79,7 @@ class Admin_model extends CI_Model {
 			$order->status 		= $this->db->get_where('request_status', ['_id'=>$order->_status])->row();
 			$order->customer	= $this->db->get_where('customers', ['_id' => $order->_customer])->row();
 			$order->worker 		= $this->db->get_where('users', ['id' => $order->_assigned_staff])->row();
+			$order->task 		= $this->db->get_where('categories', ['_id' => $order->_category])->row();
 		}
 
 		return $order;

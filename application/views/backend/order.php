@@ -9,7 +9,7 @@
 						</a>
 					</div>
 					<div class="col-sm-8 text-right no-padding">
-						<h5 class="text-info">NGN 0.00</h5>
+						<h5 class="text-info"><?=NAIRA." ".number_format($order->price, 2);?></h5>
 					</div>
 				</div>
 				<br/><br/>
@@ -68,12 +68,12 @@
 								<td>
 								</td>
 								<td class="text-right">
-									<a href="<?=base_url('');?>" 
+									<a href='<?=base_url("backend/drop_request/{$order->_id}");?>'
 										class="btn btn-sm btn-danger waves-effect waves-ripples">
 										delete
 									</a>
 									<?php if((int)$order->status->_id === STATUS_PENDING_PAYMENT) { ?>
-									<a href="<?=base_url('');?>" 
+									<a href='<?=base_url("payment/enter_details/{$order->_transaction_code}");?>'
 										class="btn btn-sm btn-success waves-effect waves-ripples">
 										make payment
 									</a>

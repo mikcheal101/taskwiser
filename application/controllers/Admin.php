@@ -40,7 +40,7 @@ class Admin extends CI_Controller {
     */
 
     private function loggedIn() {
-        if ($this->session->user === NULL)
+        if (is_null($this->session->user))
             redirect('admin/login', 'refresh');
     }
 
@@ -66,26 +66,30 @@ class Admin extends CI_Controller {
     }
 
     public function login() {
-        $this->data['location'] = 0;
-        $this->form_validation->set_rules('username', 'Username', 'required|trim');
-        $this->form_validation->set_rules('password', 'Password', 'required|trim');
+        if(isset($this->session->user->usertype))
+            redirect('admin/');
+        else {
+            $this->data['location'] = 0;
+            $this->form_validation->set_rules('username', 'Username', 'required|trim');
+            $this->form_validation->set_rules('password', 'Password', 'required|trim');
 
-        if ($this->form_validation->run()) {
-            $valid = $this->admin_model->authenticate();
+            if ($this->form_validation->run()) {
+                $valid = $this->admin_model->authenticate();
 
-            if ($valid === NULL) {
-                $this->session->set_flashdata('authenticate_error', 'Username / Password Mismatch!');
-                redirect('admin/login', 'refresh');
+                if ($valid === NULL) {
+                    $this->session->set_flashdata('authenticate_error', 'Username / Password Mismatch!');
+                    redirect('admin/login', 'refresh');
+                } else {
+                    $this->session->set_userdata(['user' => $valid]);
+                    redirect('admin/', 'refresh');
+                }
             } else {
-                $this->session->set_userdata(['user' => $valid]);
-                redirect('admin/', 'refresh');
+                $this->load->view('admin/header', $this->data);
+                $this->load->view('admin/plain_header', $this->data);
+                $this->load->view("admin/login", $this->data);
+                $this->load->view('admin/footer', $this->data);
             }
-        } else {
-            $this->load->view('admin/header', $this->data);
-            $this->load->view('admin/plain_header', $this->data);
-            $this->load->view("admin/login", $this->data);
-            $this->load->view('admin/footer', $this->data);
-        }
+        }   
     }
 
     public function signup() {
@@ -305,8 +309,9 @@ class Admin extends CI_Controller {
         $this->loggedIn();
         $this->data['location'] = 3;
         $request = $this->admin_model->loadOrder($id);
-
-        $this->data['available_staff'] = $this->get_available_staff($request);
+        
+        $staff = $this->get_available_staff($request);
+        $this->data['available_staff'] = $staff;
         
         if ($request !== NULL) {
             $this->data['request'] = $request;
@@ -318,6 +323,8 @@ class Admin extends CI_Controller {
                 if($this->admin_model->approve_request($id)){
                     # send email with order details
                     $this->sendOrderMail($request->customer, $request);
+                    $this->send_staff_order_sms($staff, $request);
+                    $this->send_customer_order_sms($request->customer, $request);
                 }
                 redirect('admin/request/'.$id);
             } else {
@@ -477,6 +484,30 @@ class Admin extends CI_Controller {
     private function send_staff_sms($order = null) {
         # send the staff the details of the assignment
 
+    }
+
+    private function send_staff_order_sms($staff = null, $order = null) {
+        if(!is_null($staff) && !is_null($order)) {
+            try {
+                $data = $this->twilio_api->staff_job_alert($staff, $order);
+                return $data;
+            } catch(Exception $e) {
+                log_message('error', $e->getMessage());
+            }
+        }
+        return false;
+    }
+
+    private function send_customer_order_sms($customer = null, $order = null) {
+        if(!is_null($customer) && !is_null($order)) {
+            try {
+                $data = $this->twilio_api->user_order_confirmed_sms($customer, $order);
+                return $data;
+            } catch(Exception $e) {
+                log_message('error', $e->getMessage());
+            }
+        }
+        return false;
     }
 
     private function page($page = '') {

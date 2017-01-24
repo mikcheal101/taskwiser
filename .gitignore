@@ -4,6 +4,8 @@
 
 application/tmp/*
 application/cache/*
+application/tmp/*
+!application/tmp/index.html
 !application/cache/index.html
 !application/cache/.htaccess
 

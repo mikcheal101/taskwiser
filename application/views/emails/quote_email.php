@@ -49,10 +49,7 @@
                     	<b>Price:</b>
                     </p>
                     <p style="font-size: 30px!important;">
-                    	<?php
-                    		$amount = number_format(30000, 2);
-                    		echo NAIRA." {$amount}";
-                    	?>
+                    	<?=NAIRA." ".number_format($quote->price, 2);?>
                     </p>
                     <p>
                     	<?php
