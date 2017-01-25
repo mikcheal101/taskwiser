@@ -3,7 +3,7 @@
 	$mobile_number		= $this->session->user->_tel ?? '';
 	$name				= $this->session->user->fullname ?? '';
 	$email_readonly		= (strlen($email_address) > 0) ? 'readonly' : '';
-	$email_readonly		= (strlen($email_address) > 0) ? 'readonly' : '';
+	$mobile_readonly	= (strlen($mobile_number) > 0) ? 'readonly' : '';
 	$name_readonly		= (strlen($name) > 0) ? 'readonly' : '';
 ?>
 
@@ -52,7 +52,7 @@
 									value="<?=set_value('name', $name);?>" <?=$name_readonly;?> />	
 							</div>
 
-							<div class="input-text input">
+							<div class="input-text input p-t-1">
 								<input type="email" name="email" class="" placeholder="enter email address" required="required" 
 									value="<?=set_value('email', $email_address);?>" <?=$email_readonly;?> />	
 							</div>
