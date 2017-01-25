@@ -1,8 +1,10 @@
 <?php
 	$email_address 		= $this->session->user->_email ?? '';
 	$mobile_number		= $this->session->user->_tel ?? '';
+	$name				= $this->session->user->fullname ?? '';
 	$email_readonly		= (strlen($email_address) > 0) ? 'readonly' : '';
-	$mobile_readonly	= (strlen($email_address) > 0) ? 'readonly' : '';
+	$email_readonly		= (strlen($email_address) > 0) ? 'readonly' : '';
+	$name_readonly		= (strlen($name) > 0) ? 'readonly' : '';
 ?>
 
 <section id="" class="" style="margin-top:50px; padding-top: 10px; background-color: #3db3e4!important; " ng-controller="cntrl">
@@ -45,6 +47,11 @@
 								Get a price
 							</h4>
 							
+							<div class="input-text input">
+								<input type="text" name="name" class="" placeholder="enter full name eg John Doe" required="required" 
+									value="<?=set_value('name', $name);?>" <?=$name_readonly;?> />	
+							</div>
+
 							<div class="input-text input">
 								<input type="email" name="email" class="" placeholder="enter email address" required="required" 
 									value="<?=set_value('email', $email_address);?>" <?=$email_readonly;?> />	
