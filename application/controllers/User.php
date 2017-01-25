@@ -104,6 +104,7 @@ class User extends CI_Controller {
 		else {
 
 			$this->form_validation->set_rules('email', 'Email Address', 'required|trim|valid_email');
+			$this->form_validation->set_rules('name', 'Full Name', 'required|trim|min_length[2]');
 			$this->form_validation->set_rules('tel', 'Mobile #', 'required|trim');
 
 			if($this->form_validation->run()) 
@@ -127,6 +128,7 @@ class User extends CI_Controller {
 		$result 	= $this->user_model->check_customer();
 		$_email 	= $this->input->post('email');
 		$_tel 		= $this->input->post('tel');
+		$name 		= $this->input->post('name');
 
 		if(!$result->boolean) {
 			$result->customer 	= $this->generate_customer();

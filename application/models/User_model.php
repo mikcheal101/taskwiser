@@ -78,10 +78,11 @@ class User_model extends CI_Model {
 	public function generate_customer() {
 		$code = md5($this->input->post('email')."/".time());
 		$user = [
-			'_username' => $this->input->post('email'),
-			'_email' => $this->input->post('email'), 
-			'_pwd'	=> substr($code, 5, 11),
-			'_verification_code' => substr($code, 12, 25)
+			'_username' 			=> $this->input->post('email'),
+			'fullname'				=> $this->input->post('name'),
+			'_email' 				=> $this->input->post('email'), 
+			'_pwd'					=> substr($code, 5, 11),
+			'_verification_code' 	=> substr($code, 12, 25)
 		];
 		
 		if($this->db->insert('customers', $user)) {
