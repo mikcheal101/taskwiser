@@ -59,7 +59,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<h3 class="text-lowercase text-center p-t-3 p-b-3 m-t-0 m-b-3">taskwiser has various tasks available</h3>
+				<h3 class="text-uppercase text-center p-t-3 p-b-3 m-t-0 m-b-3">taskwiser has various tasks available</h3>
 			</div>
 		</div>
 		

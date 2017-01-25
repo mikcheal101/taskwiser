@@ -335,7 +335,7 @@
 </head>
 <body ng-app="app">
 
-	<nav id="navbar" class="navbar navbar-fixed-top white" style="border-top: 0px!important; border-bottom: 0px!important; background-color: rgba(255, 255, 255, 0.6);">
+	<nav id="navbar" class="navbar navbar-fixed-top white" style="border-top: 0px!important; border-bottom: 0px!important; background-color: rgba(255, 255, 255, 0.8)!important;">
 		<div class="container-fluid" style="padding-right: 15px;">
 			<!-- Brand and toggle get grouped for better mobile display -->
 
@@ -355,7 +355,7 @@
 				<ul class="nav navbar-nav navbar-left nav-50">
 					<li>
 						<label>
-							Select Location: 
+							<?=ucwords('select city');?>:
 						</label>
 						<select class="cities_dropdown" >
 							<option value="0">select your location</option>
@@ -366,15 +366,35 @@
 					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" class="navbar-link text-lowercase font-13 bold about-tag">about us</a></li>
-					<li><a href="#" class="navbar-link text-lowercase font-13 bold">how it works</a></li>
+					<li>
+						<a href="#" class="navbar-link font-13 bold about-tag">
+							About us
+						</a>
+					</li>
+					<li>
+						<a href="#" class="navbar-link font-13 bold">
+							How it Works
+						</a>
+					</li>
 					<?php if (!isset($this->session->user)) { ?>
-						<li><a href="<?=base_url ('auth/register');?>" class="navbar-link text-lowercase font-13 bold">sign up</a></li>
-						<li><a href="<?=base_url ('auth/login');?>" class="navbar-link text-lowercase font-13 bold">sign in</a></li>
+						<li>
+							<a href="<?=base_url ('auth/login');?>" class="navbar-link font-13 bold">
+								Sign in
+							</a>
+						</li>
 					<?php } else { ?>
-						<li><a href="<?=base_url ('auth/signout');?>" class="navbar-link text-lowercase font-13 bold">sign out</a></li>
+						<li>
+							<a href="<?=base_url ('auth/signout');?>" class="navbar-link font-13 bold">
+								Sign out
+							</a>
+						</li>
 					<?php } ?>
-					<li><a href="#what_it_offers" class="navbar-link text-uppercase font-13 bold" style="background-color: green!important; color: #fff!important;">BOOK NOW</a></li>
+					<li>
+						<a href="<?=base_url ('auth/register');?>" class="navbar-link text-uppercase font-13 bold" 
+							style="background-color: green!important; color: #fff!important;">
+							BOOK NOW
+						</a>
+					</li>
 				</ul>
 
 				<ul class="about" >

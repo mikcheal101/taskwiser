@@ -1,7 +1,14 @@
 	<section id="footer" class="footer" style="background-color: rgb(35, 48, 57); color: #8c8c8c;">
 		<div class="container-fluid">
+			
 			<div class="row p-t-3 p-b-3 font-12 md-left sm-center">
-				<h3 class="col-md-2 m-t-0 m-b-0" style="padding-top: 0px!important;">Need Help ?</h3>
+				<h3 class="col-md-2 m-t-0 m-b-0" style="padding-top: 0px!important;">Need Help?</h3>
+				<div class="col-md-2" style="padding-bottom: 5px; text-align: center;">
+					<button class="btn btn-success font-13 btn-lg" style="margin-top:-5px; background-color: #008000!important; border-color: #008000!important;">
+						book a task now
+					</button>
+				</div>
+
 				<p class="col-md-2 m-t-0 m-b-0" style="padding-top: 7px!important; text-align: center; padding-bottom: 5px;">
 					<a href="#" style="padding-right: 15px; color:#8c8c8c;">contact us</a>
 					<a href="#" style="color:#8c8c8c;">terms and conditions</a>
@@ -29,9 +36,7 @@
 						<i class="fa fa-twitter fa-2x"></i>
 					</a>
 				</p>
-				<div class="col-md-2" style="padding-bottom: 5px; text-align: center;">
-					<button class="btn btn-success font-13 btn-lg" style="margin-top:-5px; background-color: #008000!important; border-color: #008000!important;">book a task now</button>
-				</div>
+				
 			</div>
 		</div>
 	</section>
