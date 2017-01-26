@@ -6,8 +6,9 @@
                 <?=form_open();?>
                     <div class="card hoverable">
                         <div class="card-content">
-                            <h5>
-                                taskwiser <b>registration</b> Panel
+                            <h5 class="text-center">
+                                Welcome to <b class="default">taskwiser.com</b>
+                                <small>We are here to make your life easier.</small>
                                 <?php if ($this->session->flashdata('authenticate_error')) { ?>
                                     <br>
                                     <small class="text-red font-12 bold">

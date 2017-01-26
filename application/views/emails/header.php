@@ -110,7 +110,7 @@
 												    </tr>
 												    <tr>
 												        <td class="h1" style="padding: 5px 0 0 0;">
-												            ...the smater way
+												            ...the smarter way
 												        </td>
 												    </tr>
 												</table>
