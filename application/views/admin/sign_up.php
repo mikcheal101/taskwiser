@@ -7,7 +7,7 @@
                     <div class="card hoverable">
                         <div class="card-content">
                             <h5 class="text-center">
-                                Welcome to <b class="default">taskwiser.com</b>
+                                Welcome to <b class="default">taskwiser.com</b><br>
                                 <small>We are here to make your life easier.</small>
                                 <?php if ($this->session->flashdata('authenticate_error')) { ?>
                                     <br>
