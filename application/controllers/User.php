@@ -142,8 +142,8 @@ class User extends CI_Controller {
 
 			if($order) {
 				# display confirmation page
-				#	$sent_order = $this->sendOrderMail($result->customer, $order);
-				#	if($sent_order) {
+					$sent_order = $this->sendOrderMail($result->customer, $order);
+				if($sent_order) {
 
 					# display the email sent 
 					
@@ -176,7 +176,7 @@ class User extends CI_Controller {
 					$this->load->view ('customers/header', $this->data);
 					$this->load->view ('customers/alert', $this->data);
 					$this->load->view ('customers/footer', $this->data);
-				#	} else show_404();
+				} else show_404();
 			} else show_404();
 		} else show_404();
 	}
