@@ -42,39 +42,46 @@
 	</section>
 
 	<!-- Modals -->
-	<?php foreach ($categories as $category) { ?>
-		<div id="<?=$category['_id'];?>" class="modal fade" role="dialog" tabindex="-1" 
-		aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-sm" role="document">
-		    	<!-- Modal content-->
-		    	<div class="modal-content">
-		      		<div class="modal-header">
-		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
-		        		<h4 class="modal-title" id="myModalLabel"><?=$category['_name'];?></h4>
-		      		</div>
-		      		<div class="modal-body">
-		        		<ul class="list-group">
-	        				<?php if (count($category['_children']) < 1) { ?>
-					  		<li class="list-group-item">
-					  			<?=anchor("order/{$category['_id']}", $category['_name']);?>
-					  		</li>
-					  		<?php } else { ?>	
-					  			<?php foreach ($category['_children'] as $children) { ?>
-					  			<li class="list-group-item">
-						  			<?=anchor("order/{$children['_id']}", $children['_name']);?>
+	<?php 
+		if(isset($categories)) {
+			foreach ($categories as $category) { 
+		?>
+			<div id="<?=$category['_id'];?>" class="modal fade" role="dialog" tabindex="-1" 
+			aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-sm" role="document">
+			    	<!-- Modal content-->
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+			        		<h4 class="modal-title" id="myModalLabel"><?=$category['_name'];?></h4>
+			      		</div>
+			      		<div class="modal-body">
+			        		<ul class="list-group">
+		        				<?php if (count($category['_children']) < 1) { ?>
+						  		<li class="list-group-item">
+						  			<?=anchor("order/{$category['_id']}", $category['_name']);?>
 						  		</li>
+						  		<?php } else { ?>	
+						  			<?php foreach ($category['_children'] as $children) { ?>
+						  			<li class="list-group-item">
+							  			<?=anchor("order/{$children['_id']}", $children['_name']);?>
+							  		</li>
+							  		<?php } ?>
 						  		<?php } ?>
-					  		<?php } ?>
-						</ul>
+							</ul>
 
-		      		</div>
-		      		<div class="modal-footer">
-		        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		      		</div>
-		    	</div>
+			      		</div>
+			      		<div class="modal-footer">
+			        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      		</div>
+			    	</div>
+				</div>
 			</div>
-		</div>
-	<?php } ?>
+	<?php 	
+			}	#	endforeach
+		}	#	endif
+
+	?>
 	
 	<script type="text/javascript" src="<?=site_url ('assets/js/jquery.js') ;?>"></script>
 	<script type="text/javascript" src="<?=site_url ('assets/js/tether.min.js') ;?>"></script>
@@ -118,7 +125,7 @@
 		$('.about').hide ();
 		about.click ((event) => {
 			event.preventDefault();
-			$('.about').fadeIn (500).delay(1000).fadeOut ();
+			$('.about').fadeIn (500).delay(4000).fadeOut ();
 		});
 
 		 $("body").on("click", ".modal-dialog", function(e) {

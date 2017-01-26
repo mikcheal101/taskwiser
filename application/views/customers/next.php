@@ -69,11 +69,18 @@
 								-->
 							</h6>
 							
+							<?php if(array_in('12', $x)) { ?>
+							<div class="input-text input p-t-1">
+								<input type="text" name="car_model" placeholder="enter car model eg.Toyota Camry" required="required" 
+									value="<?=set_value('car_model');?>" />	
+							</div>
+							<?php } ?>
+							
 							<!-- # of rooms -->
 							<input-number text="Rooms" name="rooms" ng-show="<?=array_in('1', $x);?>"></input-number>
 
 							<?php if(array_in('6', $x)) { ?>
-								<input-number text="Liters" size="500" name="liters" ng-show="<?=array_in('6', $x);?>"></input-number>
+								<input-number text="Liters" size="200" name="liters" ng-show="<?=array_in('6', $x);?>"></input-number>
 							<?php } ?>
 
 							<input-number text="Boxes" name="boxes" ng-show="<?=array_in('7', $x);?>"></input-number>
@@ -90,7 +97,7 @@
 
 							<!-- date and time -->
 							<div class="input-text input" style="margin-bottom: 10px;">
-								<input type="text" name="date" ng-show="<?=array_in('3', $x);?>" 
+								<input type="date" name="date" ng-show="<?=array_in('3', $x);?>" 
 									placeholder="date: DD.MM.YY" 
 									pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{2}">
 							</div>
@@ -118,9 +125,9 @@
 							</div>
 							<!-- duration required -->
 
-							<div ng-show="<?=array_in('2', $x);?>">
+							<div>
 								<div class="input input-textarea">
-									<textarea class="" name="address" id="" rows="5" placeholder="Address."></textarea>
+									<textarea name="address" rows="5" placeholder="Address." required="required"></textarea>
 								</div>
 								<br>
 							</div>

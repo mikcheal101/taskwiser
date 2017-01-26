@@ -340,7 +340,29 @@ class User_model extends CI_Model {
 	public function check_if_transaction_exists($transaction_code = null) {
 		$this->db->where('_transaction_code', $transaction_code);
 		$this->db->where('_status', STATUS_PENDING_PAYMENT);
-		return $this->db->get('orders')->row() ?? false;
+		$data 	= $this->db->get('orders')->row() ?? false;
+
+		if($data && !is_null($data)) {
+			$data->customer 		= $this->db->get_where('customers', ['_id' => $data->_customer])->row();
+			$data->category 		= $this->db->get_where('categories', ['_id' => $data->_category])->row();
+			$data->staff 			= $this->db->get_where('users', ['id' => $data->_assigned_staff])->row();
+		}
+
+		return $data;
+	}
+
+	public function confirm_paid($transaction_code = null) {
+		if(!is_null($transaction_code)) {
+			$data 	= $this->db->get_where('orders', [
+				'_status' => STATUS_PENDING_PAYMENT, 
+				'_transaction_code' => $transaction_code])->row();
+			if(!is_null($data)) {
+				$this->db->update('orders', ['_status' => STATUS_DONE], ['_id' => $data->_id]);
+				$data->customer 	= $this->db->get_where('customers', ['_id' => $data->_customer])->row();
+			}
+			return $data;
+		}
+		return FALSE;
 	}
 
 }

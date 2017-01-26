@@ -105,61 +105,68 @@ class Backend extends CI_Controller {
 		$this->load->view ('admin/footer', $this->data);
 	}
 
-	public function enterCreditCard($transaction_code = "") {
+	public function make_payment($transaction_code = null) {
+		if(is_null($transaction_code)) {
+			show_404();
+			exit();
+		}
 
 		# check if the transaction exists else return 404
 		$exists = $this->user_model->check_if_transaction_exists($transaction_code);
-		if(!$exists) 
+		if(!$exists) {
 			show_404();
+			exit();
+		}
 
 		# fetch the order with the reference code
 		$this->data['title']	= "Payment [Credit Card] - {$exists->_transaction_code}";
-		$this->data['amount']	= (int)$exists->price;
+		$this->data['data']		= $exists;
 
-		$this->form_validation->set_rules('ccnumb', 'Credit Card Number', 'required|trim|min_length[10]');
-		$this->form_validation->set_rules('cvv', 'CVV','required|numeric|trim|max_length[4]|min_length[3]');
-		$this->form_validation->set_rules('pin', 'PIN', 'required|numeric|trim|max_length[6]|min_length[4]');
-		$this->form_validation->set_rules('expiry', 'Expiry Date','required|trim|max_length[5]|min_length[5]');
+		$this->load->view ('admin/header', $this->data);
+		$this->load->view ('admin/plain_header', $this->data);
+		$this->load->view ("backend/payment_page", $this->data);
+		$this->load->view ('admin/footer', $this->data);
 
-		if($this->form_validation->run()) {
-			$date 	= explode('/', $this->input->post('expiry'));
-			$card = [
-			  	"card_no" 		=> $this->input->post('ccnumb'),
-			  	"cvv" 			=> $this->input->post('cvv'),
-				"expiry_month" 	=> (int)trim($date[0]),
-			  	"expiry_year" 	=> (int)trim($date[1]),
-			  	"card_type" 	=> "", //optional parameter. only needed if card was issued by diamond card
-			  	"pin"			=> $this->input->post('pin'),
-			];
-			var_dump($card);
-			$this->flutter_wave->chargeCard((int)$exists->price, $card);
-			
-			exit();
-			unset($_POST);
-			# make payment
-			$this->enterOTP();
-		} else {
-			$this->load->view ('admin/header', $this->data);
-			$this->load->view ('admin/plain_header', $this->data);
-			$this->load->view ("backend/credit_card", $this->data);
-			$this->load->view ('admin/footer', $this->data);
-		}
 	}
 
-	public function enterOTP() {
-		$this->data['title']	= "Payment [One Time Password]";
-
-		$this->form_validation->set_rules('otp', 'OTP','required|trim');
-
-		if($this->form_validation->run()) {
-			
-			var_dump($_POST);
-
+	public function payment_complete($transaction_code = null) {
+		if(is_null($transaction_code)) {
+			show_404();
+			exit();
 		} else {
-			$this->load->view ('admin/header', $this->data);
-			$this->load->view ('admin/plain_header', $this->data);
-			$this->load->view ("backend/enter_otp", $this->data);
-			$this->load->view ('admin/footer', $this->data);
+			$order 	= $this->user_model->confirm_paid($transaction_code);
+			if($order && !is_null($order)) {
+				$msg_ = "<h5 class='text-center'>";
+					$msg_.= "<table class=\"table\" width=\"100%\">";
+						$msg_.= "<tr>";
+							$msg_.= "<td width=\"40%\" class=\"text-right\">";
+								$msg_.= "Order Reference Code:";
+							$msg_.= "</td>";
+							$msg_.= "<td class=\"text-left\" style=\"padding-left: 20px!important;\">";
+								$msg_.= "{$order->_transaction_code}";
+							$msg_.= "</td>";
+						$msg_.= "</tr>";
+						$msg_.= "<tr>";
+							$msg_.= "<td width=\"40%\" class=\"text-right\">";
+								$msg_.= "For user with email address";
+							$msg_.= "</td>";
+							$msg_.= "<td class=\"text-left\" style=\"padding-left: 20px!important;\">";
+								$msg_.= "<a href='mailto:{$order->customer->_email}'>{$order->customer->_email}</a>";
+							$msg_.= "</td>";
+						$msg_.= "</tr>";
+					$msg_.= "</table>";
+				$msg_.= "</h5>";
+						
+				$this->data['message'] = [
+					'header'	=> "Payment Successfull!",
+					'message'	=> $msg_,
+				];
+
+				$this->load->view ('customers/header', $this->data);
+				$this->load->view ('customers/alert', $this->data);
+				$this->load->view ('customers/footer', $this->data);
+
+			} else show_404();
 		}
 	}
 }

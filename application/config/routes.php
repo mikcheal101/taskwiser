@@ -58,8 +58,10 @@ $route['verification/(:any)']				= 'user/verifyCustomer/$1';
 $route['silent_auth/(:num)/(:any)']			= 'user/silentAuth/$1/$2';
 $route['verify_customer/(:num)/(:any)']		= 'user/verifyCustomer/$1/$2';
 
-$route['payment/enter_details/(:any)']		= 'backend/enterCreditCard/$1';
-$route['payment/enter_otp']					= 'backend/enterOTP';
+$route['payment/enter_details/(:any)']		= 'backend/make_payment/$1';
+$route['payment/transaction/(:any)']		= 'backend/payment_complete/$1';
+
+
 $route['customer/registration']				= 'backend/signUp';
 
 $route['backend/']							= 'backend/index';
