@@ -1,0 +1,16 @@
+"settings":
+{
+	"laundry":
+	{
+		"type":"0",
+		"shirts" : "0",
+		"troussers": "0",
+		"suits": "0",
+		"gowns": "",
+		"delivery_date": ""
+	},
+	"":
+	{
+
+	}
+}

@@ -235,19 +235,20 @@ class User extends CI_Controller {
 
 			if ($this->form_validation->run ()) {
 				$valid = $this->user_model->authenticate ();
-
+				
 				if (is_null($valid)) {
 					$this->session->set_flashdata ('authenticate_error', 'Username / Password Mismatch!');
-					redirect('login','refresh');
+
+					goto failed_login;
 				} else {
 					$this->session->set_userdata (['user' => $valid]);
 					redirect('backend/','refresh');
 				}
 			} else {
-				$this->load->view ('admin/header', $this->data);
-				$this->load->view ('admin/plain_header', $this->data);
+				failed_login:
+				$this->load->view ('customers/header', $this->data);
 				$this->load->view ("admin/authenticate", $this->data);
-				$this->load->view ('admin/footer', $this->data);
+				$this->load->view ('customers/footer', $this->data);
 			}
 		}
 	}

@@ -43,6 +43,12 @@
                             <?php ($location === 5) ? '<span class="sr-only">(current)</span>' : '';?>
                         </a>
                     </li>
+                    <li class=" <?= ($location === 6) ? 'active' : '';?>">
+                        <a class="waves-effect waves-light" href="<?=base_url ('admin/prices');?>">
+                            Prices
+                            <?php ($location === 6) ? '<span class="sr-only">(current)</span>' : '';?>
+                        </a>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-expanded="false">
                             <?=$this->session->user->username;?>

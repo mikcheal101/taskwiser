@@ -1,7 +1,29 @@
 angular.module('services', [])
 
-.service('svc', ['Upload', '$q', function (Upload, $q) {
+.service('svc', ['Upload', '$q', 'http', function (Upload, $q, http) 
+{
+	var svc 		= this;
 
+	svc.get_quote	= function(order)
+	{
+		var defer	= $q.defer();
+		var url 	= "/";
+		
+		$http
+			.post(url, order)
+			.then(aData => 
+				{ 
+					defer.resolve(aData.data);
+				})
+			.catch(aError => 
+				{
+					defer.reject(aError);
+				});
+
+		return defer.promise;
+	};
+
+	return svc;
 }])
 
 .service('inputNumberInstance', () => {

@@ -21,23 +21,6 @@ class Admin extends CI_Controller {
         $this->email_templates  = new EmailTemplates($this);
     }
 
-    /*
-    public function getDb() {
-
-        # Constantino99
-        $prefs = [
-            'format'    => 'txt',
-            'filename'  => 'mybackup.sql',
-        ];
-
-        $this->load->dbutil();
-        $backup     = $this->dbutil->backup($prefs);
-        
-        $this->load->helper('download');
-        force_download('mybackup.sql', $backup);
-
-    }
-    */
 
     private function loggedIn() {
         if (is_null($this->session->user))
@@ -49,8 +32,12 @@ class Admin extends CI_Controller {
         redirect('admin/request/' . $id);
     }
 
-    private function assignPrice($id = 0) {
-        echo "assignPrice<br>";
+    public function prices()
+    {
+        $this->loggedIn();
+
+        $this->data['location'] = 6;
+        $this->page('home');
     }
 
     public function signout() {

@@ -1,7 +1,11 @@
 var app = angular.module('controllers', []);
 
-app.controller('cntrl', function ($scope, $rootScope, svc) {
+app.controller('cntrl', ['$scope', '$rootScope', function ($scope, $rootScope) 
+{
 
-	$scope.duration = '0';
+	$scope.get_quote		= function(order)
+	{
+		console.log(order);
+	};
 	
-});
+}]);

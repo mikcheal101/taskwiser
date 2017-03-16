@@ -238,7 +238,10 @@ class User_model extends CI_Model {
 		}
 	}
 
+
 	public function authenticate() {
+
+
 		# check the customers table
 		$this->db->select ('*');
 		$this->db->where ([
@@ -249,6 +252,8 @@ class User_model extends CI_Model {
 		$this->db->limit (1);
 		$auth = $this->db->get ('customers')->row ();
 
+		echo $this->db->last_query();
+		
 		return isset ($auth) ? $auth : null;
 	}
 

@@ -49,6 +49,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
+$route['place_order/laundry']               = "orders/laundry";
+$route['place_order/handy_man']             = "orders/handy_man";
+$route['place_order/moving']               	= "orders/moving";
+$route['place_order/cooking']               = "orders/cooking";
+$route['place_order/events']               	= "orders/events";
+$route['place_order/cleaning']              = "orders/cleaning";
+$route['place_order/delivery']              = "orders/delivery";
+$route['place_order/beauty']               	= "orders/beauty";
+$route['place_order/auto_repairer']         = "orders/auto_repairer";
+$route['place_order/driver']               	= "orders/driver";
+$route['place_order/diesel']               	= "orders/diesel";
+$route['place_order/custom']               	= "orders/custom_tasks";
+
+$route['get/prices']               			= "orders/get_price";
+
+$route['place_order/get_quote']				= "orders/get_quote";
+
 $route['auth/login']						= 'user/login';
 $route['auth/register']						= 'user/register';
 $route['auth/signout']						= 'backend/signout';
