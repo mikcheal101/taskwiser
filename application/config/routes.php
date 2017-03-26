@@ -63,6 +63,12 @@ $route['place_order/driver']               	= "orders/driver";
 $route['place_order/diesel']               	= "orders/diesel";
 $route['place_order/custom']               	= "orders/custom_tasks";
 
+# angular backend service calls
+$route['backend/customers/get_payments']    = "backend/get_payments";
+$route['backend/customers/get_orders']      = "backend/get_orders";
+$route['backend/customers/get_profile']     = "backend/get_profile";
+$route['backend/customers/update_proile']   = "backend/update_proile";
+
 # send post data to this url
 $route['flutter/send_card']					= "orders/angular_send_card";
 

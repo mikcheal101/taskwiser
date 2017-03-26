@@ -58,6 +58,11 @@ class Order_model extends CI_Model
 		return $response;
 	}
 
+	public function get_customer_orders($customer)
+	{
+		$orders = $this->db->get_where("orders", ["_customer" => $customer])->result();
+		return $orders;
+	}
 
 }
 ?>

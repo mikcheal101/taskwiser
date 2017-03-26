@@ -12,7 +12,9 @@ class Backend extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->data['locations'] = $this->user_model->getLocations();
+		$this->data['locations'] 	= $this->user_model->getLocations();
+		$this->data['title']		= "Taskwiser - Backend";
+		$this->data['user']			= $this->session->user;
 	}
 
 	public function index() {
@@ -20,13 +22,27 @@ class Backend extends CI_Controller {
 		$this->loggedIn();
 		$this->data['orders']	= $this->user_model->getMyOrders();
 
+		$this->customer_index();
+	}
+
+	protected function customer_index()
+	{
+		$this->data['title']	= "Taskwiser - Payment(s)";
+		$this->load->view ('updated/backend/header', $this->data);
+		$this->load->view ('updated/backend/user_orders', $this->data);
+		$this->load->view ("updated/backend/footer", $this->data);
+	}
+
+	protected function admin_index()
+	{
 		$this->load->view ('admin/header', $this->data);
 		$this->load->view ('backend/nav', $this->data);
 		$this->load->view ("backend/orders", $this->data);
 		$this->load->view ('admin/footer', $this->data);
 	}
 
-	public function order($id=0) {
+	public function order($id=0)
+	{
 		$this->loggedIn();
 		$order = new stdClass();
 		if($id === 0) show_404();
@@ -43,6 +59,34 @@ class Backend extends CI_Controller {
 				show_404();
 			}
 		}
+	}
+
+	public function get_payments()
+	{
+		$customer 	= $this->session->user->_id;
+		$payments 	= $this->payments_model->get_customer_payments($customer);
+		$this->json_display($payments);
+	}
+
+	public function get_orders()
+	{
+		$customer 	= $this->session->user->_id;
+		$orders 	= $this->order_model->get_customer_orders($customer);
+		$this->json_display($orders);
+	}
+
+	public function get_profile()
+	{
+		$this->json_display($this->session->user);
+	}
+
+	public function update_profile()
+	{
+		$this->json_display($_POST);
+		exit();
+		
+		$result = $this->user_model->customer_update_profile($customer);
+		$this->json_display($result);
 	}
 
 	public function payments() {
@@ -80,7 +124,7 @@ class Backend extends CI_Controller {
 	}
 
 	private function loggedIn () {
-		if (is_null($this->session->user)) 
+		if (is_null($this->session->user))
 			redirect('auth/login','refresh');
 	}
 
@@ -156,7 +200,7 @@ class Backend extends CI_Controller {
 						$msg_.= "</tr>";
 					$msg_.= "</table>";
 				$msg_.= "</h5>";
-						
+
 				$this->data['message'] = [
 					'header'	=> "Payment Successfull!",
 					'message'	=> $msg_,
@@ -168,6 +212,24 @@ class Backend extends CI_Controller {
 
 			} else show_404();
 		}
+	}
+
+
+	private function json_display($data = [])
+	{
+		if(!count($data))
+        {
+            $this->output
+                ->set_status_header(400)
+                ->set_content_type('application/json', 'utf-8')
+                ->set_output(json_encode(array()));
+        }
+        else
+        {
+            $this->output
+                ->set_content_type("application/json", 'utf-8')
+                ->set_output(json_encode($data));
+        }
 	}
 }
 
