@@ -21,7 +21,7 @@ class Flutter_wave {
 	private $token 				= "";
 	private $env				= "";
 
-	private $authModel 			= AuthModel::PIN;
+	private $authModel 			= AuthModel::NOAUTH;
 	private $validateOption 	= Flutterwave::SMS;
 	private $currency			= Currencies::NAIRA;
 	private $country			= Countries::NIGERIA;
@@ -63,9 +63,9 @@ class Flutter_wave {
 		$this->dump([
 				'card' => $this->card,
 				'authModel' => $this->authModel,
-				'validateOption' => $this->validateOption,
-				'bvn' => $this->bvn
+				'validateOption' => $this->validateOption
 			], "tokenize variables");
+		
 		$result = Card::tokenize($this->card, $this->authModel, $this->validateOption, $bvn = "");
 		#$this->dump($result, "tokenize function");
 		return $result;
@@ -86,21 +86,19 @@ class Flutter_wave {
 		$this->bvn 				= $bvn;
 
 		$tokenize 				= $this->tokenize();
-		
-		var_dump($tokenize);
-		exit();
 
 		if($tokenize->isSuccessfulResponse() && $amount  >= 0) {
 			
 			$charge = Card::charge($this->card, $amount, $this->customer_id, $this->currency, 
 				$this->country, $this->authModel, $this->narration, $this->callback_url);
-			echo "before charging<br>";
-			var_dump($charge);
-			echo "<hr>after charging<br>";
 
-			return $charge->isSuccessfulResponse();
+			return [
+				'responseMessage' 	=> $charge->responseMessage(),
+				'isSuccessful'		=> $charge->isSuccessfulResponse(),
+				'responseCode'		=> $charge->responseCode()
+				];
 		}
-		return false;
+		return null;
 	}
 
 	public function validateTransaction($otp = "") {

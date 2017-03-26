@@ -17,7 +17,7 @@ class User_model extends CI_Model {
 
 	public function updateProfile($id) {
 		# save the data
-		
+
 		$city 		= $this->input->post('state');
 		$state 		= $this->db->get_where('locations', ['_id'=>$city])->row();
 		$profile 	= [
@@ -51,7 +51,7 @@ class User_model extends CI_Model {
 		foreach ($categories as $key => $category) {
 			$this->db->select('_question');
 			$parent = $category['_parent'] == NULL ? $category['_id'] : $category['_parent'];
-			
+
 			$result = $this->db->get_where('category_question', ['_category' => $parent])->result();
 			$categories[$key]['questions'] = $result;
 
@@ -80,13 +80,13 @@ class User_model extends CI_Model {
 		$user = [
 			'_username' 			=> $this->input->post('email'),
 			'fullname'				=> $this->input->post('name'),
-			'_email' 				=> $this->input->post('email'), 
+			'_email' 				=> $this->input->post('email'),
 			'_pwd'					=> substr($code, 5, 11),
 			'_verification_code' 	=> substr($code, 12, 25)
 		];
-		
+
 		if($this->db->insert('customers', $user)) {
-			$id = $this->db->insert_id();	
+			$id = $this->db->insert_id();
 			# send email to the customer
 			return $this->db->get_where('customers', ['_id' => $id])->row();
 		}
@@ -97,10 +97,10 @@ class User_model extends CI_Model {
 	public function saveCustomer() {
 		$pwd 					= $this->input->post('pwd');
 		$customer 				= [
-				'_username' 	=> $this->input->post('email'),  
+				'_username' 	=> $this->input->post('email'),
 				'_email'		=> $this->input->post('email'),
 				'_tel'			=> $this->input->post('tel'),
-				'_pwd'			=> $pwd, 
+				'_pwd'			=> $pwd,
 				'fullname'		=> $this->input->post('fullname'),
 				'_verification_code' => substr(md5($pwd), 12, 25)
 			];
@@ -117,12 +117,12 @@ class User_model extends CI_Model {
 		$time = null;
 		$string_builder 	= "";
 		echo $date;
-		if (is_null($date)) 
+		if (is_null($date))
 			$date 	= date('d.m.y');
 		if(is_null($time))
 			$time 	= date('G:i a');
 
-		
+
 		$date 	= DateTime::createFromFormat('j.m.y', $date);
 		$date 	= $date->format('Y-m-d');
 
@@ -130,15 +130,15 @@ class User_model extends CI_Model {
 		$time 	= $time->format('H:i:s a');
 
 		$x		= "{$date} {$time}";
-		$x		= DateTime::createFromFormat('Y-m-d H:i:s a', $x); 
+		$x		= DateTime::createFromFormat('Y-m-d H:i:s a', $x);
 		$string_builder = $x->format('Y-m-d H:i:s');
-		return $string_builder;	
+		return $string_builder;
 	}
 
 	public function place_order($params) {
-		
+
 		$time_date 	= $this->sort_time($this->input->post('date'), $this->input->post('time'));
-		
+
 		$order = [
 			'_category' 		=> $params['category'],
 			'_customer'			=> $params['customer'],
@@ -195,7 +195,7 @@ class User_model extends CI_Model {
 
 	private function _padHex ($hex = 0, $position = 2) {
 		$base 	= pow(2, $position);
-		
+
 		$div_m 	= (int) floor(strlen($hex) / $base);
 		$div 	= $div_m === 0;
 
@@ -205,7 +205,7 @@ class User_model extends CI_Model {
 		$next 	= $div && $rem && (int)$rem > 0;
 		$count 	= 0;
 
-		if($next) $count = $this->padHex($hex, ($position + 1));  
+		if($next) $count = $this->padHex($hex, ($position + 1));
 		else $count = $rem_m;
 
 		return $count;
@@ -224,12 +224,12 @@ class User_model extends CI_Model {
 		} else {
 			# verify and send true
 			$this->sendUserDetails($customer->_pwd);
-			$this->db->update('customers', 
+			$this->db->update('customers',
 				[
-					'_status' => 1, 
-					'_pwd' => md5($customer->_pwd), 
+					'_status' => 1,
+					'_pwd' => md5($customer->_pwd),
 					'_verification_code' => null
-				], 
+				],
 				[
 					'_verification_code' => $customer->_verification_code
 				]
@@ -240,8 +240,6 @@ class User_model extends CI_Model {
 
 
 	public function authenticate() {
-
-
 		# check the customers table
 		$this->db->select ('*');
 		$this->db->where ([
@@ -251,9 +249,6 @@ class User_model extends CI_Model {
 		]);
 		$this->db->limit (1);
 		$auth = $this->db->get ('customers')->row ();
-
-		echo $this->db->last_query();
-		
 		return isset ($auth) ? $auth : null;
 	}
 
@@ -266,11 +261,11 @@ class User_model extends CI_Model {
 		$orders = $this->db->get_where('orders', ['_customer' => $this->session->user->_id])->result();
 		foreach($orders as $order) {
 			$order->category 	= $this->getCategory($order->_category);
-			$order->status 		= $this->db->get_where('request_status', ['_id'=>$order->_status])->row(); 
+			$order->status 		= $this->db->get_where('request_status', ['_id'=>$order->_status])->row();
 
 			$order->customer 	= $this->db->get_where('customers', ['_id' => $order->_customer])->row();
 			$order->task 		= $this->db->get_where('categories', ['_id' => $order->_category])->row();
-		
+
 		}
 		return $orders;
 	}
@@ -329,15 +324,15 @@ class User_model extends CI_Model {
 			}
 
 			if(!is_null($data->_assigned_staff)) {
-				$data->staff 	= $this->db->get_where('users', ['id' => $data->_assigned_staff])->row();	
+				$data->staff 	= $this->db->get_where('users', ['id' => $data->_assigned_staff])->row();
 			} else $data->staff 	= null;
-			
+
 		}
 		return $data;
 	}
 
 	public function silentAuth($id = null, $verification_code = null) {
-		$user = $this->db->get_where('customers', 
+		$user = $this->db->get_where('customers',
 			['_id' => $id, '_verification_code' => $verification_code])->row();
 		return $user;
 	}
@@ -359,7 +354,7 @@ class User_model extends CI_Model {
 	public function confirm_paid($transaction_code = null) {
 		if(!is_null($transaction_code)) {
 			$data 	= $this->db->get_where('orders', [
-				'_status' => STATUS_PENDING_PAYMENT, 
+				'_status' => STATUS_PENDING_PAYMENT,
 				'_transaction_code' => $transaction_code])->row();
 			if(!is_null($data)) {
 				$this->db->update('orders', ['_status' => STATUS_DONE], ['_id' => $data->_id]);

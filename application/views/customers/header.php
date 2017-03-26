@@ -6,13 +6,15 @@
 	<?=meta ('description', '');?>
 	<?=meta ('keywords', '');?>
 	<?=meta ('Content-Type', 'text/html; charset=UTF-8');?>
-	
+
+	<?=link_tag ("assets/imgs/logo.png", "icon", "image/png");?>
+
 	<?=link_tag ('assets/css/bootstrap.min.css');?>
 	<?=link_tag ('assets/last_design/final.css');?>
-	
-	
+
+
 	<title>taskwiser.com</title>
-	
+
 </head>
 <body ng-app="app">
 	<div id="Layer1" style="position:relative;text-align:left;margin:0px 0px 0px 0px;width:100%;height:68px;float:left;clear:left;display:block;z-index:50;">
@@ -22,12 +24,12 @@
 
 		<div id="wb_Shape2" style="position:absolute;left:1071px;top:13px;width:167px;height:38px;z-index:1;">
 			<a href="<?=base_url('/#Layer4');?>">
-				<img src="<?=base_url('assets/last_design/images/img0005.png');?>" id="Shape2" alt="" 
+				<img src="<?=base_url('assets/last_design/images/img0005.png');?>" id="Shape2" alt=""
 				style="width:167px;height:38px;">
 			</a>
 		</div>
 		<div id="wb_Text23" style="position:absolute;left:1101px;top:24px;width:114px;height:17px;z-index:2;text-align:left;">
-			<a href="<?=base_url('/#Layer4');?>" style="color:#4169E1;font-family:'Microsoft JhengHei';font-size:13px;"> 
+			<a href="<?=base_url('/#Layer4');?>" style="color:#4169E1;font-family:'Microsoft JhengHei';font-size:13px;">
 				book a task now
 			</a>
 		</div>

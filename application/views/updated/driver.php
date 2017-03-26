@@ -1,6 +1,6 @@
 <?=link_tag ('assets/last_design/_beauty.css');?>
 
-<div ng-controller="driverController" ng-init="getPrice();">
+<div ng-controller="driverController" ng-init="getPrice('<?=base_url();?>');">
 
 	<div id="Layer2" style="position:relative;text-align:center;margin:0px 0px 0px 0px;width:100%;height:998px;float:left;clear:left;display:block;z-index:56;">
 		<div id="Layer2_Container" style="width:1237px;height:998px;position:relative;margin-left:auto;margin-right:auto;margin-top:auto;margin-bottom:auto;text-align:left;">
@@ -128,7 +128,7 @@
 						</select>
 
 						<select name="duration" ng-model="order.duration" size="1" id="Combobox7" style="position:absolute;left:17px;top:271px;width:320px;height:35px;z-index:20;">
-							<option value="one year">One Day</option>
+							<option value="one day">One Day</option>
 							<option value="one week">One Week</option>
 							<option value="one month">One Month</option>
 							<option value="less than a day">Less than a day</option>
@@ -139,11 +139,8 @@
 
 					<div ng-if="form.$valid" style="visibility: hidden;" ng-style="{visibility: (form.$valid) ? 'visible':'hidden'}">
 
-						<button id="Button1" name="send" style="position:absolute;left:17px;top:600px;width:312px;height:47px;z-index:18;" 
+						<button id="Button1" name="send" style="position:absolute;left:17px;top:600px;width:312px;height:47px;z-index:18;"
 						ng-hide="quote_gotten" ng-click="get_quote();">Prepare Quote</button>
-
-						<button ng-show="quote_gotten" id="Button1" name="pay" style="position:absolute;left:17px;top:600px;width:312px;height:47px;z-index:18;" 
-						ng-click="make_payment();">Pay # {{ total_price }}</button>
 
 						<div ng-show="quote_gotten" style="padding: 20px 20px;">
 							<table width="100%">
@@ -169,6 +166,10 @@
 								</tr>
 							</table>
 
+							<button ng-show="quote_gotten" id="Button1" name="pay" style="position:absolute;left:17px;top:600px;width:312px;height:47px;z-index:18;"
+								ng-click="make_payment();">PAY NOW</button>
+
+							<script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 						</div>
 					</div>
 

@@ -154,7 +154,7 @@
 			</a>
 		</div>
 		<div id="wb_Image6" style="position:absolute;left:525px;top:357px;width:46px;height:62px;z-index:27;">
-			<a href="<?=base_url('place_order/auto_repairer');?>">
+			<a href="#">
 				<img src="<?=base_url('assets/last_design/images/');?>auto.png" id="Image6" alt="">
 			</a>
 		</div>

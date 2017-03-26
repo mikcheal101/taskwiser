@@ -1,8 +1,11 @@
 'use strict';
 
-app.controller('dieselController', ["$scope", "$rootScope", "dieselService", function($scope, $rootScope, dieselService) 
+app.controller('dieselController', ["$scope", "$rootScope", "dieselService", "generalService",
+function($scope, $rootScope, dieselService, generalService)
 {
-	$scope.today 		= new Date();
+	$scope.today 			= new Date();
+	$scope.payment 			= {};
+	$scope.payment.ref		= Date.now();
 
 	$scope.order 		= {
 		hour 		: ($scope.today.getHours() % 12).toString(),
@@ -11,48 +14,69 @@ app.controller('dieselController', ["$scope", "$rootScope", "dieselService", fun
 		period		: "am",
 		day 		: $scope.today.getDate().toString(),
 		month		: ($scope.today.getMonth() + 1).toString(),
-		mobile		: "090204647371",
-		name		: "Sampel name",
-		email		: "email@somebody.com",
-		address		: "address",
-		details		: "details",
-		liters		: "0"
+		mobile		: "",
+		name		: "",
+		email		: "",
+		address		: "",
+		details		: "",
+		liters		: "120"
 	};
 
 	$scope.total_price	= 0;
-	$scope.price 		= 1;
+	$scope.price 		= {price: 1};
 	$scope.quote_gotten	= false;
 
 	$scope.get_quote	= function()
 	{
-
-		console.log($scope.order.liters);
+		$scope.order.liters = parseInt($scope.order.liters);
+		$scope.order.liters	= $scope.order.liters < 120 ? 120 : $scope.order.liters;
 
 		$scope.total_price = parseInt($scope.order.liters);
+		$scope.total_price	*= parseInt($scope.price._items_prices.price);
 
-		console.log($scope.total_price);
-
-		$scope.total_price	*= parseInt($scope.price);
-
+		$scope.total_price+= parseInt($scope.price._service_charge);
 		$scope.quote_gotten	= true;
-		/*
-		laundryService.getQuote({type: $scope.order.type, quantity: total_quantity}).then(aData => {
-			console.log(aData);
-		}).catch(aError => {
-			console.error(aError);
-		});
-		*/
 	};
 
 	$scope.make_payment		= function()
 	{
-		$scope.quote_gotten	= false;
-	}
+		getpaidSetup({
+			customer_email:$scope.order.email,
+			amount:$scope.total_price,
+			txref:"takswiser-checkout-"+$scope.payment.ref,
+			PBFPubKey:"FLWPUBK-2f795247c95bf48649774efd60374a88-X",
+			custom_logo: "//taskwiser.ravepay.co/files/paybutton-images/ee6ab4cb27007f2312ef62f8d97c88ed.png",
+			custom_title: "Taskwiser Checkout",
+			onclose:function()
+			{
+				$scope.payment.close();
+			},
+			callback:function(d)
+			{
+				$scope.payment.callback(d);
+			}
+		});
+	};
 
-
-	$scope.getPrice			= function()
+	$scope.payment.callback		= function(response)
 	{
-		// get the price for a laundry item then base it on price
-		$scope.price = 410;
+		// send the data or response to the server
+		console.log(response);
+	};
+
+	$scope.payment.close		= function()
+	{
+		console.log("payment cancelled");
+	};
+
+	$scope.getPrice			= function(base_url)
+	{
+		generalService
+			.fetch_quote("diesel", base_url)
+			.then((aResponse) => {
+				console.log(aResponse);
+				angular.copy(aResponse, $scope.price);
+			})
+			.catch((aErr) => console.error(aErr));
 	}
 }]);

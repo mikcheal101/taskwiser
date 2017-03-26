@@ -1,8 +1,11 @@
 'use strict';
 
-app.controller('cookingController', ["$scope", "$rootScope", "cookingService", function($scope, $rootScope, cookingService) 
+app.controller('cookingController', ["$scope", "$rootScope", "cookingService", "generalService",
+function($scope, $rootScope, cookingService, generalService)
 {
-	$scope.today 		= new Date();
+	$scope.today 			= new Date();
+	$scope.payment 			= {};
+	$scope.payment.ref		= Date.now();
 
 	$scope.order 		= {
 		hour 		: ($scope.today.getHours() % 12).toString(),
@@ -11,57 +14,66 @@ app.controller('cookingController', ["$scope", "$rootScope", "cookingService", f
 		period		: "am",
 		day 		: $scope.today.getDate().toString(),
 		month		: ($scope.today.getMonth() + 1).toString(),
-		mobile		: "09020374848",
-		name		: "full name",
-		email		: "samples@mail.com",
-		address		: "my address",
+		mobile		: "",
+		name		: "",
+		email		: "",
+		address		: "",
 		type		: "local",
-		details		: "my details",
-		boxes		: "0"
+		details		: "",
+		servings	: "1"
 	};
 
-	$scope.total_price	= 0;
-	$scope.prices 		= [];
-	$scope.quote_gotten	= false;
+	$scope.total_price			= 0;
+	$scope.prices 				= [];
+	$scope.quote_gotten			= false;
+
+	$scope.payment.callback		= function(response)
+	{
+		// send the data or response to the server
+		console.log(response);
+	};
+
+	$scope.payment.close		= function()
+	{
+		console.log("payment cancelled");
+	}
 
 	$scope.get_quote	= function()
 	{
-
-		console.log($scope.order.type);
-		console.log($scope.prices[$scope.order.type]);
-
-		$scope.total_price = parseInt($scope.prices[$scope.order.type]);
-
-		console.log( $scope.total_price);
+		$scope.total_price = parseInt($scope.prices._items_prices[$scope.order.type]);
+		$scope.total_price*= parseInt($scope.order.servings);
+		$scope.total_price+= parseInt($scope.prices._service_charge);
 
 		$scope.quote_gotten	= true;
-		/*
-		laundryService.getQuote({type: $scope.order.type, quantity: total_quantity}).then(aData => {
-			console.log(aData);
-		}).catch(aError => {
-			console.error(aError);
-		});
-		*/
 	};
 
 	$scope.make_payment		= function()
 	{
-		$scope.quote_gotten	= false;
-	}
-
-
-	$scope.getPrice			= function()
-	{
-		var prices 				= [];
-		prices["continental"]	= 100;
-		prices["local"]			= 30;
-
-		// get the price for a laundry item then base it on price
-		$scope.prices = prices;
-	}
-
-	$scope.getAmount		= function(item){
-		item = parseInt(item);
-		return item < 0 ? 0 : item;
+		getpaidSetup({
+			customer_email:$scope.order.email,
+			amount:$scope.total_price,
+			txref:"takswiser-checkout-"+$scope.payment.ref,
+			PBFPubKey:"FLWPUBK-2f795247c95bf48649774efd60374a88-X",
+			custom_logo: "//taskwiser.ravepay.co/files/paybutton-images/ee6ab4cb27007f2312ef62f8d97c88ed.png",
+			custom_title: "Taskwiser Checkout",
+			onclose:function()
+			{
+				$scope.payment.close();
+			},
+			callback:function(d)
+			{
+				$scope.payment.callback(d);
+			}
+		});
 	};
+
+	$scope.getPrice			= function(base_url)
+	{
+		generalService
+			.fetch_quote("cooking", base_url)
+			.then((aResponse) => {
+				angular.copy(aResponse, $scope.prices);
+			})
+			.catch((aErr) => console.error(aErr));
+	}
 }]);

@@ -1,6 +1,6 @@
 <?=link_tag ('assets/last_design/_events.css');?>
 
-<div ng-controller="eventsController" ng-init="getPrice();">
+<div ng-controller="eventsController" ng-init="getPrice('<?=base_url();?>');">
 	<div id="Layer2" style="position:relative;text-align:center;margin:0px 0px 0px 0px;width:100%;height:998px;float:left;clear:left;display:block;z-index:60;">
 		<div id="Layer2_Container" style="width:1237px;height:998px;position:relative;margin-left:auto;margin-right:auto;margin-top:auto;margin-bottom:auto;text-align:left;">
 			<div id="wb_Image3" style="position:absolute;left:292px;top:41px;width:199px;height:263px;z-index:25;">
@@ -28,12 +28,11 @@
 						<input type="text" id="Editbox1" style="position:absolute;left:16px;top:146px;width:298px;height:25px;line-height:18px;z-index:8;" name="name" required ng-model="order.name" placeholder="enter full name">
 						<input type="text" id="Editbox2" style="position:absolute;left:16px;top:179px;width:298px;height:25px;line-height:18px;z-index:9;" name="email" required ng-model="order.email" placeholder="enter email address">
 						<input type="text" id="Editbox3" style="position:absolute;left:16px;top:212px;width:298px;height:25px;line-height:18px;z-index:10;" name="mobile" required ng-model="order.mobile" placeholder="enter mobile number">
-
-						
-
-						<textarea name="TextArea1" id="TextArea1" style="position:absolute;left:16px;top:434px;width:298px;height:90px;z-index:11;" rows="4" cols="47" placeholder="Address" ng-model="order.address" required>
+						<textarea name="TextArea1" id="TextArea1" style="position:absolute;left:16px;top:434px;width:298px;height:90px;z-index:11;" rows="4" cols="47"
+							placeholder="Address" ng-model="order.address" required>
 						</textarea>
-						<textarea name="TextArea2" id="TextArea2" style="position:absolute;left:16px;top:543px;width:298px;height:90px;z-index:12;" rows="4" cols="47" ng-model="order.details" placeholder="Please describe the job in details">
+						<textarea name="TextArea2" id="TextArea2" style="position:absolute;left:16px;top:543px;width:298px;height:90px;z-index:12;" rows="4" cols="47" ng-model="order.details"
+							placeholder="Please describe the job in details" required>
 						</textarea>
 
 						<div id="wb_Text3" style="position:absolute;left:21px;top:26px;width:294px;height:16px;z-index:14;text-align:left;">
@@ -134,11 +133,8 @@
 
 					<div ng-if="form.$valid" style="visibility: hidden;" ng-style="{visibility: (form.$valid) ? 'visible':'hidden'}">
 
-						<button id="Button1" name="send" style="position:absolute;left:16px;top:665px;width:310px;height:47px;z-index:15;" 
+						<button id="Button1" name="send" style="position:absolute;left:16px;top:665px;width:310px;height:47px;z-index:15;"
 						ng-hide="quote_gotten" ng-click="get_quote();">Prepare Quote</button>
-
-						<button ng-show="quote_gotten" id="Button1" name="pay" style="position:absolute;left:16px;top:665px;width:310px;height:47px;z-index:15;" 
-						ng-click="make_payment();">Pay # {{ total_price }}</button>
 
 						<div ng-show="quote_gotten" style="padding: 20px 20px;">
 							<table width="100%">
@@ -168,11 +164,16 @@
 								</tr>
 							</table>
 
+							<button ng-show="quote_gotten" id="Button1" name="pay" style="position:absolute;left:16px;top:665px;width:310px;height:47px;z-index:15;"
+								ng-click="make_payment();">PAY NOW</button>
+
+							<script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+
 						</div>
 					</div>
-					
-					
-					
+
+
+
 				</form>
 			</div>
 			<div id="wb_Image2" style="position:absolute;left:288px;top:365px;width:206px;height:206px;z-index:28;">

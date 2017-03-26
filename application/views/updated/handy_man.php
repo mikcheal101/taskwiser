@@ -1,6 +1,6 @@
 <?=link_tag ('assets/last_design/_handyman.css');?>
 
-<div ng-controller="handymanController" ng-init="getPrice();">
+<div ng-controller="handymanController" ng-init="getPrice('<?=base_url();?>');">
 	<div id="Layer2" style="position:relative;text-align:center;margin:0px 0px 0px 0px;width:100%;height:998px;float:left;clear:left;display:block;z-index:76;">
 		<div id="Layer2_Container" style="width:1237px;height:998px;position:relative;margin-left:auto;margin-right:auto;margin-top:auto;margin-bottom:auto;text-align:left;">
 			<div id="wb_Image3" style="position:absolute;left:266px;top:40px;width:199px;height:263px;z-index:33;">
@@ -11,7 +11,7 @@
 					<strong> Handy Man</strong>
 				</span>
 			</div>
-			
+
 			<div id="wb_Form1" style="position:absolute;left:495px;top:54px;width:357px;height:758px;z-index:35;">
 				<form name="form" method="post" id="Form1" novalidate>
 					<div ng-hide="quote_gotten">
@@ -22,15 +22,15 @@
 						<input type="radio" ng-model="order.type" name="type" value="tailor" style="position:absolute;left:158px;top:137px;z-index:7;">
 
 						<label for="Label2" id="Label4" style="position:absolute;left:15px;top:182px;width:121px;height:18px;line-height:18px;z-index:22;"> Generator repairs</label>
-						<input type="radio" ng-model="order.type" name="type" value="gen_repairs" style="position:absolute;left:158px;top:185px;z-index:24;">	
+						<input type="radio" ng-model="order.type" name="type" value="gen_repairs" style="position:absolute;left:158px;top:185px;z-index:24;">
 
 						<label for="Label1" id="Label3" style="position:absolute;left:15px;top:158px;width:225px;height:18px;line-height:18px;z-index:21;"> Air Conditioner repairs</label>
-						<input type="radio" name="type" ng-model="order.type" value="air_conditioner_repairs" 
+						<input type="radio" name="type" ng-model="order.type" value="air_conditioner_repairs"
 						style="position:absolute;left:158px;top:163px;z-index:23;">
 
 						<label for="Label2" id="Label6" style="position:absolute;left:15px;top:229px;width:110px;height:18px;line-height:18px;z-index:26;"> Painter</label>
 						<input type="radio" name="type" ng-model="order.type" value="painter" style="position:absolute;left:158px;top:210px;z-index:27;">
-						
+
 						<label for="Label1" id="Label7" style="position:absolute;left:15px;top:61px;width:75px;height:18px;line-height:18px;z-index:29;"> Electrician</label>
 						<input type="radio" name="type" ng-model="order.type" value="electrician" style="position:absolute;left:158px;top:66px;z-index:31;">
 
@@ -42,27 +42,28 @@
 
 
 						<input type="text" id="Editbox2" ng-model="order.email"
-						style="position:absolute;left:17px;top:293px;width:312px;height:25px;line-height:25px;z-index:9;" placeholder="enter email address">
+						style="position:absolute;left:17px;top:293px;width:312px;height:25px;line-height:25px;z-index:9;" placeholder="enter email address" required>
 
 						<input type="text" id="Editbox3" ng-model="order.mobile"
-						style="position:absolute;left:18px;top:326px;width:311px;height:25px;line-height:25px;z-index:10;" placeholder="enter mobile number">
+						style="position:absolute;left:18px;top:326px;width:311px;height:25px;line-height:25px;z-index:10;" placeholder="enter mobile number" required>
 
-						<input type="text" id="Editbox1" ng-model="order.name" 
-						style="position:absolute;left:17px;top:260px;width:312px;height:25px;line-height:25px;z-index:8;" placeholder="enter full name">
+						<input type="text" id="Editbox1" ng-model="order.name"
+						style="position:absolute;left:17px;top:260px;width:312px;height:25px;line-height:25px;z-index:8;" placeholder="enter full name" required>
 
 
-						<textarea name="TextArea1" id="TextArea1" ng-model="order.address" style="position:absolute;left:16px;top:355px;width:311px;height:79px;z-index:11;" rows="4" cols="49" placeholder="Address">
+						<textarea name="TextArea1" id="TextArea1" ng-model="order.address" style="position:absolute;left:16px;top:355px;width:311px;height:79px;z-index:11;"
+							rows="4" cols="49" placeholder="Address" required>
 						</textarea>
 
-						<textarea name="TextArea2" id="TextArea2"  ng-model="order.details" 
-						style="position:absolute;left:18px;top:520px;width:309px;height:90px;z-index:12;" rows="4" cols="49" placeholder="Please describe the job in details">
+						<textarea name="TextArea2" id="TextArea2"  ng-model="order.details"
+						style="position:absolute;left:18px;top:520px;width:309px;height:90px;z-index:12;" rows="4" cols="49" placeholder="Please describe the job in details" required>
 						</textarea>
 
 						<div id="wb_Text3" style="position:absolute;left:20px;top:29px;width:317px;height:32px;z-index:14;text-align:left;">
 							<span style="color:#696969;font-family:Arial;font-size:13px;">Please select the type of Handy Man service you want</span>
 						</div>
 
-						<select name="month" size="1" id="Combobox1" required style="position:absolute;left:19px;top:440px;width:140px;height:35px;z-index:23;" ng-model="order.month">
+						<select name="month" size="1" id="Combobox1" required style="position:absolute;left:19px;top:440px;width:140px;height:35px;z-index:23;" ng-model="order.month" required>
 							<option value="1">January</option>
 							<option value="2">February</option>
 							<option value="3">March</option>
@@ -77,7 +78,7 @@
 							<option value="12">December</option>
 						</select>
 
-						<select name="hour" size="1" id="Combobox4" required style="position:absolute;left:19px;top:480px;width:140px;height:35px;z-index:24;" ng-model="order.hour">
+						<select name="hour" size="1" id="Combobox4" required style="position:absolute;left:19px;top:480px;width:140px;height:35px;z-index:24;" ng-model="order.hour" required>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -90,10 +91,10 @@
 							<option value="10">10</option>
 							<option value="11">11</option>
 							<option value="12">12</option>
-							
+
 						</select>
 
-						<select name="day" size="1" id="Combobox2" required style="position:absolute;left:164px;top:440px;width:79px;height:35px;z-index:25;" ng-model="order.day">
+						<select name="day" size="1" id="Combobox2" required style="position:absolute;left:164px;top:440px;width:79px;height:35px;z-index:25;" ng-model="order.day" required>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -129,14 +130,14 @@
 							<option value="31">31</option>
 						</select>
 
-						<select name="minute" size="1" id="Combobox5" required style="position:absolute;left:164px;top:480px;width:79px;height:35px;z-index:26;" ng-model="order.minute">
+						<select name="minute" size="1" id="Combobox5" required style="position:absolute;left:164px;top:480px;width:79px;height:35px;z-index:26;" ng-model="order.minute" required>
 							<option value="00" ng-selected="true">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
 							<option value="45">45</option>
 						</select>
 
-						<select name="year" size="1" id="Combobox3" required style="position:absolute;left:247px;top:440px;width:80px;height:35px;z-index:27;" ng-model="order.year">
+						<select name="year" size="1" id="Combobox3" required style="position:absolute;left:247px;top:440px;width:80px;height:35px;z-index:27;" ng-model="order.year" required>
 							<option value="2017">2017</option>
 							<option value="2018">2018</option>
 							<option value="2019">2019</option>
@@ -144,20 +145,41 @@
 							<option value="2021">2021</option>
 						</select>
 
-						<select name="period" size="1" id="Combobox6" required style="position:absolute;left:248px;top:480px;width:80px;height:35px;z-index:28;" ng-model="order.period">
+						<select name="period" size="1" id="Combobox6" required style="position:absolute;left:248px;top:480px;width:80px;height:35px;z-index:28;" ng-model="order.period" required>
 							<option ng-selected="true">am</option>
-							<option value="">pm</option>
+							<option value="pm">pm</option>
 						</select>
 					</div>
 
-					<div ng-if="form.$valid" ng-style="{visibility: (form.$valid) ? 'visible':'hidden'}">
+					<div ng-if="form.$valid" style="visibility:hidden" ng-style="{visibility: (form.$valid) ? 'visible':'hidden'}">
 
-						<button id="Button1" name="send" style="position:absolute;left:18px;top:686px;width:319px;height:47px;z-index:13;" 
+						<button id="Button1" name="send" style="position:absolute;left:18px;top:686px;width:319px;height:47px;z-index:13;"
 							ng-hide="quote_gotten" ng-click="get_quote();">Prepare Quote</button>
 
 						<div ng-show="quote_gotten" style="padding: 20px 20px;">
-							<button id="Button1" name="pay" style="position:absolute;left:18px;top:686px;width:319px;height:47px;z-index:13;" 
-							ng-click="make_payment();">Pay # {{ total_price }}</button>
+							<table width="100%">
+								<tr height="40px">
+									<th>Option</th>
+									<td>{{ order.type }}</td>
+								</tr>
+								<tr height="40px">
+									<th>Fullname</th>
+									<td>{{ order.name }}</td>
+								</tr>
+								<tr height="40px">
+									<th>Email Address</th>
+									<td>{{ order.email }}</td>
+								</tr>
+								<tr height="40px">
+									<th>Mobile Number</th>
+									<td>{{ order.mobile }}</td>
+								</tr>
+							</table>
+
+							<button id="Button1" name="pay" style="position:absolute;left:18px;top:686px;width:319px;height:47px;z-index:13;"
+							ng-click="make_payment();">PAY NOW</button>
+
+							<script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 						</div>
 					</div>
 
@@ -167,5 +189,5 @@
 				<img src="<?=base_url('assets/last_design/images/');?>toolbox_copy.png" id="Image2" alt="">
 			</div>
 		</div>
-	</div>	
+	</div>
 </div>

@@ -1,8 +1,11 @@
 'use strict';
 
-app.controller('driverController', ["$scope", "$rootScope", "driverService", function($scope, $rootScope, driverService) 
+app.controller('driverController', ["$scope", "$rootScope", "driverService", "generalService",
+function($scope, $rootScope, driverService, generalService)
 {
-	$scope.today 		= new Date();
+	$scope.today 			= new Date();
+	$scope.payment 			= {};
+	$scope.payment.ref		= Date.now();
 
 	$scope.order 		= {
 		hour 		: ($scope.today.getHours() % 12).toString(),
@@ -23,57 +26,59 @@ app.controller('driverController', ["$scope", "$rootScope", "driverService", fun
 	$scope.total_price	= 0;
 	$scope.prices 		= [];
 	$scope.durations	= [];
+	$scope.service_charge=0;
 	$scope.quote_gotten	= false;
 
 	$scope.get_quote	= function()
 	{
-
-		console.log($scope.order.type);
-		console.log($scope.prices[$scope.order.type]);
-
 		$scope.total_price = parseInt($scope.prices[$scope.order.type]);
-
-		console.log($scope.total_price);
-
-
-		console.log($scope.order.duration);
-		console.log($scope.durations[$scope.order.duration]);
-
 		$scope.total_price *= parseInt($scope.durations[$scope.order.duration]);
-
-		console.log($scope.total_price);
+		$scope.total_price+= parseInt($scope.service_charge);
 
 		$scope.quote_gotten	= true;
-		/*
-		laundryService.getQuote({type: $scope.order.type, quantity: total_quantity}).then(aData => {
-			console.log(aData);
-		}).catch(aError => {
-			console.error(aError);
-		});
-		*/
 	};
 
 	$scope.make_payment		= function()
 	{
-		$scope.quote_gotten	= false;
+		getpaidSetup({
+			customer_email:$scope.order.email,
+			amount:$scope.total_price,
+			txref:"takswiser-checkout-"+$scope.payment.ref,
+			PBFPubKey:"FLWPUBK-2f795247c95bf48649774efd60374a88-X",
+			custom_logo: "//taskwiser.ravepay.co/files/paybutton-images/ee6ab4cb27007f2312ef62f8d97c88ed.png",
+			custom_title: "Taskwiser Checkout",
+			onclose:function()
+			{
+				$scope.payment.close();
+			},
+			callback:function(d)
+			{
+				$scope.payment.callback(d);
+			}
+		});
 	};
 
-
-	$scope.getPrice			= function()
+	$scope.payment.callback		= function(response)
 	{
-		var prices 					= [];
-		prices["small car"]			= 100;
-		prices["big car"]			= 30;
+		// send the data or response to the server
+		console.log(response);
+	};
 
-		var durations					= [];
-		durations["one year"]			= 1001;
-		durations["one week"]			= 1002;
-		durations["one month"]			= 1003;
-		durations["less than a day"]	= 1104;
+	$scope.payment.close		= function()
+	{
+		console.log("payment cancelled");
+	};
 
-		// get the price for a laundry item then base it on price
-		$scope.prices 		= prices;
-
-		$scope.durations	= durations;
+	$scope.getPrice			= function(base_url)
+	{
+		generalService
+			.fetch_quote("driver", base_url)
+			.then((aResponse) => {
+				console.log(aResponse);
+				angular.copy(aResponse._items_prices.prices, $scope.prices);
+				angular.copy(aResponse._items_prices.durations, $scope.durations);
+				angular.copy(aResponse._service_charge, $scope.service_charge);
+			})
+			.catch((aErr) => console.error(aErr));
 	};
 }]);

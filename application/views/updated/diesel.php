@@ -1,7 +1,7 @@
 <?=link_tag ('assets/last_design/_diesel.css');?>
 
-<div ng-controller="dieselController" ng-init="getPrice();">
-	
+<div ng-controller="dieselController" ng-init="getPrice('<?=base_url();?>');">
+
 	<div id="Layer2" style="position:relative;text-align:center;margin:0px 0px 0px 0px;width:100%;height:998px;float:left;clear:left;display:block;z-index:48;">
 		<div id="Layer2_Container" style="width:1237px;height:998px;position:relative;margin-left:auto;margin-right:auto;margin-top:auto;margin-bottom:auto;text-align:left;">
 			<div id="wb_Image3" style="position:absolute;left:292px;top:41px;width:199px;height:263px;z-index:19;">
@@ -26,13 +26,13 @@
 
 						<label for="" id="Label6" style="position:absolute;left:16px;top:162px;width:75px;height:18px;line-height:18px;z-index:7;"> Litres</label>
 						<input type="text" id="Editbox4" style="position:absolute;left:18px;top:187px;width:317px;height:25px;line-height:18px;z-index:8;" name="Editbox4" required ng-model="order.liters">
-						
+
 						<textarea name="TextArea1" id="TextArea1" style="position:absolute;left:16px;top:305px;width:318px;height:90px;z-index:9;" rows="4" cols="50" required ng-model="order.address" placeholder="Address" >
 						</textarea>
-						
+
 						<textarea name="TextArea2" id="TextArea2" style="position:absolute;left:18px;top:409px;width:316px;height:90px;z-index:10;" rows="4" cols="50" required ng-model="order.details" placeholder="Please describe the job in details">
 						</textarea>
-						
+
 						<select name="month" ng-model="order.month" size="1" id="Combobox1" style="position:absolute;left:18px;top:225px;width:152px;height:35px;z-index:12;">
 							<option value="1">January</option>
 							<option value="2">February</option>
@@ -84,7 +84,7 @@
 							<option value="31">31</option>
 						</select>
 
-						<select name="year" ng-model="order.year" size="1" id="Combobox3" style="position:absolute;left:257px;top:225px;width:88px;height:35px;z-index:16;">
+						<select name="year" ng-model="order.year" size="1" id="Combobox3" style="position:absolute;left:257px;top:225px;width:80px;height:35px;z-index:16;">
 							<option value="2017">2017</option>
 							<option value="2018">2018</option>
 							<option value="2019">2019</option>
@@ -106,7 +106,7 @@
 							<option value="11">11</option>
 							<option value="12">12</option>
 						</select>
-						
+
 						<select name="minute" ng-model="order.minute" size="1" id="Combobox5" style="position:absolute;left:173px;top:264px;width:79px;height:35px;z-index:15;">
 							<option value="00" ng-selected="true">00</option>
 							<option value="15">15</option>
@@ -121,11 +121,8 @@
 
 					<div ng-if="form.$valid" style="visibility: hidden;" ng-style="{visibility: (form.$valid) ? 'visible':'hidden'}">
 
-						<button id="Button1" name="send" style="position:absolute;left:18px;top:512px;width:326px;height:47px;z-index:11;" 
+						<button id="Button1" name="send" style="position:absolute;left:18px;top:512px;width:326px;height:47px;z-index:11;"
 						ng-hide="quote_gotten" ng-click="get_quote();">Prepare Quote</button>
-
-						<button ng-show="quote_gotten" id="Button1" name="pay" style="position:absolute;left:18px;top:512px;width:326px;height:47px;z-index:11;" 
-						ng-click="make_payment();">Pay # {{ total_price }}</button>
 
 						<div ng-show="quote_gotten" style="padding: 20px 20px;">
 							<table width="100%">
@@ -142,6 +139,11 @@
 									<td>{{ order.mobile }}</td>
 								</tr>
 							</table>
+
+							<button ng-show="quote_gotten" id="Button1" name="pay" style="position:absolute;left:18px;top:512px;width:326px;height:47px;z-index:11;"
+							ng-click="make_payment();">PAY NOW</button>
+
+							<script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 
 						</div>
 					</div>

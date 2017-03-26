@@ -1,6 +1,6 @@
 <?=link_tag ('assets/last_design/_cleaning.css');?>
 
-<div ng-controller="cleaningController" ng-init="getPrice();">
+<div ng-controller="cleaningController" ng-init="getPrice('<?=base_url();?>');">
 	<div id="Layer2" style="position:relative;text-align:center;margin:0px 0px 0px 0px;width:100%;height:998px;float:left;clear:left;display:block;z-index:56;">
 		<div id="Layer2_Container" style="width:1237px;height:998px;position:relative;margin-left:auto;margin-right:auto;margin-top:auto;margin-bottom:auto;text-align:left;">
 			<div id="wb_Image3" style="position:absolute;left:293px;top:30px;width:199px;height:263px;z-index:23;">
@@ -15,7 +15,7 @@
 				<form name="form" method="post" novalidate="">
 
 					<div ng-hide="quote_gotten">
-						
+
 						<label for="RadioButton1" id="Label1" style="position:absolute;left:15px;top:58px;width:105px;height:18px;line-height:18px;z-index:4;"> House Cleaning</label>
 						<input type="radio" ng-model="order.type" name="type" value="house cleaning" style="position:absolute;left:158px;top:60px;z-index:5;">
 
@@ -25,19 +25,21 @@
 						<input type="text" id="Editbox1" style="position:absolute;left:15px;top:130px;width:308px;height:25px;line-height:18px;z-index:8;" name="name" required ng-model="order.name" placeholder="enter full name">
 						<input type="text" id="Editbox2" style="position:absolute;left:15px;top:163px;width:308px;height:25px;line-height:18px;z-index:9;" name="email" required ng-model="order.email" placeholder="enter email address">
 						<input type="text" id="Editbox3" style="position:absolute;left:15px;top:196px;width:308px;height:25px;line-height:18px;z-index:10;" name="mobile" required ng-model="order.mobile" placeholder="enter mobile number">
-						
+
 						<label for="Shape2" id="Label6" style="position:absolute;left:15px;top:224px;width:137px;height:18px;line-height:18px;z-index:11;"> Number of rooms</label>
 						<input type="text" id="Editbox4" style="position:absolute;left:15px;top:247px;width:308px;height:25px;line-height:18px;z-index:12;" ng-model="order.rooms" required name="rooms" value="0">
 
-						<textarea name="TextArea1" id="TextArea1" style="position:absolute;left:15px;top:358px;width:308px;height:90px;z-index:16;" rows="4" cols="47" placeholder="Address" ng-model="order.address" required>
+						<textarea name="TextArea1" id="TextArea1" style="position:absolute;left:15px;top:358px;width:308px;height:90px;z-index:16;" rows="4" cols="47"
+							placeholder="Address" ng-model="order.address" required>
 						</textarea>
-						<textarea name="TextArea2" id="TextArea2" style="position:absolute;left:15px;top:466px;width:308px;height:90px;z-index:14;" rows="4" cols="47" ng-model="order.details" placeholder="Please describe the job in details">
+						<textarea name="TextArea2" id="TextArea2" style="position:absolute;left:15px;top:466px;width:308px;height:90px;z-index:14;" rows="4" cols="47"
+							ng-model="order.details" placeholder="Please describe the job in details">
 						</textarea>
-						
+
 						<div id="wb_Text3" style="position:absolute;left:22px;top:30px;width:313px;height:16px;z-index:15;text-align:left;">
 							<span style="color:#696969;font-family:Arial;font-size:13px;">Please select the type of Cleaning service you want</span>
 						</div>
-						
+
 						<select name="month" size="1" id="Combobox1" style="position:absolute;left:15px;top:281px;width:140px;height:35px;z-index:17;"  ng-model="order.month" required>
 							<option value="1">January</option>
 							<option value="2">February</option>
@@ -124,11 +126,8 @@
 
 					<div ng-if="form.$valid" style="visibility: hidden;" ng-style="{visibility: (form.$valid) ? 'visible':'hidden'}">
 
-						<button id="Button1" name="send" style="position:absolute;left:15px;top:583px;width:317px;height:47px;z-index:14;" 
+						<button id="Button1" name="send" style="position:absolute;left:15px;top:583px;width:317px;height:47px;z-index:14;"
 						ng-hide="quote_gotten" ng-click="get_quote();">Prepare Quote</button>
-
-						<button ng-show="quote_gotten" id="Button1" name="pay" style="position:absolute;left:15px;top:583px;width:317px;height:47px;z-index:14;" 
-						ng-click="make_payment();">Pay # {{ total_price }}</button>
 
 						<div ng-show="quote_gotten" style="padding: 20px 20px;">
 							<table width="100%">
@@ -157,6 +156,11 @@
 									<td>{{ order.rooms }}</td>
 								</tr>
 							</table>
+
+							<button ng-show="quote_gotten" id="Button1" name="pay" style="position:absolute;left:15px;top:583px;width:317px;height:47px;z-index:14;"
+							ng-click="make_payment();">PAY NOW</button>
+
+							<script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 
 						</div>
 					</div>

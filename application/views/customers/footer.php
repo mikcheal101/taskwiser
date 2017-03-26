@@ -1,15 +1,16 @@
 		<script src="<?=base_url ('assets/js/jquery.js');?>"></script>
 		<script src="<?=base_url ('assets/js/tether.min.js');?>"></script>
 		<script src="<?=base_url ('assets/js/bootstrap.min.js');?>"></script>
-		
+
 		<script src="<?=base_url ('assets/js/angular.min.js');?>"></script>
 
-		<script src="<?=base_url ('bower_components/ng-lodash/build/ng-lodash.min.js ');?>"></script>
+		<script src="<?=base_url ('bower_components/ng-lodash/build/ng-lodash.min.js');?>"></script>		
+
 
 		<script src="<?=base_url ('assets/js/main.angular.js');?>"></script>
 
+		<script src="<?=base_url ('assets/js/services/general.service.js');?>"></script>
 		<script src="<?=base_url ('assets/js/services/price.service.js');?>"></script>
-
 		<script src="<?=base_url ('assets/js/services/laundry.service.js');?>"></script>
 		<script src="<?=base_url ('assets/js/services/auto.service.js');?>"></script>
 		<script src="<?=base_url ('assets/js/services/beauty.service.js');?>"></script>

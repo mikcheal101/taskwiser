@@ -63,6 +63,13 @@ $route['place_order/driver']               	= "orders/driver";
 $route['place_order/diesel']               	= "orders/diesel";
 $route['place_order/custom']               	= "orders/custom_tasks";
 
+# send post data to this url
+$route['flutter/send_card']					= "orders/angular_send_card";
+
+
+# this route get the price config saved by the admin
+$route["prices/fetch/configuration/(:any)"]	= "orders/fetch_configuration/$1";
+
 $route['get/prices']               			= "orders/get_price";
 
 $route['place_order/get_quote']				= "orders/get_quote";
