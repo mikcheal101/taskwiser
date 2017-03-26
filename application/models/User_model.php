@@ -63,23 +63,7 @@ class User_model extends CI_Model {
 
 	public function getAllCategories ()
 	{
-		$this->db->order_by('_id', 'asc');
-		$categories = $this->db->get('categories')->result_array();
-		foreach ($categories as $key => $category) {
-			$this->db->select('_question');
-			$parent = $category['_parent'] == NULL ? $category['_id'] : $category['_parent'];
-
-			$result = $this->db->get_where('category_question', ['_category' => $parent])->result();
-			$categories[$key]['questions'] = $result;
-
-			if($category['_parent'] == NULL) {
-				$categories[$key]['parent'] = null;
-			} else {
-				$categories[$key]['parent'] = $this->db->get_where('categories', ['_id' => $parent])->row_array();
-			}
-
-		}
-		return $categories;
+		return [];
 	}
 
 	public function check_customer()
