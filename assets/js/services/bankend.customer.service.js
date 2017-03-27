@@ -4,7 +4,7 @@ app.service("CustServ", ["$http", "$q", function($http, $q)
 {
     var srv             = this;
 
-    var getPayments     = function(base_url)
+    srv.getPayments     = function(base_url)
     {
         var defer       = $q.defer();
         var url         = base_url + "backend/customers/get_payments";
@@ -19,7 +19,7 @@ app.service("CustServ", ["$http", "$q", function($http, $q)
         return defer.promise;
     };
 
-    var getOrders       = function(base_url)
+    srv.getOrders       = function(base_url)
     {
         var defer       = $q.defer();
         var url         = base_url + "backend/customers/get_orders";
@@ -34,12 +34,14 @@ app.service("CustServ", ["$http", "$q", function($http, $q)
         return defer.promise;
     };
 
-    var updateProfile   = function(base_url,customer)
+    srv.updateProfile   = function(base_url,customer)
     {
         var defer       = $q.defer();
         var url         = base_url + "backend/customers/update_profile";
+        console.log(JSON.stringify(customer));
 
-        $http.post(url, {customer:customer}).then((aResponse) => {
+        $http.post(url, {person:customer}, {headers: {'Content-Type': 'application/json'}})
+        .then((aResponse) => {
             console.log(aResponse);
             defer.resolve(aResponse.data);
         }).catch((aError) => {
@@ -49,7 +51,7 @@ app.service("CustServ", ["$http", "$q", function($http, $q)
         return defer.promise;
     };
 
-    var getProfile      = function(base_url)
+    srv.getProfile      = function(base_url)
     {
         var defer       = $q.defer();
         var url         = base_url + "backend/customers/get_profile";

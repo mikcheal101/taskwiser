@@ -6,17 +6,17 @@
 			</div>
 			<div id="wb_Text1" style="position:absolute;left:49px;top:350px;width:48px;height:16px;z-index:8;text-align:left;">
 				<span style="color:#000000;font-family:Arial;font-size:13px;">
-                    <?=anchor('orders','Orders');?>
+                    <?=anchor('backend/orders','Orders');?>
 				</span>
 			</div>
 			<div id="wb_Text2" style="position:absolute;left:49px;top:384px;width:73px;height:16px;z-index:9;text-align:left;">
 				<span style="color:#000000;font-family:Arial;font-size:13px;">
-					<a href="./_user_payements.html">Payments</a>
+					<?=anchor('backend/payments','Payments');?>
 				</span>
 			</div>
-			<div id="wb_Text6" style="position:absolute;left:49px;top:316px;width:73px;height:16px;z-index:10;text-align:left;">
+			<div id="wb_Text6" style="position:absolute;left:49px;top:316px;height:16px;z-index:10;text-align:left;">
 				<span style="color:#000000;font-family:Arial;font-size:13px;">
-					<a href="./_Edit_user_profile.html">Edit Profile</a>
+					<?=anchor('backend/profile','Edit My Profile');?>
 				</span>
 			</div>
 			<div id="wb_Text7" style="position:absolute;left:49px;top:228px;width:162px;height:32px;z-index:11;text-align:left;">
@@ -27,7 +27,7 @@
 					<i class="fa fa-user">&nbsp;</i>
 				</div>
 			</div>
-			<input type="submit" id="Button1" name="" value="Logout" style="position:absolute;left:49px;top:437px;width:162px;height:41px;z-index:13;">
+            <?=anchor('auth/signout','Sign Out', ['style' => "position:absolute;left:49px;top:437px;width:162px;height:41px;z-index:13;text-align:center;line-height:40px;", "id" => "Button1"]);?>
 		</div>
 	</div>
 

@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("OrdersCtrl", ["$scope", "CustServ", function($scope, CustServ)
+app.controller("OrdersCntrl", ["$scope", "CustServ", function($scope, CustServ)
 {
 
 }]);

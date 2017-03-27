@@ -18,16 +18,16 @@ class Backend extends CI_Controller {
 	}
 
 	public function index() {
-		# check if the user is logged in
-		$this->loggedIn();
-		$this->data['orders']	= $this->user_model->getMyOrders();
 
 		$this->customer_index();
 	}
 
 	protected function customer_index()
 	{
-		$this->data['title']	= "Taskwiser - Payment(s)";
+		# check if the user is logged in
+		$this->loggedIn();
+
+		$this->data['title']	= "Taskwiser - Orders(s)";
 		$this->load->view ('updated/backend/header', $this->data);
 		$this->load->view ('updated/backend/user_orders', $this->data);
 		$this->load->view ("updated/backend/footer", $this->data);
@@ -41,24 +41,9 @@ class Backend extends CI_Controller {
 		$this->load->view ('admin/footer', $this->data);
 	}
 
-	public function order($id=0)
+	public function orders()
 	{
-		$this->loggedIn();
-		$order = new stdClass();
-		if($id === 0) show_404();
-		else{
-			if(($order = $this->user_model->getOrder($id, $this->session->user->_id)) !== NULL) {
-				# display order
-
-				$this->data['order'] = $order;
-				$this->load->view ('admin/header', $this->data);
-				$this->load->view ('backend/nav', $this->data);
-				$this->load->view ("backend/order", $this->data);
-				$this->load->view ('admin/footer', $this->data);
-			} else {
-				show_404();
-			}
-		}
+		$this->customer_index();
 	}
 
 	public function get_payments()
@@ -77,63 +62,58 @@ class Backend extends CI_Controller {
 
 	public function get_profile()
 	{
-		$this->json_display($this->session->user);
+		$user = $this->session->user;
+		unset($user->_pwd);
+		$this->json_display($user);
 	}
 
 	public function update_profile()
 	{
-		$this->json_display($_POST);
-		exit();
-		
-		$result = $this->user_model->customer_update_profile($customer);
-		$this->json_display($result);
+
+		var_dump($_POST);
+		var_dump($_GET);
+
 	}
 
-	public function payments() {
+	public function when()
+	{
+
+	}
+
+	public function payments()
+	{
 		$this->loggedIn();
-		$this->data['location'] = 2;
-		$this->data['payments'] = $this->user_model->getMyPayments();
 
-		$this->load->view ('admin/header', $this->data);
-		$this->load->view ('backend/nav', $this->data);
-		$this->load->view ("backend/payments", $this->data);
-		$this->load->view ('admin/footer', $this->data);
+		$this->data['title']	= "Taskwiser - Payment(s)";
+		$this->load->view ('updated/backend/header', $this->data);
+		$this->load->view ('updated/backend/user_payments', $this->data);
+		$this->load->view ("updated/backend/footer", $this->data);
 	}
 
-	public function profile() {
+	public function profile()
+	{
 		$this->loggedIn();
-		$this->data['location'] = 3;
-		$this->data['profile']	= $this->session->user;
-
-		$this->form_validation->set_rules("email", "Email Address", "required|trim|valid_email");
-		$this->form_validation->set_rules("tel", "Telephone Number", "required|trim");
-		$this->form_validation->set_rules("state", "State & Location", "required|numeric");
-		$this->form_validation->set_rules("address", "Address", "required");
-
-		if($this->form_validation->run()){
-			$this->user_model->updateProfile($this->session->user->_id);
-			# refresh page
-			$this->data['profile']	= $this->session->user;
-			redirect('backend/profile', 'refresh');
-		} else {
-			$this->load->view ('admin/header', $this->data);
-			$this->load->view ('backend/nav', $this->data);
-			$this->load->view ("backend/profile", $this->data);
-			$this->load->view ('admin/footer', $this->data);
-		}
+		$username 				= $this->session->user->_username;
+		$this->data['title']	= "Taskwiser - Profile {$username}";
+		$this->load->view ('updated/backend/header', $this->data);
+		$this->load->view ('updated/backend/user_profile', $this->data);
+		$this->load->view ("updated/backend/footer", $this->data);
 	}
 
-	private function loggedIn () {
+	private function loggedIn ()
+	{
 		if (is_null($this->session->user))
 			redirect('auth/login','refresh');
 	}
 
-	public function signout () {
+	public function signout ()
+	{
 		$this->session->sess_destroy();
 		redirect('auth/login','refresh');
 	}
 
-	public function dropOrder($order) {
+	public function dropOrder($order)
+	{
 		# delete the item and return to the home
 		if($this->user_model->dropOrder($order)){
 			redirect('/backend', 'refresh');
@@ -142,14 +122,16 @@ class Backend extends CI_Controller {
 		}
 	}
 
-	public function signUp() {
+	public function signUp()
+	{
 		$this->load->view ('admin/header', $this->data);
 		$this->load->view ('admin/plain_header', $this->data);
 		$this->load->view ("admin/authenticate", $this->data);
 		$this->load->view ('admin/footer', $this->data);
 	}
 
-	public function make_payment($transaction_code = null) {
+	public function make_payment($transaction_code = null)
+	{
 		if(is_null($transaction_code)) {
 			show_404();
 			exit();
@@ -173,7 +155,8 @@ class Backend extends CI_Controller {
 
 	}
 
-	public function payment_complete($transaction_code = null) {
+	public function payment_complete($transaction_code = null)
+	{
 		if(is_null($transaction_code)) {
 			show_404();
 			exit();
@@ -214,7 +197,7 @@ class Backend extends CI_Controller {
 		}
 	}
 
-
+	# private functions
 	private function json_display($data = [])
 	{
 		if(!count($data))

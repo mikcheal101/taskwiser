@@ -316,13 +316,6 @@ class User_model extends CI_Model {
 		return $this->db->delete('orders', ['_id' => $order]);
 	}
 
-	public function getMyPayments()
-	{
-		$this->db->order_by('_ts', 'DESC');
-		$payments = $this->db->get_where('payments', ['_customer' => $this->session->user->_id])->result();
-		return $payments;
-	}
-
 	public function prepQuote($order_id)
 	{
 		$data = $this->db->get_where('orders', ['_id'=> $order_id])->row();

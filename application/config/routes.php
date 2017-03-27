@@ -67,7 +67,7 @@ $route['place_order/custom']               	= "orders/custom_tasks";
 $route['backend/customers/get_payments']    = "backend/get_payments";
 $route['backend/customers/get_orders']      = "backend/get_orders";
 $route['backend/customers/get_profile']     = "backend/get_profile";
-$route['backend/customers/update_proile']   = "backend/update_proile";
+$route['backend/customers/update_profile']  = "backend/update_profile";
 
 # send post data to this url
 $route['flutter/send_card']					= "orders/angular_send_card";
@@ -97,6 +97,9 @@ $route['customer/registration']				= 'backend/signUp';
 
 $route['backend/']							= 'backend/index';
 $route['backend/drop_request/(:num)']		= 'backend/dropOrder/$1';
+$route['backend/orders']                    = "backend/orders";
+$route['backend/payments']                  = "backend/payments";
+$route['backend/edit_profile']              = "backend/profile";
 
 $route['admin/authenticate']				= 'admin/login';
 $route['admin/test']						= 'admin/getDb';

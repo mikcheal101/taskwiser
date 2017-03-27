@@ -16,7 +16,7 @@
 	<title><?=$title;?></title>
 
 </head>
-<body>
+<body ng-app="app">
 	<div id="Layer1" style="position:relative;text-align:left;margin:0px 0px 0px 0px;width:100%;height:68px;float:left;clear:left;display:block;z-index:50;">
 		<div id="wb_Image1" style="position:absolute;left:86px;top:7px;width:151px;height:54px;z-index:0;">
 			<a href="<?=base_url('/');?>"><img src="<?=base_url('assets/last_design/images/');?>logo.png" id="Image1" alt=""></a>

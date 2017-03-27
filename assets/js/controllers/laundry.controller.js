@@ -16,15 +16,15 @@ app.controller('laundryController', ["$scope", "$rootScope", "laundryService", "
 		day 		: $scope.today.getDate().toString(),
 		month		: ($scope.today.getMonth() + 1).toString(),
 		gowns		: 0,
-		shirts		: 10,
+		shirts		: 0,
 		troussers	: 0,
-		suits		: 3,
-		mobile		: "08033283294",
-		name		: "James Isah",
-		email		: "psalm1v2@mail.com",
-		address		: "my address",
+		suits		: 0,
+		mobile		: "",
+		name		: "",
+		email		: "",
+		address		: "",
 		type		: "dry-cleaner",
-		details		: "my details"
+		details		: ""
 	};
 
 	$scope.payment.callback		= function(response)

@@ -1,6 +1,6 @@
 <?=link_tag ('assets/last_design/_user_orders.css');?>
 
-<div id="wb_Form1" style="position:absolute;left:243px;top:66px;width:875px;height:685px;z-index:6;">
+<div id="wb_Form1" style="position:absolute;left:243px;top:66px;width:875px;height:685px;z-index:6;" ng-controller="OrdersCntrl">
 	<div class="">
 
 		<div id="wb_Text4" style="position:absolute;left:154px;top:45px;width:534px;height:32px;text-align:center;z-index:1;">
@@ -30,6 +30,7 @@
 				top: 170px!important;
 				width:90%;
 				left: 50px!important;
+				visibility: hidden;
 			}
 			div.mydiv table
 			{

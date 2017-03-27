@@ -14,12 +14,12 @@ function($scope, $rootScope, movingService, generalService)
 		period		: "am",
 		day 		: $scope.today.getDate().toString(),
 		month		: ($scope.today.getMonth() + 1).toString(),
-		mobile		: "01 200 20",
-		name		: "my name",
-		email		: "person@mail.com",
-		address		: "address",
+		mobile		: "",
+		name		: "",
+		email		: "",
+		address		: "",
 		type		: "house",
-		details		: "details",
+		details		: "",
 		boxes		: "1"
 	};
 
