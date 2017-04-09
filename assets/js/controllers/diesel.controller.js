@@ -44,9 +44,9 @@ function($scope, $rootScope, dieselService, generalService)
 			customer_email:$scope.order.email,
 			amount:$scope.total_price,
 			txref:"takswiser-checkout-"+$scope.payment.ref,
-			PBFPubKey:"FLWPUBK-2f795247c95bf48649774efd60374a88-X",
-			custom_logo: "//taskwiser.ravepay.co/files/paybutton-images/ee6ab4cb27007f2312ef62f8d97c88ed.png",
-			custom_title: "Taskwiser Checkout",
+			PBFPubKey:$rootScope.ravepay.public_key,
+			custom_logo: $rootScope.app.logo,
+			custom_title: $rootScope.ravepay.custom_title,
 			onclose:function()
 			{
 				$scope.payment.close();

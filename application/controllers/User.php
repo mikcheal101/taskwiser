@@ -2,7 +2,7 @@
 require_once(dirname(__FILE__)."/EmailTemplates.php");
 
 class User extends CI_Controller {
-	
+
 	private $_diesel;
 	private $_moving;
 	private $_handyman;
@@ -17,7 +17,7 @@ class User extends CI_Controller {
 	private $email_templates = null;
 
 	public $data;
-	
+
 	public function __construct () {
 		parent::__construct ();
 		$this->data['categories'] 		= $this->user_model->getCategories ();
@@ -26,11 +26,11 @@ class User extends CI_Controller {
 		$this->data['states'] 			= $this->admin_model->getStates();
 		$this->email_templates			= new EmailTemplates($this);
 	}
-	
+
 	public function index () {
 		$this->data['title'] = 'taskwiser';
-		$this->load->view ('customers/header', $this->data);
-		$this->load->view ('customers/home', $this->data);
+		
+		$this->load->view ('customers/index', $this->data);
 		$this->load->view ('customers/footer', $this->data);
 	}
 
@@ -45,7 +45,7 @@ class User extends CI_Controller {
 			'path' 		=> '/',
 		];
 		set_cookie($cookie);
-		
+
 		echo json_encode(['cookie_local' => $cookie, 'cookie_general' => get_cookie('location_cookie'), 'time' => $expires]);
 	}
 
@@ -66,7 +66,7 @@ class User extends CI_Controller {
 
 	private function _padHex ($hex = 0, $position = 2) {
 		$base 	= pow(2, $position);
-		
+
 		$div_m 	= (int) floor(strlen($hex) / $base);
 		$div 	= $div_m === 0;
 
@@ -76,7 +76,7 @@ class User extends CI_Controller {
 		$next 	= $div && $rem && (int)$rem > 0;
 		$count 	= 0;
 
-		if($next) $count = $this->padHex($hex, ($position + 1));  
+		if($next) $count = $this->padHex($hex, ($position + 1));
 		else $count = $rem_m;
 
 		return $count;
@@ -84,22 +84,22 @@ class User extends CI_Controller {
 
 	private function getOrderFromArray($_id = 0) {
 		$categories 	= $this->data['all_categories'];
-		
-		if ($_id === 0) 
+
+		if ($_id === 0)
 			return null;
 
 		foreach ($categories as $key => $value)
-			if($value['_id'] === $_id) 
+			if($value['_id'] === $_id)
 				return $value;
-		
+
 		return null;
 	}
 
 	public function order($category = 0) {
 		$categories 	= $this->data['all_categories'];
 		$category_		= $this->getOrderFromArray($category);
-		
-		if ($category == 0 || is_null($category_)) 
+
+		if ($category == 0 || is_null($category_))
 			show_404();
 		else {
 
@@ -107,10 +107,10 @@ class User extends CI_Controller {
 			$this->form_validation->set_rules('name', 'Full Name', 'required|trim|min_length[2]');
 			$this->form_validation->set_rules('tel', 'Mobile #', 'required|trim');
 
-			if($this->form_validation->run()) 
+			if($this->form_validation->run())
 				$this->place_order($category);
 			else {
-				
+
 				$this->data['location'] = $category;
 
 				$this->data['category']	= $category_;
@@ -136,7 +136,7 @@ class User extends CI_Controller {
 		}
 
 		if($result->boolean) {
-			# create order 
+			# create order
 			$cust 		= ['category' => $category, 'customer' => $result->customer->_id];
 			$order 		= $this->user_model->place_order($cust);
 
@@ -145,8 +145,8 @@ class User extends CI_Controller {
 					$sent_order = $this->sendOrderMail($result->customer, $order);
 				if($sent_order) {
 
-					# display the email sent 
-					
+					# display the email sent
+
 					$msg_ = "<h5 class='text-center'>";
 						$msg_.= "<table class=\"table\" width=\"100%\">";
 							$msg_.= "<tr>";
@@ -167,7 +167,7 @@ class User extends CI_Controller {
 							$msg_.= "</tr>";
 						$msg_.= "</table>";
 					$msg_.= "</h5>";
-							
+
 					$this->data['message'] = [
 						'header'	=> "Order Created!",
 						'message'	=> $msg_,
@@ -235,7 +235,7 @@ class User extends CI_Controller {
 
 			if ($this->form_validation->run ()) {
 				$valid = $this->user_model->authenticate ();
-				
+
 				if (is_null($valid)) {
 					$this->session->set_flashdata ('authenticate_error', 'Username / Password Mismatch!');
 
@@ -286,7 +286,7 @@ class User extends CI_Controller {
 			$this->load->view ('admin/header', $this->data);
 			$this->load->view ('admin/plain_header', $this->data);
 			$this->load->view ("admin/sign_up", $this->data);
-			$this->load->view ('admin/footer', $this->data);	
+			$this->load->view ('admin/footer', $this->data);
 		}
 	}
 
@@ -295,7 +295,7 @@ class User extends CI_Controller {
 
 	private function generate_customer() {
 		$customer = $this->user_model->generate_customer();
-		
+
 		if(!is_null($customer)) {
 			$this->sendRegistrationEmail($customer);
 			$this->sendRegistrationSms($customer);
@@ -348,7 +348,7 @@ class User extends CI_Controller {
 
 	private function sendRegistrationEmail($customer = null) {
 		if(!is_null($customer)) {
-			# send the customer an email 
+			# send the customer an email
 			try {
 				$_login_url 	= "verify_customer/{$customer->_id}/{$customer->_verification_code}";
 				$_message 		= $this->email_templates->registration_email($_login_url, $customer);
@@ -363,7 +363,7 @@ class User extends CI_Controller {
 				return false;
 			}
 		} else log_message('debug', 'sendRegistrationEmail : customer is null');
-		return false;	
+		return false;
 	}
 }
 ?>

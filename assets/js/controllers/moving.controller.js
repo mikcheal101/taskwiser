@@ -6,6 +6,7 @@ function($scope, $rootScope, movingService, generalService)
 	$scope.today 		= new Date();
 	$scope.payment 		= {};
 	$scope.payment.ref	= Date.now();
+	$scope.base_url 	= "";
 
 	$scope.order 		= {
 		hour 		: ($scope.today.getHours() % 12).toString(),
@@ -32,9 +33,6 @@ function($scope, $rootScope, movingService, generalService)
 		$scope.total_price = parseInt($scope.prices._items_prices[$scope.order.type]);
 		$scope.total_price*= parseInt($scope.order.boxes);
 		$scope.total_price+= parseInt($scope.prices._service_charge);
-
-		console.log( $scope.total_price);
-
 		$scope.quote_gotten	= true;
 	};
 
@@ -44,9 +42,9 @@ function($scope, $rootScope, movingService, generalService)
 			customer_email:$scope.order.email,
 			amount:$scope.total_price,
 			txref:"takswiser-checkout-"+$scope.payment.ref,
-			PBFPubKey:"FLWPUBK-2f795247c95bf48649774efd60374a88-X",
-			custom_logo: "//taskwiser.ravepay.co/files/paybutton-images/ee6ab4cb27007f2312ef62f8d97c88ed.png",
-			custom_title: "Taskwiser Checkout",
+			PBFPubKey:$rootScope.ravepay.public_key,
+			custom_logo: $rootScope.app.logo,
+			custom_title: $rootScope.ravepay.custom_title,
 			onclose:function()
 			{
 				$scope.payment.close();
@@ -61,7 +59,10 @@ function($scope, $rootScope, movingService, generalService)
 	$scope.payment.callback		= function(response)
 	{
 		// send the data or response to the server
-		console.log(response);
+		// send the data or response to the server
+		generalService.payment_made(response, $scope.order, $scope.total_price, $scope.base_url).then(aResponse => {
+			// redirect to the login page
+		}).catch(aError => console.error(aError));
 	};
 
 	$scope.payment.close		= function()
@@ -72,10 +73,10 @@ function($scope, $rootScope, movingService, generalService)
 
 	$scope.getPrice			= function(base_url)
 	{
+		$scope.base_url 	= base_url;
 		generalService
-			.fetch_quote("moving", base_url)
+			.fetch_quote("moving", $scope.base_url)
 			.then((aResponse) => {
-				console.log(aResponse);
 				angular.copy(aResponse, $scope.prices);
 			})
 			.catch((aErr) => console.error(aErr));

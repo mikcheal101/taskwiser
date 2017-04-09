@@ -14,16 +14,23 @@ body
    margin: 0;
    padding: 0;
 }
+#Shape3
+{
+   border-width: 0;
+}
 #Layer1
 {
-   background-color: #FFFFFF;
-   background-image: none;
+   background-color: transparent;
+   background-image: url(images/task%20wiser%20to%20fit.png);
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-size: cover;
    border: 1px #CCCCCC none;
 }
 #Layer2
 {
    background-color: transparent;
-   background-image: url(images/task%20wiser%20bg.jpg);
+   background-image: url(images/how%20it%20works.jpg);
    background-repeat: no-repeat;
    background-position: center center;
    background-size: cover;
@@ -39,7 +46,7 @@ body
 }
 #Layer4
 {
-   background-color: #1E90FF;
+   background-color: #008080;
    background-image: none;
    border: 1px #CCCCCC none;
 }
@@ -50,11 +57,11 @@ body
    border: 0px #000000 solid;
    padding: 0;
    margin: 0;
-   text-align: center;
+   text-align: left;
 }
 #wb_Text1 div
 {
-   text-align: center;
+   text-align: left;
 }
 #Image2
 {
@@ -95,11 +102,11 @@ body
    border: 0px #000000 solid;
    padding: 0;
    margin: 0;
-   text-align: center;
+   text-align: left;
 }
 #wb_Text2 div
 {
-   text-align: center;
+   text-align: left;
    white-space: nowrap;
 }
 #wb_Text3 
@@ -109,11 +116,11 @@ body
    border: 0px #000000 solid;
    padding: 0;
    margin: 0;
-   text-align: center;
+   text-align: left;
 }
 #wb_Text3 div
 {
-   text-align: center;
+   text-align: left;
 }
 #wb_Text4 
 {
@@ -122,11 +129,11 @@ body
    border: 0px #000000 solid;
    padding: 0;
    margin: 0;
-   text-align: center;
+   text-align: left;
 }
 #wb_Text4 div
 {
-   text-align: center;
+   text-align: left;
 }
 #wb_Text5 
 {
@@ -135,11 +142,11 @@ body
    border: 0px #000000 solid;
    padding: 0;
    margin: 0;
-   text-align: center;
+   text-align: left;
 }
 #wb_Text5 div
 {
-   text-align: center;
+   text-align: left;
 }
 #Image6
 {
@@ -409,46 +416,12 @@ body
 #Line1
 {
    border-width: 0;
-   height: 8px;
-   width: 301px;
-}
-#Image1
-{
-   border: 0px #000000 solid;
-   left: 0;
-   top: 0;
-   width: 100%;
-   height: 100%;
+   height: 566px;
+   width: 8px;
 }
 #Shape2
 {
    border-width: 0;
-}
-#wb_Text23 
-{
-   background-color: transparent;
-   background-image: none;
-   border: 0px #000000 solid;
-   padding: 0;
-   margin: 0;
-   text-align: left;
-}
-#wb_Text23 div
-{
-   text-align: left;
-}
-#wb_Text24 
-{
-   background-color: transparent;
-   background-image: none;
-   border: 0px #000000 solid;
-   padding: 0;
-   margin: 0;
-   text-align: left;
-}
-#wb_Text24 div
-{
-   text-align: left;
 }
 #Layer5
 {
@@ -581,4 +554,37 @@ body
 #wb_Text25 div
 {
    text-align: left;
+}
+#wb_Text23 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px #000000 solid;
+   padding: 0;
+   margin: 0;
+   text-align: left;
+}
+#wb_Text23 div
+{
+   text-align: left;
+}
+#wb_Text24 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px #000000 solid;
+   padding: 0;
+   margin: 0;
+   text-align: left;
+}
+#wb_Text24 div
+{
+   text-align: left;
+}
+#Shape5
+{
+   border-width: 0;
+   -webkit-animation: animate-flash 500ms linear 0ms infinite normal;
+   -moz-animation: animate-flash 500ms linear 0ms infinite normal;
+   animation: animate-flash 500ms linear 0ms infinite normal;
 }

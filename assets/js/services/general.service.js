@@ -18,7 +18,13 @@ app.service("generalService", ["$http", "$q", function($http, $q) {
 		});
 
 		return defer.promise;
-	}
+	};
+
+	svc.payment_made 	= function(response, order, total_price, base_url){
+		var defer 		= $q.defer();
+		var url 		= ""
+		returndefer.promise;
+	};
 
 	return svc;
 }]);

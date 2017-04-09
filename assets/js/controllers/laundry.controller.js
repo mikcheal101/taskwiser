@@ -7,6 +7,7 @@ app.controller('laundryController', ["$scope", "$rootScope", "laundryService", "
 	$scope.today 			= new Date();
 	$scope.payment 			= {};
 	$scope.payment.ref		= Date.now();
+	$scope.base_url			= "";
 
 	$scope.order 				= {
 		hour 		: ($scope.today.getHours() % 12).toString(),
@@ -30,7 +31,10 @@ app.controller('laundryController', ["$scope", "$rootScope", "laundryService", "
 	$scope.payment.callback		= function(response)
 	{
 		// send the data or response to the server
-		console.log(response);
+		// send the data or response to the server
+		generalService.payment_made(response, $scope.order, $scope.total_price, $scope.base_url).then(aResponse => {
+			// redirect to the login page
+		}).catch(aError => console.error(aError));
 	};
 
 	$scope.payment.close		= function()
@@ -44,19 +48,11 @@ app.controller('laundryController', ["$scope", "$rootScope", "laundryService", "
 
 	$scope.get_quote		= function()
 	{
-
 		var total_quantity 	= $scope.getQuantities($scope.order);
 		$scope.total_price	= parseInt(total_quantity) * 1;
 		$scope.total_price *= parseInt($scope.prices._items_prices[$scope.order.type]);
 		$scope.total_price += parseInt($scope.prices._service_charge);
 		$scope.quote_gotten	= true;
-
-		/*
-		Card Number: 5061020000000000094
-		Expiry details: 07/20
-		CVV: 347
-		PIN: 123456
-		*/
 	};
 
 	$scope.make_payment		= function()
@@ -65,9 +61,9 @@ app.controller('laundryController', ["$scope", "$rootScope", "laundryService", "
 			customer_email:$scope.order.email,
 			amount:$scope.total_price,
 			txref:"takswiser-checkout-"+$scope.payment.ref,
-			PBFPubKey:"FLWPUBK-2f795247c95bf48649774efd60374a88-X",
-			custom_logo: "//taskwiser.ravepay.co/files/paybutton-images/ee6ab4cb27007f2312ef62f8d97c88ed.png",
-			custom_title: "Taskwiser Checkout",
+			PBFPubKey:$rootScope.ravepay.public_key,
+			custom_logo: $rootScope.app.logo,
+			custom_title: $rootScope.ravepay.custom_title,
 			onclose:function()
 			{
 				$scope.payment.close();
@@ -81,11 +77,11 @@ app.controller('laundryController', ["$scope", "$rootScope", "laundryService", "
 
 	$scope.getPrice			= function(base_url)
 	{
+		$scope.base_url 	= base_url;
 		generalService
-			.fetch_quote("laundry", base_url)
+			.fetch_quote("laundry", $scope.base_url)
 			.then((aResponse) => {
 				angular.copy(aResponse, $scope.prices);
-				console.log($scope.prices._items_prices[$scope.order.type]);
 			})
 			.catch((aErr) => console.error(aErr));
 	}
