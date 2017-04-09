@@ -9,7 +9,9 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
     svc.get_tasks               = function() {
         var defer               = $q.defer();
         var url                 = svc.base_url + "/get_all_tasks";
-        var props               = {};
+        var props               = {
+            api_key : svc.api_key
+        };
 
         $http.post(url, props)
         .then(aData => {
@@ -23,7 +25,9 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
     svc.create_task             = function() {
         var defer               = $q.defer();
         var url                 = svc.base_url + "/create_task";
-        var props               = {};
+        var props               = {
+            api_key : svc.api_key
+        };
 
         $http.post(url, props)
         .then(aData => {
@@ -37,7 +41,9 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
     svc.assign_task             = function() {
         var defer               = $q.defer();
         var url                 = svc.base_url + "/assign_task";
-        var props               = {};
+        var props               = {
+            api_key : svc.api_key
+        };
 
         $http.post(url, props)
         .then(aData => {
@@ -51,7 +57,9 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
     svc.update_task_status      = function() {
         var defer               = $q.defer();
         var url                 = svc.base_url + "/update_task_status";
-        var props               = {};
+        var props               = {
+            api_key : svc.api_key
+        };
 
         $http.post(url, props)
         .then(aData => {
@@ -67,7 +75,9 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
     svc.create_agent            = function() {
         var defer               = $q.defer();
         var url                 = svc.base_url + "/add_agent";
-        var props               = {};
+        var props               = {
+            api_key : svc.api_key
+        };
 
         $http.post(url, props)
         .then(aData => {
@@ -81,7 +91,9 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
     svc.list_agents             = function() {
         var defer               = $q.defer();
         var url                 = svc.base_url + "/get_available_agents";
-        var props               = {};
+        var props               = {
+            api_key : svc.api_key
+        };
 
         $http.post(url, props)
         .then(aData => {
@@ -95,7 +107,9 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
     svc.delete_agent            = function() {
         var defer               = $q.defer();
         var url                 = svc.base_url + "";
-        var props               = {};
+        var props               = {
+            api_key : svc.api_key
+        };
 
         $http.post(url, props)
         .then(aData => {
@@ -114,7 +128,9 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
     svc.create_team             = function() {
         var defer               = $q.defer();
         var url                 = svc.base_url + "/v2/create_team";
-        var props               = {};
+        var props               = {
+            api_key : svc.api_key
+        };
 
         $http.post(url, props)
         .then(aData => {
@@ -128,7 +144,9 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
     svc.get_team_details        = function() {
         var defer               = $q.defer();
         var url                 = svc.base_url + "/v2/view_teams";
-        var props               = {};
+        var props               = {
+            api_key : svc.api_key
+        };
 
         $http.post(url, props)
         .then(aData => {
@@ -144,7 +162,9 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
     svc.create_manager          = function() {
         var defer               = $q.defer();
         var url                 = svc.base_url + "/v2/add_manager";
-        var props               = {};
+        var props               = {
+            api_key : svc.api_key
+        };
 
         $http.post(url, props)
         .then(aData => {
@@ -160,7 +180,9 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
     svc.get_customers           = function() {
         var defer               = $q.defer();
         var url                 = svc.base_url + "/v2/get_all_customers";
-        var props               = {};
+        var props               = {
+            api_key : svc.api_key
+        };
 
         $http.post(url, props)
         .then(aData => {
