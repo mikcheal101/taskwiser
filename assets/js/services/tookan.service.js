@@ -72,7 +72,7 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
     };
 
     // agents are the staffers ie taskers
-    svc.create_agent            = function() {
+    svc.create_agent            = function(params) {
         var defer               = $q.defer();
         var url                 = svc.base_url + "/add_agent";
         var props               = {
@@ -92,7 +92,7 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
         var defer               = $q.defer();
         var url                 = svc.base_url + "/get_available_agents";
         var props               = {
-            api_key : svc.api_key
+            api_key         : svc.api_key
         };
 
         $http.post(url, props)
@@ -125,11 +125,14 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
     *   teams are divided by categories
     *   eg drivers make up a team
     */
-    svc.create_team             = function() {
+    svc.create_team             = function(team_name) {
         var defer               = $q.defer();
         var url                 = svc.base_url + "/v2/create_team";
         var props               = {
-            api_key : svc.api_key
+            api_key         : svc.api_key
+            team_name       : team_name,
+            battery_usage   : "0",
+            tags            : team_name
         };
 
         $http.post(url, props)
@@ -159,11 +162,17 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
     };
 
     // a manager is same as aweb admin
-    svc.create_manager          = function() {
+    svc.create_manager          = function(params) {
         var defer               = $q.defer();
         var url                 = svc.base_url + "/v2/add_manager";
         var props               = {
-            api_key : svc.api_key
+            api_key     : svc.api_key,
+            email       : params.email,
+            password    : params.password,
+            first_name  : params.first_name,
+            last_name   : params.last_name,
+            phone       : params.phone,
+            timezone    : params.timezone
         };
 
         $http.post(url, props)
