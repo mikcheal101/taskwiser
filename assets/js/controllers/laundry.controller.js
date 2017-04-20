@@ -55,6 +55,10 @@ app.controller('laundryController', ["$scope", "$rootScope", "laundryService", "
 		$scope.quote_gotten	= true;
 	};
 
+	$scope.service_payment		= function() {
+		// send the task to tookanapp
+	}
+
 	$scope.make_payment		= function()
 	{
 		getpaidSetup({

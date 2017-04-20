@@ -1,3 +1,99 @@
+@font-face
+{
+   font-family: "Microsoft JhengHei";
+   src: url('msjh.ttc');
+   src: url('msjh.ttc?iefix') format('embedded-opentype'),
+        url('msjh.ttc') format('truetype');
+}
+@font-face
+{
+   font-family: "Segoe UI Semilight";
+   src: url('segoeuisl.eot');
+   src: url('segoeuisl.eot?iefix') format('embedded-opentype'),
+        url('segoeuisl.ttf') format('truetype');
+}
+@font-face
+{
+   font-family: "Microsoft YaHei";
+   src: url('msyh.ttc');
+   src: url('msyh.ttc?iefix') format('embedded-opentype'),
+        url('msyh.ttc') format('truetype');
+}
+@font-face
+{
+   font-family: "Segoe UI Semibold";
+   src: url('seguisb.eot');
+   src: url('seguisb.eot?iefix') format('embedded-opentype'),
+        url('seguisb.ttf') format('truetype');
+}
+@font-face
+{
+   font-family: "Segoe UI";
+   src: url('segoeui.eot');
+   src: url('segoeui.eot?iefix') format('embedded-opentype'),
+        url('segoeui.ttf') format('truetype');
+}
+@font-face
+{
+   font-family: "Segoe UI Light";
+   src: url('segoeuil.eot');
+   src: url('segoeuil.eot?iefix') format('embedded-opentype'),
+        url('segoeuil.ttf') format('truetype');
+}
+@font-face
+{
+   font-family: "Segoe UI Black";
+   src: url('seguibl.eot');
+   src: url('seguibl.eot?iefix') format('embedded-opentype'),
+        url('seguibl.ttf') format('truetype');
+}
+@font-face
+{
+   font-family: "Microsoft YaHei Light";
+   src: url('msyhl.ttc');
+   src: url('msyhl.ttc?iefix') format('embedded-opentype'),
+        url('msyhl.ttc') format('truetype');
+}
+@-webkit-keyframes animate-flash
+{
+   0% { opacity: 1;  }
+   25% { opacity: 0;  }
+   50% { opacity: 1;  }
+   75% { opacity: 0;  }
+   100% { opacity: 1;  }
+}
+@-moz-keyframes animate-flash
+{
+   0% { opacity: 1;  }
+   25% { opacity: 0;  }
+   50% { opacity: 1;  }
+   75% { opacity: 0;  }
+   100% { opacity: 1;  }
+}
+@-o-keyframes animate-flash
+{
+   0% { opacity: 1;  }
+   25% { opacity: 0;  }
+   50% { opacity: 1;  }
+   75% { opacity: 0;  }
+   100% { opacity: 1;  }
+}
+@-ms-keyframes animate-flash
+{
+   0% { opacity: 1;  }
+   25% { opacity: 0;  }
+   50% { opacity: 1;  }
+   75% { opacity: 0;  }
+   100% { opacity: 1;  }
+}
+@keyframes animate-flash
+{
+   0% { opacity: 1;  }
+   25% { opacity: 0;  }
+   50% { opacity: 1;  }
+   75% { opacity: 0;  }
+   100% { opacity: 1;  }
+}
 a
 {
    color: #4169E1;

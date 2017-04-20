@@ -26,7 +26,6 @@
 	</style>
 
 	<title>taskwiser.com</title>
-
 </head>
 <body ng-app="app" style="overflow-x:hidden;">
 
@@ -53,7 +52,7 @@
 				<a href="<?=base_url('auth/login');?>" style="color:#FFFFFF;font-family:Arial;font-size:16px;"> Sign in</a>
 			</div>
 			<div id="wb_Text24" style="position:absolute;left:793px;top:64px;width:80px;height:18px;z-index:4;text-align:left;">
-				<span style="color:#FFFFFF;font-family:Arial;font-size:16px;"> Book Now</span>
+				<a href="#Layer4" style="color:#FFFFFF;font-family:Arial;font-size:16px;"> Book Now</a>
 			</div>
 			<div id="wb_Shape5" style="position:absolute;left:656px;top:581px;width:37px;height:22px;z-index:5;">
 				<img src="<?=base_url('assets/last_design/images/');?>/img0043.png" id="Shape5" alt="" style="width:37px;height:22px;">
@@ -65,6 +64,7 @@
 		<div id="Layer2_Container" style="width:1280px;position:relative;margin-left:auto;margin-right:auto;text-align:left;">
 		</div>
 	</div>
+
 	<div id="Layer3" style="position:relative;text-align:center;margin:0px 0px 0px 0px;width:100%;height:704px;float:left;clear:left;display:block;z-index:50;">
 		<div id="Layer3_Container" style="width:1278px;position:relative;margin-left:auto;margin-right:auto;text-align:left;">
 			<div id="wb_Image4" style="position:absolute;left:975px;top:380px;width:62px;height:62px;z-index:6;">
@@ -164,58 +164,67 @@
 			</div>
 		</div>
 	</div>
+
 	<div id="Layer4" style="position:relative;text-align:center;margin:0px 0px 0px 0px;width:100%;height:548px;float:left;clear:left;display:block;z-index:51;">
 		<div id="Layer4_Container" style="width:1278px;position:relative;margin-left:auto;margin-right:auto;text-align:left;">
 			<div id="wb_Image17" style="position:absolute;left:107px;top:201px;width:47px;height:64px;z-index:16;">
-				<a href="./_laundry.html">
+				<a href="<?=base_url('place_order/laundry');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>/washing.png" id="Image17" alt="">
 				</a>
 			</div>
 			<div id="wb_Image16" style="position:absolute;left:515px;top:198px;width:65px;height:71px;z-index:17;">
-				<a href="./_moving.html">
+				<a href="<?=base_url('place_order/moving');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>/moving.png" id="Image16" alt="">
 				</a>
 			</div>
 			<div id="wb_Image15" style="position:absolute;left:304px;top:202px;width:68px;height:63px;z-index:18;">
-				<a href="./_handyman.html">
+				<a href="<?=base_url('place_order/handy_man');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>/handy%20man.png" id="Image15" alt="">
 				</a>
 			</div>
 			<div id="wb_Image14" style="position:absolute;left:905px;top:206px;width:63px;height:58px;z-index:19;">
-				<a href="./_events.html">
+				<a href="<?=base_url('place_order/events');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>/events.png" id="Image14" alt="">
 				</a>
 			</div>
 			<div id="wb_Image13" style="position:absolute;left:516px;top:358px;width:59px;height:67px;z-index:20;">
-				<a href="./_driver.html">
+				<a href="<?=base_url('place_order/driver');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>/driver.png" id="Image13" alt="">
 				</a>
 			</div>
 			<div id="wb_Image11" style="position:absolute;left:713px;top:354px;width:66px;height:72px;z-index:21;">
-				<a href="./_diesel.html">
+				<a href="<?=base_url('place_order/diesel');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>/deisel.png" id="Image11" alt="">
 				</a>
 			</div>
 			<div id="wb_Image10" style="position:absolute;left:910px;top:361px;width:51px;height:58px;z-index:22;">
-				<a href="./_custom_tasks.html">
+				<a href="<?=base_url('place_order/custom');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>/custom.png" id="Image10" alt="">
 				</a>
 			</div>
 			<div id="wb_Image9" style="position:absolute;left:711px;top:199px;width:62px;height:69px;z-index:23;">
-				<a href="./_cooking.html">
+				<a href="<?=base_url('place_order/cooking');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>/cooking.png" id="Image9" alt="">
 				</a>
 			</div>
 			<div id="wb_Image8" style="position:absolute;left:1105px;top:189px;width:69px;height:74px;z-index:24;">
-				<a href="./_cleaning.html">
+				<a href="<?=base_url('place_order/cleaning');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>/cleaner.png" id="Image8" alt="">
 				</a>
 			</div>
 			<div id="wb_Image7" style="position:absolute;left:103px;top:345px;width:78px;height:77px;z-index:25;">
-				<a href="./_beauty.html">
+				<a href="<?=base_url('place_order/beauty');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>/beauty.png" id="Image7" alt="">
 				</a>
 			</div>
+			<div id="wb_Image1" style="position:absolute;left:315px;top:356px;width:65px;height:65px;z-index:38;">
+				<a href="<?=base_url('place_order/delivery');?>">
+					<img src="<?=base_url('assets/last_design/images/');?>/grocery.png" id="Image1" alt="">
+				</a>
+			</div>
+
+
+
 			<div id="wb_Text6" style="position:absolute;left:516px;top:62px;width:250px;height:47px;z-index:26;text-align:left;">
 				<span style="color:#FFFFFF;font-family:'Segoe UI Semibold';font-size:35px;">Available Tasks</span>
 			</div>
@@ -234,7 +243,7 @@
 			<div id="wb_Text11" style="position:absolute;left:910px;top:269px;width:97px;height:17px;z-index:31;text-align:left;">
 				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;">&nbsp; Events</span>
 			</div>
-			<div id="wb_Text12" style="position:absolute;left:890px;top:426px;width:97px;height:17px;z-index:32;text-align:left;">
+			<div id="wb_Text12" style="position:absolute;left:890px;top:426px;width:97px;height:17px;z-index:32;text-align:center;">
 				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;"> Custom Task</span>
 			</div>
 			<div id="wb_Text14" style="position:absolute;left:717px;top:426px;width:97px;height:17px;z-index:33;text-align:left;">
@@ -252,11 +261,6 @@
 			<div id="wb_Text13" style="position:absolute;left:1099px;top:269px;width:97px;height:17px;z-index:37;text-align:left;">
 				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;"> Cleaning</span>
 			</div>
-			<div id="wb_Image1" style="position:absolute;left:315px;top:356px;width:65px;height:65px;z-index:38;">
-				<a href="./_Grocery.html">
-					<img src="<?=base_url('assets/last_design/images/');?>/grocery.png" id="Image1" alt="">
-				</a>
-			</div>
 		</div>
 	</div>
 	<div id="Layer5" style="position:relative;text-align:center;margin:0px 0px 0px 0px;width:100%;height:55px;float:left;clear:left;display:block;z-index:52;">
@@ -273,7 +277,7 @@
 				<span style="color:#FFFFFF;font-family:Arial;font-size:13px;"> +234 9020000737</span>
 			</div>
 			<div id="wb_Shape1" style="position:absolute;left:59px;top:8px;width:183px;height:35px;z-index:42;">
-				<a href="./_book_now.html">
+				<a href="#Layer4">
 					<img src="<?=base_url('assets/last_design/images/');?>/img0004.png" id="Shape1" alt="" style="width:183px;height:35px;">
 				</a>
 			</div>
