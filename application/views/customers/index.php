@@ -253,7 +253,7 @@
 				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;"> Driver</span>
 			</div>
 			<div id="wb_Text16" style="position:absolute;left:322px;top:427px;width:97px;height:17px;z-index:35;text-align:left;">
-				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;"> Grocery</span>
+				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;"> Deliveries</span>
 			</div>
 			<div id="wb_Text17" style="position:absolute;left:105px;top:427px;width:97px;height:17px;z-index:36;text-align:left;">
 				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;"> Beauty</span>
