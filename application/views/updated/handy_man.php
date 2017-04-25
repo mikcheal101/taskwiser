@@ -179,7 +179,10 @@
 							<button id="Button1" name="pay" style="position:absolute;left:18px;top:686px;width:319px;height:47px;z-index:13;"
 							ng-click="make_payment();">PAY NOW</button>
 
+							<script type="text/javascript" src="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+							<!--
 							<script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+							-->
 						</div>
 					</div>
 

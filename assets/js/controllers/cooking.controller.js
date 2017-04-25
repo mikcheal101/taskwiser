@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('cookingController', ["$scope", "$rootScope", "cookingService", "generalService",
-function($scope, $rootScope, cookingService, generalService)
+app.controller('cookingController', ["$scope", "$rootScope", "generalService",
+function($scope, $rootScope, generalService)
 {
 	$scope.today 			= new Date();
 	$scope.payment 			= {};

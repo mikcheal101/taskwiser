@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller("eventsController", ["$scope", "$rootScope", "eventsService", "generalService",
-	function($scope, $rootScope, eventsService, generalService)
+app.controller("eventsController", ["$scope", "$rootScope", "generalService",
+	function($scope, $rootScope, generalService)
 {
 	$scope.today 		= new Date();
 	$scope.payment 		= {};

@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('driverController', ["$scope", "$rootScope", "driverService", "generalService",
-function($scope, $rootScope, driverService, generalService)
+app.controller('driverController', ["$scope", "$rootScope", "generalService",
+function($scope, $rootScope, generalService)
 {
 	$scope.today 			= new Date();
 	$scope.payment 			= {};

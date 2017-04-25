@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('laundryController', ["$scope", "$rootScope", "laundryService", "lodash", "generalService",
-		function($scope, $rootScope, laundryService, lodash, generalService)
+app.controller('laundryController', ["$scope", "$rootScope", "lodash", "generalService",
+		function($scope, $rootScope, lodash, generalService)
 {
 
 	$scope.today 			= new Date();
@@ -32,9 +32,16 @@ app.controller('laundryController', ["$scope", "$rootScope", "laundryService", "
 	{
 		// send the data or response to the server
 		// send the data or response to the server
-		generalService.payment_made(response, $scope.order, $scope.total_price, $scope.base_url).then(aResponse => {
-			// redirect to the login page
-		}).catch(aError => console.error(aError));
+		generalService
+			.payment_made(response, $scope.order, $scope.total_price, $scope.base_url)
+			.then(aResponse => {
+				// send data to tookanapp
+
+			})
+			.then(bResponse => {
+				// send details to db
+			})
+			.catch(aError => console.error(aError));
 	};
 
 	$scope.payment.close		= function()
