@@ -73,6 +73,9 @@ $route['backend/customers/update_profile']  = "backend/update_profile";
 $route['flutter/send_card']					= "orders/angular_send_card";
 
 
+# payments
+$route['payments/make/payment']             = "payments/save_payment";
+
 # this route get the price config saved by the admin
 $route["prices/fetch/configuration/(:any)"]	= "orders/fetch_configuration/$1";
 

@@ -33,7 +33,7 @@ app.controller('laundryController', ["$scope", "$rootScope", "lodash", "generalS
 		// send the data or response to the server
 		// send the data or response to the server
 		generalService
-			.payment_made(response, $scope.order, $scope.total_price, $scope.base_url)
+			.payment_made(response.data, $scope.order, $scope.total_price, $scope.base_url)
 			.then(aResponse => {
 				// send data to tookanapp
 

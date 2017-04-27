@@ -119,7 +119,6 @@
 							<!--
 							<script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 							-->
-
 						</div>
 					</div>
 
