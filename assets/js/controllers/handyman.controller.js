@@ -34,7 +34,7 @@ function($scope, $rootScope, generalService)
 		$scope.quote_gotten	= true;
 	};
 
-	$scope.make_payment		= function()
+	$scope.make_payment			= function()
 	{
 		getpaidSetup({
 			customer_email:$scope.order.email,
@@ -57,9 +57,20 @@ function($scope, $rootScope, generalService)
 	$scope.payment.callback		= function(response)
 	{
 		// send the data or response to the server
-		generalService.payment_made(response, $scope.order, $scope.total_price, $scope.base_url).then(aResponse => {
-			// redirect to the login page
-		}).catch(aError => console.error(aError));
+		generalService
+			.payment_made(response, $scope.order, $scope.total_price, $scope.base_url)
+			.then(aResponse => {
+				// send data to tookanapp
+				return tookanService.create_task(aResponse.order.customer, aResponse.order.order, 'appointment', Util.tookanapp_teams.handy_man);
+			})
+			.then(bResponse => {
+				// send details to db
+				console.log(bResponse);
+
+				// redirect to the index page
+				window.location = $scope.base_url;
+			})
+			.catch(aError => console.error(aError));
 	};
 
 	$scope.payment.close		= function()
@@ -67,7 +78,7 @@ function($scope, $rootScope, generalService)
 		console.log("payment cancelled");
 	};
 
-	$scope.getPrice			= function(base_url)
+	$scope.getPrice				= function(base_url)
 	{
 		$scope.base_url 	= base_url;
 		generalService

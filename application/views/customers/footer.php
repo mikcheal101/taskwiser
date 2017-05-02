@@ -9,21 +9,8 @@
 		<script src="<?=base_url ('assets/js/main.angular.js');?>"></script>
 
 		<script src="<?=base_url ('assets/js/services/general.service.js');?>"></script>
-		<!--
-		<script src="<?=base_url ('assets/js/services/price.service.js');?>"></script>
-		<script src="<?=base_url ('assets/js/services/laundry.service.js');?>"></script>
-		<script src="<?=base_url ('assets/js/services/auto.service.js');?>"></script>
-		<script src="<?=base_url ('assets/js/services/beauty.service.js');?>"></script>
-		<script src="<?=base_url ('assets/js/services/cleaning.service.js');?>"></script>
-		<script src="<?=base_url ('assets/js/services/cooking.service.js');?>"></script>
-		<script src="<?=base_url ('assets/js/services/custom.service.js');?>"></script>
-		<script src="<?=base_url ('assets/js/services/delivery.service.js');?>"></script>
-		<script src="<?=base_url ('assets/js/services/diesel.service.js');?>"></script>
-		<script src="<?=base_url ('assets/js/services/driver.service.js');?>"></script>
-		<script src="<?=base_url ('assets/js/services/events.service.js');?>"></script>
-		<script src="<?=base_url ('assets/js/services/handyman.service.js');?>"></script>
-		<script src="<?=base_url ('assets/js/services/moving.service.js');?>"></script>
-		-->
+		<script src="<?=base_url ('assets/js/services/util.js');?>"></script>
+		<script src="<?=base_url ('assets/js/services/tookan.service.js');?>"></script>
 
 		<script src="<?=base_url ('assets/js/controllers/laundry.controller.js');?>"></script>
 		<script src="<?=base_url ('assets/js/controllers/auto.controller.js');?>"></script>

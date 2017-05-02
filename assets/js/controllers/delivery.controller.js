@@ -6,8 +6,11 @@ function($scope, $rootScope, deliveryService, generalService)
 	$scope.today 			= new Date();
 	$scope.payment 			= {};
 	$scope.payment.ref		= Date.now();
+	$scope.total_price		= 0;
+	$scope.prices 			= [];
+	$scope.quote_gotten		= false;
 
-	$scope.order 		= {
+	$scope.order 				= {
 		hour 		: ($scope.today.getHours() % 12).toString(),
 		minute	 	: $scope.today.getMinutes().toString(),
 		year		: $scope.today.getFullYear().toString(),
@@ -22,14 +25,23 @@ function($scope, $rootScope, deliveryService, generalService)
 		details		: ""
 	};
 
-	$scope.total_price	= 0;
-	$scope.prices 		= [];
-	$scope.quote_gotten	= false;
-
 	$scope.payment.callback		= function(response)
 	{
 		// send the data or response to the server
-		console.log(response);
+		generalService
+			.payment_made(response, $scope.order, $scope.total_price, $scope.base_url)
+			.then(aResponse => {
+				// send data to tookanapp
+				return tookanService.create_task(aResponse.order.customer, aResponse.order.order, 'delivery', Util.tookanapp_teams.deliveries);
+			})
+			.then(bResponse => {
+				// send details to db
+				console.log(bResponse);
+
+				// redirect to the index page
+				window.location = $scope.base_url;
+			})
+			.catch(aError => console.error(aError));
 	};
 
 	$scope.payment.close		= function()

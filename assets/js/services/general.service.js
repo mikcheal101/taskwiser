@@ -23,18 +23,26 @@ app.service("generalService", ["$http", "$q", function($http, $q) {
 	svc.payment_made 	= function(response, order, total_price, base_url){
 		var defer 		= $q.defer();
 		var url 		= base_url + "payments/make/payment";
+
 		var post 		= {
 			order		: order,
-			total_price	: total_price
+			total_price	: total_price,
+			email		: order.email,
+			address		: order.address,
+			mobile 		: order.mobile
 		};
 
-		console.log(post);
-
-		$http.post(url, post).then(aData => {
-			console.log(aData);
-			console.log(url);
-		}).catch(aError => defer.reject(aError) );
-
+		$http({
+			method: 'POST',
+			url: url,
+			headers:{'Content-Type': 'application/json'},
+        	params:post
+		})
+		.then(aData => {
+			defer.resolve(aData.data);
+		}, aError => {
+			defer.reject(aError)
+		});
 		return defer.promise;
 	};
 

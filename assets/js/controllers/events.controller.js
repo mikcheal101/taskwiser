@@ -29,14 +29,14 @@ app.controller("eventsController", ["$scope", "$rootScope", "generalService",
 	$scope.durations	= [];
 	$scope.quote_gotten	= false;
 
-	$scope.get_quote	= function()
+	$scope.get_quote			= function()
 	{
 		$scope.total_price 	= parseInt($scope.prices[$scope.order.type]);
 		$scope.total_price	= $scope.total_price * parseInt($scope.durations[$scope.order.duration]);
 		$scope.quote_gotten	= true;
 	};
 
-	$scope.make_payment		= function()
+	$scope.make_payment			= function()
 	{
 		getpaidSetup({
 			customer_email:$scope.order.email,
@@ -59,7 +59,20 @@ app.controller("eventsController", ["$scope", "$rootScope", "generalService",
 	$scope.payment.callback		= function(response)
 	{
 		// send the data or response to the server
-		console.log(response);
+		generalService
+			.payment_made(response, $scope.order, $scope.total_price, $scope.base_url)
+			.then(aResponse => {
+				// send data to tookanapp
+				return tookanService.create_task(aResponse.order.customer, aResponse.order.order, 'appointment', Util.tookanapp_teams.events);
+			})
+			.then(bResponse => {
+				// send details to db
+				console.log(bResponse);
+
+				// redirect to the index page
+				window.location = $scope.base_url;
+			})
+			.catch(aError => console.error(aError));
 	};
 
 	$scope.payment.close		= function()
@@ -67,7 +80,7 @@ app.controller("eventsController", ["$scope", "$rootScope", "generalService",
 		console.log("payment cancelled");
 	};
 
-	$scope.getPrice			= function(base_url)
+	$scope.getPrice				= function(base_url)
 	{
 		generalService
 			.fetch_quote("events", base_url)
@@ -79,7 +92,7 @@ app.controller("eventsController", ["$scope", "$rootScope", "generalService",
 			.catch((aErr) => console.error(aErr));
 	}
 
-	$scope.getAmount		= function(item){
+	$scope.getAmount			= function(item){
 		item = parseInt(item);
 		return item < 0 ? 0 : item;
 	};

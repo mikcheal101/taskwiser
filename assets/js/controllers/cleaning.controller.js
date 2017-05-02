@@ -30,7 +30,20 @@ function($scope, $rootScope, generalService)
 	$scope.payment.callback		= function(response)
 	{
 		// send the data or response to the server
-		console.log(response);
+		generalService
+			.payment_made(response, $scope.order, $scope.total_price, $scope.base_url)
+			.then(aResponse => {
+				// send data to tookanapp
+				return tookanService.create_task(aResponse.order.customer, aResponse.order.order, 'appointment', Util.tookanapp_teams.cleaning);
+			})
+			.then(bResponse => {
+				// send details to db
+				console.log(bResponse);
+
+				// redirect to the index page
+				window.location = $scope.base_url;
+			})
+			.catch(aError => console.error(aError));
 	};
 
 	$scope.payment.close		= function()

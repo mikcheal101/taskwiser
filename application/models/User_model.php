@@ -66,6 +66,13 @@ class User_model extends CI_Model {
 		return [];
 	}
 
+
+	# deprecated
+	/***
+	* method to check if customer with entered email address exists
+	* @param: $email String
+	* @return : obj Object
+	*/
 	public function check_customer()
 	{
 		$email 			= $this->input->post('email');
@@ -77,6 +84,47 @@ class User_model extends CI_Model {
 		return $obj;
 	}
 
+	/***
+	* method to check if customer with entered email address exists
+	* @param: $email String
+	* @return : obj Object
+	*/
+	public function confirm_customer_exists($customer) {
+		$obj 			= new stdClass();
+		$obj->customer 	= $this->db->get_where('customers', ['_email' => $customer->email])->row();
+		$obj->boolean 	= $obj->customer !== NULL;
+
+		if(!$obj->boolean) {
+			$obj->customer = $this->auto_generate_customer($customer);
+			$obj->boolean 	= $obj->customer !== NULL;
+		}
+
+		# if customer does not exist generate user
+		return $obj;
+	}
+
+	public function auto_generate_customer($customer)
+	{
+		$code = md5($customer->email."/".time());
+		$user = [
+			'_username' 			=> $customer->email,
+			'fullname'				=> $customer->name,
+			'_email' 				=> $customer->email,
+			'_tel'					=> $customer->mobile,
+			'address'				=> $customer->address,
+			'_pwd'					=> substr($code, 5, 11),
+			'_verification_code' 	=> substr($code, 12, 25)
+		];
+
+		if($this->db->insert('customers', $user)) {
+			$id = $this->db->insert_id();
+			# send email to the customer
+			return $this->db->get_where('customers', ['_id' => $id])->row();
+		}
+		return null;
+	}
+
+	# deprecated
 	public function generate_customer()
 	{
 		$code = md5($this->input->post('email')."/".time());
@@ -84,6 +132,7 @@ class User_model extends CI_Model {
 			'_username' 			=> $this->input->post('email'),
 			'fullname'				=> $this->input->post('name'),
 			'_email' 				=> $this->input->post('email'),
+			'_tel'					=> $this->input->post('mobile'),
 			'_pwd'					=> substr($code, 5, 11),
 			'_verification_code' 	=> substr($code, 12, 25)
 		];
@@ -141,45 +190,27 @@ class User_model extends CI_Model {
 
 	public function place_order($params)
 	{
+		$is_customer 	= $this->confirm_customer_exists($params->customer);
 
-		$time_date 	= $this->sort_time($this->input->post('date'), $this->input->post('time'));
+		if($is_customer->boolean) {
+			$order	= [
+				'_customer'			=> $is_customer->customer->_id,
+				'price'				=> $params->price,
+				'details'			=> $params->details
+			];
 
-		$order = [
-			'_category' 		=> $params['category'],
-			'_customer'			=> $params['customer'],
-			'rooms'				=> (int)$this->input->post('rooms'),
-			'boxes'				=> (int)$this->input->post('boxes'),
-			'liters'			=> (int)$this->input->post('liters') ?? 0,
-			'shirts'			=> (int)$this->input->post('shirts'),
-			'troussers'			=> (int)$this->input->post('troussers'),
-			'suits'				=> (int)$this->input->post('suits'),
-			'gowns'				=> (int)$this->input->post('gowns'),
-			'others'			=> (int)$this->input->post('others'),
-			'hours'				=> $this->input->post('hours'),
-			'address'			=> $this->input->post('address'),
-			'extra'				=> $this->input->post('extra'),
-			'delivery_address'	=> $this->input->post('delivery_address'),
-			'_ts'				=> $time_date,
-		];
+			if($this->db->insert('orders', $order)){
+				$id 					= $this->db->insert_id();
 
-		if($this->db->insert('orders', $order)){
+				$transaction_code		= $this->padHex($id);
+				$this->db->update('orders', ['_transaction_code' => $transaction_code], ['_id' => $id]);
 
-			$id = $this->db->insert_id();
-			$_transaction_code = "TW-".$this->padHex($id);
+				$result 				= new stdClass();
+				$result->order 			= $this->db->get_where('orders', ['_id' => $id])->row();
+				$result->customer 		= $is_customer->customer;
 
-			$this->db
-				->set(['_transaction_code' => $_transaction_code])
-				->where(['_id' => $id])
-				->update('orders');
-			$data =  $this->db->get_where('orders', ['_id' => $id])->row();
-			if($data) {
-				$data->customer = $this->db->get_where('customers', ['_id' => $data->_customer])->row();
-				$data->task 	= $this->db->get_where('categories', ['_id' => $data->_category])->row();
-
-				$data->customer 	= $this->db->get_where('customers', ['_id' => $data->_customer])->row();
-				$data->task 		= $this->db->get_where('categories', ['_id' => $data->_category])->row();
-			}
-			return $data;
+				return $result;
+			} else return false;
 		} else return false;
 	}
 

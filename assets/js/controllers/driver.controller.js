@@ -3,11 +3,11 @@
 app.controller('driverController', ["$scope", "$rootScope", "generalService",
 function($scope, $rootScope, generalService)
 {
-	$scope.today 			= new Date();
-	$scope.payment 			= {};
-	$scope.payment.ref		= Date.now();
+	$scope.today 				= new Date();
+	$scope.payment 				= {};
+	$scope.payment.ref			= Date.now();
 
-	$scope.order 		= {
+	$scope.order 				= {
 		hour 		: ($scope.today.getHours() % 12).toString(),
 		minute	 	: $scope.today.getMinutes().toString(),
 		year		: $scope.today.getFullYear().toString(),
@@ -23,13 +23,13 @@ function($scope, $rootScope, generalService)
 		duration	: "less than a day"
 	};
 
-	$scope.total_price	= 0;
-	$scope.prices 		= [];
-	$scope.durations	= [];
-	$scope.service_charge=0;
-	$scope.quote_gotten	= false;
+	$scope.total_price			= 0;
+	$scope.prices 				= [];
+	$scope.durations			= [];
+	$scope.service_charge		= 0;
+	$scope.quote_gotten			= false;
 
-	$scope.get_quote	= function()
+	$scope.get_quote			= function()
 	{
 		$scope.total_price = parseInt($scope.prices[$scope.order.type]);
 		$scope.total_price *= parseInt($scope.durations[$scope.order.duration]);
@@ -38,7 +38,7 @@ function($scope, $rootScope, generalService)
 		$scope.quote_gotten	= true;
 	};
 
-	$scope.make_payment		= function()
+	$scope.make_payment			= function()
 	{
 		getpaidSetup({
 			customer_email:$scope.order.email,
@@ -61,7 +61,20 @@ function($scope, $rootScope, generalService)
 	$scope.payment.callback		= function(response)
 	{
 		// send the data or response to the server
-		console.log(response);
+		generalService
+			.payment_made(response, $scope.order, $scope.total_price, $scope.base_url)
+			.then(aResponse => {
+				// send data to tookanapp
+				return tookanService.create_task(aResponse.order.customer, aResponse.order.order, 'appointment', Util.tookanapp_teams.driver);
+			})
+			.then(bResponse => {
+				// send details to db
+				console.log(bResponse);
+
+				// redirect to the index page
+				window.location = $scope.base_url;
+			})
+			.catch(aError => console.error(aError));
 	};
 
 	$scope.payment.close		= function()
@@ -69,16 +82,16 @@ function($scope, $rootScope, generalService)
 		console.log("payment cancelled");
 	};
 
-	$scope.getPrice			= function(base_url)
+	$scope.getPrice				= function(base_url)
 	{
 		generalService
 			.fetch_quote("driver", base_url)
 			.then((aResponse) => {
-				console.log(aResponse);
 				angular.copy(aResponse._items_prices.prices, $scope.prices);
 				angular.copy(aResponse._items_prices.durations, $scope.durations);
 				angular.copy(aResponse._service_charge, $scope.service_charge);
 			})
 			.catch((aErr) => console.error(aErr));
 	};
+
 }]);

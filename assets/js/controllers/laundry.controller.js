@@ -1,13 +1,16 @@
 'use strict';
 
-app.controller('laundryController', ["$scope", "$rootScope", "lodash", "generalService",
-		function($scope, $rootScope, lodash, generalService)
+app.controller('laundryController', ["$scope", "$rootScope", "lodash", "generalService", "tookanService", "Util",
+		function($scope, $rootScope, lodash, generalService, tookanService, Util)
 {
 
-	$scope.today 			= new Date();
-	$scope.payment 			= {};
-	$scope.payment.ref		= Date.now();
-	$scope.base_url			= "";
+	$scope.today 				= new Date();
+	$scope.payment 				= {};
+	$scope.payment.ref			= Date.now();
+	$scope.base_url				= "";
+	$scope.total_price			= 0;
+	$scope.prices 				= [];
+	$scope.quote_gotten			= false;
 
 	$scope.order 				= {
 		hour 		: ($scope.today.getHours() % 12).toString(),
@@ -33,13 +36,17 @@ app.controller('laundryController', ["$scope", "$rootScope", "lodash", "generalS
 		// send the data or response to the server
 		// send the data or response to the server
 		generalService
-			.payment_made(response.data, $scope.order, $scope.total_price, $scope.base_url)
+			.payment_made(response, $scope.order, $scope.total_price, $scope.base_url)
 			.then(aResponse => {
 				// send data to tookanapp
-
+				return tookanService.create_task(aResponse.order.customer, aResponse.order.order, 'delivery_pickup', Util.tookanapp_teams.laundry);
 			})
 			.then(bResponse => {
 				// send details to db
+				console.log(bResponse);
+
+				// redirect to the index page
+				window.location = $scope.base_url;
 			})
 			.catch(aError => console.error(aError));
 	};
@@ -49,11 +56,7 @@ app.controller('laundryController', ["$scope", "$rootScope", "lodash", "generalS
 		console.log("payment cancelled");
 	}
 
-	$scope.total_price	= 0;
-	$scope.prices 		= [];
-	$scope.quote_gotten	= false;
-
-	$scope.get_quote		= function()
+	$scope.get_quote			= function()
 	{
 		var total_quantity 	= $scope.getQuantities($scope.order);
 		$scope.total_price	= parseInt(total_quantity) * 1;
@@ -62,11 +65,7 @@ app.controller('laundryController', ["$scope", "$rootScope", "lodash", "generalS
 		$scope.quote_gotten	= true;
 	};
 
-	$scope.service_payment		= function() {
-		// send the task to tookanapp
-	}
-
-	$scope.make_payment		= function()
+	$scope.make_payment			= function()
 	{
 		getpaidSetup({
 			customer_email:$scope.order.email,
@@ -86,7 +85,7 @@ app.controller('laundryController', ["$scope", "$rootScope", "lodash", "generalS
 		});
 	}
 
-	$scope.getPrice			= function(base_url)
+	$scope.getPrice				= function(base_url)
 	{
 		$scope.base_url 	= base_url;
 		generalService
@@ -97,7 +96,7 @@ app.controller('laundryController', ["$scope", "$rootScope", "lodash", "generalS
 			.catch((aErr) => console.error(aErr));
 	}
 
-	$scope.getQuantities	= function(order)
+	$scope.getQuantities		= function(order)
 	{
 		var total 	= 0;
 		total 		+= $scope.getAmount(order.gowns);
@@ -107,7 +106,7 @@ app.controller('laundryController', ["$scope", "$rootScope", "lodash", "generalS
 		return total;
 	};
 
-	$scope.getAmount		= function(val)
+	$scope.getAmount			= function(val)
 	{
 		return parseInt(val);
 	};
