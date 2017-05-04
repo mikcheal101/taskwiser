@@ -27,17 +27,17 @@ app.service("Util", [function() {
     };
 
     util.tookanapp_teams    = {
-        laundry:        "19768",
-        handy_man:      "19809",
-        moving:         "19810",
-        cooking:        "19811",
-        events:         "19830",
-        cleaning:       "19831",
-        beauty:         "19832",
-        deliveries:     "19833",
-        driver:         "19834",
-        diesel:         "19835",
-        custom_tasks:   "19836"
+        laundry:        "20071",
+        handy_man:      "20072",
+        moving:         "20073",
+        cooking:        "20074",
+        events:         "20075",
+        cleaning:       "20076",
+        beauty:         "20077",
+        deliveries:     "20078",
+        driver:         "20079",
+        diesel:         "20080",
+        custom_tasks:   "20081"
     };
 
     util.is_equal           = function(string_a, string_b) {

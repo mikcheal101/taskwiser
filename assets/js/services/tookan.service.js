@@ -10,8 +10,8 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
     };
 
     svc.config                  = {
-        api_key_v1              : "f50cf9ab29ea0af3749553c9dcf83f52",
-        api_key_v2              : "e5bc0bb07f02cd0893c65da552536ce40339dd3620219bd8ea1ead2bfa627d9c",
+        api_key_v1              : "18022c16b550fd25beb532ef2db13830",
+        api_key_v2              : "734060322418b56b88807d6c6b8f9cd6aef41bb755f34807aed223351eaf7f65",
     };
 
     svc.configuration           = {
