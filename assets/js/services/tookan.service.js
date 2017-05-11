@@ -2,13 +2,10 @@
 
 app.service("tookanService", ["$http", "$q", function($http, $q) {
     var svc                     = this;
-
-
     svc.base_url                = {
         v1                      : "",
         v2                      : "https://api.tookanapp.com/v2"
     };
-
     svc.config                  = {
         api_key_v1              : "18022c16b550fd25beb532ef2db13830",
         api_key_v2              : "734060322418b56b88807d6c6b8f9cd6aef41bb755f34807aed223351eaf7f65",
@@ -20,15 +17,14 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
         job_description         : "",
         customer_phone          : "",
         customer_address        : "",
-        auto_assignment         :"1",
-        notify                  :1,
-        layout_type             :"0",
-        timezone                :"-330",
-        fleet_id                :"",
-        tags                    :"",
-        geofence                :0
+        auto_assignment         : "1",
+        notify                  : 1,
+        layout_type             : "0",
+        timezone                : "-330",
+        fleet_id                : "",
+        tags                    : "",
+        geofence                : 0
     };
-
 
     // tasks are jobs created by the customer(s)
     svc.get_tasks               = function() {
@@ -83,13 +79,11 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
                 props.job_pickup_phone      = customer._tel;
                 props.job_pickup_address    = customer.address;
                 props.job_pickup_datetime   = order._ts;
-
-                props.job_pickup_phone      = customer._tel;
-                props.job_pickup_name       = customer.fullname;
-                props.job_pickup_email      = customer._email;
-                props.job_pickup_address    = customer.address;
                 props.job_delivery_datetime = order._ts;
 
+                props.job_pickup_name       = customer.fullname;
+                props.job_pickup_email      = customer._email;
+                
                 props.has_pickup            = "1";
                 props.has_delivery          = "1";
 

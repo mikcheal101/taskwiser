@@ -46,7 +46,7 @@ app.controller('laundryController', ["$scope", "$rootScope", "lodash", "generalS
 				console.log(bResponse);
 
 				// redirect to the index page
-				window.location = $scope.base_url;
+				//window.location = $scope.base_url;
 			})
 			.catch(aError => console.error(aError));
 	};

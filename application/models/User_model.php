@@ -91,7 +91,9 @@ class User_model extends CI_Model {
 	*/
 	public function confirm_customer_exists($customer) {
 		$obj 			= new stdClass();
-		$obj->customer 	= $this->db->get_where('customers', ['_email' => $customer->email])->row();
+		$this->db->or_where(['_email' => $customer->email]);
+		$this->db->or_where(['_tel' => $customer->mobile]);
+		$obj->customer 	= $this->db->get('customers')->row();
 		$obj->boolean 	= $obj->customer !== NULL;
 
 		if(!$obj->boolean) {
