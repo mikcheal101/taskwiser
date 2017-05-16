@@ -21,11 +21,10 @@
 
 	<div id="Layer1">
 		<div id="Layer1_Container">
-			<!--
-			<div id="wb_Image1" style="position:absolute;left:86px;top:7px;width:151px;height:54px;z-index:0;">
-				<a href="<?=base_url('/');?>"><img src="<?=base_url('assets/last_design/images/');?>logo.png" id="Image1" alt=""></a>
+			<div id="wb_Image25">
+				<img src="<?=base_url('assets/last_design/images/');?>tools.png" id="Image25" alt="">
 			</div>
-			-->
+
 			<div id="wb_Shape3">
 				<a href="<?=base_url('/auth/login');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>img0042.png" id="Shape3" alt="">
@@ -35,8 +34,6 @@
 			<div id="wb_Shape5">
 				<img src="<?=base_url('assets/last_design/images/');?>img0043.png" id="Shape5" alt="">
 			</div>
-
-
 
 			<div id="wb_Text23">
 				<span style="color:#FFFFFF;font-family:Arial;font-size:16px;">
@@ -48,12 +45,12 @@
 					<img src="<?=base_url('assets/last_design/images/img0005.png');?>" id="Shape2" alt="">
 				</a>
 			</div>
-			<select name="location" size="1" id="Combobox1">
-				<option selected>select a location</option>
-				<option value="lg">lagos</option>
-				<option value="abj">abuja</option>
-				<option value="ph">portharcourt</option>
-				<option value="en">Enugu</option>
+			<select name="location" ng-model="location" size="1" id="Combobox1">
+				<option>select a location</option>
+				<option>lagos</option>
+				<option>abuja</option>
+				<option>portharcourt</option>
+				<option>Enugu</option>
 			</select>
 			<div id="wb_Text18">
 				<a href="<?=base_url('/#Layer4');?>" style="color:#FFFFFF;font-family:Arial;font-size:15px;">
@@ -65,6 +62,18 @@
 
 	<div id="Layer2">
 		<div id="Layer2_Container">
+			<div id="wb_Image12">
+				<img src="<?=base_url('assets/last_design/images/');?>step%202.png" id="Image12" alt="">
+			</div>
+			<div id="wb_Image22">
+				<img src="<?=base_url('assets/last_design/images/');?>step%203.png" id="Image22" alt="">
+			</div>
+			<div id="wb_Image23">
+				<img src="<?=base_url('assets/last_design/images/');?>step%204.png" id="Image23" alt="">
+			</div>
+			<div id="wb_Image6">
+				<img src="<?=base_url('assets/last_design/images/');?>step%201.png" id="Image6" alt="">
+			</div>
 		</div>
 	</div>
 
@@ -94,22 +103,25 @@
 					</span>
 				</div>
 				<div>
-					<span style="color:#696969;font-family:Arial;font-size:15px;">not satisfied? We will send you </span>
+					<span style="color:#696969;font-family:Arial;font-size:15px;">not satisfied? We will </span>
 				</div>
 				<div>
-					<span style="color:#696969;font-family:Arial;font-size:15px;">another tasker at no extra cost. </span>
+					<span style="color:#696969;font-family:Arial;font-size:15px;">send you another tasker </span>
 				</div>
 				<div>
-					<span style="color:#696969;font-family:Arial;font-size:15px;">We also appreciate your </span>
+					<span style="color:#696969;font-family:Arial;font-size:15px;">at no extra cost. We also </span>
 				</div>
 				<div>
-					<span style="color:#696969;font-family:Arial;font-size:15px;">feedback, as this helps us </span>
+					<span style="color:#696969;font-family:Arial;font-size:15px;">appreciate your feedback, </span>
 				</div>
 				<div>
-					<span style="color:#696969;font-family:Arial;font-size:15px;">improve our services. So </span>
+					<span style="color:#696969;font-family:Arial;font-size:15px;">as this helps us improve </span>
 				</div>
 				<div>
-					<span style="color:#696969;font-family:Arial;font-size:15px;">please rate our taskers</span>
+					<span style="color:#696969;font-family:Arial;font-size:15px;">our services. So please </span>
+				</div>
+				<div>
+					<span style="color:#696969;font-family:Arial;font-size:15px;">rate our taskers</span>
 				</div>
 			</div>
 			<div id="wb_Text4">
@@ -122,8 +134,7 @@
 				<span style="color:#000000;font-family:Arial;font-size:13px;">
 					<br>
 				</span>
-				<span style="color:#696969;font-family:Arial;font-size:15px;">Our taskers undergo a rigorous vetting process. We offer fast, easy and secure forms of payment. We will confirm your appointments swiftly.
-				</span>
+				<span style="color:#696969;font-family:Arial;font-size:15px;">Our taskers undergo a rigorous vetting process. We offer fast, easy and secure forms of payment. We will confirm your appointments swiftly.</span>
 				<span style="color:#000000;font-family:Arial;font-size:13px;">
 					<br>
 				</span>
@@ -221,11 +232,7 @@
 					<img src="<?=base_url('assets/last_design/images/');?>beauty.png" id="Image7" alt="">
 				</a>
 			</div>
-			<div id="wb_Image1">
-				<a href="<?=base_url('place_order/delivery');?>">
-					<img src="<?=base_url('assets/last_design/images/');?>deliver.png" id="Image1" alt="">
-				</a>
-			</div>
+
 			<div id="wb_Text6">
 				<span style="color:#FFFFFF;font-family:'Segoe UI Semibold';font-size:35px;">Available Tasks</span>
 			</div>
@@ -250,9 +257,7 @@
 			<div id="wb_Text15">
 				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;"> Driver</span>
 			</div>
-			<div id="wb_Text16">
-				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;"> Delivery</span>
-			</div>
+
 			<div id="wb_Text17">
 				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;"> Beauty</span>
 			</div>

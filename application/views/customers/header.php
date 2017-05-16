@@ -17,23 +17,13 @@
 
 </head>
 <body ng-app="app" >
-
-	<div id="Layer1">
-	    <div id="Layer1_Container">
-
-
-
-
-	    </div>
-	</div>
-
+	
 	<div id="Layer1">
 		<div id="Layer1_Container">
-			<!--
-			<div id="wb_Image1" style="position:absolute;left:86px;top:7px;width:151px;height:54px;z-index:0;">
-				<a href="<?=base_url('/');?>"><img src="<?=base_url('assets/last_design/images/');?>logo.png" id="Image1" alt=""></a>
+			<div id="wb_Image25">
+				<img src="<?=base_url('assets/last_design/images/');?>tools.png" id="Image25" alt="">
 			</div>
-			-->
+
 			<div id="wb_Shape3">
 				<a href="<?=base_url('/auth/login');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>img0042.png" id="Shape3" alt="">
@@ -43,8 +33,6 @@
 			<div id="wb_Shape5">
 				<img src="<?=base_url('assets/last_design/images/');?>img0043.png" id="Shape5" alt="">
 			</div>
-
-
 
 			<div id="wb_Text23">
 				<span style="color:#FFFFFF;font-family:Arial;font-size:16px;">
