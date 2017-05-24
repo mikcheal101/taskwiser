@@ -27,19 +27,6 @@ body
 {
    border-width: 0;
 }
-#wb_Text23 
-{
-   background-color: transparent;
-   background-image: none;
-   border: 0px #000000 solid;
-   padding: 0;
-   margin: 0;
-   text-align: left;
-}
-#wb_Text23 div
-{
-   text-align: left;
-}
 #wb_Text24 
 {
    background-color: transparent;
@@ -59,6 +46,7 @@ body
    background-image: url(images/Backup_of_web%20ready%20task%20wiser%20-%20Copy.jpg);
    background-repeat: no-repeat;
    background-position: center center;
+   background-attachment: scroll;
    background-size: cover;
    border: 1px #CCCCCC none;
 }
@@ -293,11 +281,86 @@ body
 {
    text-align: left;
 }
+#wb_Text7 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px #000000 solid;
+   padding: 0;
+   margin: 0;
+   text-align: center;
+}
+#wb_Text7 div
+{
+   text-align: center;
+}
+#Combobox1
+{
+   border: 1px #CCCCCC solid;
+   -moz-border-radius: 4px;
+   -webkit-border-radius: 4px;
+   border-radius: 4px;
+   background-color: #FFFFFF;
+   background-image: none;
+   color: #696969;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   padding: 4px 4px 4px 4px;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+#Combobox1:focus
+{
+   border-color: #66AFE9;
+   -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   outline: 0;
+}
+#Editbox7
+{
+   border: 1px #CCCCCC solid;
+   -moz-border-radius: 4px;
+   -webkit-border-radius: 4px;
+   border-radius: 4px;
+   background-color: #FFFFFF;
+   background-image: none;
+   color :#000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   padding: 4px 4px 4px 4px;
+   text-align: left;
+   vertical-align: middle;
+}
+#Editbox7:focus
+{
+   border-color: #66AFE9;
+   -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   outline: 0;
+}
+#wb_Text23 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px #000000 solid;
+   padding: 0;
+   margin: 0;
+   text-align: left;
+}
+#wb_Text23 div
+{
+   text-align: left;
+}
 #Layer5
 {
    background-color: #008B8B;
    background-image: none;
-   border: 1px #CCCCCC none;
+   border: 1px #00FF00 none;
 }
 #wb_Text20 
 {
@@ -387,65 +450,727 @@ body
    width: 100%;
    height: 100%;
 }
-#wb_Text7 
+#wb_Image21
 {
-   background-color: transparent;
-   background-image: none;
-   border: 0px #000000 solid;
-   padding: 0;
-   margin: 0;
+   position: absolute;
+   left: 1185px;
+   top: 15px;
+   width: 25px;
+   height: 25px;
+   z-index: 41;
+}
+#wb_Text19
+{
+   position: absolute;
+   left: 98px;
+   top: 17px;
+   width: 144px;
+   height: 17px;
+   z-index: 37;
+   text-align: left;
+}
+#Editbox1
+{
+   position: absolute;
+   left: 18px;
+   top: 83px;
+   width: 655px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 4;
+}
+#Layer2_Container
+{
+   width: 1278px;
+   height: 998px;
+   position: relative;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: auto;
+   margin-bottom: auto;
+   text-align: left;
+}
+#Shape1
+{
+   width: 183px;
+   height: 35px;
+}
+#Layer5_Container
+{
+   width: 1278px;
+   position: relative;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: left;
+}
+#wb_Text1
+{
+   position: absolute;
+   left: 252px;
+   top: 543px;
+   width: 159px;
+   height: 16px;
+   z-index: 10;
+   text-align: left;
+}
+#Editbox2
+{
+   position: absolute;
+   left: 18px;
+   top: 116px;
+   width: 655px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 5;
+}
+#wb_Text2
+{
+   position: absolute;
+   left: 411px;
+   top: 543px;
+   width: 60px;
+   height: 17px;
+   z-index: 11;
+   text-align: left;
+}
+#Editbox3
+{
+   position: absolute;
+   left: 18px;
+   top: 204px;
+   width: 654px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 6;
+}
+#Shape2
+{
+   width: 167px;
+   height: 38px;
+}
+#wb_Text3
+{
+   position: absolute;
+   left: 13px;
+   top: 149px;
+   width: 307px;
+   height: 16px;
    text-align: center;
+   z-index: 15;
 }
-#wb_Text7 div
+#Editbox4
 {
+   position: absolute;
+   left: 18px;
+   top: 172px;
+   width: 655px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 8;
+}
+#wb_Image1
+{
+   position: absolute;
+   left: 92px;
+   top: 7px;
+   width: 151px;
+   height: 54px;
+   z-index: 0;
+}
+#wb_Text4
+{
+   position: absolute;
+   left: 93px;
+   top: 27px;
+   width: 534px;
+   height: 32px;
    text-align: center;
+   z-index: 16;
 }
-#Combobox1
+#Editbox5
 {
-   border: 1px #CCCCCC solid;
-   -moz-border-radius: 4px;
-   -webkit-border-radius: 4px;
-   border-radius: 4px;
-   background-color: #FFFFFF;
-   background-image: none;
-   color: #696969;
-   font-family: Arial;
-   font-weight: normal;
-   font-size: 13px;
-   padding: 4px 4px 4px 4px;
-   -webkit-box-sizing: border-box;
-   -moz-box-sizing: border-box;
-   box-sizing: border-box;
+   position: absolute;
+   left: 18px;
+   top: 236px;
+   width: 654px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 9;
 }
-#Combobox1:focus
+#Layer1
 {
-   border-color: #66AFE9;
-   -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
-   -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
-   box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
-   outline: 0;
+   position: relative;
+   text-align: center;
+   margin: 0px 0px 0px 0px;
+   width: 100%;
+   height: 68px;
+   float: left;
+   clear: left;
+   display: block;
+   z-index: 42;
+}
+#wb_Text5
+{
+   position: absolute;
+   left: 515px;
+   top: 279px;
+   width: 261px;
+   height: 58px;
+   text-align: center;
+   z-index: 18;
+}
+#wb_Image3
+{
+   position: absolute;
+   left: 554px;
+   top: 16px;
+   width: 199px;
+   height: 263px;
+   z-index: 17;
+}
+#Layer2
+{
+   position: relative;
+   text-align: center;
+   margin: 0px 0px 0px 0px;
+   width: 100%;
+   height: 998px;
+   float: left;
+   clear: left;
+   display: block;
+   z-index: 43;
+}
+#wb_Text6
+{
+   position: absolute;
+   left: 785px;
+   top: 376px;
+   width: 104px;
+   height: 16px;
+   z-index: 44;
+   text-align: left;
 }
 #Editbox7
 {
-   border: 1px #CCCCCC solid;
-   -moz-border-radius: 4px;
-   -webkit-border-radius: 4px;
-   border-radius: 4px;
+   position: absolute;
+   left: 18px;
+   top: 340px;
+   width: 654px;
+   height: 100px;
+   line-height: 100px;
+   z-index: 14;
+}
+#Layer1_Container
+{
+   width: 1278px;
+   position: relative;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: left;
+}
+#wb_Text20
+{
+   position: absolute;
+   left: 428px;
+   top: 16px;
+   width: 182px;
+   height: 17px;
+   z-index: 33;
+   text-align: left;
+}
+#wb_Text7
+{
+   position: absolute;
+   left: 15px;
+   top: 276px;
+   width: 109px;
+   height: 16px;
+   text-align: center;
+   z-index: 12;
+}
+#wb_Image18
+{
+   position: absolute;
+   left: 629px;
+   top: 15px;
+   width: 26px;
+   height: 20px;
+   z-index: 38;
+}
+#wb_Text21
+{
+   position: absolute;
+   left: 663px;
+   top: 15px;
+   width: 161px;
+   height: 17px;
+   z-index: 34;
+   text-align: left;
+}
+#Layer5
+{
+   position: relative;
+   text-align: center;
+   margin: 0px 0px 0px 0px;
+   width: 100%;
+   height: 55px;
+   float: left;
+   clear: left;
+   display: block;
+   z-index: 45;
+}
+#wb_Image19
+{
+   position: absolute;
+   left: 1134px;
+   top: 15px;
+   width: 29px;
+   height: 25px;
+   z-index: 39;
+}
+#wb_Text22
+{
+   position: absolute;
+   left: 845px;
+   top: 17px;
+   width: 123px;
+   height: 16px;
+   z-index: 35;
+   text-align: left;
+}
+#wb_Text23
+{
+   position: absolute;
+   left: 1063px;
+   top: 26px;
+   width: 114px;
+   height: 17px;
+   z-index: 3;
+   text-align: left;
+}
+#wb_Text24
+{
+   position: absolute;
+   left: 940px;
+   top: 26px;
+   width: 60px;
+   height: 17px;
+   z-index: 1;
+   text-align: left;
+}
+#wb_Form1
+{
+   position: absolute;
+   left: 284px;
+   top: 351px;
+   width: 708px;
+   height: 596px;
+   z-index: 19;
+}
+#Button1
+{
+   position: absolute;
+   left: 220px;
+   top: 483px;
+   width: 275px;
+   height: 47px;
+   z-index: 7;
+}
+#wb_Shape1
+{
+   position: absolute;
+   left: 59px;
+   top: 8px;
+   width: 183px;
+   height: 35px;
+   z-index: 36;
+}
+#Combobox1
+{
+   position: absolute;
+   left: 18px;
+   top: 297px;
+   width: 664px;
+   height: 35px;
+   z-index: 13;
+}
+#wb_Shape2
+{
+   position: absolute;
+   left: 1033px;
+   top: 15px;
+   width: 167px;
+   height: 38px;
+   z-index: 2;
+}
+#wb_Image20
+{
+   position: absolute;
+   left: 1091px;
+   top: 13px;
+   width: 14px;
+   height: 26px;
+   z-index: 40;
+}
+@media only screen and (max-width: 1279px)
+{
+#Layer1
+{
+   height: 190px;
+   visibility: visible;
+   display: inline;
    background-color: #FFFFFF;
    background-image: none;
-   color :#000000;
-   font-family: Arial;
-   font-weight: normal;
-   font-size: 13px;
-   padding: 4px 4px 4px 4px;
-   text-align: left;
-   vertical-align: middle;
 }
-#Editbox7:focus
+#Layer1_Container
 {
-   border-color: #66AFE9;
-   -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
-   -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
-   box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
-   outline: 0;
+   width: 318px;
+}
+#wb_Image1
+{
+   left: 92px;
+   top: 7px;
+   width: 151px;
+   height: 54px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Shape2
+{
+   left: 92px;
+   top: 126px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Text24
+{
+   left: 145px;
+   top: 86px;
+   width: 60px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#Layer2
+{
+   height: 920px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: url(images/Backup_of_web%20ready%20task%20wiser%20-%20Copy.jpg);
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-attachment: scroll;
+   background-size: cover;
+}
+#Layer2_Container
+{
+   width: 318px;
+   height:918px;
+}
+#wb_Form1
+{
+   left: 21px;
+   top: 290px;
+   width: 275px;
+   height: 596px;
+   visibility: visible;
+   display: inline;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Editbox1
+{
+   left: 18px;
+   top: 83px;
+   width: 224px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Editbox2
+{
+   left: 18px;
+   top: 116px;
+   width: 224px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Editbox3
+{
+   left: 15px;
+   top: 207px;
+   width: 227px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Button1
+{
+   left: 18px;
+   top: 458px;
+   width: 234px;
+   height: 47px;
+   visibility: visible;
+   display: inline;
+   color: #FFFFFF;
+   background-color: #3370B7;
+   background-image: none;
+}
+#wb_Text4
+{
+   left: 32px;
+   top: 11px;
+   width: 211px;
+   height: 64px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#Editbox4
+{
+   left: 18px;
+   top: 176px;
+   width: 224px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Editbox5
+{
+   left: 15px;
+   top: 239px;
+   width: 227px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#wb_Text1
+{
+   left: 60px;
+   top: 527px;
+   width: 159px;
+   height: 16px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Text2
+{
+   left: 103px;
+   top: 557px;
+   width: 60px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Image3
+{
+   left: 110px;
+   top: 29px;
+   width: 95px;
+   height: 134px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Text3
+{
+   left: 15px;
+   top: 144px;
+   width: 237px;
+   height: 32px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Text5
+{
+   left: 52px;
+   top: 176px;
+   width: 214px;
+   height: 87px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Text6
+{
+   left: 785px;
+   top: 376px;
+   width: 104px;
+   height: 16px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Text7
+{
+   left: 15px;
+   top: 276px;
+   width: 109px;
+   height: 16px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#Combobox1
+{
+   left: 18px;
+   top: 297px;
+   width: 234px;
+   height: 35px;
+   visibility: visible;
+   display: inline;
+   color: #696969;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Editbox7
+{
+   left: 18px;
+   top: 340px;
+   width: 224px;
+   height: 100px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#wb_Text23
+{
+   left: 122px;
+   top: 137px;
+   width: 114px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#Layer5
+{
+   height: 239px;
+   visibility: visible;
+   display: inline;
+   background-color: #008B8B;
+   background-image: none;
+}
+#Layer5_Container
+{
+   width: 318px;
+}
+#wb_Text20
+{
+   left: 79px;
+   top: 60px;
+   width: 182px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Text21
+{
+   left: 96px;
+   top: 96px;
+   width: 161px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Text22
+{
+   left: 100px;
+   top: 136px;
+   width: 123px;
+   height: 16px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Shape1
+{
+   left: 59px;
+   top: 8px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Text19
+{
+   left: 98px;
+   top: 17px;
+   width: 144px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Image18
+{
+   left: 62px;
+   top: 96px;
+   width: 26px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Image19
+{
+   left: 141px;
+   top: 175px;
+   width: 29px;
+   height: 25px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Image20
+{
+   left: 98px;
+   top: 173px;
+   width: 14px;
+   height: 26px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Image21
+{
+   left: 192px;
+   top: 175px;
+   width: 25px;
+   height: 25px;
+   visibility: visible;
+   display: inline;
+}
 }

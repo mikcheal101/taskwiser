@@ -15,15 +15,13 @@ body
    background-image: none;
    border: 1px #CCCCCC none;
 }
-#Layer1{
-   display: inline-flex !important;
-}
 #Layer2
 {
    background-color: transparent;
    background-image: url(images/spa-massage-therapy-inset.jpg);
    background-repeat: no-repeat;
    background-position: left top;
+   background-attachment: scroll;
    background-size: cover;
    border: 1px #CCCCCC none;
 }
@@ -292,19 +290,6 @@ body
 {
    border-width: 0;
 }
-#wb_Text23 
-{
-   background-color: transparent;
-   background-image: none;
-   border: 0px #000000 solid;
-   padding: 0;
-   margin: 0;
-   text-align: left;
-}
-#wb_Text23 div
-{
-   text-align: left;
-}
 #wb_Text24 
 {
    background-color: transparent;
@@ -317,100 +302,6 @@ body
 #wb_Text24 div
 {
    text-align: left;
-}
-#Layer5
-{
-   background-color: #008B8B;
-   background-image: none;
-   border: 1px #CCCCCC none;
-}
-#wb_Text20 
-{
-   background-color: transparent;
-   background-image: none;
-   border: 0px #000000 solid;
-   padding: 0;
-   margin: 0;
-   text-align: left;
-}
-#wb_Text20 div
-{
-   text-align: left;
-}
-#wb_Text21 
-{
-   background-color: transparent;
-   background-image: none;
-   border: 0px #000000 solid;
-   padding: 0;
-   margin: 0;
-   text-align: left;
-}
-#wb_Text21 div
-{
-   text-align: left;
-}
-#wb_Text22 
-{
-   background-color: transparent;
-   background-image: none;
-   border: 0px #000000 solid;
-   padding: 0;
-   margin: 0;
-   text-align: left;
-}
-#wb_Text22 div
-{
-   text-align: left;
-}
-#Shape1
-{
-   border-width: 0;
-}
-#wb_Text19 
-{
-   background-color: transparent;
-   background-image: none;
-   border: 0px #000000 solid;
-   padding: 0;
-   margin: 0;
-   text-align: left;
-}
-#wb_Text19 div
-{
-   text-align: left;
-}
-#Image18
-{
-   border: 0px #000000 solid;
-   left: 0;
-   top: 0;
-   width: 100%;
-   height: 100%;
-}
-#Image19
-{
-   border: 0px #000000 solid;
-   left: 0;
-   top: 0;
-   width: 100%;
-   height: 100%;
-}
-#Image20
-{
-   border: 0px #000000 solid;
-   left: 0;
-   top: 0;
-   width: 100%;
-   height: 100%;
-}
-#Image21
-{
-   border: 0px #000000 solid;
-   left: 0;
-   top: 0;
-   width: 100%;
-   height: 100%;
 }
 #Combobox1
 {
@@ -561,4 +452,985 @@ body
    -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
    outline: 0;
+}
+#wb_Text23 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px #000000 solid;
+   padding: 0;
+   margin: 0;
+   text-align: left;
+}
+#wb_Text23 div
+{
+   text-align: left;
+}
+#Layer5
+{
+   background-color: #008B8B;
+   background-image: none;
+   border: 1px #00FF00 none;
+}
+#wb_Text20 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px #000000 solid;
+   padding: 0;
+   margin: 0;
+   text-align: left;
+}
+#wb_Text20 div
+{
+   text-align: left;
+}
+#wb_Text21 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px #000000 solid;
+   padding: 0;
+   margin: 0;
+   text-align: left;
+}
+#wb_Text21 div
+{
+   text-align: left;
+}
+#wb_Text22 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px #000000 solid;
+   padding: 0;
+   margin: 0;
+   text-align: left;
+}
+#wb_Text22 div
+{
+   text-align: left;
+}
+#Shape1
+{
+   border-width: 0;
+}
+#wb_Text19 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px #000000 solid;
+   padding: 0;
+   margin: 0;
+   text-align: left;
+}
+#wb_Text19 div
+{
+   text-align: left;
+}
+#Image18
+{
+   border: 0px #000000 solid;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+}
+#Image19
+{
+   border: 0px #000000 solid;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+}
+#Image20
+{
+   border: 0px #000000 solid;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+}
+#Image21
+{
+   border: 0px #000000 solid;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+}
+#wb_Image21
+{
+   position: absolute;
+   left: 1185px;
+   top: 15px;
+   width: 25px;
+   height: 25px;
+   z-index: 58;
+}
+#wb_Text19
+{
+   position: absolute;
+   left: 98px;
+   top: 17px;
+   width: 144px;
+   height: 17px;
+   z-index: 54;
+   text-align: left;
+}
+#Combobox3
+{
+   position: absolute;
+   left: 237px;
+   top: 354px;
+   width: 88px;
+   height: 35px;
+   z-index: 23;
+}
+#Editbox1
+{
+   position: absolute;
+   left: 12px;
+   top: 218px;
+   width: 302px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 8;
+}
+#Label2
+{
+   position: absolute;
+   left: 37px;
+   top: 109px;
+   width: 75px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 6;
+}
+#Layer2_Container
+{
+   width: 1237px;
+   height: 998px;
+   position: relative;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: auto;
+   margin-bottom: auto;
+   text-align: left;
+}
+#Shape1
+{
+   width: 183px;
+   height: 35px;
+}
+#Layer5_Container
+{
+   width: 1237px;
+   position: relative;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: left;
+}
+#Combobox4
+{
+   position: absolute;
+   left: 11px;
+   top: 354px;
+   width: 140px;
+   height: 35px;
+   z-index: 19;
+}
+#Label3
+{
+   position: absolute;
+   left: 38px;
+   top: 132px;
+   width: 75px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 13;
+}
+#Editbox2
+{
+   position: absolute;
+   left: 12px;
+   top: 251px;
+   width: 302px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 9;
+}
+#Combobox5
+{
+   position: absolute;
+   left: 154px;
+   top: 354px;
+   width: 79px;
+   height: 35px;
+   z-index: 21;
+}
+#Label4
+{
+   position: absolute;
+   left: 37px;
+   top: 156px;
+   width: 75px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 15;
+}
+#Editbox3
+{
+   position: absolute;
+   left: 12px;
+   top: 284px;
+   width: 302px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 10;
+}
+#RadioButton1
+{
+   position: absolute;
+   left: 175px;
+   top: 90px;
+   z-index: 5;
+}
+#wb_Text2
+{
+   position: absolute;
+   left: 330px;
+   top: 305px;
+   width: 104px;
+   height: 29px;
+   z-index: 26;
+   text-align: left;
+}
+#Shape2
+{
+   width: 167px;
+   height: 38px;
+}
+#Combobox6
+{
+   position: absolute;
+   left: 237px;
+   top: 316px;
+   width: 88px;
+   height: 35px;
+   z-index: 22;
+}
+#wb_Text3
+{
+   position: absolute;
+   left: 19px;
+   top: 43px;
+   width: 297px;
+   height: 16px;
+   z-index: 12;
+   text-align: left;
+}
+#RadioButton2
+{
+   position: absolute;
+   left: 175px;
+   top: 112px;
+   z-index: 7;
+}
+#wb_Image1
+{
+   position: absolute;
+   left: 88px;
+   top: 7px;
+   width: 151px;
+   height: 54px;
+   z-index: 0;
+}
+#RadioButton3
+{
+   position: absolute;
+   left: 175px;
+   top: 136px;
+   z-index: 14;
+}
+#wb_Image2
+{
+   position: absolute;
+   left: 297px;
+   top: 351px;
+   width: 213px;
+   height: 213px;
+   z-index: 27;
+}
+#Layer1
+{
+   position: relative;
+   text-align: center;
+   margin: 0px 0px 0px 0px;
+   width: 100%;
+   height: 68px;
+   float: left;
+   clear: left;
+   display: block;
+   z-index: 59;
+}
+#RadioButton4
+{
+   position: absolute;
+   left: 175px;
+   top: 159px;
+   z-index: 16;
+}
+#wb_Image3
+{
+   position: absolute;
+   left: 283px;
+   top: 42px;
+   width: 199px;
+   height: 263px;
+   z-index: 25;
+}
+#Layer2
+{
+   position: relative;
+   text-align: center;
+   margin: 0px 0px 0px 0px;
+   width: 100%;
+   height: 998px;
+   float: left;
+   clear: left;
+   display: block;
+   z-index: 60;
+}
+#TextArea1
+{
+   position: absolute;
+   left: 15px;
+   top: 396px;
+   width: 300px;
+   height: 90px;
+   z-index: 17;
+}
+#Layer1_Container
+{
+   width: 1237px;
+   position: relative;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: left;
+}
+#wb_Text20
+{
+   position: absolute;
+   left: 428px;
+   top: 16px;
+   width: 182px;
+   height: 17px;
+   z-index: 50;
+   text-align: left;
+}
+#TextArea2
+{
+   position: absolute;
+   left: 16px;
+   top: 504px;
+   width: 299px;
+   height: 90px;
+   z-index: 11;
+}
+#wb_Image18
+{
+   position: absolute;
+   left: 629px;
+   top: 15px;
+   width: 26px;
+   height: 20px;
+   z-index: 55;
+}
+#wb_Text21
+{
+   position: absolute;
+   left: 663px;
+   top: 15px;
+   width: 161px;
+   height: 17px;
+   z-index: 51;
+   text-align: left;
+}
+#Layer5
+{
+   position: relative;
+   text-align: center;
+   margin: 0px 0px 0px 0px;
+   width: 100%;
+   height: 55px;
+   float: left;
+   clear: left;
+   display: block;
+   z-index: 61;
+}
+#wb_Image19
+{
+   position: absolute;
+   left: 1134px;
+   top: 15px;
+   width: 29px;
+   height: 25px;
+   z-index: 56;
+}
+#wb_Text22
+{
+   position: absolute;
+   left: 845px;
+   top: 17px;
+   width: 123px;
+   height: 16px;
+   z-index: 52;
+   text-align: left;
+}
+#wb_Text23
+{
+   position: absolute;
+   left: 1063px;
+   top: 22px;
+   width: 114px;
+   height: 17px;
+   z-index: 3;
+   text-align: left;
+}
+#wb_Text24
+{
+   position: absolute;
+   left: 940px;
+   top: 22px;
+   width: 60px;
+   height: 17px;
+   z-index: 1;
+   text-align: left;
+}
+#wb_Form1
+{
+   position: absolute;
+   left: 526px;
+   top: 62px;
+   width: 343px;
+   height: 707px;
+   z-index: 28;
+}
+#Button1
+{
+   position: absolute;
+   left: 12px;
+   top: 625px;
+   width: 313px;
+   height: 47px;
+   z-index: 24;
+}
+#wb_Shape1
+{
+   position: absolute;
+   left: 59px;
+   top: 8px;
+   width: 183px;
+   height: 35px;
+   z-index: 53;
+}
+#Combobox1
+{
+   position: absolute;
+   left: 10px;
+   top: 315px;
+   width: 140px;
+   height: 35px;
+   z-index: 18;
+}
+#wb_Shape2
+{
+   position: absolute;
+   left: 1033px;
+   top: 11px;
+   width: 167px;
+   height: 38px;
+   z-index: 2;
+}
+#wb_Image20
+{
+   position: absolute;
+   left: 1091px;
+   top: 13px;
+   width: 14px;
+   height: 26px;
+   z-index: 57;
+}
+#Combobox2
+{
+   position: absolute;
+   left: 154px;
+   top: 315px;
+   width: 79px;
+   height: 35px;
+   z-index: 20;
+}
+#Label1
+{
+   position: absolute;
+   left: 33px;
+   top: 87px;
+   width: 114px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 4;
+}
+@media only screen and (max-width: 1238px)
+{
+#Layer1
+{
+   height: 193px;
+   visibility: visible;
+   display: inline;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Layer1_Container
+{
+   width: 318px;
+}
+#Layer2
+{
+   height: 1000px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: url(images/spa-massage-therapy-inset.jpg);
+   background-repeat: no-repeat;
+   background-position: left top;
+   background-attachment: scroll;
+   background-size: cover;
+}
+#Layer2_Container
+{
+   width: 318px;
+   height:998px;
+}
+#wb_Image3
+{
+   left: 109px;
+   top: 14px;
+   width: 98px;
+   height: 139px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Text2
+{
+   left: 106px;
+   top: 153px;
+   width: 104px;
+   height: 29px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Form1
+{
+   left: 7px;
+   top: 306px;
+   width: 299px;
+   height: 676px;
+   visibility: visible;
+   display: inline;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Label1
+{
+   left: 33px;
+   top: 87px;
+   width: 114px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: transparent;
+   background-image: none;
+}
+#RadioButton1
+{
+   left: 175px;
+   top: 90px;
+   visibility: visible;
+   display: inline;
+   color: #FFFFFF;
+   background-color: #3370B7;
+   background-image: none;
+}
+#Label2
+{
+   left: 37px;
+   top: 109px;
+   width: 75px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: transparent;
+   background-image: none;
+}
+#RadioButton2
+{
+   left: 175px;
+   top: 112px;
+   visibility: visible;
+   display: inline;
+   color: #FFFFFF;
+   background-color: #3370B7;
+   background-image: none;
+}
+#Editbox1
+{
+   left: 12px;
+   top: 218px;
+   width: 252px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Editbox2
+{
+   left: 12px;
+   top: 251px;
+   width: 252px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Editbox3
+{
+   left: 11px;
+   top: 284px;
+   width: 253px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#TextArea1
+{
+   left: 15px;
+   top: 396px;
+   width: 249px;
+   height: 90px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#TextArea2
+{
+   left: 16px;
+   top: 504px;
+   width: 248px;
+   height: 90px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Button1
+{
+   left: 13px;
+   top: 614px;
+   width: 262px;
+   height: 47px;
+   visibility: visible;
+   display: inline;
+   color: #FFFFFF;
+   background-color: #3370B7;
+   background-image: none;
+}
+#wb_Text3
+{
+   left: 48px;
+   top: 33px;
+   width: 226px;
+   height: 32px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#Label3
+{
+   left: 38px;
+   top: 132px;
+   width: 75px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: transparent;
+   background-image: none;
+}
+#RadioButton3
+{
+   left: 175px;
+   top: 136px;
+   visibility: visible;
+   display: inline;
+   color: #FFFFFF;
+   background-color: #3370B7;
+   background-image: none;
+}
+#Label4
+{
+   left: 37px;
+   top: 156px;
+   width: 75px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: transparent;
+   background-image: none;
+}
+#RadioButton4
+{
+   left: 175px;
+   top: 159px;
+   visibility: visible;
+   display: inline;
+   color: #FFFFFF;
+   background-color: #3370B7;
+   background-image: none;
+}
+#wb_Image2
+{
+   left: 115px;
+   top: 200px;
+   width: 95px;
+   height: 95px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Image1
+{
+   left: 88px;
+   top: 7px;
+   width: 151px;
+   height: 54px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Shape2
+{
+   left: 87px;
+   top: 132px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Text24
+{
+   left: 128px;
+   top: 90px;
+   width: 60px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#Combobox1
+{
+   left: 9px;
+   top: 317px;
+   width: 82px;
+   height: 35px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Combobox2
+{
+   left: 95px;
+   top: 316px;
+   width: 79px;
+   height: 35px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Combobox6
+{
+   left: 180px;
+   top: 317px;
+   width: 88px;
+   height: 35px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Combobox4
+{
+   left: 9px;
+   top: 355px;
+   width: 83px;
+   height: 35px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Combobox5
+{
+   left: 95px;
+   top: 355px;
+   width: 81px;
+   height: 35px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Combobox3
+{
+   left: 180px;
+   top: 355px;
+   width: 88px;
+   height: 35px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#wb_Text23
+{
+   left: 117px;
+   top: 143px;
+   width: 114px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#Layer5
+{
+   height: 217px;
+   visibility: visible;
+   display: inline;
+   background-color: #008B8B;
+   background-image: none;
+}
+#Layer5_Container
+{
+   width: 318px;
+}
+#wb_Text20
+{
+   left: 78px;
+   top: 63px;
+   width: 182px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Text21
+{
+   left: 96px;
+   top: 97px;
+   width: 161px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Text22
+{
+   left: 96px;
+   top: 134px;
+   width: 123px;
+   height: 16px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Shape1
+{
+   left: 59px;
+   top: 8px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Text19
+{
+   left: 98px;
+   top: 17px;
+   width: 144px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Image18
+{
+   left: 62px;
+   top: 97px;
+   width: 26px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Image19
+{
+   left: 135px;
+   top: 169px;
+   width: 29px;
+   height: 25px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Image20
+{
+   left: 92px;
+   top: 167px;
+   width: 14px;
+   height: 26px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Image21
+{
+   left: 188px;
+   top: 169px;
+   width: 25px;
+   height: 25px;
+   visibility: visible;
+   display: inline;
+}
 }

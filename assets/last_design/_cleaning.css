@@ -24,6 +24,7 @@ body
    background-image: url(images/clean%20room.JPG);
    background-repeat: repeat;
    background-position: center center;
+   background-attachment: scroll;
    background-size: cover;
    border: 1px #CCCCCC none;
 }
@@ -313,19 +314,6 @@ body
 {
    text-align: left;
 }
-#wb_Text23 
-{
-   background-color: transparent;
-   background-image: none;
-   border: 0px #000000 solid;
-   padding: 0;
-   margin: 0;
-   text-align: left;
-}
-#wb_Text23 div
-{
-   text-align: left;
-}
 #Combobox1
 {
    border: 1px #CCCCCC solid;
@@ -476,11 +464,24 @@ body
    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
    outline: 0;
 }
+#wb_Text23 
+{
+   background-color: transparent;
+   background-image: none;
+   border: 0px #000000 solid;
+   padding: 0;
+   margin: 0;
+   text-align: left;
+}
+#wb_Text23 div
+{
+   text-align: left;
+}
 #Layer5
 {
    background-color: #008B8B;
    background-image: none;
-   border: 1px #CCCCCC none;
+   border: 1px #00FF00 none;
 }
 #wb_Text20 
 {
@@ -569,4 +570,851 @@ body
    top: 0;
    width: 100%;
    height: 100%;
+}
+#wb_Image21
+{
+   position: absolute;
+   left: 1185px;
+   top: 15px;
+   width: 25px;
+   height: 25px;
+   z-index: 54;
+}
+#wb_Text19
+{
+   position: absolute;
+   left: 98px;
+   top: 17px;
+   width: 144px;
+   height: 17px;
+   z-index: 50;
+   text-align: left;
+}
+#Combobox3
+{
+   position: absolute;
+   left: 243px;
+   top: 281px;
+   width: 88px;
+   height: 35px;
+   z-index: 17;
+}
+#Editbox1
+{
+   position: absolute;
+   left: 15px;
+   top: 130px;
+   width: 308px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 8;
+}
+#Label2
+{
+   position: absolute;
+   left: 16px;
+   top: 82px;
+   width: 114px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 6;
+}
+#Layer2_Container
+{
+   width: 1237px;
+   height: 998px;
+   position: relative;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: auto;
+   margin-bottom: auto;
+   text-align: left;
+}
+#Shape1
+{
+   width: 183px;
+   height: 35px;
+}
+#Layer5_Container
+{
+   width: 1237px;
+   position: relative;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: left;
+}
+#Combobox4
+{
+   position: absolute;
+   left: 17px;
+   top: 320px;
+   width: 140px;
+   height: 35px;
+   z-index: 20;
+}
+#Editbox2
+{
+   position: absolute;
+   left: 15px;
+   top: 163px;
+   width: 308px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 9;
+}
+#wb_Text1
+{
+   position: absolute;
+   left: 340px;
+   top: 319px;
+   width: 104px;
+   height: 58px;
+   z-index: 23;
+   text-align: left;
+}
+#Combobox5
+{
+   position: absolute;
+   left: 160px;
+   top: 320px;
+   width: 79px;
+   height: 35px;
+   z-index: 18;
+}
+#Editbox3
+{
+   position: absolute;
+   left: 15px;
+   top: 196px;
+   width: 308px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 10;
+}
+#RadioButton1
+{
+   position: absolute;
+   left: 160px;
+   top: 63px;
+   z-index: 5;
+}
+#Shape2
+{
+   width: 167px;
+   height: 38px;
+}
+#wb_Text3
+{
+   position: absolute;
+   left: 22px;
+   top: 16px;
+   width: 249px;
+   height: 32px;
+   z-index: 21;
+   text-align: left;
+}
+#Combobox6
+{
+   position: absolute;
+   left: 244px;
+   top: 320px;
+   width: 88px;
+   height: 35px;
+   z-index: 19;
+}
+#Editbox4
+{
+   position: absolute;
+   left: 15px;
+   top: 247px;
+   width: 308px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 12;
+}
+#RadioButton2
+{
+   position: absolute;
+   left: 160px;
+   top: 85px;
+   z-index: 7;
+}
+#wb_Image1
+{
+   position: absolute;
+   left: 92px;
+   top: 7px;
+   width: 151px;
+   height: 54px;
+   z-index: 0;
+}
+#Label6
+{
+   position: absolute;
+   left: 15px;
+   top: 224px;
+   width: 137px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 11;
+}
+#wb_Image2
+{
+   position: absolute;
+   left: 271px;
+   top: 377px;
+   width: 210px;
+   height: 210px;
+   z-index: 24;
+}
+#Layer1
+{
+   position: relative;
+   text-align: center;
+   margin: 0px 0px 0px 0px;
+   width: 100%;
+   height: 68px;
+   float: left;
+   clear: left;
+   display: block;
+   z-index: 55;
+}
+#wb_Image3
+{
+   position: absolute;
+   left: 293px;
+   top: 30px;
+   width: 199px;
+   height: 263px;
+   z-index: 25;
+}
+#Layer2
+{
+   position: relative;
+   text-align: center;
+   margin: 0px 0px 0px 0px;
+   width: 100%;
+   height: 998px;
+   float: left;
+   clear: left;
+   display: block;
+   z-index: 56;
+}
+#TextArea1
+{
+   position: absolute;
+   left: 14px;
+   top: 363px;
+   width: 309px;
+   height: 83px;
+   z-index: 14;
+}
+#Layer1_Container
+{
+   width: 1237px;
+   height: 68px;
+   position: relative;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: auto;
+   margin-bottom: auto;
+   text-align: left;
+}
+#wb_Text20
+{
+   position: absolute;
+   left: 428px;
+   top: 16px;
+   width: 182px;
+   height: 17px;
+   z-index: 46;
+   text-align: left;
+}
+#TextArea2
+{
+   position: absolute;
+   left: 15px;
+   top: 464px;
+   width: 308px;
+   height: 90px;
+   z-index: 22;
+}
+#wb_Image18
+{
+   position: absolute;
+   left: 629px;
+   top: 15px;
+   width: 26px;
+   height: 20px;
+   z-index: 51;
+}
+#wb_Text21
+{
+   position: absolute;
+   left: 663px;
+   top: 15px;
+   width: 161px;
+   height: 17px;
+   z-index: 47;
+   text-align: left;
+}
+#Layer5
+{
+   position: relative;
+   text-align: center;
+   margin: 0px 0px 0px 0px;
+   width: 100%;
+   height: 55px;
+   float: left;
+   clear: left;
+   display: block;
+   z-index: 57;
+}
+#wb_Image19
+{
+   position: absolute;
+   left: 1134px;
+   top: 15px;
+   width: 29px;
+   height: 25px;
+   z-index: 52;
+}
+#wb_Text22
+{
+   position: absolute;
+   left: 845px;
+   top: 17px;
+   width: 123px;
+   height: 16px;
+   z-index: 48;
+   text-align: left;
+}
+#wb_Text23
+{
+   position: absolute;
+   left: 1063px;
+   top: 27px;
+   width: 114px;
+   height: 17px;
+   z-index: 3;
+   text-align: left;
+}
+#wb_Text24
+{
+   position: absolute;
+   left: 953px;
+   top: 27px;
+   width: 60px;
+   height: 17px;
+   z-index: 1;
+   text-align: left;
+}
+#wb_Form1
+{
+   position: absolute;
+   left: 518px;
+   top: 30px;
+   width: 356px;
+   height: 655px;
+   z-index: 26;
+}
+#Button1
+{
+   position: absolute;
+   left: 16px;
+   top: 583px;
+   width: 317px;
+   height: 47px;
+   z-index: 13;
+}
+#wb_Shape1
+{
+   position: absolute;
+   left: 59px;
+   top: 8px;
+   width: 183px;
+   height: 35px;
+   z-index: 49;
+}
+#Combobox1
+{
+   position: absolute;
+   left: 16px;
+   top: 281px;
+   width: 140px;
+   height: 35px;
+   z-index: 15;
+}
+#wb_Shape2
+{
+   position: absolute;
+   left: 1034px;
+   top: 15px;
+   width: 167px;
+   height: 38px;
+   z-index: 2;
+}
+#wb_Image20
+{
+   position: absolute;
+   left: 1091px;
+   top: 13px;
+   width: 14px;
+   height: 26px;
+   z-index: 53;
+}
+#Combobox2
+{
+   position: absolute;
+   left: 160px;
+   top: 281px;
+   width: 79px;
+   height: 35px;
+   z-index: 16;
+}
+#Label1
+{
+   position: absolute;
+   left: 16px;
+   top: 58px;
+   width: 105px;
+   height: 18px;
+   line-height: 18px;
+   z-index: 4;
+}
+@media only screen and (max-width: 1238px)
+{
+#Layer1
+{
+   height: 186px;
+   visibility: visible;
+   display: inline;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Layer1_Container
+{
+   width: 318px;
+   height:184px;
+}
+#Layer2
+{
+   height: 1148px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: url(images/clean%20room.JPG);
+   background-repeat: repeat;
+   background-position: center center;
+   background-attachment: scroll;
+   background-size: cover;
+}
+#Layer2_Container
+{
+   width: 318px;
+   height:1146px;
+}
+#wb_Image3
+{
+   left: 89px;
+   top: 19px;
+   width: 118px;
+   height: 151px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Text1
+{
+   left: 104px;
+   top: 181px;
+   width: 104px;
+   height: 58px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Form1
+{
+   left: 5px;
+   top: 398px;
+   width: 300px;
+   height: 733px;
+   visibility: visible;
+   display: inline;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Label1
+{
+   left: 10px;
+   top: 70px;
+   width: 105px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   font-size: 12px;
+   background-color: transparent;
+   background-image: none;
+}
+#RadioButton1
+{
+   left: 148px;
+   top: 74px;
+   visibility: visible;
+   display: inline;
+   color: #FFFFFF;
+   background-color: #3370B7;
+   background-image: none;
+}
+#Label2
+{
+   left: 10px;
+   top: 94px;
+   width: 114px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   font-size: 12px;
+   background-color: transparent;
+   background-image: none;
+}
+#RadioButton2
+{
+   left: 149px;
+   top: 98px;
+   visibility: visible;
+   display: inline;
+   color: #FFFFFF;
+   background-color: #3370B7;
+   background-image: none;
+}
+#Editbox1
+{
+   left: 15px;
+   top: 130px;
+   width: 256px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Editbox2
+{
+   left: 15px;
+   top: 163px;
+   width: 256px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Editbox3
+{
+   left: 15px;
+   top: 196px;
+   width: 256px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Label6
+{
+   left: 11px;
+   top: 224px;
+   width: 137px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   font-size: 12px;
+   background-color: transparent;
+   background-image: none;
+}
+#Editbox4
+{
+   left: 15px;
+   top: 247px;
+   width: 256px;
+   height: 20px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#TextArea1
+{
+   left: 15px;
+   top: 358px;
+   width: 256px;
+   height: 83px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#TextArea2
+{
+   left: 14px;
+   top: 460px;
+   width: 257px;
+   height: 90px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Button1
+{
+   left: 14px;
+   top: 569px;
+   width: 267px;
+   height: 47px;
+   visibility: visible;
+   display: inline;
+   color: #FFFFFF;
+   background-color: #3370B7;
+   background-image: none;
+}
+#wb_Text3
+{
+   left: 19px;
+   top: 30px;
+   width: 246px;
+   height: 32px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Image2
+{
+   left: 52px;
+   top: 219px;
+   width: 164px;
+   height: 164px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Image1
+{
+   left: 92px;
+   top: 7px;
+   width: 151px;
+   height: 54px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Shape2
+{
+   left: 76px;
+   top: 125px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Text24
+{
+   left: 120px;
+   top: 84px;
+   width: 60px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#Combobox1
+{
+   left: 16px;
+   top: 281px;
+   width: 82px;
+   height: 35px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Combobox2
+{
+   left: 100px;
+   top: 281px;
+   width: 91px;
+   height: 35px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Combobox3
+{
+   left: 193px;
+   top: 281px;
+   width: 88px;
+   height: 35px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Combobox4
+{
+   left: 15px;
+   top: 320px;
+   width: 83px;
+   height: 35px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Combobox5
+{
+   left: 100px;
+   top: 320px;
+   width: 91px;
+   height: 35px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#Combobox6
+{
+   left: 192px;
+   top: 320px;
+   width: 89px;
+   height: 35px;
+   visibility: visible;
+   display: inline;
+   color: #000000;
+   background-color: #FFFFFF;
+   background-image: none;
+}
+#wb_Text23
+{
+   left: 102px;
+   top: 133px;
+   width: 114px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#Layer5
+{
+   height: 234px;
+   visibility: visible;
+   display: inline;
+   background-color: #008B8B;
+   background-image: none;
+}
+#Layer5_Container
+{
+   width: 318px;
+}
+#wb_Text20
+{
+   left: 79px;
+   top: 55px;
+   width: 182px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Text21
+{
+   left: 96px;
+   top: 87px;
+   width: 161px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Text22
+{
+   left: 95px;
+   top: 120px;
+   width: 123px;
+   height: 16px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Shape1
+{
+   left: 59px;
+   top: 8px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Text19
+{
+   left: 98px;
+   top: 17px;
+   width: 144px;
+   height: 17px;
+   visibility: visible;
+   display: inline;
+   background-color: transparent;
+   background-image: none;
+}
+#wb_Image18
+{
+   left: 62px;
+   top: 87px;
+   width: 26px;
+   height: 16px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Image19
+{
+   left: 128px;
+   top: 162px;
+   width: 29px;
+   height: 25px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Image20
+{
+   left: 85px;
+   top: 160px;
+   width: 14px;
+   height: 26px;
+   visibility: visible;
+   display: inline;
+}
+#wb_Image21
+{
+   left: 179px;
+   top: 162px;
+   width: 25px;
+   height: 25px;
+   visibility: visible;
+   display: inline;
+}
 }

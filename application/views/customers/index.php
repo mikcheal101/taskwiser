@@ -10,7 +10,7 @@
 	<?=link_tag ("assets/imgs/logo.png", "icon", "image/png");?>
 
 	<?=link_tag ('assets/css/bootstrap.min.css');?>
-	<?=link_tag ('assets/last_design/final.css');?>
+	<?=link_tag ('assets/last_design/tskwsr.css');?>
 	<?=link_tag ('assets/last_design/index.css');?>
 
 
@@ -24,17 +24,14 @@
 			<div id="wb_Image25">
 				<img src="<?=base_url('assets/last_design/images/');?>tools.png" id="Image25" alt="">
 			</div>
-
 			<div id="wb_Shape3">
 				<a href="<?=base_url('/auth/login');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>img0042.png" id="Shape3" alt="">
 				</a>
 			</div>
-
 			<div id="wb_Shape5">
 				<img src="<?=base_url('assets/last_design/images/');?>img0043.png" id="Shape5" alt="">
 			</div>
-
 			<div id="wb_Text23">
 				<span style="color:#FFFFFF;font-family:Arial;font-size:16px;">
 					<a href="<?=base_url('auth/login');?>"> Sign in</a>
@@ -46,7 +43,7 @@
 				</a>
 			</div>
 			<select name="location" ng-model="location" size="1" id="Combobox1">
-				<option>select a location</option>
+				<option ng-selected>select a location</option>
 				<option>lagos</option>
 				<option>abuja</option>
 				<option>portharcourt</option>
@@ -56,6 +53,9 @@
 				<a href="<?=base_url('/#Layer4');?>" style="color:#FFFFFF;font-family:Arial;font-size:15px;">
 					Book a task now
 				</a>
+			</div>
+			<div id="wb_Image24">
+                <img src="<?=base_url('assets/last_design/images');?>/task%20on%20demand.png" id="Image24" alt="">
 			</div>
 		</div>
 	</div>
@@ -187,6 +187,7 @@
 					<img src="<?=base_url('assets/last_design/images/');?>washing.png" id="Image17" alt="">
 				</a>
 			</div>
+
 			<div id="wb_Image16">
 				<a href="<?=base_url('place_order/moving');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>moving.png" id="Image16" alt="">
@@ -202,19 +203,14 @@
 					<img src="<?=base_url('assets/last_design/images/');?>events.png" id="Image14" alt="">
 				</a>
 			</div>
-			<div id="wb_Image13">
+			<div id="wb_Image1">
 				<a href="<?=base_url('place_order/driver');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>driver.png" id="Image13" alt="">
 				</a>
 			</div>
-			<div id="wb_Image11">
+			<div id="wb_Image13">
 				<a href="<?=base_url('place_order/diesel');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>deisel.png" id="Image11" alt="">
-				</a>
-			</div>
-			<div id="wb_Image10">
-				<a href="<?=base_url('place_order/custom');?>">
-					<img src="<?=base_url('assets/last_design/images/');?>custom.png" id="Image10" alt="">
 				</a>
 			</div>
 			<div id="wb_Image9">
@@ -251,18 +247,17 @@
 			<div id="wb_Text11">
 				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;">&nbsp; Events</span>
 			</div>
-			<div id="wb_Text14">
+
+			<div id="wb_Text15">
 				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;"> Diesel</span>
 			</div>
-			<div id="wb_Text15">
-				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;"> Driver</span>
+
+			<div id="wb_Text16">
+                <span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;"> Driver</span>
 			</div>
 
 			<div id="wb_Text17">
 				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;"> Beauty</span>
-			</div>
-			<div id="wb_Text12">
-				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;"> Custom Task</span>
 			</div>
 			<div id="wb_Text13">
 				<span style="color:#FFFFFF;font-family:'Segoe UI';font-size:13px;"> Cleaning</span>
@@ -277,14 +272,16 @@
 					<a href="<?=base_url('');?>_terms_and_conditions.html" class="style1"> Terms and Conditions</a>
 				</span>
 			</div>
+
 			<div id="wb_Text21">
-				<span style="color:#FFFFFF;font-family:Arial;font-size:15px;"> info@taskwiser.com</span>
+                <span style="color:#FFFFFF;font-family:Arial;font-size:15px;"> info@taskwiser.com</span>
 			</div>
-			<div id="wb_Text22">
-				<span style="color:#FFFFFF;font-family:Arial;font-size:13px;"> +234 9020000737</span>
+            <div id="wb_Text22">
+                <span style="color:#FFFFFF;font-family:Arial;font-size:13px;"> +234 9020000737</span>
 			</div>
+
 			<div id="wb_Shape1">
-				<a href="./_book_now.html">
+				<a href="<?=base_url('');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>img0004.png" id="Shape1" alt="">
 				</a>
 			</div>
