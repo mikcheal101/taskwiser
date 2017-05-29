@@ -36,7 +36,7 @@ body
    width: 100%;
    height: 100%;
 }
-#wb_Text2 
+#wb_Text2
 {
    background-color: transparent;
    background-image: none;
@@ -225,7 +225,7 @@ body
    font-weight: normal;
    font-size: 13px;
 }
-#wb_Text3 
+#wb_Text3
 {
    background-color: transparent;
    background-image: none;
@@ -290,7 +290,7 @@ body
 {
    border-width: 0;
 }
-#wb_Text24 
+#wb_Text24
 {
    background-color: transparent;
    background-image: none;
@@ -453,7 +453,7 @@ body
    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
    outline: 0;
 }
-#wb_Text23 
+#wb_Text23
 {
    background-color: transparent;
    background-image: none;
@@ -472,7 +472,7 @@ body
    background-image: none;
    border: 1px #00FF00 none;
 }
-#wb_Text20 
+#wb_Text20
 {
    background-color: transparent;
    background-image: none;
@@ -485,7 +485,7 @@ body
 {
    text-align: left;
 }
-#wb_Text21 
+#wb_Text21
 {
    background-color: transparent;
    background-image: none;
@@ -498,7 +498,7 @@ body
 {
    text-align: left;
 }
-#wb_Text22 
+#wb_Text22
 {
    background-color: transparent;
    background-image: none;
@@ -515,7 +515,7 @@ body
 {
    border-width: 0;
 }
-#wb_Text19 
+#wb_Text19
 {
    background-color: transparent;
    background-image: none;
@@ -1046,7 +1046,7 @@ body
 }
 #Label1
 {
-   left: 33px;
+   left: 15px;
    top: 87px;
    width: 114px;
    height: 20px;
@@ -1068,7 +1068,7 @@ body
 }
 #Label2
 {
-   left: 37px;
+   left: 15px;
    top: 109px;
    width: 75px;
    height: 20px;
@@ -1090,10 +1090,10 @@ body
 }
 #Editbox1
 {
-   left: 12px;
+   left: 15px;
    top: 218px;
-   width: 252px;
-   height: 20px;
+   width: 260px;
+   height: 30px;
    visibility: visible;
    display: inline;
    color: #000000;
@@ -1102,10 +1102,10 @@ body
 }
 #Editbox2
 {
-   left: 12px;
+   left: 15px;
    top: 251px;
-   width: 252px;
-   height: 20px;
+   width: 260px;
+   height: 30px;
    visibility: visible;
    display: inline;
    color: #000000;
@@ -1114,10 +1114,10 @@ body
 }
 #Editbox3
 {
-   left: 11px;
+   left: 15px;
    top: 284px;
-   width: 253px;
-   height: 20px;
+   width: 260px;
+   height: 30px;
    visibility: visible;
    display: inline;
    color: #000000;
@@ -1128,7 +1128,7 @@ body
 {
    left: 15px;
    top: 396px;
-   width: 249px;
+   width: 260px;
    height: 90px;
    visibility: visible;
    display: inline;
@@ -1138,9 +1138,9 @@ body
 }
 #TextArea2
 {
-   left: 16px;
+   left: 15px;
    top: 504px;
-   width: 248px;
+   width: 260px;
    height: 90px;
    visibility: visible;
    display: inline;
@@ -1162,7 +1162,7 @@ body
 }
 #wb_Text3
 {
-   left: 48px;
+   left: 15px;
    top: 33px;
    width: 226px;
    height: 32px;
@@ -1173,7 +1173,7 @@ body
 }
 #Label3
 {
-   left: 38px;
+   left: 15px;
    top: 132px;
    width: 75px;
    height: 20px;
@@ -1195,7 +1195,7 @@ body
 }
 #Label4
 {
-   left: 37px;
+   left: 15px;
    top: 156px;
    width: 75px;
    height: 20px;
@@ -1253,7 +1253,7 @@ body
 }
 #Combobox1
 {
-   left: 9px;
+   left: 15px;
    top: 317px;
    width: 82px;
    height: 35px;
@@ -1265,7 +1265,7 @@ body
 }
 #Combobox2
 {
-   left: 95px;
+   left: 101px;
    top: 316px;
    width: 79px;
    height: 35px;
@@ -1277,7 +1277,7 @@ body
 }
 #Combobox6
 {
-   left: 180px;
+   left: 186px;
    top: 317px;
    width: 88px;
    height: 35px;
@@ -1289,7 +1289,7 @@ body
 }
 #Combobox4
 {
-   left: 9px;
+   left: 15px;
    top: 355px;
    width: 83px;
    height: 35px;
@@ -1301,7 +1301,7 @@ body
 }
 #Combobox5
 {
-   left: 95px;
+   left: 101px;
    top: 355px;
    width: 81px;
    height: 35px;
@@ -1313,7 +1313,7 @@ body
 }
 #Combobox3
 {
-   left: 180px;
+   left: 186px;
    top: 355px;
    width: 88px;
    height: 35px;

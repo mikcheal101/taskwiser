@@ -44,7 +44,7 @@ body
    width: 100%;
    height: 100%;
 }
-#wb_Text1 
+#wb_Text1
 {
    background-color: transparent;
    background-image: none;
@@ -69,7 +69,7 @@ body
 {
    border-width: 0;
 }
-#wb_Text24 
+#wb_Text24
 {
    background-color: transparent;
    background-image: none;
@@ -258,7 +258,7 @@ body
    font-weight: normal;
    font-size: 13px;
 }
-#wb_Text3 
+#wb_Text3
 {
    background-color: transparent;
    background-image: none;
@@ -462,7 +462,7 @@ body
    text-align: left;
    vertical-align: middle;
 }
-#wb_Text23 
+#wb_Text23
 {
    background-color: transparent;
    background-image: none;
@@ -481,7 +481,7 @@ body
    background-image: none;
    border: 1px #00FF00 none;
 }
-#wb_Text20 
+#wb_Text20
 {
    background-color: transparent;
    background-image: none;
@@ -494,7 +494,7 @@ body
 {
    text-align: left;
 }
-#wb_Text21 
+#wb_Text21
 {
    background-color: transparent;
    background-image: none;
@@ -507,7 +507,7 @@ body
 {
    text-align: left;
 }
-#wb_Text22 
+#wb_Text22
 {
    background-color: transparent;
    background-image: none;
@@ -524,7 +524,7 @@ body
 {
    border-width: 0;
 }
-#wb_Text19 
+#wb_Text19
 {
    background-color: transparent;
    background-image: none;
@@ -1098,7 +1098,7 @@ body
 }
 #Label2
 {
-   left: 14px;
+   left: 15px;
    top: 98px;
    width: 117px;
    height: 20px;
@@ -1122,8 +1122,8 @@ body
 {
    left: 15px;
    top: 141px;
-   width: 259px;
-   height: 20px;
+   width: 260px;
+   height: 30px;
    visibility: visible;
    display: inline;
    color: #000000;
@@ -1134,8 +1134,8 @@ body
 {
    left: 15px;
    top: 174px;
-   width: 259px;
-   height: 20px;
+   width: 260px;
+   height: 30px;
    visibility: visible;
    display: inline;
    color: #000000;
@@ -1146,8 +1146,8 @@ body
 {
    left: 16px;
    top: 207px;
-   width: 258px;
-   height: 20px;
+   width: 260px;
+   height: 30px;
    visibility: visible;
    display: inline;
    color: #000000;
@@ -1156,9 +1156,9 @@ body
 }
 #TextArea1
 {
-   left: 18px;
+   left: 15px;
    top: 387px;
-   width: 254px;
+   width: 260px;
    height: 79px;
    visibility: visible;
    display: inline;
@@ -1168,9 +1168,9 @@ body
 }
 #TextArea2
 {
-   left: 19px;
+   left: 15px;
    top: 481px;
-   width: 255px;
+   width: 260px;
    height: 90px;
    visibility: visible;
    display: inline;
@@ -1180,9 +1180,9 @@ body
 }
 #Button1
 {
-   left: 17px;
+   left: 15px;
    top: 598px;
-   width: 267px;
+   width: 260px;
    height: 47px;
    visibility: visible;
    display: inline;
@@ -1203,9 +1203,9 @@ body
 }
 #Combobox1
 {
-   left: 19px;
+   left: 15px;
    top: 310px;
-   width: 84px;
+   width: 80px;
    height: 35px;
    visibility: visible;
    display: inline;
@@ -1215,9 +1215,9 @@ body
 }
 #Combobox4
 {
-   left: 20px;
+   left: 15px;
    top: 349px;
-   width: 83px;
+   width: 80px;
    height: 35px;
    visibility: visible;
    display: inline;
@@ -1227,9 +1227,9 @@ body
 }
 #Combobox2
 {
-   left: 109px;
+   left: 100px;
    top: 310px;
-   width: 79px;
+   width: 80px;
    height: 35px;
    visibility: visible;
    display: inline;
@@ -1239,9 +1239,9 @@ body
 }
 #Combobox5
 {
-   left: 109px;
+   left: 100px;
    top: 349px;
-   width: 79px;
+   width: 80px;
    height: 35px;
    visibility: visible;
    display: inline;
@@ -1251,9 +1251,9 @@ body
 }
 #Combobox3
 {
-   left: 193px;
+   left: 190px;
    top: 309px;
-   width: 88px;
+   width: 86px;
    height: 35px;
    visibility: visible;
    display: inline;
@@ -1263,9 +1263,9 @@ body
 }
 #Combobox6
 {
-   left: 194px;
+   left: 190px;
    top: 348px;
-   width: 88px;
+   width: 86px;
    height: 35px;
    visibility: visible;
    display: inline;
@@ -1275,9 +1275,9 @@ body
 }
 #Combobox7
 {
-   left: 17px;
+   left: 15px;
    top: 271px;
-   width: 267px;
+   width: 260px;
    height: 35px;
    visibility: visible;
    display: inline;
