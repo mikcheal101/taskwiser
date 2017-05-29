@@ -42,7 +42,7 @@
 					<img src="<?=base_url('assets/last_design/images/img0005.png');?>" id="Shape2" alt="">
 				</a>
 			</div>
-			<select name="location" ng-model="location" size="1" id="Combobox1">
+			<select name="location" size="1" id="Combobox1">
 				<option ng-selected>select a location</option>
 				<option>lagos</option>
 				<option>abuja</option>
@@ -264,6 +264,7 @@
 			</div>
 		</div>
 	</div>
+
 
 	<div id="Layer5">
 		<div id="Layer5_Container">

@@ -44,7 +44,7 @@ body
    width: 100%;
    height: 100%;
 }
-#wb_Text1 
+#wb_Text1
 {
    background-color: transparent;
    background-image: none;
@@ -241,7 +241,7 @@ body
    font-weight: normal;
    font-size: 13px;
 }
-#wb_Text3 
+#wb_Text3
 {
    background-color: transparent;
    background-image: none;
@@ -266,7 +266,7 @@ body
 {
    border-width: 0;
 }
-#wb_Text24 
+#wb_Text24
 {
    background-color: transparent;
    background-image: none;
@@ -429,7 +429,7 @@ body
    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
    outline: 0;
 }
-#wb_Text23 
+#wb_Text23
 {
    background-color: transparent;
    background-image: none;
@@ -448,7 +448,7 @@ body
    background-image: none;
    border: 1px #00FF00 none;
 }
-#wb_Text20 
+#wb_Text20
 {
    background-color: transparent;
    background-image: none;
@@ -461,7 +461,7 @@ body
 {
    text-align: left;
 }
-#wb_Text21 
+#wb_Text21
 {
    background-color: transparent;
    background-image: none;
@@ -474,7 +474,7 @@ body
 {
    text-align: left;
 }
-#wb_Text22 
+#wb_Text22
 {
    background-color: transparent;
    background-image: none;
@@ -491,7 +491,7 @@ body
 {
    border-width: 0;
 }
-#wb_Text19 
+#wb_Text19
 {
    background-color: transparent;
    background-image: none;
@@ -985,8 +985,8 @@ body
 {
    left: 15px;
    top: 65px;
-   width: 262px;
-   height: 20px;
+   width: 260px;
+   height: 30px;
    visibility: visible;
    display: inline;
    color: #000000;
@@ -997,8 +997,8 @@ body
 {
    left: 15px;
    top: 98px;
-   width: 262px;
-   height: 20px;
+   width: 260px;
+   height: 30px;
    visibility: visible;
    display: inline;
    color: #000000;
@@ -1009,8 +1009,8 @@ body
 {
    left: 16px;
    top: 130px;
-   width: 261px;
-   height: 20px;
+   width: 260px;
+   height: 30px;
    visibility: visible;
    display: inline;
    color: #000000;
@@ -1034,8 +1034,8 @@ body
 {
    left: 18px;
    top: 187px;
-   width: 259px;
-   height: 20px;
+   width: 260px;
+   height: 30px;
    visibility: visible;
    display: inline;
    color: #000000;
@@ -1046,7 +1046,7 @@ body
 {
    left: 16px;
    top: 303px;
-   width: 261px;
+   width: 260px;
    height: 90px;
    visibility: visible;
    display: inline;
@@ -1058,7 +1058,7 @@ body
 {
    left: 18px;
    top: 407px;
-   width: 259px;
+   width: 260px;
    height: 90px;
    visibility: visible;
    display: inline;
@@ -1144,7 +1144,7 @@ body
 {
    left: 199px;
    top: 225px;
-   width: 88px;
+   width: 80px;
    height: 35px;
    visibility: visible;
    display: inline;
@@ -1180,7 +1180,7 @@ body
 {
    left: 199px;
    top: 264px;
-   width: 88px;
+   width: 80px;
    height: 35px;
    visibility: visible;
    display: inline;

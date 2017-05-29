@@ -17,10 +17,11 @@
 			</div>
 
 			<div id="wb_Form1">
-				<form name="Form1" method="post" action="" enctype="text/plain" id="Form1" novalidate="novalidate">
+				<form name="form" method="post" id="Form1" novalidate>
+
 					<div ng-hide="quote_gotten">
 
-						<label for="type" id="Label1"> Washer man</label>
+						<label for="type" id="Label1" style="width:100px!important;"> Washer man</label>
 						<input type="radio" ng-model="order.type" id="RadioButton1" name="type" value="washer-man" required>
 
 						<label for="type" id="Label2"> Dry cleaner</label>
@@ -51,10 +52,10 @@
 						placeholder="Please describe the job in details" ng-model="order.details" required></textarea>
 
 					</div>
+
 					<div ng-if="form.$valid" style="visibility: hidden;" ng-style="{visibility: (form.$valid) ? 'visible':'hidden'}">
 
-						<button id="Button1" name="send" style="position:absolute;left:18px;top:797px;width:319px;height:47px;z-index:21;"
-						ng-hide="quote_gotten" ng-click="get_quote();">Get Quote</button>
+						<button id="Button1" name="send" ng-hide="quote_gotten" ng-click="get_quote();">Get Quote</button>
 
 						<div ng-show="quote_gotten" style="padding: 20px 20px;">
 							<table width="100%">
@@ -164,8 +165,6 @@
 							<option value="22">22</option>
 							<option value="23">23</option>
 							<option value="24">24</option>
-
-
 						</select>
 
 						<select name="day" size="1" id="Combobox2" required ng-model="order.day">
