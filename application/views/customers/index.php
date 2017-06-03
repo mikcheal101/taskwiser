@@ -270,7 +270,7 @@
 		<div id="Layer5_Container">
 			<div id="wb_Text20">
 				<span style="color:#FFFFFF;font-family:Arial;font-size:15px;">
-					<a href="<?=base_url('');?>_terms_and_conditions.html" class="style1"> Terms and Conditions</a>
+					<a href="<?=base_url('terms_and_conditions');?>" class="style1"> Terms and Conditions</a>
 				</span>
 			</div>
 
@@ -290,22 +290,22 @@
 				<span style="color:#FFFFFF;font-family:Arial;font-size:15px;"> book a task now</span>
 			</div>
 			<div id="wb_Image18">
-				<a href="<?=base_url('');?>index.html">
+				<a href="<?=base_url('');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>envelope.png" id="Image18" alt="">
 				</a>
 			</div>
 			<div id="wb_Image19">
-				<a href="<?=base_url('');?>index.html">
+				<a href="<?=base_url('');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>twitter.png" id="Image19" alt="">
 				</a>
 			</div>
 			<div id="wb_Image20">
-				<a href="<?=base_url('');?>index.html">
+				<a href="<?=base_url('');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>fb.png" id="Image20" alt="">
 				</a>
 			</div>
 			<div id="wb_Image21">
-				<a href="<?=base_url('');?>index.html">
+				<a href="<?=base_url('');?>">
 					<img src="<?=base_url('assets/last_design/images/');?>instagram.png" id="Image21" alt="">
 				</a>
 			</div>

@@ -63,6 +63,8 @@ $route['place_order/driver']               	= "orders/driver";
 $route['place_order/diesel']               	= "orders/diesel";
 $route['place_order/custom']               	= "orders/custom_tasks";
 
+$route['terms_and_conditions']              = "user/terms_and_conditions";
+
 # angular backend service calls
 $route['backend/customers/get_payments']    = "backend/get_payments";
 $route['backend/customers/get_orders']      = "backend/get_orders";

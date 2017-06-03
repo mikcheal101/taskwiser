@@ -29,7 +29,7 @@ class User extends CI_Controller {
 
 	public function index () {
 		$this->data['title'] = 'taskwiser';
-		
+
 		$this->load->view ('customers/index', $this->data);
 		$this->load->view ('customers/footer', $this->data);
 	}
@@ -290,6 +290,13 @@ class User extends CI_Controller {
 		}
 	}
 
+	public function terms_and_conditions() {
+		$this->data['title'] = 'taskwiser';
+
+		$this->load->view("customers/header", $this->data);
+		$this->load->view ('customers/terms_and_conditions', $this->data);
+		$this->load->view ('customers/footer', $this->data);
+	}
 
 	#---------------------------   private functions --------------------------
 
