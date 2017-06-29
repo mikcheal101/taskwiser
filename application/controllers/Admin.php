@@ -21,23 +21,71 @@ class Admin extends CI_Controller {
         $this->email_templates  = new EmailTemplates($this);
     }
 
-
     private function loggedIn() {
         if (is_null($this->session->user))
             redirect('admin/login', 'refresh');
     }
 
-    private function assignWorker($id = 0) {
-        $this->admin_model->assignWorker($id);
-        redirect('admin/request/' . $id);
+    public function profile() {
+        $this->loggedIn();
+
+        $this->data['location'] = 5;
+        $this->data['profile'] = $this->admin_model->profile();
+        $this->config_upload();
+
+        $this->form_validation->set_rules('username', 'Username', [
+            'required', 'trim', 'min_length[6]', ['check_username', function ($value) {
+                    return $this->admin_model->valid_username($value, $this->session->user->id);
+                }]
+                ], ['check_username' => 'This %s already exists!']
+        );
+
+        $this->form_validation->set_rules('email', 'Email Address', [
+            'required', 'trim', 'min_length[6]', 'valid_email', ['check_email', function ($value) {
+                    return $this->admin_model->valid_email($value, $this->session->user->id);
+                }]
+                ], ['check_email' => 'This %s already exists!']
+        );
+
+        $this->form_validation->set_rules('password', 'Password', 'trim|min_length[6]');
+
+        if ($this->form_validation->run()) {
+            $image = '';
+            if ($this->upload->do_upload('passport')) {
+                $image = $this->upload->data();
+                $image = $image['file_name'];
+            }
+
+            $done = $this->admin_model->update_profile($image);
+
+            if ($done['status']) {
+                $this->session->user->profile_image = $done['profile_image'];
+                $this->session->user->username = $done['username'];
+                $this->session->user->email = $done['email'];
+
+                $this->session->set_flashdata('update_success', 'Profile Updated!');
+                redirect('admin/profile', 'refresh');
+            } else {
+                $this->session->set_flashdata('update_error', 'Error Updating Profile!');
+                redirect('admin/profile', 'refresh');
+            }
+        } else {
+            $this->page('profile');
+        }
     }
 
-    public function prices()
-    {
+    public function prices() {
         $this->loggedIn();
 
         $this->data['location'] = 6;
-        $this->page('home');
+        $this->page('prices');
+    }
+
+     public function payments() {
+        $this->loggedIn();
+
+        $this->data['location'] = 3;
+        $this->page('payments');
     }
 
     public function signout() {
@@ -242,6 +290,89 @@ class Admin extends CI_Controller {
         }
     }
 
+    private function config_upload($name="") {
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+    }
+
+    #---------------------------   private functions --------------------------
+
+    private function sendOrderMail($customer, $order) {
+        $_quote         = $this->user_model->prepQuote($order->_id);
+        $_login_url     = base_url("silentAuth/{$customer->_id}/{$customer->_username}/{$customer->_verification_code}");
+        $_payment_url   = "payment/enter_details/{$order->_transaction_code}";
+        $_message       = $this->email_templates->quote_email($customer->_email, $_quote, $_login_url, $_payment_url);
+
+        # send an email to the user showing the username and password
+        # with order details
+        $this->email->from('Taskwiser.com<no-reply@taskwiser.com>');
+        $this->email->to($customer->_email);
+        $this->email->subject("Taskwiser.com Order TW-{$order->_transaction_code}");
+        $this->email->message($_message);
+        return $this->email->send();
+    }
+
+    private function send_staff_sms($order = null) {
+        # send the staff the details of the assignment
+
+    }
+
+    private function send_staff_order_sms($staff = null, $order = null) {
+        if(!is_null($staff) && !is_null($order)) {
+            try {
+                $data = $this->twilio_api->staff_job_alert($staff, $order);
+                return $data;
+            } catch(Exception $e) {
+                log_message('error', $e->getMessage());
+            }
+        }
+        return false;
+    }
+
+    private function send_customer_order_sms($customer = null, $order = null) {
+        if(!is_null($customer) && !is_null($order)) {
+            try {
+                $data = $this->twilio_api->user_order_confirmed_sms($customer, $order);
+                return $data;
+            } catch(Exception $e) {
+                log_message('error', $e->getMessage());
+            }
+        }
+        return false;
+    }
+
+    private function page($page = '') {
+        $this->load->view('admin/header', $this->data);
+        $this->load->view('admin/nav', $this->data);
+        $this->load->view("admin/{$page}", $this->data);
+        $this->load->view('admin/footer', $this->data);
+    }
+
+
+    # no idea yet
+    public function assignStaff() {
+        $this->loggedIn();
+        $this->form_validation->set_rules('', '', '');
+
+        if ($this->form_validation->run()) {
+            
+        } else {
+            
+        }
+    }
+
+    /* obulate functions */
+    public function requests() {
+        $this->loggedIn();
+        $this->data['location'] = 3;
+        
+        $this->data['requests'] = $this->admin_model->loadOrders();
+        $this->page('requests');  
+    }
+
     public function guests() {
         $this->loggedIn();
     }
@@ -257,18 +388,9 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function tasks() {
-        $this->loggedIn();
-        $this->data['location'] = 4;
-        $this->page('tasks');
-    }
-
-    public function requests() {
-        $this->loggedIn();
-        $this->data['location'] = 3;
-        
-        $this->data['requests'] = $this->admin_model->loadOrders();
-        $this->page('requests');  
+    private function assignWorker($id = 0) {
+        $this->admin_model->assignWorker($id);
+        redirect('admin/request/' . $id);
     }
 
     private function get_available_staff($request = null) {
@@ -327,62 +449,6 @@ class Admin extends CI_Controller {
         if(!is_null($id))
             $this->admin_model->dropRequest($id);
         redirect('admin/requests', 'refresh');
-    }
-
-    private function config_upload($name="") {
-        $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'gif|jpg|png|jpeg';
-
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-    }
-
-    public function profile() {
-        $this->loggedIn();
-
-        $this->data['location'] = 5;
-        $this->data['profile'] = $this->admin_model->profile();
-        $this->config_upload();
-
-        $this->form_validation->set_rules('username', 'Username', [
-            'required', 'trim', 'min_length[6]', ['check_username', function ($value) {
-                    return $this->admin_model->valid_username($value, $this->session->user->id);
-                }]
-                ], ['check_username' => 'This %s already exists!']
-        );
-
-        $this->form_validation->set_rules('email', 'Email Address', [
-            'required', 'trim', 'min_length[6]', 'valid_email', ['check_email', function ($value) {
-                    return $this->admin_model->valid_email($value, $this->session->user->id);
-                }]
-                ], ['check_email' => 'This %s already exists!']
-        );
-
-        $this->form_validation->set_rules('password', 'Password', 'trim|min_length[6]');
-
-        if ($this->form_validation->run()) {
-            $image = '';
-            if ($this->upload->do_upload('passport')) {
-                $image = $this->upload->data();
-                $image = $image['file_name'];
-            }
-
-            $done = $this->admin_model->update_profile($image);
-
-            if ($done['status']) {
-                $this->session->user->profile_image = $done['profile_image'];
-                $this->session->user->username = $done['username'];
-                $this->session->user->email = $done['email'];
-
-                $this->session->set_flashdata('update_success', 'Profile Updated!');
-                redirect('admin/profile', 'refresh');
-            } else {
-                $this->session->set_flashdata('update_error', 'Error Updating Profile!');
-                redirect('admin/profile', 'refresh');
-            }
-        } else {
-            $this->page('profile');
-        }
     }
 
     public function cities() {
@@ -450,72 +516,6 @@ class Admin extends CI_Controller {
         }
     }
 
-
-    #---------------------------   private functions --------------------------
-
-    private function sendOrderMail($customer, $order) {
-        $_quote         = $this->user_model->prepQuote($order->_id);
-        $_login_url     = base_url("silentAuth/{$customer->_id}/{$customer->_username}/{$customer->_verification_code}");
-        $_payment_url   = "payment/enter_details/{$order->_transaction_code}";
-        $_message       = $this->email_templates->quote_email($customer->_email, $_quote, $_login_url, $_payment_url);
-
-        # send an email to the user showing the username and password
-        # with order details
-        $this->email->from('Taskwiser.com<no-reply@taskwiser.com>');
-        $this->email->to($customer->_email);
-        $this->email->subject("Taskwiser.com Order TW-{$order->_transaction_code}");
-        $this->email->message($_message);
-        return $this->email->send();
-    }
-
-    private function send_staff_sms($order = null) {
-        # send the staff the details of the assignment
-
-    }
-
-    private function send_staff_order_sms($staff = null, $order = null) {
-        if(!is_null($staff) && !is_null($order)) {
-            try {
-                $data = $this->twilio_api->staff_job_alert($staff, $order);
-                return $data;
-            } catch(Exception $e) {
-                log_message('error', $e->getMessage());
-            }
-        }
-        return false;
-    }
-
-    private function send_customer_order_sms($customer = null, $order = null) {
-        if(!is_null($customer) && !is_null($order)) {
-            try {
-                $data = $this->twilio_api->user_order_confirmed_sms($customer, $order);
-                return $data;
-            } catch(Exception $e) {
-                log_message('error', $e->getMessage());
-            }
-        }
-        return false;
-    }
-
-    private function page($page = '') {
-        $this->load->view('admin/header', $this->data);
-        $this->load->view('admin/nav', $this->data);
-        $this->load->view("admin/{$page}", $this->data);
-        $this->load->view('admin/footer', $this->data);
-    }
-
-
-    # no idea yet
-    public function assignStaff() {
-        $this->loggedIn();
-        $this->form_validation->set_rules('', '', '');
-
-        if ($this->form_validation->run()) {
-            
-        } else {
-            
-        }
-    }
 
 }
 

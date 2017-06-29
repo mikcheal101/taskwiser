@@ -1,6 +1,7 @@
 var app = angular.module('app', ["ngLodash"]);
 
 app.run(function($rootScope){
+	console.log('rootScope');
     $rootScope.ravepay  = {};
     $rootScope.app      = {};
     $rootScope.tookanapp= {};

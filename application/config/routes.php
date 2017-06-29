@@ -109,6 +109,15 @@ $route['backend/edit_profile']              = "backend/profile";
 $route['admin/authenticate']				= 'admin/login';
 $route['admin/test']						= 'admin/getDb';
 
+
+# api routes
+$route['api/admin/prices']					= 'administrator/getPrices';
+$route['api/admin/workers']					= 'administrator/getWorkers';
+
+$route['api/admin/update/prices']			= 'administrator/updatePrices';
+$route['api/admin/update/worker']			= 'administrator/updateWorker';
+$route['api/admin/drop/worker']				= 'administrator/dropWorker';
+
 $route['default_controller'] 				= 'user/';
 $route['404_override'] 						= 'errors/page_missing';
 $route['translate_uri_dashes'] 				= FALSE;

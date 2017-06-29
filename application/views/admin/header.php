@@ -35,5 +35,8 @@
 	
 </head>
 
-<body>
+<body ng-app="app">
+	
+	<div ng-controller="adminController">
+		<div>
 

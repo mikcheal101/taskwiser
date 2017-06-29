@@ -21,26 +21,16 @@
                     </li>
                     <li class=" <?= ($location === 2) ? 'active' : '';?>">
                         <a class="waves-effect waves-light" href="<?=base_url ('admin/workers');?>">
-                            Workers
+                            Workers / Taskers
                             <?php ($location === 2) ? '<span class="sr-only">(current)</span>' : '';?>
                         </a>
                     </li>
+
+
                     <li class=" <?= ($location === 3) ? 'active' : '';?>">
-                        <a class="waves-effect waves-light" href="<?=base_url ('admin/requests');?>">
-                            Requests
+                        <a class="waves-effect waves-light" href="<?=base_url ('admin/payments');?>">
+                            Payments
                             <?php ($location === 3) ? '<span class="sr-only">(current)</span>' : '';?>
-                        </a>
-                    </li>
-                    <li class=" <?= ($location === 4) ? 'active' : '';?>">
-                        <a class="waves-effect waves-light" href="<?=base_url ('admin/tasks');?>">
-                            Tasks
-                            <?php ($location === 4) ? '<span class="sr-only">(current)</span>' : '';?>
-                        </a>
-                    </li>
-                    <li class=" <?= ($location === 5) ? 'active' : '';?>">
-                        <a class="waves-effect waves-light" href="<?=base_url ('admin/cities');?>">
-                            Cities
-                            <?php ($location === 5) ? '<span class="sr-only">(current)</span>' : '';?>
                         </a>
                     </li>
                     <li class=" <?= ($location === 6) ? 'active' : '';?>">

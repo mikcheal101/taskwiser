@@ -25,7 +25,7 @@
 						<label for="RadioButton2" id="Label2"> Disc Jockey</label>
 						<input type="radio" id="RadioButton2" ng-model="order.type" name="type" value="disc jockey">
 
-						<label for="RadioButton2" id="Label2"> Live Band</label>
+						<label for="RadioButton3" id="Label3"> Live Band</label>
 						<input type="radio" id="RadioButton3" ng-model="order.type" name="type" value="live band">
 
 
