@@ -81,7 +81,7 @@ class Admin extends CI_Controller {
         $this->page('prices');
     }
 
-     public function payments() {
+    public function payments() {
         $this->loggedIn();
 
         $this->data['location'] = 3;

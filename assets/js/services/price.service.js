@@ -20,5 +20,15 @@ app.service("pricesService", ["$http", "$q", function($http, $q) {
 		return q.promise;
 	};
 
+	svc.getSales 		= function(base_url) {
+		var defer 		= $q.defer();
+		var url 		= base_url.concat("payment/listing");
+		$http
+			.get(url)
+			.then(aData 	=> defer.resolve(aData.data))
+			.catch(aError 	=> defer.reject(aError));
+		return defer.promise;
+	};
+
 	return svc;
 }]);

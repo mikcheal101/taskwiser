@@ -7,7 +7,7 @@ app.service("generalService", ["$http", "$q", function($http, $q) {
 	svc.fetch_quote		= function(type, base_url)
 	{
 		var defer 		= $q.defer();
-		var url 		= base_url + "/prices/fetch/configuration/" + type;
+		var url 		= base_url.concat("/prices/fetch/configuration/").concat(type);
 
 		$http.get(url)
 		.then((aResponse) => {
@@ -43,6 +43,25 @@ app.service("generalService", ["$http", "$q", function($http, $q) {
 		}, aError => {
 			defer.reject(aError)
 		});
+		return defer.promise;
+	};
+
+	svc.assign_order_to_task	= function(param, base_url) {
+		var defer 				= $q.defer();
+		var url 				= base_url.concat("place_order/assign_job");
+		var data 				= {
+			_order				: param.order._id,
+			_amt				: param.order.price,
+			_tookanapp_job_id	: param.data.job_id
+		};
+		$http({
+				method 	: 'POST',
+				url 	: url,
+				headers	:{'Content-Type': 'application/json'},
+	        	params	:data
+			})
+			.then(aResponse => defer.resolve(aResponse.data))
+			.catch(aError => defer.reject(aError));
 		return defer.promise;
 	};
 

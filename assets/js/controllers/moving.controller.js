@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('movingController', ["$scope", "$rootScope", "generalService",
-function($scope, $rootScope, generalService)
+app.controller('movingController', ["$scope", "$rootScope", "generalService", "tookanService",
+function($scope, $rootScope, generalService, tookanService)
 {
 	$scope.today 		= new Date();
 	$scope.payment 		= {};
@@ -60,9 +60,22 @@ function($scope, $rootScope, generalService)
 	{
 		// send the data or response to the server
 		// send the data or response to the server
-		generalService.payment_made(response, $scope.order, $scope.total_price, $scope.base_url).then(aResponse => {
-			// redirect to the login page
-		}).catch(aError => console.error(aError));
+		generalService
+			.payment_made(response, $scope.order, $scope.total_price, $scope.base_url)
+			.then(aResponse => {
+				// send data to tookanapp
+				return tookanService.create_task(aResponse.order.customer, aResponse.order.order, 'delivery_pickup', $scope.Util.tookanapp_teams.laundry);
+			})
+			.then(bResponse => {
+				// send details to db
+				bResponse.data 	= bResponse.data.data;
+				return generalService.assign_order_to_task(bResponse, $scope.base_url);
+			})
+			.then((cResponse) => {
+				// redirect to the index page
+				window.location = $scope.base_url;
+			})
+			.catch(aError => console.error(aError));
 	};
 
 	$scope.payment.close		= function()

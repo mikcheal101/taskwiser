@@ -1,6 +1,7 @@
 'use strict';
 
-app.controller('adminController', ["$scope", "$rootScope","AdminApi",  function($scope, $rootScope, AdminApi) {
+app.controller('adminController', ["$scope", "$rootScope","AdminApi", "tookanService", "pricesService",  
+	function($scope, $rootScope, AdminApi, tookanService, pricesService) {
 
 	$scope.base_url			= "";
 
@@ -10,11 +11,11 @@ app.controller('adminController', ["$scope", "$rootScope","AdminApi",  function(
 	$scope.selected_item	= {};
 	$scope.selected_price	= {};
 
-	$scope.parse_url		= function(url) {
+	$scope.parse_url			= function(url) {
 		return $scope.base_url.concat(url);
 	};
 
-	$scope.loadPrices 	= function(base_url) {
+	$scope.loadPrices 			= function(base_url) {
 		
 		angular.copy(base_url, $scope.base_url);
 		AdminApi
@@ -23,7 +24,7 @@ app.controller('adminController', ["$scope", "$rootScope","AdminApi",  function(
 			.catch((aError) => { console.log(aError); });
 	};
 
-	$scope.setSelected = function(prt, val, item, i) {
+	$scope.setSelected 			= function(prt, val, item, i) {
 		$scope.selected_item.prt 	= prt;
 		$scope.selected_item.val	= val;
 		$scope.selected_item.item 	= item;
@@ -32,20 +33,18 @@ app.controller('adminController', ["$scope", "$rootScope","AdminApi",  function(
 		$scope.selected_item.aRes 	= (i === null) ? item:i;
 	};
 
-	$scope.priceChange = function() {
+	$scope.priceChange 			= function() {
 		var index = $scope.prices.indexOf($scope.selected_item.prt);
 		if($scope.selected_item.i === null) 
 			$scope.selected_item.prt['_items_prices'][$scope.selected_item.val] = $scope.selected_item.aRes;
 		else 
 			$scope.selected_item.prt['_items_prices'][$scope.selected_item.val][$scope.selected_item.item] = $scope.selected_item.aRes;
-		
-		console.log($scope.selected_item.prt['_items_prices']);
 
 		$scope.prices[index] 	= $scope.selected_item.prt;
 		$scope.selected_price 	= $scope.selected_item.prt;
 	};
 
-	$scope.updatescPrice	= function() {
+	$scope.updatescPrice		= function() {
 		AdminApi
 			.updatePrice($scope.base_url, $scope.selected_price)
 			.then( aData => {
@@ -57,6 +56,11 @@ app.controller('adminController', ["$scope", "$rootScope","AdminApi",  function(
 				$scope.selected_price = {};
 			});
 	};
+
+	$scope.upload				= function(file, param) {
+		console.log(file);
+		angular.copy(param, file);
+	};
 	
 
 	// workers
@@ -67,9 +71,13 @@ app.controller('adminController', ["$scope", "$rootScope","AdminApi",  function(
 		angular.copy(base_url, $scope.base_url);
 		AdminApi
 			.getWorkers(base_url)
-			.then((aResponse) => { angular.copy(aResponse.data, $scope.workers); })
+			.then((aResponse) => {
+				return tookanService.list_agents(aResponse);
+			})
+			.then((bResponse) => {
+				console.log(bResponse);
+			})
 			.catch((aError) => { console.log(aError); });
-
 	};
 
 	$scope.setWorker 			= function(worker) {
@@ -78,7 +86,7 @@ app.controller('adminController', ["$scope", "$rootScope","AdminApi",  function(
 
 	$scope.dropWorker			= function() {
 		$scope.workers.splice(0, $scope.workers.indexOf($scope.selected_staff));
-	};
+	};	
 
 	$scope.updateWorker			= function(base_url) {
 		AdminApi
@@ -89,5 +97,20 @@ app.controller('adminController', ["$scope", "$rootScope","AdminApi",  function(
 				$scope.selected_staff = {}; 
 			})
 			.catch(aErr => { console.log('staff not updated', aErr);  $scope.selected_staff = {}; });
+	};
+
+	$scope.worker 				= {};
+	$scope.categories_workers	= [];
+
+
+	// sales
+	$scope.sales 				= {};
+	$scope.sales.data 			= [];
+
+	$scope.sales.init 			= function(base_url) {
+		pricesService
+			.getSales(base_url)
+			.then(aResponse => angular.copy(aResponse.data, $scope.sales.data))
+			.catch(aError	=> console.log(aError));
 	};
 }]);

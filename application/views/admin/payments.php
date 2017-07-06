@@ -1,4 +1,4 @@
-<main>
+<main ng-init="sales.init('<?=base_url();?>')">
 	<!--Main layout-->
     <div class="container">
         <!--First row-->
@@ -12,6 +12,10 @@
             		<th width="40%">Date</th>
             		<th>Amount</th>
             	</tr>
+                <tr ng-repeat="item in sales.data track by item._id">
+                    <td><span ng-bind="item._ts | date:'fullDate'"></span></td>
+                    <td><span ng-bind="item._amt | currency:'₦ ':2"></span></td>
+                </tr>
             </table>
         </div>
 
@@ -25,5 +29,4 @@
 
     </div>
     <!--/.Main layout-->
-
 </main>

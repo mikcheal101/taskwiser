@@ -8,6 +8,21 @@ class Order_model extends CI_Model
 		parent::__construct();
 	}
 
+	public function assign_payment() {
+		$post   = [
+            '_amt'              => $_REQUEST['_amt'],
+            '_order'            => $_REQUEST['_order'],
+            '_tookanapp_job_id' => $_REQUEST['_tookanapp_job_id']
+        ];
+
+        $this->db->insert('payments', $post);
+        return true;
+	}
+
+	public function get_all_payments() {
+		return $this->db->get('payments')->result();
+	}
+
 	public function getQuote($category = "")
 	{
 		$data = $this->db->get_where('prices', ["_category" => $category])->result();

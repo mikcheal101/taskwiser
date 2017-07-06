@@ -15,6 +15,16 @@ class Orders extends CI_Controller
         $this->data     = array();
     }
 
+    public function assign_job() {
+        $return = $this->order_model->assign_payment();
+        $this->return_json(['data' => $return]);
+    }
+
+    public function getPayments() {
+        $return = $this->order_model->get_all_payments();
+        $this->return_json(['data' => $return]);   
+    }
+
     public function get_price()
     {
         $prices = $this->order_model->get_prices();

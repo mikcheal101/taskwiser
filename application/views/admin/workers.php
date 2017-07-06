@@ -6,11 +6,12 @@
 
 <main ng-init="loadWorkers('<?=base_url();?>');">
     <div class="container">
-        <!--
-        <a class="btn-floating btn-large waves-effect waves-light red">
+        <a style="position: absolute; right: 10%!important; bottom: 10%!important;" 
+            class="btn-floating btn-large waves-effect waves-light red"
+            href="<?=base_url('/admin/createWorker');?>">
             <i class="glyphicon glyphicon-plus"></i>
         </a>
-        -->
+
         <h4>Staff Listing</h4>
         <hr>
 

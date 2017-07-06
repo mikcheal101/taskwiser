@@ -1,6 +1,14 @@
 "use strict";
-
-app.service("tookanService", ["$http", "$q", function($http, $q) {
+/*
+Successful charge:
+    card No: 5438898014560229
+    cvv: 789
+    Expiry Month: 09
+    Expiry Year: 19
+    Pin: 9890
+    OTP: 12345
+*/
+app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Upload) {
     var svc                     = this;
     svc.base_url                = {
         v1                      : "",
@@ -113,13 +121,16 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
                 break;
         }
 
-        $http.post(url, props)
-        .then(aData => {
-            defer.resolve(aData.data);
-        })
-        .catch(aError => {
-            defer.reject(aError);
-        });
+        $http
+            .post(url, props)
+            .then(aData => {
+                console.log(aData);
+                defer.resolve({'data' : aData.data, 'customer' : customer, 'order' : order});
+            })
+            .catch(aError => {
+                console.log(aError);
+                defer.reject(aError);
+            });
         return defer.promise;
     };
 
@@ -173,20 +184,30 @@ app.service("tookanService", ["$http", "$q", function($http, $q) {
         });
         return defer.promise;
     };
-    svc.list_agents             = function() {
-        var defer               = $q.defer();
-        var url                 = svc.base_url + "/get_available_agents";
-        var props               = {
-            api_key         : svc.api_key
-        };
+    svc.list_agents             = function(agents) {
 
-        $http.post(url, props)
-        .then(aData => {
-            defer.resolve(aData.data);
-        })
-        .catch(aError => {
-            defer.reject(aError);
-        });
+        var defer               = $q.defer();
+        var url                 = svc.base_url.v2 + "/get_available_agents";
+
+        $http
+            .post(url, {api_key: svc.config.api_key_v2})
+            .then(aData => {
+                var re  = {};
+                re.data     = aData.data.data;
+                re.res      = agents.data;
+                re.res.forEach((x, y, arr) => {
+                    var agent_    = re.data.filter(agent => agent.email === x.email);
+                    if(agent_)
+                        if(agent_.length > 0)
+                            re.res[y].agent = agent_[0];
+                    else
+                        re.res[y].agent = false;
+                });
+                defer.resolve(re);
+            })
+            .catch(aError => {
+                defer.reject(aError);
+            });
         return defer.promise;
     };
     svc.delete_agent            = function() {

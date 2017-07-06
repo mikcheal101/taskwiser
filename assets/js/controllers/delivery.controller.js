@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('deliveryController', ["$scope", "$rootScope", "generalService",
-function($scope, $rootScope, deliveryService, generalService)
+app.controller('deliveryController', ["$scope", "$rootScope", "generalService", "tookanService",
+function($scope, $rootScope, generalService, tookanService)
 {
 	$scope.today 			= new Date();
 	$scope.payment 			= {};
@@ -32,12 +32,14 @@ function($scope, $rootScope, deliveryService, generalService)
 			.payment_made(response, $scope.order, $scope.total_price, $scope.base_url)
 			.then(aResponse => {
 				// send data to tookanapp
-				return tookanService.create_task(aResponse.order.customer, aResponse.order.order, 'delivery', Util.tookanapp_teams.deliveries);
+				return tookanService.create_task(aResponse.order.customer, aResponse.order.order, 'delivery', $scope.Util.tookanapp_teams.deliveries);
 			})
 			.then(bResponse => {
 				// send details to db
-				console.log(bResponse);
-
+				bResponse.data 	= bResponse.data.data;
+				return generalService.assign_order_to_task(bResponse, $scope.base_url);
+			})
+			.then((cResponse) => {
 				// redirect to the index page
 				window.location = $scope.base_url;
 			})

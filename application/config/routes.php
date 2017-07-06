@@ -63,6 +63,7 @@ $route['place_order/driver']               	= "orders/driver";
 $route['place_order/diesel']               	= "orders/diesel";
 $route['place_order/custom']               	= "orders/custom_tasks";
 
+
 $route['terms_and_conditions']              = "user/terms_and_conditions";
 
 # angular backend service calls
@@ -78,12 +79,14 @@ $route['flutter/send_card']					= "orders/angular_send_card";
 # payments
 $route['payments/make/payment']             = "payments/save_payment";
 
+
 # this route get the price config saved by the admin
 $route["prices/fetch/configuration/(:any)"]	= "orders/fetch_configuration/$1";
 
 $route['get/prices']               			= "orders/get_price";
 
 $route['place_order/get_quote']				= "orders/get_quote";
+$route['place_order/assign_job']			= "orders/assign_job";
 
 $route['auth/login']						= 'user/login';
 $route['auth/register']						= 'user/register';
@@ -96,6 +99,7 @@ $route['verify_customer/(:num)/(:any)']		= 'user/verifyCustomer/$1/$2';
 
 $route['payment/enter_details/(:any)']		= 'backend/make_payment/$1';
 $route['payment/transaction/(:any)']		= 'backend/payment_complete/$1';
+$route['payment/listing']					= 'orders/getPayments';
 
 
 $route['customer/registration']				= 'backend/signUp';

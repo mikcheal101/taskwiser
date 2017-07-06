@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('customController', ["$scope", "$rootScope", function($scope, $rootScope) 
+app.controller('customController', ["$scope", "$rootScope", "Util", function($scope, $rootScope, Util) 
 {
 	$scope.today 		= new Date();
 
