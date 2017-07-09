@@ -12,6 +12,9 @@
 		<script src="<?=base_url ('assets/js/services/util.js');?>"></script>
 		<script src="<?=base_url ('assets/js/services/tookan.service.js');?>"></script>
 
+		<script src="<?=base_url ('assets/js/ng-file-upload-all.min.js');?>"></script>
+		<script src="<?=base_url ('assets/js/ng-file-upload-shim.min.js');?>"></script>
+
 		<script src="<?=base_url ('assets/js/controllers/laundry.controller.js');?>"></script>
 		<script src="<?=base_url ('assets/js/controllers/auto.controller.js');?>"></script>
 		<script src="<?=base_url ('assets/js/controllers/beauty.controller.js');?>"></script>

@@ -1,4 +1,4 @@
-var app = angular.module('app', ["ngLodash"]);
+var app = angular.module('app', ["ngLodash", 'ngFileUpload']);
 
 app.run(function($rootScope, Util){
 	

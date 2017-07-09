@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('driverController', ["$scope", "$rootScope", "generalService", "tookanService"
+app.controller('driverController', ["$scope", "$rootScope", "generalService", "tookanService",
 function($scope, $rootScope, generalService, tookanService)
 {
 	$scope.today 				= new Date();
