@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<?php header("Cache-Control: public, max-age=60, s-maxage=60");?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?=link_tag ("assets/imgs/logo.png", "icon", "image/png");?>
 	<title><?="Taskwiser - {$title}";?></title>

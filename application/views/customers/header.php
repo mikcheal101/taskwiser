@@ -8,6 +8,7 @@
 	<?=meta ('Content-Type', 'text/html; charset=UTF-8');?>
 
 	<?=link_tag ("assets/imgs/logo.png", "icon", "image/png");?>
+	<?php header("Cache-Control: public, max-age=60, s-maxage=60");?>
 
 	<?=link_tag ('assets/css/bootstrap.min.css');?>
 	<?=link_tag ('assets/last_design/tskwsr.css');?>

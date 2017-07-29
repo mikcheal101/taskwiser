@@ -11,7 +11,7 @@
 
 	<?=link_tag ('assets/css/bootstrap.min.css');?>
 	<?=link_tag ('assets/last_design/final.css');?>
-
+	<?php header("Cache-Control: public, max-age=60, s-maxage=60");?>
 
 	<title><?=$title;?></title>
 

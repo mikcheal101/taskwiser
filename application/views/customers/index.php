@@ -12,7 +12,7 @@
 	<?=link_tag ('assets/css/bootstrap.min.css');?>
 	<?=link_tag ('assets/last_design/tskwsr.css');?>
 	<?=link_tag ('assets/last_design/index.css');?>
-
+	<?php header("Cache-Control: public, max-age=60, s-maxage=60");?>
 
 	<title>taskwiser.com</title>
 
