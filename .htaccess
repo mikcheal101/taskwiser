@@ -4,22 +4,9 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L,QSA]
 
-<ifmodule deflate_module>
-    DeflateCompressionLevel 1
-    DeflateBufferSize 8096
-    DeflateMemLevel 8
-    DeflateWindowSize 8
-
-    AddOutputFilterByType DEFLATE text/css
-    AddOutputFilterByType DEFLATE text/javascript
-    AddOutputFilterByType DEFLATE text/plain
-    AddOutputFilterByType DEFLATE text/xml
-</ifmodule>
 
 <FilesMatch "\.(?i:gif|jpe?g|png|ico|css|js|swf)$">
-
   <IfModule mod_headers.c>
     Header set Cache-Control "max-age=172800, public, must-revalidate"
   </IfModule>
-
 </FilesMatch>
