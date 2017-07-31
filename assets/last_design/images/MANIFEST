@@ -1,0 +1,45 @@
+This zip file contains optimized resources for http://taskwiser.com/. The optimized resources are listed below in the format of: 
+filename: url
+
+Note: We only include up to 10 MB of optimized contents. If the
+optimized contents of your page are larger than 10 MB, we list them in
+this file too, with 'NOT INCLUDED' to indicate those URLs require
+further optimization.
+
+js/general.service.js: http://www.taskwiser.com/assets/js/services/general.service.js
+js/tookan.service.js: http://www.taskwiser.com/assets/js/services/tookan.service.js
+js/laundry.controller.js: http://www.taskwiser.com/assets/js/controllers/laundry.controller.js
+js/beauty.controller.js: http://www.taskwiser.com/assets/js/controllers/beauty.controller.js
+js/cleaning.controller.js: http://www.taskwiser.com/assets/js/controllers/cleaning.controller.js
+js/cooking.controller.js: http://www.taskwiser.com/assets/js/controllers/cooking.controller.js
+js/custom.controller.js: http://www.taskwiser.com/assets/js/controllers/custom.controller.js
+js/delivery.controller.js: http://www.taskwiser.com/assets/js/controllers/delivery.controller.js
+js/diesel.controller.js: http://www.taskwiser.com/assets/js/controllers/diesel.controller.js
+js/driver.controller.js: http://www.taskwiser.com/assets/js/controllers/driver.controller.js
+js/events.controller.js: http://www.taskwiser.com/assets/js/controllers/events.controller.js
+js/handyman.controller.js: http://www.taskwiser.com/assets/js/controllers/handyman.controller.js
+js/moving.controller.js: http://www.taskwiser.com/assets/js/controllers/moving.controller.js
+image/tools.png: http://www.taskwiser.com/assets/last_design/images/tools.png
+image/task_20on_20demand.png: http://www.taskwiser.com/assets/last_design/images/task%20on%20demand.png
+image/step_202.png: http://www.taskwiser.com/assets/last_design/images/step%202.png
+image/step_203.png: http://www.taskwiser.com/assets/last_design/images/step%203.png
+image/step_204.png: http://www.taskwiser.com/assets/last_design/images/step%204.png
+image/step_201.png: http://www.taskwiser.com/assets/last_design/images/step%201.png
+image/reliable.png: http://www.taskwiser.com/assets/last_design/images/reliable.png
+image/trusted.png: http://www.taskwiser.com/assets/last_design/images/trusted.png
+image/guaranteed.png: http://www.taskwiser.com/assets/last_design/images/guaranteed.png
+image/convenient.png: http://www.taskwiser.com/assets/last_design/images/convenient.png
+image/washing.png: http://www.taskwiser.com/assets/last_design/images/washing.png
+image/moving.png: http://www.taskwiser.com/assets/last_design/images/moving.png
+image/handy_20man.png: http://www.taskwiser.com/assets/last_design/images/handy%20man.png
+image/events.png: http://www.taskwiser.com/assets/last_design/images/events.png
+image/driver.png: http://www.taskwiser.com/assets/last_design/images/driver.png
+image/deisel.png: http://www.taskwiser.com/assets/last_design/images/deisel.png
+image/cooking.png: http://www.taskwiser.com/assets/last_design/images/cooking.png
+image/cleaner.png: http://www.taskwiser.com/assets/last_design/images/cleaner.png
+image/beauty.png: http://www.taskwiser.com/assets/last_design/images/beauty.png
+image/envelope.png: http://www.taskwiser.com/assets/last_design/images/envelope.png
+image/twitter.png: http://www.taskwiser.com/assets/last_design/images/twitter.png
+image/fb.png: http://www.taskwiser.com/assets/last_design/images/fb.png
+image/instagram.png: http://www.taskwiser.com/assets/last_design/images/instagram.png
+image/home_20bg.png: http://www.taskwiser.com/assets/last_design/images/home%20bg.png
