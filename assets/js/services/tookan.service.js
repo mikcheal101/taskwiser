@@ -66,59 +66,52 @@ app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Uploa
         props.customer_phone    = customer._tel;
         props.customer_address  = customer.address;
 
+		if (type == 'appointment'){
+			console.log('a');
+			// appointment
+			props.customer_username     = customer.fullname;
+			props.customer_email        = customer._email;
+			props.job_pickup_datetime   = order._ts;
+			props.job_delivery_datetime = order._ts;
+			props.has_pickup            = "0";
+			props.has_delivery          = "0";
+			props.layout_type           = "1";
 
-        switch(type) {
-            case 'appointment':
-                // appointment
-                props.customer_username     = customer.fullname;
-                props.customer_email        = customer._email;
-                props.job_pickup_datetime   = order._ts;
-                props.job_delivery_datetime = order._ts;
-                props.has_pickup            = "0";
-                props.has_delivery          = "0";
-                props.layout_type           = "1";
+			props.customer_username     = customer.fullname;
+			props.customer_email        = customer._email;
+		} else if (type == 'delivery_pickup') {
+			console.log('dp');
+			// delivery and pick up
+			props.job_pickup_phone      = customer._tel;
+			props.job_pickup_address    = customer.address;
+			props.job_pickup_datetime   = order._ts;
+			props.job_delivery_datetime = order._ts;
 
-                props.customer_username     = customer.fullname;
-                props.customer_email        = customer._email;
-                break;
+			props.job_pickup_name       = customer.fullname;
+			props.job_pickup_email      = customer._email;
+			
+			props.has_pickup            = "1";
+			props.has_delivery          = "1";
 
-            case 'delivery_pickup':
-                // delivery and pick up
-                props.job_pickup_phone      = customer._tel;
-                props.job_pickup_address    = customer.address;
-                props.job_pickup_datetime   = order._ts;
-                props.job_delivery_datetime = order._ts;
+			props.customer_username     = customer.fullname;
+			props.customer_email        = customer._email;
+		} else if (type == 'delivery') {
+			console.log('d');
+			props.job_delivery_datetime = order._ts;
+			props.has_pickup            = "0";
+			props.has_delivery          = "1";
 
-                props.job_pickup_name       = customer.fullname;
-                props.job_pickup_email      = customer._email;
-                
-                props.has_pickup            = "1";
-                props.has_delivery          = "1";
-
-                props.customer_username     = customer.fullname;
-                props.customer_email        = customer._email;
-                break;
-
-            case 'delivery':
-                props.job_delivery_datetime = order._ts;
-                props.has_pickup            = "0";
-                props.has_delivery          = "1";
-
-                props.customer_username     = customer.fullname;
-                props.customer_email        = customer._email;
-                break;
-
-            case 'pickup':
-                props.job_pickup_phone      = customer._tel;
-                props.job_pickup_address    = customer.address;
-                props.job_pickup_datetime   = order._ts;
-                props.has_pickup            = "1";
-                props.has_delivery          = "0";
-                break;
-
-            default:
-                console.log('default!');
-                break;
+			props.customer_username     = customer.fullname;
+			props.customer_email        = customer._email;
+		} else if (type == 'pickup') {
+			console.log('p');
+			props.job_pickup_phone      = customer._tel;
+			props.job_pickup_address    = customer.address;
+			props.job_pickup_datetime   = order._ts;
+			props.has_pickup            = "1";
+			props.has_delivery          = "0";
+		} else {
+			console.log('default!');
         }
 
 		console.log(props);
