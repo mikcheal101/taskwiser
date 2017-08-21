@@ -56,6 +56,7 @@ app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Uploa
         var defer               = $q.defer();
         var url                 = svc.base_url.v2 + "/create_task";
         var props               = svc.configuration;
+		const test 				= {};
 		
         var json                = JSON.parse(order.details);
         props.api_key           = svc.config.api_key_v2;
@@ -114,7 +115,9 @@ app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Uploa
 			console.log('default!');
         }
 
-		console.log(props);
+		test = props;
+		
+		console.log("props: ", props, "test: ", test);
 		
         $http
             .post(url, props)
