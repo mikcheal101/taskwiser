@@ -59,13 +59,14 @@ app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Uploa
 		var test 				= {};
 		
         var json                = JSON.parse(order.details);
+		customer.address		= customer.address ? customer.address : "";
         props.api_key           = svc.config.api_key_v2.toString();
         props.order_id          = order._id;
         props.job_description   = json.details;
         props.team_id           = category;
 
         props.customer_phone    = customer._tel;
-        props.customer_address  = customer.address ? customer.address : "";
+        props.customer_address  = customer.address;
 
 		if (type == 'appointment'){
 			console.log('a');
