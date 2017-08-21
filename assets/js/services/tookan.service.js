@@ -65,7 +65,7 @@ app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Uploa
         props.team_id           = category;
 
         props.customer_phone    = customer._tel;
-        props.customer_address  = customer.address;
+        props.customer_address  = customer.address ? customer.address : "";
 
 		if (type == 'appointment'){
 			console.log('a');
@@ -84,7 +84,7 @@ app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Uploa
 			console.log('dp');
 			// delivery and pick up
 			props.job_pickup_phone      = customer._tel;
-			props.job_pickup_address    = customer.address ? customer.address : "";
+			props.job_pickup_address    = customer.address;
 			props.job_pickup_datetime   = order._ts;
 			props.job_delivery_datetime = order._ts;
 
