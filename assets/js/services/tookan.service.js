@@ -57,8 +57,6 @@ app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Uploa
         var url                 = svc.base_url.v2 + "/create_task";
         var props               = svc.configuration;
 		
-		console.log(customer, order, type, category);
-		
         var json                = JSON.parse(order.details);
         props.api_key           = svc.config.api_key_v2;
         props.order_id          = order._id;
@@ -123,6 +121,8 @@ app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Uploa
                 break;
         }
 
+		console.log(props);
+		
         $http
             .post(url, props)
             .then(aData => {
