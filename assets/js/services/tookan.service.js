@@ -57,9 +57,9 @@ app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Uploa
         var url                 = svc.base_url.v2 + "/create_task";
         var props               = svc.configuration;
 		var test 				= {};
-		
+		console.log(order);
         var json                = JSON.parse(order.details);
-		customer.address		= customer.address ? customer.address : "";
+		customer.address		= customer.address ? customer.address : "null";
         props.api_key           = svc.config.api_key_v2.toString();
         props.order_id          = order._id;
         props.job_description   = json.details;
