@@ -115,17 +115,16 @@ app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Uploa
 			console.log('default!');
         }
 
-		test = props;
-		
-		console.log("props: ", props, "test: ", test);
-		
+		/*
 		var post = Upload.json({
 			url: url,
 			data: props
 		})
+		*/
 		
-        //$http.post(url, props)
-        post.then(aData => {
+        $http
+		.post(url, JSON.stringify(props))
+        .then(aData => {
                 console.log(aData);
                 defer.resolve({'data' : aData.data, 'customer' : customer, 'order' : order});
             })
