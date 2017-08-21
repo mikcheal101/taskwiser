@@ -59,7 +59,7 @@ app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Uploa
 		var test 				= {};
 		
         var json                = JSON.parse(order.details);
-        props.api_key           = svc.config.api_key_v2;
+        props.api_key           = svc.config.api_key_v2.toString();
         props.order_id          = order._id;
         props.job_description   = json.details;
         props.team_id           = category;
