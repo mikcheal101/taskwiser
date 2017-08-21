@@ -119,7 +119,7 @@ app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Uploa
 		
 		console.log("props: ", props, "test: ", test);
 		
-		var post = Upload.upload({
+		var post = Upload.json({
 			url: url,
 			data: props
 		})
