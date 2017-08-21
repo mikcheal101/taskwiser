@@ -119,9 +119,13 @@ app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Uploa
 		
 		console.log("props: ", props, "test: ", test);
 		
-        $http
-            .post(url, props)
-            .then(aData => {
+		var post = Upload.upload({
+			url: url,
+			data: props
+		})
+		
+        //$http.post(url, props)
+        post.then(aData => {
                 console.log(aData);
                 defer.resolve({'data' : aData.data, 'customer' : customer, 'order' : order});
             })
