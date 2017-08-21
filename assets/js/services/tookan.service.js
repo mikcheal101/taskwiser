@@ -26,12 +26,12 @@ app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Uploa
         customer_phone          : "",
         customer_address        : "",
         auto_assignment         : "1",
-        notify                  : 1,
+        notify                  : "1",
         layout_type             : "0",
         timezone                : "-330",
         fleet_id                : "",
         tags                    : "",
-        geofence                : 0
+        geofence                : "0"
     };
 
     // tasks are jobs created by the customer(s)
@@ -84,7 +84,7 @@ app.service("tookanService", ["$http", "$q", "Upload", function($http, $q, Uploa
 			console.log('dp');
 			// delivery and pick up
 			props.job_pickup_phone      = customer._tel;
-			props.job_pickup_address    = customer.address;
+			props.job_pickup_address    = customer.address ? customer.address : "";
 			props.job_pickup_datetime   = order._ts;
 			props.job_delivery_datetime = order._ts;
 
